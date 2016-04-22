@@ -7,6 +7,7 @@ $setup='';
 $umat='';
 $baptis='';
 $pernikahans='';
+$kematians='';
 $komuni='';
 $krismas='';
 $kelahiran='';
@@ -38,6 +39,8 @@ if ($ctl === 'jemaats') {
  $krismas = 'class="active"';
 }else if($ctl ==='user'){
   $user = 'class="active';
+}else if ($ctl === 'kematians') {
+  $kematians = 'class="active"';
 }else {
   $overview = 'class="active"';
 }
@@ -54,13 +57,17 @@ if ($ctl === 'jemaats') {
   </li> 
   <li <?php echo $pernikahans; ?>>
   <?php echo $this->Html->link('Pernikahan', array('controller'=>'pernikahans', 'action' => 'index')); ?>
-  </li> 
+  </li>
+  <li <?php echo $kematians; ?>>
+    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'index')); ?>
+  </li>
   <li <?php echo $komuni; ?>>
   <?php echo $this->Html->link('Komuni', array('controller'=>'komuni', 'action' => 'index')); ?>
   </li> 
   <li <?php echo $krismas; ?>>
   <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'index')); ?>
   </li>
+    
   <?php 
     if($this->Session->read('Auth.User.level') != "1"){
    ?>

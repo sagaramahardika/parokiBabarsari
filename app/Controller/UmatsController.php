@@ -773,5 +773,10 @@ public function lihataktivasi(){
 			// }
 		}
 	}
+    
+    public function kematian()
+    {
+        
+    }
 }
 ?>
