@@ -48,6 +48,11 @@ class BaptisController extends AppController{
 
 		}
 	}
+
+	public function tambah(){
+
+	}
+	
 	public function edit($id=null){
 	/*	if ($this->request->is('post') || $this->request->is('put')) {
 //			$this->Baptis->id = $this->Auth->user('id');
