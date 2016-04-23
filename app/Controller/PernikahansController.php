@@ -15,11 +15,6 @@ public function beforeFilter() {
 
 	
 	public function index(){
-		
-		
-
-
-
 		$userRole = $this->Auth->user('user_level');
 		$idTam =  $this->Auth->user('id_umat');
 		$this->set('namaUmat',$this->Umat->getNamaPasangan());

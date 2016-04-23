@@ -30,12 +30,79 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 		
 			?>
 				
-				
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>Kode Stasi </label></div>
+					<?php
+					echo $this->Form->input(null, array(
+								'options' => array('-', 'Belum Terdefinisi'),
+								'label' => false,
+								'id'=>'kdstasi',
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge",
+								'name'=>'kd_stasi'
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>Kode LM </label></div>
+					<?php
+					echo $this->Form->input(null, array(
+								'label' => false,
+								'id'=>'kdLM',
+								'placeholder'=>'Kode LM',
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge"
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>No</label></div>
+					<?php
+					echo $this->Form->input(null, array(
+								'label' => false,
+								'id'=>'noLM',
+								'placeholder'=>'No',
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge"
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>Halaman</label></div>
+					<?php
+					echo $this->Form->input(null, array(
+								'label' => false,
+								'id'=>'halaman',
+								'value'=>0,
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge"
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+				<hr>
 				<div class="row">
 					<div class="col-md-2 control-label"><label>Nama Umat </label></div>
 					<?php
 					
-					echo $this->Form->input(null,array('name'=>'input_umat', 'label'=>false,'id'=>'input_nama','placeholder'=>'Nama Umat','class'=>"form-control  input-xlarge",'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->input(null,array(
+						'name'=>'input_umat', 
+						'label'=>false,
+						'id'=>'input_nama',
+						'placeholder'=>'Nama Umat',
+						'class'=>"form-control  input-xlarge",
+						'div'=>array('class'=>'col-md-4')
+						));
 					
 
 					echo $this->Form->input('Pernikahan.umat_id', array('id'=>'form_id_umat','type'=>'hidden'));
@@ -46,22 +113,22 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				</div>
 				<br>
 				<div class="row">
-				<div class="row">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="col-md-1"></div>
+						<div class="col-md-10">
+							<h4 >Silahkan pilih Daerah pasangan Umat :</h4>
+						</div>
+						</div>
+					</div>	
 					<div class="col-md-6">
 						<div class="col-md-1"></div>
-					<div class="col-md-10">
-					<h4 >Silahkan pilih Daerah pasangan Umat :</h4>
+						<div class="col-md-4">	
+							<?php $options = array('ling' => 'lingkungan', 'wil' => 'wilayah','par' => 'paroki','lain' => 'lainnya');
+								$attributes = array('id'=>'pil', 'name'=>'radioPil' , 'legend' => false,  'separator' => '</br>',);
+								echo $this->Form->radio('pilihan', $options, $attributes); ?>
+						</div>
 					</div>
-					</div>
-				</div>	
-				<div class="col-md-6">
-					<div class="col-md-1"></div>
-				<div class="col-md-4">	
-					<?php $options = array('ling' => 'lingkungan', 'wil' => 'wilayah','par' => 'paroki','lain' => 'lainnya');
-						$attributes = array('id'=>'pil', 'name'=>'radioPil' , 'legend' => false,  'separator' => '</br>',);
-						echo $this->Form->radio('pilihan', $options, $attributes); ?>
-				</div>
-				</div>
 				</div>
 				<br>
 				<div class="row" id='nama_pasangan_dalam' >
@@ -117,19 +184,11 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<label style="color:red">*</label>
 				</div>
 				</div>
-
-				<div class="form-group">
-					
-					<?php
-					echo $this->Form->label('Pernikahan.tmppernikahan', 'Tempat Pernikahan', 'col-md-2 control-label');
-					echo $this->Form->input('Pernikahan.tmppernikahan', array('label'=>false,'id'=>'tmpper', 'placeholder'=>"tempat", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
-					?>
-					<label style="color:red">*</label>
-				</div>
-				
+			
+				<hr>
 				<div class="form-group">
 					<?php
-					echo $this->Form->label('Pernikahan.tglpernikahan', 'Tanggal pernikahan', 'col-md-2 control-label');
+					echo $this->Form->label('Pernikahan.tglpernikahan', 'Tanggal Pernikahan', 'col-md-2 control-label');
 					echo $this->Form->input('Pernikahan.tglpernikahan', array(
 						'label'=>false,  
 						'class'=>"form-control ", 
@@ -146,15 +205,56 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				
 				<div class="form-group">
 					<?php
+					echo $this->Form->label('Pernikahan.tmppernikahan', 'Tempat Pernikahan', 'col-md-2 control-label');
+					echo $this->Form->input('Pernikahan.tmppernikahan', array('label'=>false,'id'=>'tmpper', 'placeholder'=>"Tempat Pernikahan", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<?php
+					echo $this->Form->label(null, 'Kota', 'col-md-2 control-label');
+					echo $this->Form->input(null, array('label'=>false,'id'=>'kota', 'placeholder'=>"Kota", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<?php
 					echo $this->Form->label('Pernikahan.romopernikahan', 'Romo', 'col-md-2 control-label');
 					echo $this->Form->input('Pernikahan.romopernikahan', array('label'=>false,  'class'=>"form-control ", 'div'=>array('class'=>'col-md-4'),'id'=>'romoper', 'placeholder'=>"Romo"));
 					?>
 					<label style="color:red">*</label>
 				</div>
-			 <div class="form-group">
+
+				<div class="form-group">
+					<?php
+					echo $this->Form->label(null, 'Kota', 'col-md-2 control-label');
+					echo $this->Form->input(null, array('label'=>false,'id'=>'Saksi 1', 'placeholder'=>"Saksi 1", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<?php
+					echo $this->Form->label(null, 'Saksi 2', 'col-md-2 control-label');
+					echo $this->Form->input(null, array('label'=>false,'id'=>'saksi2', 'placeholder'=>"Saksi 2", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<?php
+					echo $this->Form->label(null, 'Dispensasi', 'col-md-2 control-label');
+					echo $this->Form->input(null, array('label'=>false,'id'=>'dispensasi', 'placeholder'=>"Dispensasi", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+			 	<div class="form-group">
 					<?php
 					echo $this->Form->label('Pernikahan.libermat', 'Libermat', 'col-md-2 control-label');
-					echo $this->Form->input('Pernikahan.libermat', array('label'=>false,  'class'=>"form-control ", 'div'=>array('class'=>'col-md-4'),'id'=>'libermatper', 'placeholder'=>"libermat"));
+					echo $this->Form->input('Pernikahan.libermat', array('label'=>false,  'class'=>"form-control ", 'div'=>array('class'=>'col-md-4'),'id'=>'libermatper', 'placeholder'=>"Libermat"));
 					?>
 					<label style="color:red">*</label>
 				</div> 

@@ -2,10 +2,12 @@
 $this->assign('title', 'Halaman Manajemen Pernikahan');
 ?>
 <h3><i class="fa fa-angle-right"></i> <i class="fa fa-users"></i> Manajemen Data Pernikahan </h3>
+<h1>MANTAP<H2>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="row">
 			<div class="col-lg-6">
+
 			  <form action="<?php echo $this->Html->url(array('controller'=>'pernikahans', 'action'=>'index')); ?>" method="post" id="frmCari">
 			  <div class="input-group">
 				<input type="text" class="form-control" name="data[cari]" placeholder="Cari nama umat ...">
