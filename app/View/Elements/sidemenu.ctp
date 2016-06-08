@@ -59,13 +59,13 @@ if ($ctl === 'jemaats') {
   <?php echo $this->Html->link('Pernikahan', array('controller'=>'pernikahans', 'action' => 'index')); ?>
   </li>
   <li <?php echo $kematians; ?>>
-    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'index')); ?>
+    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'tambah')); ?>
   </li>
   <li <?php echo $komuni; ?>>
   <?php echo $this->Html->link('Komuni', array('controller'=>'komuni', 'action' => 'index')); ?>
   </li> 
   <li <?php echo $krismas; ?>>
-  <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'index')); ?>
+  <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'tambah')); ?>
   </li>
     
   <?php 

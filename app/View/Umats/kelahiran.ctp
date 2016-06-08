@@ -34,8 +34,14 @@ $this->assign('title', 'Halaman Tambah Kelahiran');
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('Umat.tgl_lahir', 'Tanggal lahir', 'col-md-2 control-label');
-					echo $this->Form->input('tgl_lahir', array('label'=>false, 'placeholder'=>"Nama Lengkap", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4'),'dateFormat' => 'DMY',
-						'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0));
+					echo $this->Form->input('tgl_lahir', array(
+                        'label'=>false, 
+                        'placeholder'=>"Nama Lengkap", 
+                        'class'=>"form-control input-xlarge", 
+                        'div'=>array('class'=>'col-md-4'),
+                        'dateFormat' => 'DMY',
+						'minYear' => date('Y') - 115, 
+                        'maxYear' => date('Y') - 0));
 					?>
 				</div>
 				<div class="form-group">

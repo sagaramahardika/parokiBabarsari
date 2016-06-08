@@ -1,24 +1,24 @@
 <?php
-$this->assign('title', 'Halaman Tambah Krisma');
+$this->assign('title', 'Halaman Tambah Kematian');
 ?>
 <h3><i class="fa fa-angle-right"></i>
 <?php
 
-echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', array('action'=>'index'), array('escape'=>false)) . ' / ';
+echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', array('action'=>'index'), array('escape'=>false)) . ' / ';
 
 ?>
-<i class="fa fa-pencil"></i> Tambah Data Krisma
+<i class="fa fa-pencil"></i> Tambah Data Kematian
 </h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Form Data Krisma</h3>
+				<h3 class="panel-title">Form Data Kematian</h3>
 			</div>
 			<div class="panel-body">
 
 			<?php
-			echo $this->Form->create('Krisma', array('url' => '/krismas/tambah','class'=>'form-horizontal', 'role'=>'form',));
+			echo $this->Form->create('Kematian',  array('controller' => 'kematians','action' => 'tambah','class'=>'form-horizontal', 'role'=>'form'));
 		    echo $this->Form->input('Umat.id', array('type' => 'hidden', 'value'=> $this->Session->read('Auth.User.id')));
 			?>
 
@@ -26,7 +26,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('kodeStasi', 'Kode Stasi ', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.kodestasi', array(
+					echo $this->Form->input('kode_stasi', array(
                         'label'=>false, 
                         'class'=>"form-control input-xlarge", 
                         'options'=>array(1, 2, 3 ,4, 5), 
@@ -38,7 +38,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('noUrut', 'No Urut', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.nourut', array(
+					echo $this->Form->input('no_urut', array(
                         'label'=>false,  
                         'class'=>"form-control input-xlarge", 
                         'div'=>array('class'=>'col-md-4')));
@@ -48,8 +48,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 				
                 <div class="form-group">
 					<?php
-					echo $this->Form->label('namaDiri', 'Nama Diri', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.namadiri', array(
+					echo $this->Form->label('namaLengkap', 'Nama Lengkap', 'col-md-2 control-label');
+					echo $this->Form->input('nama_lengkap', array(
                         'label'=>false,  
                         'class'=>"form-control ",
                         'value'=> $this->Session->read('Auth.User.nama'),
@@ -59,8 +59,18 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 
                 <div class="form-group">
 					<?php
+					echo $this->Form->label('namaBaptis', 'Nama Baptis', 'col-md-2 control-label');
+					echo $this->Form->input('nama_baptis', array(
+                        'label'=>false,  
+                        'class'=>"form-control ",
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+                
+                <div class="form-group">
+					<?php
 					echo $this->Form->label('gender', 'Gender', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.gender', array(
+					echo $this->Form->input('gender', array(
                         'label'=>false,  
                         'class'=>"form-control ",
                         'options'=>array('L', 'P'),
@@ -71,8 +81,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 
                 <div class="form-group">
 					<?php
-					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.namaayah', array(
+					echo $this->Form->label('tempatLahir', 'Tempat Lahir', 'col-md-2 control-label');
+					echo $this->Form->input('tempat_lahir', array(
                         'label'=>false,  
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
@@ -81,107 +91,110 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 
                 <div class="form-group">
 					<?php
-					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.namaibu', array(
-                        'label'=>false,  
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-                
-                <div class="form-group">
-					<?php
-					echo $this->Form->label('parokiBaptis', 'Dibaptis di Paroki', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.parokibaptis', array(
-                        'label'=>false,  
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-                
-                <div class="form-group">
-					<?php
-					echo $this->Form->label('kodeLB', 'Kode LB', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.kodeLB', array(
-                        'label'=>false,  
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
-                    echo $this->Form->label('no', 'No', 'col-md-1 control-label');
-					echo $this->Form->input('Krisma.No', array(
-                        'label'=>false,  
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-                
-                <div class="form-group">
-					<?php
-					echo $this->Form->label('tanggalBaptis', 'Tanggal Baptis', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.tanggalbaptis', array(
-                        'label'=>false,
-                        'type'=>'date',
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-                
-                <div class="form-group">
-					<?php
-					echo $this->Form->label('namaPelindung', 'Nama Pelindung', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.namapelindung', array(
-                        'label'=>false,  
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-                
-                <div class="form-group">
-					<?php
-					echo $this->Form->label('uskupDelegatus', 'Uskup/Delegatus', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.uskupdelegatus', array(
-                        'label'=>false,  
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-                
-                <div class="form-group">
-					<?php
-					echo $this->Form->label('waliKrisma', 'Wali Krisma', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.walikrisma', array(
-                        'label'=>false,  
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-                
-                <div class="form-group">
-					<?php
-					echo $this->Form->label('Umat.tglkrisma', 'Tanggal Krisma', 'col-md-2 control-label');
-					echo $this->Form->input('tglkrisma', array(
+					echo $this->Form->label('tanggalLahir', 'Tanggal Lahir', 'col-md-2 control-label');
+					echo $this->Form->input('tanggal_lahir', array(
 						'label'=>false,  
 						'class'=>"form-control ", 
 						'div'=>array('class'=>'col-md-4'),
+                        'type'=>'date',
 						'dateFormat' => 'DMY',
-						'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0	
+						'minYear' => date('Y') - 115, 
+                        'maxYear' => date('Y') - 0	
 						));
+					?>
+				</div>
+                
+                <div class="form-group">
+					<?php
+					echo $this->Form->label('tempatMeninggal', 'Tempat Meninggal', 'col-md-2 control-label');
+					echo $this->Form->input('tempat_meninggal', array(
+                        'label'=>false,  
+                        'class'=>"form-control ",
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+                
+                <div class="form-group">
+					<?php
+					echo $this->Form->label('tanggalMeninggal', 'Tanggal Meninggal', 'col-md-2 control-label');
+					echo $this->Form->input('tanggal_Meninggal', array(
+						'label'=>false,  
+						'class'=>"form-control ", 
+						'div'=>array('class'=>'col-md-4'),
+                        'type'=>'date',
+						'dateFormat' => 'DMY',
+						'minYear' => date('Y') - 115, 
+                        'maxYear' => date('Y') - 0	
+						));
+					?>
+				</div>
+                
+                <div class="form-group">
+					<?php
+					echo $this->Form->label('tempatDimakamkan', 'Tempat Dimakamkan', 'col-md-2 control-label');
+					echo $this->Form->input('tempat_dimakamkan', array(
+                        'label'=>false,
+                        'class'=>"form-control ",
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+                
+                <div class="form-group">
+					<?php
+					echo $this->Form->label('tanggalDimakamkan', 'Tanggal Dimakamkan', 'col-md-2 control-label');
+					echo $this->Form->input('tanggal_dimakamkan', array(
+						'label'=>false,  
+						'class'=>"form-control ", 
+						'div'=>array('class'=>'col-md-4'),
+                        'type'=>'date',
+						'dateFormat' => 'DMY',
+						'minYear' => date('Y') - 115, 
+                        'maxYear' => date('Y') - 0	
+						));
+					?>
+				</div>
+                
+                <div class="form-group">
+					<?php
+					echo $this->Form->label('namaSaudara', 'Nama Saudara', 'col-md-2 control-label');
+					echo $this->Form->input('nama_saudara', array(
+                        'label'=>false,  
+                        'class'=>"form-control ",
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+                
+                <div class="form-group">
+					<?php
+					echo $this->Form->label('hubunganPersaudaraan', 'Hubungan Persaudaraan', 'col-md-2 control-label');
+					echo $this->Form->input('hubungan_persaudaraan', array(
+                        'label'=>false,  
+                        'class'=>"form-control ",
+                        'options'=>array("Saudara Kandung", "Saudara Tiri"),
+                        'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
 				
 				<div class="form-group">
 					
 					<?php
-					echo $this->Form->label('Umat.tmpkrisma', 'Tempat Krisma', 'col-md-2 control-label');
-					echo $this->Form->input('tmpkrisma', array(
+					echo $this->Form->label('sakramenTerakhir', 'Sakramen Terakhir', 'col-md-2 control-label');
+					echo $this->Form->input('sakramen_terakhir', array(
                         'label'=>false, 
                         'placeholder'=>"Tempat Krisma", 
-                        'class'=>"form-control input-xlarge", 
+                        'class'=>"form-control input-xlarge",
+                        'options'=>array("Masih Belum Tau"),
                         'div'=>array('class'=>'col-md-4')));
-                    echo $this->Form->label('kota', 'Kota', 'col-md-1 control-label');
-					echo $this->Form->input('Krisma.kota', array(
-                        'label'=>false,  
-                        'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+                
+                <div class="form-group">
+					<?php
+					echo $this->Form->label('pemberiSakramen', 'Pemberi Sakramen', 'col-md-2 control-label');
+					echo $this->Form->input('pemberi_sakramen', array(
+						'label'=>false,  
+						'class'=>"form-control ", 
+						'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
 

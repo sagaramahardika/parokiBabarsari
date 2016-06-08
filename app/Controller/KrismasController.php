@@ -15,7 +15,7 @@ public function beforeFilter() {
 	public function index(){
 		$this->set('idStatusKrisma',$this->Umat->findById($this->Auth->user('id'),array('Umat.stskrisma')));
 		$userRole = $this->Auth->user('user_level');
-		$idTam =  $this->Auth->user('id_umat');
+		$idTam =  $this->Auth->user('id_umat');   
 		$this->set('paroki',$this->Paroki->getParoki());
 
 		$conditions = array();
@@ -102,7 +102,7 @@ public function beforeFilter() {
 			} catch (PDOException $e) {
 				$this->Flash->error(__('data tidak dapat tersimpan. ' . $e->errorInfo[2]));
 			}
-			}
+        }
 	}
 
 
