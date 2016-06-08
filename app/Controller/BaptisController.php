@@ -1,4 +1,4 @@
-<?php 
+<?php
 //App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component');
 class BaptisController extends AppController{
@@ -9,14 +9,11 @@ class BaptisController extends AppController{
 
 	public function index(){
 		$conditions = array();
-		
+
 		if (!empty($this->data) && $this->data['cari'] !== '') {
 			$conditions = array(
-						
-							'nama LIKE ' => '%' . strtolower($this->data['cari']) . '%'
-							
-						
-					);
+					'nama LIKE ' => '%' . strtolower($this->data['cari']) . '%'
+			);
 			$this->Session->write('conditions',$conditions);
 			$this->Session->write('search', $this->data['cari']);
 		} else {
@@ -36,7 +33,7 @@ class BaptisController extends AppController{
 		$this->set('title_for_layout','Home');
 		$this->Baptis->recursive = 1;
 		$this->set('umats',$this->Umat->find('list',array('fields'=>array('nama'))));
-		
+
 		$this->Paginator->settings = array(
 			'limit'=>10,
 			'conditions'=>array($conditions),
@@ -50,9 +47,18 @@ class BaptisController extends AppController{
 	}
 
 	public function tambah(){
-
+		if($this->request->is('post')){
+			$this->Baptis->create();
+			$liberbap = "BUKU " . $this->request->data['Baptis']['kode_buku'] . ', HLM ' . $this->request->data['Baptis']['halaman_buku'] . ', NO ' . $this->request->data['Baptis']['nomor_buku'];
+			//print_r($this->request->data);
+			$this->request->data['Baptis']['liberbap'] = $liberbap;
+			if($this->Baptis->save($this->request->data)){
+				$this->Session->setFlash(__('Baptis telah tersimpan.'));
+				//return $this->redirect(array('action' => 'index'));
+			}
+		}
 	}
-	
+
 	public function edit($id=null){
 	/*	if ($this->request->is('post') || $this->request->is('put')) {
 //			$this->Baptis->id = $this->Auth->user('id');
@@ -155,4 +161,31 @@ class BaptisController extends AppController{
 			}
 		}
 	}
+
+	public function autocompleteumat() {
+		if ($this->request->is('ajax')) {
+
+			 $this->autoLayout = false;
+			 $this->autoRender = false;
+			 $response=array();
+
+			 if($_GET['nama']){
+				 $namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
+
+				 if (empty($namarow)) {
+					 $response[0]['status'] = 'error';
+					 $response[0]['get'] = $_GET['nama'];
+
+				 }else{
+					 $response[0]['status'] = 'success';
+					 $response[0]['get'] = $_GET['nama'];
+				 }
+
+			 }else{
+				 $response[0]['status']='error';
+			 }
+
+			 echo json_encode($response);
+		 }
+	 }
 }

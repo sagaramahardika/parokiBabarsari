@@ -64,7 +64,7 @@ $this->assign('title', 'Halaman Tambah Kelahiran');
 						 );
 					?>
 				</div>
-				
+
 				<p>&nbsp;</p>
 				<div class="form-group">
 					<label class="col-md-2"></label>
@@ -84,12 +84,12 @@ $this->assign('title', 'Halaman Tambah Kelahiran');
 <?php $kks = 'ass';
 $test = json_encode($kk);?>
 <?php echo $this->Html->script(array('jquery.min.js', 'bootstrap.min.js','jquery-ui.min.js')); ?>
-<?php 
+<?php
 $val = "";
 foreach($kk as $key => $value){
 	$val = $val.'"'.$value.'",';
-		
 }
+//print_r($val);
 
 ?>
 <script type="text/javascript">
@@ -124,7 +124,7 @@ var val = ['a', 'b'];
                     data: {
                             name:$('#getkk').val()
                           },
-                    type: "GET",  
+                    type: "GET",
                     dataType: "json",
                     success: function( data )
                     {
@@ -137,13 +137,13 @@ var val = ['a', 'b'];
 						alert('error');
                     }
                 });*/
-	
-    }); 
+
+    });
 
 </script>
 <!-- /.row -->
 <?php //echo $this->Form->create('Umat', array('action'=>'user' ,'class'=>'form-horizontal', 'role'=>'form')); ?>
-			
+
 	<!--<div id="frms">
 <div class="form-group">
 					<?php
@@ -154,8 +154,7 @@ var val = ['a', 'b'];
 					<button class="btn btn-success" type="submit" >Simpan</button>
 				</div>
 				</div>
-	<?php //echo $this->Form->end();?>			
+	<?php //echo $this->Form->end();?>
 <!--<script type="text/template" id="template-inputs">
 	<?php //echo $this->Form->input('Umat.::num.username', array('label'=>false, 'placeholder'=>"Nama Lengkap", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));?>
 </script>-->
-			
