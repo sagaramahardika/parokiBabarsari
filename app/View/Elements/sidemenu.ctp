@@ -15,6 +15,7 @@ $tambahjemaat='';
 $lihataktivasi='';
 $lihatuser='';
 $user='';
+$tambahbaptis='';
 if ($ctl === 'jemaats') {
   $jemaat = 'class="active"';
 } else if ($ctl === 'laporans') {
@@ -41,7 +42,10 @@ if ($ctl === 'jemaats') {
   $user = 'class="active';
 }else if ($ctl === 'kematians') {
   $kematians = 'class="active"';
-}else {
+}else if ($ctl === 'tambahbaptis') {
+  $tambahbaptis = 'class="active"';
+}
+else {
   $overview = 'class="active"';
 }
 ?>
@@ -50,11 +54,11 @@ if ($ctl === 'jemaats') {
 
   <li <?php echo $umat; ?>>
   <?php echo $this->Html->link('Home', array('controller'=>'umats','action' => 'index')); ?>
-  
+
   </li>
   <li <?php echo $baptis; ?>>
   <?php echo $this->Html->link('Baptis', array('id'=>'baptis','controller'=>'umats', 'action' => 'baptis')); ?>
-  </li> 
+  </li>
   <li <?php echo $pernikahans; ?>>
   <?php echo $this->Html->link('Pernikahan', array('controller'=>'pernikahans', 'action' => 'index')); ?>
   </li>
@@ -63,12 +67,12 @@ if ($ctl === 'jemaats') {
   </li>
   <li <?php echo $komuni; ?>>
   <?php echo $this->Html->link('Komuni', array('controller'=>'komuni', 'action' => 'index')); ?>
-  </li> 
+  </li>
   <li <?php echo $krismas; ?>>
   <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'tambah')); ?>
   </li>
-    
-  <?php 
+
+  <?php
     if($this->Session->read('Auth.User.level') != "1"){
    ?>
   <?php  if($this->Session->read('Auth.User.level') != "5"){ ?>
@@ -78,13 +82,16 @@ if ($ctl === 'jemaats') {
   <li <?php echo $tambahjemaat; ?>>
     <?php echo $this->Html->link('Tambah Jemaat', array('controller'=>'umats', 'action' => 'tambahjemaat')); ?>
   </li><?php } ?>
+  <li <?php echo $tambahbaptis; ?>>
+    <?php echo $this->Html->link('Tambah Baptis', array('controller'=>'baptis', 'action' => 'tambah')); ?>
+  </li>
   <li <?php echo $lihataktivasi; ?>>
     <?php echo $this->Html->link('Kode aktivasi', array('controller'=>'umats', 'action' => 'lihataktivasi')); ?>
   </li>
    <?php
     }
    ?>
-   <?php 
+   <?php
     if($this->Session->read('Auth.User.level') == "5"){
    ?>
       <li <?php echo $user; ?>>

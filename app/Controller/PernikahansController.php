@@ -1,4 +1,4 @@
-<?php 
+<?php
 App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component');
 class PernikahansController extends AppController{
@@ -13,23 +13,23 @@ public function beforeFilter() {
 		$this->Auth->allow( 'login');
 	}
 
-	
+
 	public function index(){
 		$userRole = $this->Auth->user('user_level');
 		$idTam =  $this->Auth->user('id_umat');
 		$this->set('namaUmat',$this->Umat->getNamaPasangan());
 		$this->set('idStatusUser',$this->Umat->findById($this->Auth->user('id'),array('Umat.id_statuspernikahan')));
 		$this->set('statusPer',$this->Statuspernikahan->getStatusPernikahan());
-		
-		
+
+
 		$conditions = array();
-		
+
 		if (!empty($this->data) && $this->data['cari'] !== '') {
 			$conditions = array(
-						
+
 							'nama LIKE ' => '%' . strtolower($this->data['cari']) . '%'
-							
-						
+
+
 					);
 			$this->Session->write('conditions',$conditions);
 			$this->Session->write('search', $this->data['cari']);
@@ -50,11 +50,11 @@ public function beforeFilter() {
 		//$this->Umat->recursive = 3;
 		$set = array();
 		if ($userRole == 1) {
-			
+
 
 			$set = array(
 				'limit' => 10,
-			
+
 				'conditions' => array('OR'=>array( 'Pernikahan.umat_id '=>$idTam,'Pernikahan.pasangan_id '=>$idTam),$conditions),
 				'order' => array(
 					'Pernikahan.id' => 'asc'
@@ -82,24 +82,24 @@ public function beforeFilter() {
 		}else if ($userRole == 5){
 			$set = array(
 				'limit' => 10,
-			
+
 				'conditions' => array($conditions),
 				'order' => array(
 					'Umat.id' => 'asc'
 				)
 			);
 		}
-		
+
 		$this->Paginator->settings = $set;
-		
-		
+
+
 
 
 		try {
-	
+
 		$this->set('datas',$this->Paginator->paginate('Pernikahan'));
 
-			
+
 		} catch (NotFoundException $e) {
 			$this->redirect(array('action'=>'index'));
 		}
@@ -113,7 +113,7 @@ public function beforeFilter() {
 							# code...
 							$this->Flash->success(__('User telah berhasil diubah.'));
 						}
-						
+
 					} catch (PDOExeption $pdoe) {
 						$this->Flash->error(__('User tidak dapat diupdate. ' . $e->errorInfo[2]));
 					}
@@ -122,27 +122,27 @@ public function beforeFilter() {
 
 	public function tambah(){
 /*		$this->set('nama_parokis',$this->Paroki->getParoki());*/
-		
+
 
 		$this->set('statusPer',$this->Statuspernikahan->getStatus());
-		
+
 		if ($this->request->is('post')) {
 				# code...
 				try {
 				$this->Pernikahan->create();
 				if ($this->Pernikahan->save($this->request->data)){
 					$idTam = $this->request->data['Pernikahan']['umat_id'];
-				
-					
+
+
 					$row = $this->Umat->findById($idTam);
-					
+
 					$rowling = $this->Lingkungan->findById($row['Kk']['lingkungan_id']);
-					
-					
+
+
 					$codeling = $rowling['Lingkungan']['code_lingkungan'];
 					$idling = $rowling['Lingkungan']['id'];
 					$total = $this->Lingkungan->find('all',array( 'fields'=>'jumlah_kk','conditions'=>array('Lingkungan.id'=>$idling)));
-					$total= $total[0]['Lingkungan']['jumlah_kk']+1;	
+					$total= $total[0]['Lingkungan']['jumlah_kk']+1;
 
 					$codekk=$codeling;
 					if ($total < 10) {
@@ -168,23 +168,23 @@ public function beforeFilter() {
 					}
 					else{
 						$newidkk = $row['Umat']['id_kk'];
-					}					
+					}
 
 
-					
+
 					$this->Umat->id = $idTam;
 					$this->Umat->saveField('id_kk',$newidkk);
 					$this->Umat->saveField('id_hubkk',1);
 					$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
 
-					
-					
+
+
 					if ($this->request->data['Pernikahan']['pasangan_id'] == null) {
 						# code...
-						
+
 					}else{
 						$rowPasangan = array();
-					
+
 							# code...
 						$idPas = $this->request->data['Pernikahan']['pasangan_id'];
 						$rowPasangan = $this->Umat->findById($idPas);
@@ -207,12 +207,12 @@ public function beforeFilter() {
 			}
 	}
 
-	
 
-	
+
+
 	public function edit($id=null){
-		
-		
+
+
 		if ($id) {
 				# code...
 			$this->set('nama',$this->Umat->getNamaPasangan());
@@ -224,7 +224,7 @@ public function beforeFilter() {
 					try {
 						if ($this->Pernikahan->save($this->request->data)) {
 
-							
+
 							$idTam = $this->request->data['Pernikahan']['umat_id'];
 						$this->Umat->id = $idTam;
 						$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
@@ -237,7 +237,7 @@ public function beforeFilter() {
 						}
 							$this->Flash->success(__('Data Pernikahan telah berhasil diubah.'));
 						}
-						
+
 					} catch (PDOExeption $pdoe) {
 						$this->Flash->error(__('Data tidak dapat diupdate. ' . $e->errorInfo[2]));
 					}
@@ -254,12 +254,12 @@ public function beforeFilter() {
 	public function findAll(){
 				if ($this->request->is('ajax')) {
 
-					
+
         $this->autoLayout = false;
         $this->autoRender = false;
          $idlingketualing = $this->Session->Read('Auth.User.idling');
         $results = $this->Umat->find('all', array('fields' => array('id', 'nama','jenis_kelamin'), 'conditions' => array('Kk.lingkungan_id'=>$idlingketualing,'Umat.nama LIKE "%'.$_GET['term'].'%"','OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)))));
-       	
+
         $response = array();
         $i = 0;
         foreach($results as $result){
@@ -272,7 +272,7 @@ public function beforeFilter() {
         echo json_encode($response);
         }
 	}
-	
+
 	public function find(){
 
 				if ($this->request->is('ajax')) {
@@ -280,17 +280,17 @@ public function beforeFilter() {
 
 		        $this->autoLayout = false;
 		        $this->autoRender = false;
-		        
-		       
+
+
 
 		        $tampung  = $this->Umat->find('all',array('recursive'=>3,'conditions'=>array('Umat.id'=>$_GET['idUmat'])));
 
 
 				$idLingkungan = $tampung[0]['Kk']['lingkungan_id'];
 				$idWilayah = $tampung[0]['Kk']['Lingkungan']['wilayah_id'];
-				$idParoki = $tampung[0]['Kk']['Lingkungan']['Wilayah']['paroki_id'];	
+				$idParoki = $tampung[0]['Kk']['Lingkungan']['Wilayah']['paroki_id'];
 
-				
+
 				$results =array();
 				 $response = array();
 				if ($_GET['tipe'] == 'ling') {
@@ -301,7 +301,7 @@ public function beforeFilter() {
 					 $i = 0;
 		        foreach($results as $result){
 		        	 $response[$i]['id'] = $result['Umat']['id'];
-		        	
+
 		            $response[$i]['label'] = $result['Umat']['nama'];
 		            $response[$i]['value'] = $result['Umat']['nama'];
 		            $i++;
@@ -312,7 +312,7 @@ public function beforeFilter() {
 					 $i = 0;
 		        foreach($results as $result){
 		        	 $response[$i]['id'] = $result['umat']['id'];
-		        	
+
 		            $response[$i]['label'] = $result['umat']['nama'];
 		            $response[$i]['value'] = $result['umat']['nama'];
 		            $i++;
@@ -325,7 +325,7 @@ public function beforeFilter() {
 					$i = 0;
 		        foreach($results as $result){
 		        	 $response[$i]['id'] = $result['umat']['id'];
-		        	
+
 		            $response[$i]['label'] = $result['umat']['nama'];
 		            $response[$i]['value'] = $result['umat']['nama'];
 		            $i++;
@@ -335,8 +335,8 @@ public function beforeFilter() {
 
 
 		        //$results = $this->Umat->find('all', array('fields' => array('id', 'nama'), 'conditions' => array('Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']))));
-		       
-		        
+
+
 		        echo json_encode($response);
 		        }
 	}
@@ -348,42 +348,39 @@ public function beforeFilter() {
 					$this->set('nama',$this->Umat->getNamaPasangan());
 					$this->set('status',$this->Statuspernikahan->getStatusPernikahan());
 					$this->request->data = $this->Pernikahan->read(null,$id);
-				
+
 			}else{
 				$this->redirect(array('action'=>'index'));
 			}
 	}
 
 	 public function coba() {
-	 	  
-        if ($this->request->is('ajax')) {
+		 if ($this->request->is('ajax')) {
 
-        	//$namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
-        	  $this->autoLayout = false;
-		        $this->autoRender = false;
-		        $response=array();
-		        if($_GET['nama']){
-		        $namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
-	
-		if (empty($namarow)) {
-			# code...
-			$response[0]['status']='error';
-			$response[0]['get']=$_GET['nama'];
-			
-		}else{
-			$response[0]['status']='success';
-			$response[0]['get']=$_GET['nama'];
-		}
-           		
-                      
-                     }else{
-                     	$response[0]['status']='error';
-                     }
-                      echo json_encode($response);
-            }
+  	  //$namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
+	  	  $this->autoLayout = false;
+	      $this->autoRender = false;
+	      $response=array();
 
-        
-    }
+				if($_GET['nama']){
+	      	$namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
+
+					if (empty($namarow)) {
+						$response[0]['status']='error';
+						$response[0]['get']=$_GET['nama'];
+
+					}else{
+						$response[0]['status']='success';
+						$response[0]['get']=$_GET['nama'];
+					}
+
+	      }else{
+	       	$response[0]['status']='error';
+		    }
+
+		    echo json_encode($response);
+     	}
+  	}
 
 }
 
