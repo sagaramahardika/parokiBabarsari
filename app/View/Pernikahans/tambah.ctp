@@ -33,13 +33,13 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>Kode Stasi </label></div>
 					<?php
-					echo $this->Form->input(null, array(
-								'options' => array('-', 'Belum Terdefinisi'),
+					echo $this->Form->input('Pernikahan.a', array(
 								'label' => false,
 								'id'=>'kdstasi',
+								'placeholder'=>'Kode Stasi',
 								'div'=> array('class'=>'col-md-4'),
 								'class'=>"form-control input-xlarge",
-								'name'=>'kd_stasi'
+								'name'=>'kode_stasi'
 							)
 						 );
 					?>
@@ -49,12 +49,13 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>Kode LM </label></div>
 					<?php
-					echo $this->Form->input(null, array(
+					echo $this->Form->input('Pernikahan.b', array(
 								'label' => false,
 								'id'=>'kdLM',
 								'placeholder'=>'Kode LM',
 								'div'=> array('class'=>'col-md-4'),
-								'class'=>"form-control input-xlarge"
+								'class'=>"form-control input-xlarge",
+								'name'=>'kode_LM'
 							)
 						 );
 					?>
@@ -64,12 +65,13 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>No</label></div>
 					<?php
-					echo $this->Form->input(null, array(
+					echo $this->Form->input('Pernikahan.c', array(
 								'label' => false,
 								'id'=>'noLM',
 								'placeholder'=>'No',
 								'div'=> array('class'=>'col-md-4'),
-								'class'=>"form-control input-xlarge"
+								'class'=>"form-control input-xlarge",
+								'name'=>'no'
 							)
 						 );
 					?>
@@ -79,12 +81,13 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>Halaman</label></div>
 					<?php
-					echo $this->Form->input(null, array(
+					echo $this->Form->input('Pernikahan.halaman', array(
 								'label' => false,
 								'id'=>'halaman',
-								'value'=>0,
 								'div'=> array('class'=>'col-md-4'),
-								'class'=>"form-control input-xlarge"
+								'class'=>"form-control input-xlarge",
+								'name'=>'halaman',
+								'placeholder'=>'Halaman Buku'
 							)
 						 );
 					?>
@@ -213,8 +216,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 
 				<div class="form-group">
 					<?php
-					echo $this->Form->label(null, 'Kota', 'col-md-2 control-label');
-					echo $this->Form->input(null, array('label'=>false,'id'=>'kota', 'placeholder'=>"Kota", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->label('Pernikahan.kota', 'Kota', 'col-md-2 control-label');
+					echo $this->Form->input('Pernikahan.kota', array('label'=>false,'id'=>'kota', 'placeholder'=>"Kota", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
 					?>
 					<label style="color:red">*</label>
 				</div>
@@ -229,24 +232,24 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 
 				<div class="form-group">
 					<?php
-					echo $this->Form->label(null, 'Kota', 'col-md-2 control-label');
-					echo $this->Form->input(null, array('label'=>false,'id'=>'Saksi 1', 'placeholder'=>"Saksi 1", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->label('Pernikahan.saksi1', 'Saksi 1', 'col-md-2 control-label');
+					echo $this->Form->input('Pernikahan.saksi1', array('label'=>false,'id'=>'saksi1', 'placeholder'=>"Saksi 1", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
 					?>
 					<label style="color:red">*</label>
 				</div>
 
 				<div class="form-group">
 					<?php
-					echo $this->Form->label(null, 'Saksi 2', 'col-md-2 control-label');
-					echo $this->Form->input(null, array('label'=>false,'id'=>'saksi2', 'placeholder'=>"Saksi 2", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->label('Pernikahan.saksi2', 'Saksi 2', 'col-md-2 control-label');
+					echo $this->Form->input('Pernikahan.saksi2', array('label'=>false,'id'=>'saksi2', 'placeholder'=>"Saksi 2", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
 					?>
 					<label style="color:red">*</label>
 				</div>
 
 				<div class="form-group">
 					<?php
-					echo $this->Form->label(null, 'Dispensasi', 'col-md-2 control-label');
-					echo $this->Form->input(null, array('label'=>false,'id'=>'dispensasi', 'placeholder'=>"Dispensasi", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->label('Pernikahan.dispensasi', 'Dispensasi', 'col-md-2 control-label');
+					echo $this->Form->input('Pernikahan.dispensasi', array('label'=>false,'id'=>'dispensasi', 'placeholder'=>"Dispensasi", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
 					?>
 					<label style="color:red">*</label>
 				</div>
@@ -262,56 +265,38 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				
 				<?php 
 
-				$userRole =$this->Session->read('Auth.User.user_level');
+					$userRole = $this->Session->read('Auth.User.user_level');
 
 
-				if ($userRole == 2){ ?>
-					<div class="form-group">
-					<?php
-			
-				
-					
-					echo $this->Form->label('Pernikahan.statuspernikahan', 'Status Pernikahan', 'col-md-2 control-label');
-					echo $this->Form->input('statuspernikahan', array(
-								'options' => $statusPer,
-								'label' => false,
-								'id'=>'stsper',  
-								'div'=>array('class'=>'col-md-4'),
-								'class'=>"form-control input-xlarge"
-							)
-						 );
-					?>
-					<label style="color:red">*</label>
-				</div>
+					if ($userRole == 2){ ?>
+						<div class="form-group">
+						<?php
+							echo $this->Form->label('Pernikahan.statuspernikahan', 'Status Pernikahan', 'col-md-2 control-label');
+							echo $this->Form->input('statuspernikahan', array(
+									'options' => $statusPer,
+									'label' => false,
+									'id'=>'stsper',  
+									'div'=>array('class'=>'col-md-4'),
+									'class'=>"form-control input-xlarge"
+								)
+							);
+						?>
+						<label style="color:red">*</label>
+					</div>
 
 				<?php }?>
-
-			
-
-
-				
-				
-				
-
-				<p>&nbsp;</p>
-
-
-
-<?php
-			  $this->Form->end();
-			  ?>
+					<p>&nbsp;</p>
+				<?php
+					$this->Form->end();
+				?>
 				
 				<div class="form-group">
 					<label class="col-md-2"></label>
 					<div class="col-md-10">
 					  <button id="buttonaddper" name="button1id" class="btn btn-success" >Simpan</button>
-
-					 
 					  <button id="buttonbtlper" name="buttonbtlper" class="btn btn-danger">Batal</button>
 					</div>
 				</div>
-			  
-
 			</div>
 		</div>
 	</div>

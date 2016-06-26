@@ -6,6 +6,7 @@ if (strtolower($ctrl) === 'pernikahans') {
 $('#input_nama').keyup(function(){ 
    
    event.preventDefault();
+    
     $.ajax({
      
      url : "<?php echo $this->Html->url(array('controller'=>'pernikahans', 'action'=>'coba')) ?>",
