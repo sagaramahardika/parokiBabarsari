@@ -301,7 +301,6 @@ public function beforeFilter() {
 					 $i = 0;
 		        foreach($results as $result){
 		        	 $response[$i]['id'] = $result['Umat']['id'];
-
 		            $response[$i]['label'] = $result['Umat']['nama'];
 		            $response[$i]['value'] = $result['Umat']['nama'];
 		            $i++;
