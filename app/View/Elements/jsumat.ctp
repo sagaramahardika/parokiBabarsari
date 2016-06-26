@@ -10,7 +10,7 @@ $(document).ready(function() {
 	if ($('#checkBaptis').val() == 9 || $('#checkBaptis').val() == 11)  
   {
       $("#bapNama").prop('disabled', true);
-      $("#bapTanggalMonth").prop('disabled', true);
+      $("#bapTanggalMonth").prop('dsabled', true);
       $("#bapTanggalDay").prop('disabled', true);
       $("#bapTanggalYear").prop('disabled', true);
  	  $("#bapTempat").prop('disabled', true);
@@ -90,7 +90,6 @@ $('#buttonkelahiran').click(function(e){
     e.preventDefault();
     location.href="<?php echo $this->Html->url(array('controller'=>'umats', 'action'=>'index')) ?>"
 });
-
 
 $('#buttonbataladmin').click(function(e){
     e.preventDefault();

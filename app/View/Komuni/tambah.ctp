@@ -19,27 +19,27 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 			<div class="panel-body">
 
 			<?php
-			echo $this->Form->create('Umat', array('url' => '/komuni/tambah','action'=>'tambah','class'=>'form-horizontal', 'role'=>'form',));
-		echo $this->Form->input('Umat.id', array('type' => 'hidden', 'value'=> $this->Session->read('Auth.User.id')));
+				echo $this->Form->create('Umat', array('url' => '/komuni/tambah','action'=>'tambah','class'=>'form-horizontal', 'role'=>'form',));
+				echo $this->Form->input('Umat.id', array('type' => 'hidden', 'value'=> $this->Session->read('Auth.User.id')));
 			?>
 
 			<div class="form-group">
 				<?php
-				echo $this->Form->label('Komuni.stasi_baptis','Kode Stasi', 'col-md-2 control-label');
-				echo $this->Form->input('Komuni.kode_stasi', 
-					array(
-						'label'			=> false,
-						'type'    		=> 'number',
-						'id' 			=> 'kodeStasi',
-						'value'			=> 07300, 
-						'placeholder'	=> "Kode Stasi", 
-						'class'			=> "form-control input-xlarge", 
-						'div'			=> array('class' => 'col-md-4')));
+					echo $this->Form->label('Komuni.stasi_baptis','Kode Stasi', 'col-md-2 control-label');
+					echo $this->Form->input('Komuni.kode_stasi', 
+						array(
+							'label'			=> false,
+							'type'    		=> 'number',
+							'id' 			=> 'kodeStasi',
+							'value'			=> 07300, 
+							'placeholder'	=> "Kode Stasi", 
+							'class'			=> "form-control input-xlarge", 
+							'div'			=> array('class' => 'col-md-4')));
 				?>
 			</div>
 
 			<div class="form-group">
-				<?php
+			<?php
 				echo $this->Form->label('Komuni.id_liber','ID Liber', 'col-md-2 control-label');
 				echo $this->Form->input('Komuni.id_liber', 
 					array(
@@ -54,63 +54,58 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 
 			<div class="form-group">
 				<?php
-				echo $this->Form->label('Komuni.nomor_urut','Nomor Urut', 'col-md-2 control-label');
-				echo $this->Form->input('Komuni.no_urut', 
-					array(
-						'label'			=> false,
-						'type'    		=> 'number',
-						'id' 			=> 'nomorUrut',
-						'placeholder'	=> "Nomor Urut", 
-						'class'			=> "form-control input-xlarge", 
-						'div'			=> array('class' => 'col-md-4')));
+					echo $this->Form->label('Komuni.nomor_urut','Nomor Urut', 'col-md-2 control-label');
+					echo $this->Form->input('Komuni.nomor_urut', 
+						array(
+							'label'			=> false,
+							'type'    		=> 'number',
+							'id' 			=> 'nomorUrut',
+							'placeholder'	=> "Nomor Urut", 
+							'class'			=> "form-control input-xlarge", 
+							'div'			=> array('class' => 'col-md-4')));
 				?>
 			</div>
 
 			<div class="form-group">
 				<?php
-				echo $this->Form->label('Umat.nama', 'Nama ', 'col-md-2 control-label');
-				echo $this->Form->input('nama', 
-					array(
-						'label'			=> false, 
-						'placeholder'	=> "nama",
-						//'value'			=> $this->Session->read('Auth.User.nama'), 
-						//'disabled'		=> 'disabled', 
-						'class'			=> "form-control input-xlarge", 
-						'div'			=> array('class'=>'col-md-4')));
+					echo $this->Form->label('Umat.nama', 'Nama ', 'col-md-2 control-label');
+					echo $this->Form->input('nama', 
+						array(
+							'label'			=> false, 
+							'placeholder'	=> "nama",
+							'value'			=> $this->Session->read('Auth.User.nama'), 
+							'disabled'		=> 'disabled', 
+							'class'			=> "form-control input-xlarge", 
+							'div'			=> array('class'=>'col-md-4')));
 				?>
 			
 			</div>
 
 			<div class="form-group">
 				<?php
-				//value nama baptis sementara
-				echo $this->Form->label('Umat.nama_baptis', 'Nama Baptis', 'col-md-2 control-label');
-				echo $this->Form->input('nama_baptis', 
-					array(
-						'label'			=> false, 
-						'placeholder'	=> "nama baptis",
-						//'value'			=> $this->Session->read('Auth.User.nama'), 
-						'disabled'		=> 'disabled', 
-						'class'			=> "form-control input-xlarge", 
-						'div'			=> array('class'=>'col-md-4')));
+					//value nama baptis sementara
+					echo $this->Form->label('Umat.nama_baptis', 'Nama Baptis', 'col-md-2 control-label');
+					echo $this->Form->input('nama_baptis', 
+						array(
+							'label'			=> false, 
+							'placeholder'	=> "Nama Baptis",
+							//'value'			=> $this->Session->read('Auth.User.nama'),  
+							'class'			=> "form-control input-xlarge", 
+							'div'			=> array('class'=>'col-md-4')));
 				?>
 			
 			</div>
 
 			<div class="form-group">
 				<?php
-				//value jenis kelamin sementara
-				echo $this->Form->label('Umat.jenis_kelamin', 'Nama Baptis', 'col-md-2 control-label');
-				echo $this->Form->input('jenis_kelamin', 
-					array(
-						'label'			=> false,
-						'type'			=> 'char', 
-						//'value'			=> $this->Session->read('Auth.User.nama'), 
-						'disabled'		=> 'disabled', 
-						'class'			=> "form-control input-xlarge", 
-						'div'			=> array('class'=>'col-md-4')));
+					echo $this->Form->label('Umat.jenis_kelamin', 'Jenis Kelamin', 'col-md-2 control-label');
+					echo $this->Form->input('Umat.jenis_kelamin', array(
+					    'label'=>false,  
+					    'class'=>"form-control ",
+					    'options'=>array('L', 'P'),
+					    'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->label('ketGender', 'L=Laki-laki, P=Perempuan', 'control-label');
 				?>
-			
 			</div>
 
 			<div class="form-group">
@@ -225,7 +220,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 				echo $this->Form->input('Komuni.tempat', 
 					array(
 						'label'			=> false, 
-						'placeholder'	=> "tempat", 
+						'placeholder'	=> "Tempat Komuni", 
 						'class'			=> "form-control input-xlarge", 
 						'div'			=> array('class'=>'col-md-4')));
 				?>

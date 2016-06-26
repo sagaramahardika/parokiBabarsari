@@ -27,93 +27,93 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					<?php
 					echo $this->Form->label('kodeStasi', 'Kode Stasi ', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.kodestasi', array(
-                        'label'=>false, 
-                        'class'=>"form-control input-xlarge", 
-                        'options'=>array(1, 2, 3 ,4, 5), 
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
+                        'options'=>array(1, 2, 3 ,4, 5),
                         'div'=>array('class'=>'col-md-4')));
 					?>
-				
+
 				</div>
 
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('noUrut', 'No Urut', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.nourut', array(
-                        'label'=>false,  
-                        'class'=>"form-control input-xlarge", 
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
                         'div'=>array('class'=>'col-md-4')));
 					?>
-				
+
 				</div>
-				
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('namaDiri', 'Nama Diri', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.namadiri', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'value'=> $this->Session->read('Auth.User.nama'),
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('gender', 'Gender', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.gender', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'options'=>array('L', 'P'),
                         'div'=>array('class'=>'col-md-4')));
                     echo $this->Form->label('ketGender', 'L=Laki-laki, P=Perempuan', 'control-label');
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.namaayah', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.namaibu', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('parokiBaptis', 'Dibaptis di Paroki', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.parokibaptis', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('kodeLB', 'Kode LB', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.kodeLB', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
                     echo $this->Form->label('no', 'No', 'col-md-1 control-label');
 					echo $this->Form->input('Krisma.No', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('tanggalBaptis', 'Tanggal Baptis', 'col-md-2 control-label');
@@ -121,65 +121,71 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                         'label'=>false,
                         'type'=>'date',
                         'class'=>"form-control ",
-                        'div'=>array('class'=>'col-md-4')));
+                        'div'=>array('class'=>'col-md-4'),
+                        'dateFormat' => 'DMY',
+            						'minYear' => date('Y') - 115,
+                        'maxYear' => date('Y') - 0
+                      ));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('namaPelindung', 'Nama Pelindung', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.namapelindung', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('uskupDelegatus', 'Uskup/Delegatus', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.uskupdelegatus', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('waliKrisma', 'Wali Krisma', 'col-md-2 control-label');
 					echo $this->Form->input('Krisma.walikrisma', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-                
+
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('Umat.tglkrisma', 'Tanggal Krisma', 'col-md-2 control-label');
 					echo $this->Form->input('tglkrisma', array(
-						'label'=>false,  
-						'class'=>"form-control ", 
+						'label'=>false,
+						'class'=>"form-control ",
+            'type'=>'date',
 						'div'=>array('class'=>'col-md-4'),
 						'dateFormat' => 'DMY',
-						'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0	
+						'minYear' => date('Y') - 115,
+            'maxYear' => date('Y') - 0
 						));
 					?>
 				</div>
-				
+
 				<div class="form-group">
-					
+
 					<?php
 					echo $this->Form->label('Umat.tmpkrisma', 'Tempat Krisma', 'col-md-2 control-label');
 					echo $this->Form->input('tmpkrisma', array(
-                        'label'=>false, 
-                        'placeholder'=>"Tempat Krisma", 
-                        'class'=>"form-control input-xlarge", 
+                        'label'=>false,
+                        'placeholder'=>"Tempat Krisma",
+                        'class'=>"form-control input-xlarge",
                         'div'=>array('class'=>'col-md-4')));
                     echo $this->Form->label('kota', 'Kota', 'col-md-1 control-label');
 					echo $this->Form->input('Krisma.kota', array(
-                        'label'=>false,  
+                        'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
 					?>
@@ -190,15 +196,15 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 
 				<!-- <div class="form-group">
 					<?php
-			
-					
-					
-				
+
+
+
+
 					/*echo $this->Form->input('Umat.stskrisma', array('type' => 'hidden', 'value'=> true));*/
 					?>
 				</div> -->
 
-				
+
 				<div class="form-group">
 					<label class="col-md-2"></label>
 					<div class="col-md-10">
