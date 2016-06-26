@@ -33,13 +33,11 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>Kode Stasi </label></div>
 					<?php
-<<<<<<< HEAD
-					echo $this->Form->input('Pernikahan.a', array(
-=======
+
+					// echo $this->Form->input('Pernikahan.a', array(
           //liat jspernikahan fungsi #input_nama keyup;
 					echo $this->Form->input(null, array(
 								'options' => array('-', 'Belum Terdefinisi'),
->>>>>>> 5fce292f9663290c5e21c77aef278cd1e3a04622
 								'label' => false,
 								'id'=>'kdstasi',
 								'placeholder'=>'Kode Stasi',
@@ -271,7 +269,6 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 
 				<?php
 
-<<<<<<< HEAD
 					$userRole = $this->Session->read('Auth.User.user_level');
 
 
@@ -296,10 +293,9 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<?php
 					$this->Form->end();
 				?>
-				
-=======
+				<?php
 				$userRole =$this->Session->read('Auth.User.user_level');
-
+			
 
 				if ($userRole == 2){ ?>
 					<div class="form-group">
@@ -336,25 +332,16 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 <?php
 			  $this->Form->end();
 			  ?>
-
->>>>>>> 5fce292f9663290c5e21c77aef278cd1e3a04622
 				<div class="form-group">
 					<label class="col-md-2"></label>
 					<div class="col-md-10">
 					  <button id="buttonaddper" name="button1id" class="btn btn-success" >Simpan</button>
-<<<<<<< HEAD
 					  <button id="buttonbtlper" name="buttonbtlper" class="btn btn-danger">Batal</button>
 					</div>
 				</div>
-=======
-
-
 					  <button id="buttonbtlper" name="buttonbtlper" class="btn btn-danger">Batal</button>
 					</div>
 				</div>
-
-
->>>>>>> 5fce292f9663290c5e21c77aef278cd1e3a04622
 			</div>
 		</div>
 	</div>
