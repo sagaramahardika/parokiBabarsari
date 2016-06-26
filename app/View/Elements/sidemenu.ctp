@@ -16,6 +16,7 @@ $lihataktivasi='';
 $lihatuser='';
 $user='';
 $tambahbaptis='';
+$tambahkomuni='';
 if ($ctl === 'jemaats') {
   $jemaat = 'class="active"';
 } else if ($ctl === 'laporans') {
@@ -44,6 +45,9 @@ if ($ctl === 'jemaats') {
   $kematians = 'class="active"';
 }else if ($ctl === 'tambahbaptis') {
   $tambahbaptis = 'class="active"';
+}
+else if ($ctl === 'tambahkomuni') {
+  $tambahkomuni = 'class="active"';
 }
 else {
   $overview = 'class="active"';
@@ -84,6 +88,9 @@ else {
   </li><?php } ?>
   <li <?php echo $tambahbaptis; ?>>
     <?php echo $this->Html->link('Tambah Baptis', array('controller'=>'baptis', 'action' => 'tambah')); ?>
+  </li>
+   <li <?php echo $tambahkomuni; ?>>
+    <?php echo $this->Html->link('Tambah Komuni', array('controller'=>'komuni', 'action' => 'tambah')); ?>
   </li>
   <li <?php echo $lihataktivasi; ?>>
     <?php echo $this->Html->link('Kode aktivasi', array('controller'=>'umats', 'action' => 'lihataktivasi')); ?>

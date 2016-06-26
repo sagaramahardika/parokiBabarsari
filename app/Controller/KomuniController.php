@@ -1,6 +1,7 @@
 <?php 
 App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component');
+
 class KomuniController extends AppController{
 	public $components = array('Paginator', 'Session', 'Cookie', 'Flash', 'ImageCropResize.Image');
 	public $uses = array('Umat','Leveluser','Kk');
@@ -103,15 +104,22 @@ class KomuniController extends AppController{
 	}
 
 	public function tambah(){
-/*		$this->set('nama_parokis',$this->Paroki->getParoki());*/
-/*$userKk = $this->Session->Read('Auth.User.idKK');*/
+		
+		if ($this->request->is('post')) {
+			$id = $this->Umat->getKodeUmatFromNama($this->request->data['Umat']['nama']);
+			$this->request->data['Komuni']['id_umat'] = $id;
+			print_r($this->request->data);	
+		}
+		/*$this->set('Komuni.tempat', $this->Paroki->getParoki());
+		//$userKk = $this->Session->Read('Auth.User.idKK');//
 		$userKk = $this->Auth->user('id_kk');
 		$idTam =  $this->Auth->user('id');
+
 				
 		if ($this->request->is('post')) {
 				# code...
-				try {
-				
+			try {
+			
 				if ($this->Umat->save($this->request->data)){
 					
 					$row = $this->Umat->findById($idtam);
@@ -123,7 +131,7 @@ class KomuniController extends AppController{
 			} catch (PDOException $e) {
 				$this->Flash->error(__('data tidak dapat tersimpan. ' . $e->errorInfo[2]));
 			}
-			}
+		}*/
 	}
 
 	public function edit($id=null){

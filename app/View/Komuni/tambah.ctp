@@ -40,8 +40,22 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 
 			<div class="form-group">
 				<?php
+				echo $this->Form->label('Komuni.id_liber','ID Liber', 'col-md-2 control-label');
+				echo $this->Form->input('Komuni.id_liber', 
+					array(
+						'label'			=> false,
+						'type'    		=> 'number',
+						'id' 			=> 'idLiber',
+						'placeholder'	=> "ID Liber", 
+						'class'			=> "form-control input-xlarge", 
+						'div'			=> array('class' => 'col-md-4')));
+				?>
+			</div>
+
+			<div class="form-group">
+				<?php
 				echo $this->Form->label('Komuni.nomor_urut','Nomor Urut', 'col-md-2 control-label');
-				echo $this->Form->input('Komuni.nomor_urut', 
+				echo $this->Form->input('Komuni.no_urut', 
 					array(
 						'label'			=> false,
 						'type'    		=> 'number',
@@ -59,8 +73,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 					array(
 						'label'			=> false, 
 						'placeholder'	=> "nama",
-						'value'			=> $this->Session->read('Auth.User.nama'), 
-						'disabled'		=> 'disabled', 
+						//'value'			=> $this->Session->read('Auth.User.nama'), 
+						//'disabled'		=> 'disabled', 
 						'class'			=> "form-control input-xlarge", 
 						'div'			=> array('class'=>'col-md-4')));
 				?>
@@ -141,7 +155,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 						'label'			=> false,
 						'id' 			=> 'tempatLahir', 
 						'placeholder'	=> "Tempat Lahir",
-						//'value'			=> $this->Session->read('Auth.User.nama'), 
+						//'value'			=> $this->Session->read('Auth.User.tempat_lahir'), 
 						'disabled'		=> 'disabled', 
 						'class'			=> "form-control input-xlarge", 
 						'div'			=> array('class' => 'col-md-4')));
@@ -151,7 +165,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 						'label'			=> false,  
 						'class'			=> "form-control ", 
 						'div'			=> array('class'=>'col-md-6'),
-						//'value'			=> $this->Session->read('Auth.User.nama'), 
+						//'value'			=> $this->Session->read('Auth.User.tanggal_lahir'), 
 						'disabled'		=> 'disabled',
 						'dateFormat' 	=> 'DMY',
 						'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0
@@ -190,9 +204,10 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 			<div class="form-group">
 				<?php
 				echo $this->Form->label('Umat.tglkomuni', 'Tanggal Komuni Pertama', 'col-md-2 control-label');
-				echo $this->Form->input('tglkomuni', 
+				echo $this->Form->input('Komuni.tanggal', 
 					array(
 						'label'			=> false,  
+						'type'			=> 'date',
 						'class'			=> "form-control ", 
 						'div'			=> array('class'=>'col-md-6'),
 						'dateFormat' 	=> 'DMY',
@@ -206,8 +221,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 			<div class="form-group">
 				
 				<?php
-				echo $this->Form->label('Umat.tmpkomuni', 'Tempat Komuni Pertama', 'col-md-2 control-label');
-				echo $this->Form->input('tmpkomuni', 
+				echo $this->Form->label('Komuni.tempat', 'Tempat Komuni Pertama', 'col-md-2 control-label');
+				echo $this->Form->input('Komuni.tempat', 
 					array(
 						'label'			=> false, 
 						'placeholder'	=> "tempat", 
@@ -215,12 +230,12 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 						'div'			=> array('class'=>'col-md-4')));
 				?>
 			</div>
-
+<!--
 			<div class="form-group">
 				<?php
 		
 				echo $this->Form->label('Umat.stskomuni', 'Status Komuni', 'col-md-2 control-label');
-				echo $this->Form->input('stskomuni', array(
+				echo $this->Form->input('Komuni.sts_komuni', array(
 							'options' => array('0'=>'Belum Komuni','1'=>'Sudah Komuni','3'=>'-'),
 							'label' => false,
 							'div'=>array('class'=>'col-md-4'),
@@ -229,7 +244,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 					 );
 				?>
 			</div>
-
+-->
 			<p>&nbsp;</p>
 
 			<div class="form-group">

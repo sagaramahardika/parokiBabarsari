@@ -18,6 +18,11 @@ class Umat extends AppModel {
 		return $list;
 	}
 
+	public function getKodeUmatFromNama($nama){
+		$umat = Umat::find('first', array('condition' => array('Umat.nama' => $nama)));
+		return $umat['Umat']['id'];
+	}
+
 	 public function getNamaUmat() {
 		$list = $this->find('list', array('fields' => array('nama', 'kode_umat')));
 		return $list;
