@@ -50,10 +50,10 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					<?php
 					echo $this->Form->label('namaLengkap', 'Nama Lengkap', 'col-md-2 control-label');
 					echo $this->Form->input('nama_lengkap', array(
-                        'label'=>false,
-                        'class'=>"form-control ",
-                        'value'=> $this->Session->read('Auth.User.nama'),
-                        'div'=>array('class'=>'col-md-4')));
+                        'label' => false,
+                        'id'    => 'nama_lengkap',
+                        'class' => "form-control ",
+                        'div'   => array('class'=>'col-md-4')));
 					?>
 				</div>
 

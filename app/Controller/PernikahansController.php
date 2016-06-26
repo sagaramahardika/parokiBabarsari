@@ -283,7 +283,6 @@ class PernikahansController extends AppController{
 				$results = $this->Umat->find('all');
 				$results = $this->Umat->find('all',array('fields' => array('id', 'nama'),'conditions'=>array('OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)),'Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']),'Kk.lingkungan_id'=>$idLingkungan)));
 				# code...
-
 				 $i = 0;
 	        foreach($results as $result){
 	        	 $response[$i]['id'] = $result['Umat']['id'];
@@ -293,6 +292,30 @@ class PernikahansController extends AppController{
 	            $i++;
 	            }
 			}elseif($_GET['tipe'] == 'wil'){
+		        $tampung  = $this->Umat->find('all',array('recursive'=>3,'conditions'=>array('Umat.id'=>$_GET['idUmat'])));
+
+
+				$idLingkungan = $tampung[0]['Kk']['lingkungan_id'];
+				$idWilayah = $tampung[0]['Kk']['Lingkungan']['wilayah_id'];
+				$idParoki = $tampung[0]['Kk']['Lingkungan']['Wilayah']['paroki_id'];
+
+
+				$results =array();
+				 $response = array();
+				if ($_GET['tipe'] == 'ling') {
+					$results = $this->Umat->find('all');
+					$results = $this->Umat->find('all',array('fields' => array('id', 'nama'),'conditions'=>array('OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)),'Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']),'Kk.lingkungan_id'=>$idLingkungan)));
+					# code...
+
+					 $i = 0;
+		        foreach($results as $result){
+		        	 $response[$i]['id'] = $result['Umat']['id'];
+		            $response[$i]['label'] = $result['Umat']['nama'];
+		            $response[$i]['value'] = $result['Umat']['nama'];
+		            $i++;
+		            }
+				}elseif($_GET['tipe'] == 'wil'){
+
 
 				$results = $this->Umat->query('select umat.id,umat.nama from   (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk  AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 12 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id)  umat where umat.wilayah_id = '.$idWilayah.' ORDER BY `umat`.`id` ASC');
 				 $i = 0;
@@ -326,6 +349,7 @@ class PernikahansController extends AppController{
 	        echo json_encode($response);
         }
 	}
+}
 
 	public function view($id=null){
 		if ($id) {
