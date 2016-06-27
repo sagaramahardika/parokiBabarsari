@@ -20,7 +20,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 
 			<?php
 				echo $this->Form->create('Umat', array('url' => '/komuni/tambah','action'=>'tambah','class'=>'form-horizontal', 'role'=>'form',));
-				echo $this->Form->input('Umat.id', array('type' => 'hidden', 'value'=> $this->Session->read('Auth.User.id')));
+				echo $this->Form->input('Komuni.id_umat', array('type' => 'hidden', 'id' => 'idUmat'));
 			?>
 
 			<div class="form-group">
@@ -55,12 +55,13 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 			<div class="form-group">
 				<?php
 					echo $this->Form->label('Komuni.nomor_urut','Nomor Urut', 'col-md-2 control-label');
-					echo $this->Form->input('Komuni.nomor_urut',
+					echo $this->Form->input('Komuni.no_urut',
 						array(
 							'label'			   => false,
 							'type'    		 => 'number',
 							'id' 			     => 'nomorUrut',
 							'placeholder'	 => "Nomor Urut",
+              'required',
 							'class'			   => "form-control input-xlarge",
 							'div'			     => array('class' => 'col-md-4')));
 				?>
@@ -73,6 +74,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 						array(
 							'label'			   => false,
 							'placeholder'	 => "nama",
+              'required',
               'id'           => 'nama_umat',
 							'class'			   => "form-control input-xlarge",
 							'div'			     => array('class'=>'col-md-4')));
@@ -205,6 +207,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 						'type'		    => 'date',
 						'class'			  => "form-control ",
 						'div'			    => array('class'=>'col-md-6'),
+            'required',
 						'dateFormat' 	=> 'DMY',
 						'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0
 					));
@@ -221,25 +224,12 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 					array(
 						'label'			    => false,
 						'placeholder'	  => "Tempat Komuni",
+            'required',
 						'class'			    => "form-control input-xlarge",
 						'div'			      => array('class'=>'col-md-4')));
 				?>
 			</div>
-<!--
-			<div class="form-group">
-				<?php
 
-				echo $this->Form->label('Umat.stskomuni', 'Status Komuni', 'col-md-2 control-label');
-				echo $this->Form->input('Komuni.sts_komuni', array(
-							'options'      => array('0'=>'Belum Komuni','1'=>'Sudah Komuni','3'=>'-'),
-							'label'        => false,
-							'div'          => array('class'=>'col-md-4'),
-							'class'        => "form-control input-xlarge"
-						)
-					 );
-				?>
-			</div>
--->
 			<p>&nbsp;</p>
 
 			<div class="form-group">

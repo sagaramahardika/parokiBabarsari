@@ -13,6 +13,13 @@ class Umat extends AppModel {
         )
     );
 
+		public $hasOne = array(
+			'Komuni' => array(
+				'className' => 'Komuni',
+				'foreignKey' => 'id_umat'
+				),
+		);
+
     public function getKodeUmat() {
 		$list = $this->find('list', array('fields' => array('kode_umat', 'nama')));
 		return $list;

@@ -14,12 +14,17 @@ if (strtolower($ctrl) === 'komuni') {
        success   : function(data)
        {
            console.log(data)
+           $('#idUmat').val(data.Umat.id);
            $('#jnskel').val(data.Umat.jenis_kelamin);
            $('#tempatLahir').val(data.Umat.tmplahir);
            $('#tglLahir').val(data.Umat.tgl_lahir);
            $('#tempatBaptis').val(data.Baptis.tempat);
            $('#tglBaptis').val(data.Baptis.tanggal);
-           $('#namaBaptis').val(data.Baptis.nama_baptis);
+           if(data.Baptis.nama_baptis == null){
+             $('#namaBaptis').val('-');
+           }else{
+             $('#namaBaptis').val(data.Baptis.nama_baptis);
+           }
            $('#cek_umat').addClass('fa fa-check fa-2x').removeClass('fa-times');
            $('#cek_umat').css('color','green');
            $('#cek_umat').attr('cek',true);

@@ -11,34 +11,34 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 				<input type="text" class="form-control" name="data[cari]" placeholder="Cari nama umat ...">
 				<span class="input-group-btn">
 				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
-				 
-				  
+
+
 				</span>
 			  </div>
 			  <br>
 			  <div class="input-group">
 			  	<span class="input-group-btn">
-			  		<?php 
-			  		
+			  		<?php
+
 					$userRole =$this->Session->read('Auth.User.user_level');
 					echo 's' ;
 			  		if ( $userRole <> 1) {
 			  			# code...
 			  			?>
 			  			<!-- <button class="btn btn-default btn-success" type="button" id="addkomuni"><span class="fa fa-user-plus"></span> Tambah Data</button> -->
-			  		
-			  			<?php 
+
+			  			<?php
 			  		}
 
-			  		 ?>	
-				
-				
+			  		 ?>
+
+
 
 			  	</span>
 
 			  </div>
 
-			  	
+
 			  </form>
 			</div>
 		</div>
@@ -55,74 +55,62 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 						<thead class="text-center">
 						<tr>
 				 			<td></td>
-				 		
+
 					 			<td>Nama</td>
+                <td>Kode Stasi</td>
+                <td>Liber</td>
+                <td>No Urut</td>
 					 			<td>Tempat Komuni</td>
 					 			<td>Tanggal Komuni</td>
-					 			<td>Status Komuni</td>
-					 			
+					 			<!--<td>Status Komuni</td>-->
+
  						</tr>
 						</thead>
-						<?php 
-
-
-
-						 ?>
 						<tbody>
 						<?php
 						$i=0;
-
-
-						
+            print_r($datas);
 						foreach($datas as $data) {
-							?>
+						?>
+              <tr>
+              <td>
+              <?php if($userRole <> 1){ ?>
+              <a href="<?php
+                echo $this->Html->url(array('controller'=>'komuni','action'=>'edit', $data['Umat']['id']));
+              ?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
+ 					    <?php } ?>
 
-						<tr>
-							<td>
-								<?php if($userRole <> 1){ ?>
- 					<a href="<?php 
-							
-								echo $this->Html->url(array('controller'=>'komuni','action'=>'edit', $data['Umat']['id']));
-								
-								
-								?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
- 					<?php } ?>
- 				</td>
- 				<td>	<?php echo $data['Umat']['nama']; ?></td>
- 				<td>	<?php echo $data['Umat']['tmpkomuni']; ?></td>
- 				<td>	<?php if ($data['Umat']['tglkomuni'] <> '0000-00-00') {
- 					# code...
- 					echo date('d-m-Y',strtotime($data['Umat']['tglkomuni']));
- 				}  ?></td>
- 				<td class="text-center">	<?php 
- 				$status = $data['Umat']['stskomuni'];
- 				if ($status == 1) {
- 					echo '<i style="color:green" class="fa fa-check"></i>';
- 					# code...
- 				}elseif ($status == 0){
- 					echo '<i style="color:red" class="fa fa-times"></i>';
- 				}else{
- 					echo '<i style="color:blue" class="fa fa-question"></i>';
- 				}
-
-
- 				 ?></td>
- 				
- 		
+       				</td>
+       				<td>	<?php echo $data['Umat']['nama']; ?></td>
+       				<td>	<?php echo $data['Komuni']['kode_stasi']; ?></td>
+              <td>	<?php echo $data['Komuni']['id_liber']; ?></td>
+              <td>	<?php echo $data['Komuni']['no_urut']; ?></td>
+              <td>	<?php echo $data['Komuni']['tempat']; ?></td>
+       				<td>	<?php if ($data['Komuni']['tanggal'] <> '0000-00-00') {
+       					# code...
+       					echo date('d-m-Y',strtotime($data['Komuni']['tanggal']));
+       				}  ?></td>
+       				<!--<td class="text-center">	<?php
+       				/*$status = $data['Umat']['stskomuni'];
+       				if ($status == 1) {
+       					echo '<i style="color:green" class="fa fa-check"></i>';
+       					# code...
+       				}elseif ($status == 0){
+       					echo '<i style="color:red" class="fa fa-times"></i>';
+       				}else{
+       					echo '<i style="color:blue" class="fa fa-question"></i>';
+       				}
+ 				      */?></td>
+            -->
 						</tr>
-					
 
-
-
-					
-				
 						<?php }
-						
+
 						?>
 						</tbody>
 					</table>
 
-					
+
 					<div class="paging">
 					<?php
 						if ($this->Session->check('search')) {
