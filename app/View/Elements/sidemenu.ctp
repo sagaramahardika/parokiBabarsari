@@ -65,7 +65,7 @@ else {
 
   </li>
   <li <?php echo $baptis; ?>>
-  <?php echo $this->Html->link('Baptis', array('id'=>'baptis','controller'=>'umats', 'action' => 'baptis')); ?>
+  <?php echo $this->Html->link('Baptis', array('id'=>'baptis','controller'=>'baptis', 'action' => 'index')); ?>
   </li>
   <li <?php echo $pernikahans; ?>>
   <?php echo $this->Html->link('Pernikahan', array('controller'=>'pernikahans', 'action' => 'index')); ?>

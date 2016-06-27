@@ -11,8 +11,6 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 				<input type="text" class="form-control" name="data[cari]" placeholder="Cari nama umat ...">
 				<span class="input-group-btn">
 				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
-
-
 				</span>
 			  </div>
 			  <br>
@@ -26,19 +24,11 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 			  			# code...
 			  			?>
 			  			<!-- <button class="btn btn-default btn-success" type="button" id="addkomuni"><span class="fa fa-user-plus"></span> Tambah Data</button> -->
-
 			  			<?php
 			  		}
-
 			  		 ?>
-
-
-
 			  	</span>
-
 			  </div>
-
-
 			  </form>
 			</div>
 		</div>
@@ -69,7 +59,7 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 						<tbody>
 						<?php
 						$i=0;
-            print_r($datas);
+            //print_r($datas);
 						foreach($datas as $data) {
 						?>
               <tr>

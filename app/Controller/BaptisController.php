@@ -3,7 +3,7 @@
 App::uses('AuthComponent', 'Controller/Component');
 class BaptisController extends AppController{
 	public $components = array('Flash','Paginator');
-	public $uses = array('Baptis','Umat');
+	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 	public $name = 'Baptis';
@@ -49,14 +49,28 @@ class BaptisController extends AppController{
 
 	public function tambah(){
 		if($this->request->is('post')){
-			$this->Baptis->create();
-			$liberbap = "BUKU " . $this->request->data['Baptis']['kode_buku'] . ', HLM ' . $this->request->data['Baptis']['halaman_buku'] . ', NO ' . $this->request->data['Baptis']['nomor_buku'];
-			//print_r($this->request->data);
-			$this->request->data['Baptis']['liberbap'] = $liberbap;
-			if($this->Baptis->save($this->request->data)){
-				$this->Flash->set(__('Baptis telah tersimpan.'));
-				//return $this->redirect(array('action' => 'index'));
+			try{
+				$nama = $this->request->data['Umat']['nama'];
+
+				if($this->request->data['Baptis']['id_umat'] == null){
+					throw new \Exception('Umat tidak ditemukan');
+				}
+				//$this->request->data['Baptis']['sts_baptis'] = 1;
+
+				$this->Baptis->create();
+				$liberbap = "BUKU " . $this->request->data['Baptis']['kode_buku'] . ', HLM ' . $this->request->data['Baptis']['halaman_buku'] . ', NO ' . $this->request->data['Baptis']['nomor_buku'];
+
+				$this->request->data['Baptis']['liberbap'] = $liberbap;
+				if($this->Baptis->save($this->request->data)){
+					$this->Flash->set(__('Baptis telah tersimpan.'));
+					return $this->redirect(array('action' => 'tambah'));
+				}
+			}catch(\Exception $e){
+					$this->Flash->error(__('data tidak dapat tersimpan. ' . $e->getMessage()));
 			}
+		}else{
+			$results = $this->Statusbaptis->find('all', array('conditions' => array('Statusbaptis.status <> "Belum baptis" AND Statusbaptis.status <> "-"')));
+			$this->set('jenisdatas', $results);
 		}
 	}
 
@@ -163,30 +177,76 @@ class BaptisController extends AppController{
 		}
 	}
 
-	public function autocompleteumat() {
-		if ($this->request->is('ajax')) {
+	public function searchNama(){
+			if ($this->request->is('ajax'))
+			{
+					$this->autoLayout = false;
+					$this->autoRender = false;
+					$results = $this->Umat->find('all', array('fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir',), 'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%')));
+					$response = array();
+					$i = 0;
+					foreach($results as $result){
+							$response[$i]['nama'] = $result['Umat']['nama'];
+							$i++;
+					}
 
-			 $this->autoLayout = false;
-			 $this->autoRender = false;
-			 $response=array();
+					echo json_encode($response);
+			}
+	}
 
-			 if($_GET['nama']){
-				 $namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
+	public function searchParoki(){
+			if ($this->request->is('ajax'))
+			{
+					$this->autoLayout = false;
+					$this->autoRender = false;
+					$results = $this->Paroki->find('all', array('fields' => array('nama_paroki')));
+					$response = array();
+					$i = 0;
+					foreach($results as $result){
+							$response[$i]['nama'] = $result['Paroki']['nama_paroki'];
+							$i++;
+					}
 
-				 if (empty($namarow)) {
-					 $response[0]['status'] = 'error';
-					 $response[0]['get'] = $_GET['nama'];
+					echo json_encode($response);
+			}
+	}
 
-				 }else{
-					 $response[0]['status'] = 'success';
-					 $response[0]['get'] = $_GET['nama'];
-				 }
+	public function findUmat(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Umat->find('first', array(
+					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis'),
+					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%' ),
+					'joins' 				=> array(
+	 						array(
+	 							'table'				=> 'baptises',
+	 							'type'				=> 'left',
+	 							'alias'				=> 'Baptis',
+	 							'conditions'	=> 'Baptis.id_umat = Umat.id'
+	 						),
+	 				),
+				));
+				$i = 0;
+				echo json_encode($results);
+		}
+	}
 
-			 }else{
-				 $response[0]['status']='error';
-			 }
+	public function searchKotaParoki(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Paroki->find('all', array('fields' => array('kota'), 'conditions' => array('Paroki.nama_paroki LIKE "%' . $_GET['paroki'] . '%" AND Paroki.kota LIKE "%' . $_GET['nama'] . '%"')));
+				$response = array();
+				$i = 0;
+				foreach($results as $result){
+						$response[$i]['nama'] = $result['Paroki']['kota'];
+						$i++;
+				}
 
-			 echo json_encode($response);
-		 }
-	 }
+				echo json_encode($response);
+		}
+	}
 }

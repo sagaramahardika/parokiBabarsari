@@ -2,7 +2,7 @@
 if (strtolower($ctrl) === 'komuni') {
  ?>
 
- $("#nama_umat").keyup(function(){
+ $("#nama_umat").mouseout(function(){
    event.preventDefault();
    var term = $("#nama_umat").val();
    console.log(term)
