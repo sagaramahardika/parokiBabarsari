@@ -12,6 +12,7 @@ $komuni='';
 $krismas='';
 $kelahiran='';
 $tambahjemaat='';
+$tambahkematian='';
 $lihataktivasi='';
 $lihatuser='';
 $user='';
@@ -49,6 +50,9 @@ if ($ctl === 'jemaats') {
 else if ($ctl === 'tambahkomuni') {
   $tambahkomuni = 'class="active"';
 }
+else if ($ctl === 'tambahkematian') {
+  $tambahkematian = 'class="active"';
+}
 else {
   $overview = 'class="active"';
 }
@@ -67,7 +71,7 @@ else {
   <?php echo $this->Html->link('Pernikahan', array('controller'=>'pernikahans', 'action' => 'index')); ?>
   </li>
   <li <?php echo $kematians; ?>>
-    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'tambah')); ?>
+    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'index')); ?>
   </li>
   <li <?php echo $komuni; ?>>
   <?php echo $this->Html->link('Komuni', array('controller'=>'komuni', 'action' => 'index')); ?>
@@ -91,6 +95,9 @@ else {
   </li>
    <li <?php echo $tambahkomuni; ?>>
     <?php echo $this->Html->link('Tambah Komuni', array('controller'=>'komuni', 'action' => 'tambah')); ?>
+  </li>
+  <li <?php echo $tambahkematian; ?>>
+   <?php echo $this->Html->link('Tambah Kematian', array('controller'=>'kematians', 'action' => 'tambah')); ?>
   </li>
   <li <?php echo $lihataktivasi; ?>>
     <?php echo $this->Html->link('Kode aktivasi', array('controller'=>'umats', 'action' => 'lihataktivasi')); ?>

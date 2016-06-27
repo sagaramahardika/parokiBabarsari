@@ -1,9 +1,9 @@
-<?php 
+<?php
 App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component','JsHelper');
 
 class UmatsController extends AppController{
-	
+
 	public $components = array('Paginator', 'Session', 'Cookie', 'Flash', 'ImageCropResize.Image');
 	public $uses = array('Kodeumataktif','Lingkungan','Umat','User','Bidangstudi','Pendidikan','Suku','Statussosial','Pekerjaan','Kk','Statusbabptis','Hubkk','Leveluser','Statuspernikahan','Tempattinggal','Keaktifanparoki','Keaktifangereja','Statuskekatolikan','Statusekonomi','Statuskesehatan');
 	public $helpers = array('Flash');
@@ -24,17 +24,17 @@ class UmatsController extends AppController{
 				return true;
 			}
 			return false;
-		} 
+		}
 	}
 	public function index(){
 		$conditions = array();
-		
+
 		if (!empty($this->data) && $this->data['cari'] !== '') {
 			$conditions = array(
-						
+
 							'jenis_kelamin LIKE ' => '%' . strtolower($this->data['cari']) . '%'
-							
-						
+
+
 					);
 			$this->Session->write('conditions',$conditions);
 			$this->Session->write('search', $this->data['cari']);
@@ -105,7 +105,7 @@ class UmatsController extends AppController{
 		else
 			$this->set('kk', $this->Kk->getKk($this->Session->read('Auth.User.idling')));
 		$this->set('level', $this->Leveluser->getLevel());
-		
+
 		$this->set('statuspernikahan', $this->Statuspernikahan->getStatusPernikahan());
 		$this->set('bidangstudi', $this->Bidangstudi->getBidangStudi());
 		$this->set('suku', $this->Suku->getSuku());
@@ -151,7 +151,7 @@ class UmatsController extends AppController{
 			$id =$this->Auth->user('id_umat');
 		$umat = $this->Umat->findById($id);
 		if($this->Session->read('Auth.User.idKK') != $umat['Umat']['id_kk']){
-			//$this->Flash->success($this->Session->read('Auth.User.idKK'));	
+			//$this->Flash->success($this->Session->read('Auth.User.idKK'));
 			$this->redirect($this->Session->read('lastUrl'));
 		}
 		$this->set('pekerjaan', $this->Pekerjaan->getKerja());
@@ -194,7 +194,7 @@ class UmatsController extends AppController{
 					return;
 				}else{
 				$this->request->data['Umat']['password'] = $this->data['Umat']['password1'];
-				
+
 				}
 			}*/
 			try {
@@ -243,17 +243,18 @@ class UmatsController extends AppController{
 			$this->redirect(array('action' => 'editBaptis'));
 		}*/
 		$conditions = array();
-		
+
 		if (!empty($this->data) && $this->data['cari'] !== '') {
 			$conditions = array(
-						
+
 							'nama LIKE ' => '%' . strtolower($this->data['cari']) . '%'
-							
-						
+
+
 					);
 			$this->Session->write('conditions',$conditions);
 			$this->Session->write('search', $this->data['cari']);
-		} else {
+		}
+		else {
 			if (empty($this->params['named']['o'])) {
 				$this->Session->delete('conditions');
 				$this->Session->delete('search');
@@ -300,7 +301,7 @@ class UmatsController extends AppController{
 	public function editBaptis($id=null){
 		$this->set('statusbaptises',$this->Statusbabptis->find('list',array('fields'=>array('status'),
 			'order'=>array('Statusbabptis.status'=>'asc'))));
-		
+
 		if ($this->request->is('post') || $this->request->is('put')) {
 			$this->Umat->id = $id;
 
@@ -354,18 +355,18 @@ class UmatsController extends AppController{
 	}
 
 		public function signup() {
-		
+
 		//$this->set('pernikahan', $this->Pendidikan->getDidik());
 		$this->set('pekerjaan', $this->Pekerjaan->getKerja());
 		$this->set('pendidikan', $this->Pendidikan->getDidik());
 		$this->set('jeniskelamin', $this->Umat->jeniskelamin());
 		$this->set('goldar', $this->Umat->golongandarah());
 		$this->set('usern', $this->User->getUsername());
-		
+
 		if ($this->request->is('post')){
 			$list = $this->User->find('list', array('fields' => array('username', 'id')));
 			//if($list[$this->data['User']['username']])
-				
+
 			//	$this->Flash->error(__('Username sudah ada!', true));
 			if (!($this->data['User']['password'] === $this->data['User']['password2'])) {
 				$this->Flash->error(__('Passwords tidak cocok.', true));
@@ -386,14 +387,14 @@ class UmatsController extends AppController{
 						try {
 						$this->User->create();
 						if ($this->User->save($this->request->data)){
-							
+
 							return $this->redirect(array('action' => 'index'));
 							$this->Flash->success(__('SignUp berhasil'));
 						}
 						} catch (PDOException $e) {
-						
+
 						$this->Flash->error(__('User tidak dapat tersimpan. ' . $e->errorInfo[2]));
-						}		
+						}
 					}
 				// } catch(Exception $e){
 				// 	$this->Flash->error(__('Username tidak dapat digunakan'));
@@ -402,7 +403,7 @@ class UmatsController extends AppController{
 			//}
 			else{
 				$this->Flash->error(__('Kode yang dimasukkan salah'));
-			}			
+			}
 			// $cekusername = $this->data['Umat']['username'];
 			// if($this->usern[$cekusername]){
 			// 	$this->Flash->error(__('Username sudah terpakai', true));
@@ -413,9 +414,9 @@ class UmatsController extends AppController{
 			//$this->request->data['Umat']['idhash'] =
 			//	md5('UKDWjogja' . $this->data['Umat']['username']);
 
-			
+
 		}
-	
+
 }
 	public function checkKk(){
 		$nama = $_GET['name'];
@@ -489,8 +490,8 @@ class UmatsController extends AppController{
 						$file['type'];
 				}
 			}
-			
-			
+
+
 			$this->request->data['Umat']['id_statusbaptis'] = '8';
 			$this->request->data['Umat']['id_agama'] = '3';
 			$this->request->data['Umat']['id_hubkk'] = '3';
@@ -522,7 +523,7 @@ class UmatsController extends AppController{
 			} catch (PDOException $e) {
 				$this->Flash->error(__('User tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-		} 
+		}
     }
     public function listnew(){
 		$datas = $this->Umat->findAllByUserLevel('0');
@@ -537,14 +538,14 @@ class UmatsController extends AppController{
 	public function user(){
 //		$this->redirect(array('controller'=>'umats','action'=>'kelahiran'));
 		//Debugger::dump($this->data);
-		
+
 		$this->User->saveAll($this->request->data['Umat'], array('atomic' => true, 'validate' => 'first'));
 	//	$this->User->saveAssociated($this->request->data['Umat']);
 		$i=0;
 		foreach ($this->data['Umat'] as $opt) {
 //		$this->User->save($this->data['Umat'][$i]);
 
-       
+
         echo $this->request->data['Umat'][$i]['username'].$i;
         $i++;
     	}
@@ -553,12 +554,12 @@ public function lihataktivasi(){
 		//$datas = $this->Umat->find('all');
 		//$this->set('datas', $datas);
 		$namau = $this->Umat->getNamaUmat();
-		$conditions = array();		
+		$conditions = array();
 		if (!empty($this->data) && $this->data['cari'] !== '') {
-			
+
 		$sss = $this->Umat->find('all', array('fields'=>'kode_umat', 'conditions'=>array('umat.nama LIKE ' => '%' . strtoupper($this->data['cari']) . '%')));
-		
-		
+
+
 		$finarray = array();
 		for($i = 0; $i < count($sss); $i++){
 			$finarray[$i] = $sss[$i]['Umat']['kode_umat'];
@@ -570,17 +571,17 @@ public function lihataktivasi(){
 							'kodeumataktif.kodeumat LIKE ' => '%' . $this->Session->read('Auth.User.codeling') . '%',
 							'kodeumataktif.kodeumat ' =>  $finarray
 
-							
-						
+
+
 					);
 			$this->Session->write('conditions',$conditions);
 			$this->Session->write('search', $this->data['cari']);
 		} else {
 		$conditions = array(
-						
+
 							'kodeumataktif.kodeumat LIKE ' => '%' . $this->Session->read('Auth.User.codeling') . '%'
-							
-						
+
+
 			);
 			if (empty($this->params['named']['o'])) {
 				$this->Session->delete('conditions');
@@ -599,7 +600,7 @@ public function lihataktivasi(){
 		if($this->Auth->user('user_level')!=2 && $this->Auth->user('user_level')!= 5){
 			$this->redirect($this->Session->read('lastUrl'));
 		}
-		
+
 		$this->Paginator->settings = array(
 			'limit'=>10,
 			//'conditions'=> array('kodeumat' =>$Umat['Umat']['kodeumat'],$conditions),
@@ -619,9 +620,9 @@ public function lihataktivasi(){
 			$this->redirect($this->Session->read('lastUrl'));
 		}
 		$arrQ = array(
-							
+
 						  'N'    => 'Tidak',
-						'Y'    => 'Ya', 
+						'Y'    => 'Ya',
 					);
 		$this->set('tambahkk', $arrQ);
 		$this->set('pekerjaan', $this->Pekerjaan->getKerja());
@@ -636,7 +637,7 @@ public function lihataktivasi(){
 		$this->set('lingkungan', $this->Lingkungan->getLingkungan());
 		$this->set('jeniskelamin', $this->Umat->jeniskelamin());
 		$this->set('goldar', $this->Umat->golongandarah());
-		
+
 		$this->set('statuspernikahan', $this->Statuspernikahan->getStatusPernikahan());
 		$this->set('bidangstudi', $this->Bidangstudi->getBidangStudi());
 		$this->set('suku', $this->Suku->getSuku());
@@ -649,9 +650,9 @@ public function lihataktivasi(){
 		$this->set('statussosial', $this->Statussosial->getStatusSosial());
 
 		if ($this->request->is('post')){
-			
+
 			$qqq = $this->Kk->find('list', array('fields' => array('id', 'nama_kk')));
-			
+
 			//$aa = $this->request->data['Umat']['lingkungan'];
 			//Debugger::dump($this->Session->read('Auth.User.codeling'));
 			$idkk = array_search($this->request->data['Umat']['kk'], $this->Kk->getKk($this->Session->read('Auth.User.idling')));
@@ -710,7 +711,7 @@ public function lihataktivasi(){
 			$this->request->data['Umat']['kode_umat'] = $fin;
 			$this->request->data['Kodeumataktif']['kodeumat'] = $fin;
 			$this->request->data['Kodeumataktif']['kodeaktivasi'] = md5('UKDWjogja' . $fin);
-			
+
 			// $cekusername = $this->data['Umat']['username'];
 			// if($this->usern[$cekusername]){
 			// 	$this->Flash->error(__('Username sudah terpakai', true));
@@ -731,7 +732,7 @@ public function lihataktivasi(){
 						$this->request->data['Umat']['id_kk'] = $is['Kk']['id'];
 					}
 				} catch (PDOException $e) {
-					
+
 					$this->Flash->error(__('User tidak dapat tersimpan. ' . $e->errorInfo[2]));
 				}
 			}
@@ -742,7 +743,7 @@ public function lihataktivasi(){
 					$this->Flash->success(__('Jemaat berhasil ditambahkan'));
 									}
 			} catch (PDOException $e) {
-				
+
 				$this->Flash->error(__('User tidak dapat tersimpan. ' . $e->errorInfo[2]));
 			}
 
@@ -755,11 +756,11 @@ public function lihataktivasi(){
 					return $this->redirect(array('action' => 'index'));
 				}
 			} catch (PDOException $e) {
-				
+
 				$this->Flash->error(__('User tidak dapat tersimpan. ' . $e->errorInfo[2]));
 			}
 
-			
+
 
 			// try {
 			// 	$this->User->create();
@@ -768,15 +769,15 @@ public function lihataktivasi(){
 			// 		return $this->redirect(array('action' => 'index'));
 			// 	}
 			// } catch (PDOException $e) {
-				
+
 			// 	$this->Flash->error(__('User tidak dapat tersimpan. ' . $e->errorInfo[2]));
 			// }
 		}
 	}
-    
+
     public function kematian()
     {
-        
+
     }
 }
 ?>

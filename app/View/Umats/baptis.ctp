@@ -35,11 +35,11 @@ $this->assign('title', 'Halaman Baptis Umat');
 							<?php }?>
 							<th>Nama Umat</th>
 							<th>Nama Baptis</th>
-							<th>Tanggal</th>	
+							<th>Tanggal</th>
 							<th>Liber Baptis</th>
 							<th>Tempat Baptis</th>
 							<th>Romo</th>
-							<th>Status</th>		
+							<th>Status</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -55,21 +55,21 @@ $this->assign('title', 'Halaman Baptis Umat');
 							</td>-->
 							<?php if($usrlvl!=1){ ?>
 							<td>
-								<a href="<?php 
-								echo $this->Html->url(array('controller'=>'umats','action'=>'editBaptis', $user['Umat']['id'])); 
+								<a href="<?php
+								echo $this->Html->url(array('controller'=>'umats','action'=>'editBaptis', $user['Umat']['id']));
 								?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
 							</td>
 							<?php } ?>
 							<td><?php echo $user['Umat']['nama'] ?>
-							<td><?php echo $user['Umat']['namabaptis'] ?>				
-							<td> 
+							<td><?php echo $user['Umat']['namabaptis'] ?>
+							<td>
 								<?php
-									if($user['Umat']['tglbaptis'] != "0000-00-00") 
-									echo $user['Umat']['tglbaptis']; 
+									if($user['Umat']['tglbaptis'] != "0000-00-00")
+									echo $user['Umat']['tglbaptis'];
 								?>
 							</td>
 							<td><?php echo $user['Umat']['liberbap'] ?></td>
-							<td><?php echo $user['Umat']['tmpbaptis'] ?></td>	
+							<td><?php echo $user['Umat']['tmpbaptis'] ?></td>
 							<td><?php echo $user['Umat']['romobaptis'] ?></td>
 							<td>
 								<?php

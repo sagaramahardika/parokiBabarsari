@@ -128,7 +128,6 @@
       	}
     });
 
-
     $( "#lingkungan_nama" ).autocomplete({
 
       source:  function( request, response )
