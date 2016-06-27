@@ -1,4 +1,4 @@
-<?php 
+<?php
 App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component');
 
@@ -17,7 +17,7 @@ class KomuniController extends AppController{
 	}
 
 	public function index(){
-		
+
 
 	/*	$datas = $this->Pernikahan->find('all');
 		$this->set('datas',$datas);	*/
@@ -27,13 +27,13 @@ class KomuniController extends AppController{
 		//$this->set('paroki',$this->Paroki->getParoki());
 
 		$conditions = array();
-		
+
 		if (!empty($this->data) && $this->data['cari'] !== '') {
 			$conditions = array(
-						
+
 							'nama LIKE ' => '%' . strtolower($this->data['cari']) . '%'
-							
-						
+
+
 					);
 			$this->Session->write('conditions',$conditions);
 			$this->Session->write('search', $this->data['cari']);
@@ -51,15 +51,15 @@ class KomuniController extends AppController{
 			}
 		}
 
-		
+
 		$this->Umat->recursive = 3;
 		$set = array();
 		if ($userRole == 1) {
-			
+
 
 			$set = array(
 				'limit' => 20,
-			
+
 				'conditions' => array('Umat.id '=>$idTam,$conditions),
 				'order' => array(
 					'Umat.id' => 'asc'
@@ -74,7 +74,7 @@ class KomuniController extends AppController{
 
 			$set = array(
 				'limit' => 10,
-			
+
 				'conditions' => array('Kk.lingkungan_id '=>$idlingkungan,$conditions),
 				'order' => array(
 					'Umat.id' => 'asc'
@@ -83,7 +83,7 @@ class KomuniController extends AppController{
 		}else if ($userRole == 5){
 			$set = array(
 				'limit' => 10,
-			
+
 				'conditions' => array($conditions),
 				'order' => array(
 					'Umat.id' => 'asc'
@@ -92,36 +92,75 @@ class KomuniController extends AppController{
 		}
 
 		$this->Paginator->settings = $set;
-	
+
 		try {
-	
+
 		$this->set('datas',$this->Paginator->paginate('Umat'));
 
-			
+
 		} catch (NotFoundException $e) {
 			$this->redirect(array('action'=>'index'));
 		}
 	}
 
+	public function searchNama(){
+			if ($this->request->is('ajax'))
+			{
+					$this->autoLayout = false;
+					$this->autoRender = false;
+					$results = $this->Umat->find('all', array('fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir',), 'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%')));
+					$response = array();
+					$i = 0;
+					foreach($results as $result){
+							$response[$i]['nama'] = $result['Umat']['nama'];
+							$i++;
+					}
+
+					echo json_encode($response);
+			}
+	}
+
+	public function findUmat(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Umat->find('first', array(
+					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis'),
+					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%' ),
+					'joins' 				=> array(
+	 						array(
+	 							'table'				=> 'baptises',
+	 							'type'				=> 'left',
+	 							'alias'				=> 'Baptis',
+	 							'conditions'	=> 'Baptis.id_umat = Umat.id'
+	 						),
+	 				),
+				));
+				$i = 0;
+				echo json_encode($results);
+		}
+	}
+
 	public function tambah(){
-		
+
 		if ($this->request->is('post')) {
-			$id = $this->Umat->getKodeUmatFromNama($this->request->data['Umat']['nama']);
-			$this->request->data['Komuni']['id_umat'] = $id;
-			print_r($this->request->data);	
+			//$id = $this->Umat->getKodeUmatFromNama($this->request->data['Umat']['nama']);
+			//$this->request->data['Komuni']['id_umat'] = $id;
+			print_r($this->request->data);
 		}
 		/*$this->set('Komuni.tempat', $this->Paroki->getParoki());
 		//$userKk = $this->Session->Read('Auth.User.idKK');//
 		$userKk = $this->Auth->user('id_kk');
 		$idTam =  $this->Auth->user('id');
 
-				
+
 		if ($this->request->is('post')) {
 				# code...
 			try {
-			
+
 				if ($this->Umat->save($this->request->data)){
-					
+
 					$row = $this->Umat->findById($idtam);
 					$row['Umat']['stskomuni'] = true;
 					$this->Umat->save($row);
@@ -146,14 +185,11 @@ class KomuniController extends AppController{
 								$this->request->data['Umat']['tglkomuni'] = '';
 							}
 
-
-
-
 							$this->Umat->save($this->request->data);
 							# code...
 							$this->Flash->success(__('Data komuni telah berhasil diubah.'));
-						
-						
+
+
 					} catch (PDOExeption $pdoe) {
 						$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 					}

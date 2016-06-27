@@ -6,6 +6,7 @@ class BaptisController extends AppController{
 	public $uses = array('Baptis','Umat');
 	public $helpers = array('Flash');
 	public $layout = 'default';
+	public $name = 'Baptis';
 
 	public function index(){
 		$conditions = array();
@@ -53,7 +54,7 @@ class BaptisController extends AppController{
 			//print_r($this->request->data);
 			$this->request->data['Baptis']['liberbap'] = $liberbap;
 			if($this->Baptis->save($this->request->data)){
-				$this->Session->setFlash(__('Baptis telah tersimpan.'));
+				$this->Flash->set(__('Baptis telah tersimpan.'));
 				//return $this->redirect(array('action' => 'index'));
 			}
 		}

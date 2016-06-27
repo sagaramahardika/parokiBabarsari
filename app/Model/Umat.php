@@ -1,4 +1,4 @@
-<?php 
+<?php
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component');
 class Umat extends AppModel {
@@ -70,9 +70,9 @@ class Umat extends AppModel {
 		return false;
 	}
 
-	public function isAktifByUname($uname) {		
-		if ($uname) {	
-		
+	public function isAktifByUname($uname) {
+		if ($uname) {
+
 			$data = $this->findByUsername($uname);
 
 			$data = $this->findByUsername($uname, array('Umat.username'));
@@ -123,7 +123,7 @@ class Umat extends AppModel {
 		$arrRoles = array(
 							'0'    => 'Tetap',
 						  '1'    => 'Temporer',
-						 
+
 					);
 		return $arrRoles;
 	}
@@ -133,7 +133,7 @@ class Umat extends AppModel {
 		$arrRoles = array(
 							'0'    => 'Tidak Pindah',
 						  '1'    => 'Pindah',
-						 
+
 					);
 		return $arrRoles;
 	}
@@ -142,7 +142,7 @@ class Umat extends AppModel {
 		$arrRoles = array(
 							'0'    => '-',
 						  '1'    => 'Sudah Meninggal',
-						 
+
 					);
 		return $arrRoles;
 	}
@@ -151,7 +151,7 @@ class Umat extends AppModel {
 		$arrRoles = array(
 							'0'    => 'Rumah Tangga Biasa',
 						  '1'    => 'Rumah Tangga Khusus',
-						 
+
 					);
 		return $arrRoles;
 	}
@@ -159,7 +159,7 @@ class Umat extends AppModel {
 		$arrRoles = array(
 							'L'    => 'Laki-laki',
 						  'P'    => 'Perempuan',
-						 
+
 					);
 		return $arrRoles;
 	}
@@ -167,7 +167,7 @@ class Umat extends AppModel {
 		$list = $this->find('list', array('fields' => array('username', 'id')));
 		return $list;
 	}
-	
+
 	public function getIdPasanganKk($id){
 		$data = $this->find('list',array('fields'=>array('id','nama'),
 											'conditions'=>array('id_kk = '.$id)
@@ -175,7 +175,7 @@ class Umat extends AppModel {
 
 
 			));
-		
+
 		return $data;
 
 
@@ -187,7 +187,7 @@ class Umat extends AppModel {
 
 
 			));
-		
+
 		return $data;
 
 
@@ -196,12 +196,12 @@ class Umat extends AppModel {
 
 	public function getNamaPasangan(){
 		$data = $this->find('list',array('fields'=>array('id','nama')
-										
+
 
 
 
 			));
-		
+
 		return $data;
 
 
