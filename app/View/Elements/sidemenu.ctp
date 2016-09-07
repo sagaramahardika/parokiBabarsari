@@ -16,6 +16,7 @@ $tambahkematian='';
 $lihataktivasi='';
 $lihatuser='';
 $user='';
+$pengurapans='';
 $tambahbaptis='';
 $tambahkomuni='';
 if ($ctl === 'jemaats') {
@@ -30,6 +31,8 @@ if ($ctl === 'jemaats') {
   $umat = 'class="active"';
 }else if($ctl === 'baptis'){
   $baptis = 'class="active"';
+}else if($ctl === 'pengurapans'){
+  $pengurapans = 'class="active"';
 }else if($ctl ==='pernikahans'){
  $pernikahans = 'class="active"';
 }else if($ctl ==='kelahiran'){
@@ -69,6 +72,9 @@ else {
   </li>
   <li <?php echo $pernikahans; ?>>
   <?php echo $this->Html->link('Pernikahan', array('controller'=>'pernikahans', 'action' => 'index')); ?>
+  </li>
+  <li <?php echo $pengurapans; ?>>
+    <?php echo $this->Html->link('Pengurapan', array('controller'=>'pengurapans', 'action' => 'index')); ?>
   </li>
   <li <?php echo $kematians; ?>>
     <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'index')); ?>

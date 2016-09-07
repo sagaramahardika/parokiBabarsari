@@ -34,6 +34,73 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 					echo $this->Form->input('Pernikahan.umat_id', array('id'=>'form_id_umat','type'=>'hidden'));
 					?>
 				</div>
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>Kode Stasi </label></div>
+					<?php
+
+					// echo $this->Form->input('Pernikahan.a', array(
+          			//liat jspernikahan fungsi #input_nama keyup;
+					echo $this->Form->input('kode_stasi', array(
+								'label' => false,
+								'id'=>'kdstasi',
+								'placeholder'=>'Kode Stasi',
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge",
+								'name'=>'kode_stasi'
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>Kode LM </label></div>
+					<?php
+					echo $this->Form->input('kode_LM', array(
+								'label' => false,
+								'id'=>'kdLM',
+								'placeholder'=>'Kode LM',
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge",
+								'name'=>'kode_LM'
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>No</label></div>
+					<?php
+					echo $this->Form->input('no', array(
+								'label' => false,
+								'id'=>'noLM',
+								'placeholder'=>'No',
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge",
+								'name'=>'no'
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>Halaman</label></div>
+					<?php
+					echo $this->Form->input('halaman', array(
+								'label' => false,
+								'id'=>'halaman',
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge",
+								'name'=>'halaman',
+								'placeholder'=>'Halaman Buku'
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+
 				<div class="row">
 					<div class="col-md-2 control-label"><label>Nama Umat</label></div>
 					<?php 
@@ -170,36 +237,25 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 
 				
 				<?php 
+					$userRole =$this->Session->read('Auth.User.user_level');
 
-				$userRole =$this->Session->read('Auth.User.user_level');
-
-
-				if ($userRole == 2){ ?>
-					<div class="form-group">
-					<?php
-			
-					
-					
-					echo $this->Form->label('Pernikahan.statuspernikahan', 'Status Pernikahan', 'col-md-2 control-label');
-					echo $this->Form->input('statuspernikahan', array(
-								'options' => $statusPer,
-								'label' => false,
-								'value'=> $this->request->data['Umat']['id_statuspernikahan'],
-								'div'=>array('class'=>'col-md-4'),
-								'class'=>"form-control input-xlarge"
-							)
-						 );
-					?>
-					<label style="color:red">*</label>
-				</div>
-
+					if ($userRole == 2){ ?>
+						<div class="form-group">
+							<?php
+								echo $this->Form->label('Pernikahan.statuspernikahan', 'Status Pernikahan', 'col-md-2 control-label');
+								echo $this->Form->input('statuspernikahan', array(
+											'options' => $statusPer,
+											'label' => false,
+											'value'=> $this->request->data['Umat']['id_statuspernikahan'],
+											'div'=>array('class'=>'col-md-4'),
+											'class'=>"form-control input-xlarge"
+									)
+								);
+							?>
+							<label style="color:red">*</label>
+						</div>
 				<?php }?>
-
-				
 				<p>&nbsp;</p>
-
-
-
 <!-- 
 				<div class="form-group">
 					<?php

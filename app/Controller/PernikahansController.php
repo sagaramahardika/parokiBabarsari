@@ -50,8 +50,6 @@ class PernikahansController extends AppController{
 		//$this->Umat->recursive = 3;
 		$set = array();
 		if ($userRole == 1) {
-
-
 			$set = array(
 				'limit' => 10,
 
@@ -66,19 +64,32 @@ class PernikahansController extends AppController{
 			/*$userKk = $this->Session->Read('Auth.User.idKK');*/
 			/*$userKk = $this->Auth->user('id_kk');
 			$idlingkungan = $this->Kk->getIdLingkungan($userKk);*/
-			$rowuser = $this->Umat->find('all',array('conditions'=>array('Umat.id'=>$idTam)));
-			$code_umat = substr($this->Session->read('Auth.User.kodeumat'), 0,11);
+			// $rowuser = $this->Umat->find('all',array('conditions'=>array('Umat.id'=>$idTam)));
+			// $code_umat = substr($this->Session->read('Auth.User.kodeumat'), 0,11);
 
-			$set = array(
-				'limit' => 10,
+			// $set = array(
+			// 	'limit' => 10,
 				/*'join'=>array(
 
 					),*/
-				'conditions' => array(/*'Umat.id'=>'Pernikahan.umat_id',*/'Umat.kode_umat LIKE '=>$code_umat.'%',$conditions),
+			// 	'conditions' => array(/*'Umat.id'=>'Pernikahan.umat_id',*/'Umat.kode_umat LIKE '=>$code_umat.'%',$conditions),
+			// 	'order' => array(
+			// 		'Pernikahan.id' => 'asc'
+			// 	)
+			// );
+
+			// $userKk = $this->Session->Read('Auth.User.idKK');
+			// $idlingkungan = $this->Kk->getIdLingkungan($userKk);
+
+			$set = array(
+				'limit' => 10,
+			
+				'conditions' => array($conditions),
 				'order' => array(
-					'Pernikahan.id' => 'asc'
+					'Pernikahans.id' => 'asc'
 				)
 			);
+
 		}else if ($userRole == 5){
 			$set = array(
 				'limit' => 10,
@@ -93,7 +104,7 @@ class PernikahansController extends AppController{
 		$this->Paginator->settings = $set;
 
 		try {
-			$this->set('datas',$this->Paginator->paginate('Pernikahan'));
+			$this->set('datas', $this->Paginator->paginate('Pernikahan'));
 		} catch (NotFoundException $e) {
 			$this->redirect(array('action'=>'index'));
 		}
@@ -121,15 +132,28 @@ class PernikahansController extends AppController{
 		if ($this->request->is('post')) {
 			// $this->autoRender = false;
 
-	 	// 	return json_encode($this->request->data);
+	 		// echo json_encode($this->request->data);
 
 			# code...
 			try {
-				$this->Pernikahan->create();
+				// $myData = $this->request->data;
+				// $myData['kode_stasi'] = 1;
+				// $this->Pernikahan->create();
+				// $this->Pernikahan->save($myData);
+
+			// 	echo $myData['kode_stasi'] . ", " . $myData['kode_LM'] .  ", " . $myData['no'] . ", 
+			// " . $myData['halaman'];
+
+
+				
 				if ($this->Pernikahan->save($this->request->data)){
+					
+
 					$idTam = $this->request->data['Pernikahan']['umat_id'];
 
 					$row = $this->Umat->findById($idTam);
+
+					// Debugger::dump($idTam);
 
 					$rowling = $this->Lingkungan->findById($row['Kk']['lingkungan_id']);
 
@@ -186,21 +210,16 @@ class PernikahansController extends AppController{
 						$this->Umat->saveField('id_hubkk',2);
 						$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
 
-
-
 					}
-					$this->Flash->success(__('Data pernikahan telah tersimpan.'));
+					$this->Flash->success(('Data pernikahan telah tersimpan.'));
 					return $this->redirect(array('action' => 'index'));
 				}
 			} catch (PDOException $e) {
-				$this->Flash->error(__('Data tidak dapat tersimpan. ' . $e->errorInfo[2]));
+				$this->Flash->error(('Data tidak dapat tersimpan. ' . $e->errorInfo[2]));
 				return $this->redirect(array('action' => 'index'));
 			}
 		}
 	}
-
-
-
 
 	public function edit($id=null){
 
@@ -244,25 +263,23 @@ class PernikahansController extends AppController{
 
 
 	public function findAll(){
-				if ($this->request->is('ajax')) {
+		if ($this->request->is('ajax')) {
+			$this->autoLayout = false;
+			$this->autoRender = false;
+			$idlingketualing = $this->Session->Read('Auth.User.idling');
+			$results = $this->Umat->find('all', array('fields' => array('id', 'nama','jenis_kelamin'), 'conditions' => array('Kk.lingkungan_id'=>$idlingketualing,'Umat.nama LIKE "%'.$_GET['term'].'%"','OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)))));
 
-
-        $this->autoLayout = false;
-        $this->autoRender = false;
-         $idlingketualing = $this->Session->Read('Auth.User.idling');
-        $results = $this->Umat->find('all', array('fields' => array('id', 'nama','jenis_kelamin'), 'conditions' => array('Kk.lingkungan_id'=>$idlingketualing,'Umat.nama LIKE "%'.$_GET['term'].'%"','OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)))));
-
-        $response = array();
-        $i = 0;
-        foreach($results as $result){
-        	 $response[$i]['id'] = $result['Umat']['id'];
-        	 $response[$i]['jenis_kelamin'] = $result['Umat']['jenis_kelamin'];
-            $response[$i]['label'] = $result['Umat']['nama'];
-            $response[$i]['value'] = $result['Umat']['nama'];
-            $i++;
-            }
-        echo json_encode($response);
-        }
+			$response = array();
+			$i = 0;
+			foreach($results as $result){
+				$response[$i]['id'] = $result['Umat']['id'];
+				$response[$i]['jenis_kelamin'] = $result['Umat']['jenis_kelamin'];
+				$response[$i]['label'] = $result['Umat']['nama'];
+				$response[$i]['value'] = $result['Umat']['nama'];
+				$i++;
+			}
+			echo json_encode($response);
+		}
 	}
 
 	public function find(){
@@ -357,7 +374,6 @@ class PernikahansController extends AppController{
 			$this->set('nama',$this->Umat->getNamaPasangan());
 			$this->set('status',$this->Statuspernikahan->getStatusPernikahan());
 			$this->request->data = $this->Pernikahan->read(null,$id);
-
 		}else{
 			$this->redirect(array('action'=>'index'));
 		}

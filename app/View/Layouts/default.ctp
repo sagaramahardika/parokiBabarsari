@@ -69,6 +69,7 @@
 		<?php echo $this->element('jskomuni', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole)); ?>	
 		<?php echo $this->element('jspernikahan', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole));?>
 		<?php echo $this->element('jskk', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole));?>
+		<?php echo $this->element('jspengurapan', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole));?>
 		<?php echo $this->element('jsautocomplete');?>
 		});
 	</script>

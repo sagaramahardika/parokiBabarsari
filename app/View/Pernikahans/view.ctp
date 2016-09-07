@@ -29,12 +29,28 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 			<div class="panel-body">
 				<table  class="">
 					<tr>
+						<th>Kode Stasi 	</th>
+						<td>: <?php echo $this->request->data['Pernikahan']['kode_stasi'] ?></td>
+					</tr>
+					<tr>
+						<th>Kode LM 	</th>
+						<td>: <?php echo $this->request->data['Pernikahan']['kode_LM'] ?></td>
+					</tr>
+					<tr>
+						<th>No 	</th>
+						<td>: <?php echo $this->request->data['Pernikahan']['no'] ?></td>
+					</tr>
+					<tr>
+						<th>Halaman 	</th>
+						<td>: <?php echo $this->request->data['Pernikahan']['halaman'] ?></td>
+					</tr>
+					<tr>
 						<th>Nama Umat 	</th>
 						<td>: <?php echo $nama[$this->request->data['Pernikahan']['umat_id']] ?></td>
 					</tr>
 					<?php if ($this->request->data['Pernikahan']['pasangan_id']) {
 						# code...
-						?>
+						?> 
 						<tr>
 						<th>Nama Pasangan 	</th>
 						<td>: <?php echo $nama[$this->request->data['Pernikahan']['pasangan_id']] ?></td>
