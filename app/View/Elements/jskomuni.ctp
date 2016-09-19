@@ -28,9 +28,25 @@ if (strtolower($ctrl) === 'komuni') {
            $('#cek_umat').addClass('fa fa-check fa-2x').removeClass('fa-times');
            $('#cek_umat').css('color','green');
            $('#cek_umat').attr('cek',true);
+
+           $('#jnskel').prop('disabled', true);
+           $('#tempatLahir').prop('disabled', true);
+           $('#tglLahir').prop('disabled', true);
+           $('#tempatBaptis').prop('disabled', true);
+           $('#tglBaptis').prop('disabled', true);
+           $('#namaBaptis').prop('disabled', true);
+
+           $('#noTelpOrangtua').prop('disabled', true);
+           $('#alamatOrtu').prop('disabled', true);
+           $('#namaIbu').prop('disabled', true);
+           $('#namaAyah').prop('disabled', true);
+           $('#noBukuBaptis').prop('disabled', true);
+           $('#bukuBaptis').prop('disabled', true);
+
        },
        error: function(e){
           console.log(e);
+          /*
           $('#jnskel').val('-');
           $('#tempatLahir').val('-');
           $('#tglLahir').val('-');
@@ -40,6 +56,25 @@ if (strtolower($ctrl) === 'komuni') {
           $('#cek_umat').addClass('fa fa-times fa-2x').removeClass('fa-check');
           $('#cek_umat').css('color','red');
           $('#cek_umat').attr('cek',false);
+          $('#form_id_umat').val("");
+          */
+          $('#jnskel').prop('disabled', false);
+          $('#tempatLahir').prop('disabled', false);
+          $('#tglLahir').prop('disabled', false);
+          $('#tempatBaptis').prop('disabled', false);
+          $('#tglBaptis').prop('disabled', false);
+          $('#namaBaptis').prop('disabled', false);
+          $('#cek_umat').addClass('fa fa-times fa-2x').removeClass('fa-check');
+          $('#cek_umat').css('color','red');
+          $('#cek_umat').attr('cek',false);
+
+          $('#noTelpOrangtua').prop('disabled', false);
+          $('#alamatOrtu').prop('disabled', false);
+          $('#namaIbu').prop('disabled', false);
+          $('#namaAyah').prop('disabled', false);
+          $('#noBukuBaptis').prop('disabled', false);
+          $('#bukuBaptis').prop('disabled', false);
+
           $('#form_id_umat').val("");
        }
    });

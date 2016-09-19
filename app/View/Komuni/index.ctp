@@ -44,8 +44,7 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 					<table class="table table-bordered table-striped table-condensed ">
 						<thead class="text-center">
 						<tr>
-				 			<td></td>
-
+				 			  <td></td>
 					 			<td>Nama</td>
                 <td>Kode Stasi</td>
                 <td>Liber</td>
@@ -53,6 +52,14 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 					 			<td>Tempat Komuni</td>
 					 			<td>Tanggal Komuni</td>
 					 			<!--<td>Status Komuni</td>-->
+
+                <!--<td></td>
+                <td>No</td>
+                <td>Nama Penerima</td>
+                <td>Tempat dan Tanggal Lahir</td>
+                <td>Tempat dan Tanggal Baptis</td>
+                <td>Nama Orang tua</td>
+                <td>Tempat dan Tanggal Komuni Pertama</td>-->
 
  						</tr>
 						</thead>
@@ -66,12 +73,15 @@ $this->assign('title', 'Halaman Manajemen Komuni');
               <td>
               <?php if($userRole <> 1){ ?>
               <a href="<?php
-                echo $this->Html->url(array('controller'=>'komuni','action'=>'edit', $data['Umat']['id']));
+                echo $this->Html->url(array('controller'=>'komuni','action'=>'edit', $data['Komuni']['id']));
               ?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
  					    <?php } ?>
-
-       				</td>
-       				<td>	<?php echo $data['Umat']['nama']; ?></td>
+                <?php echo $this->Form->create('Komuni', array('url' => '/komuni/delete','action'=>'delete','class'=>'form-horizontal', 'role'=>'form',)); ?>
+                <button type="submit"><span class="fa fa-trash" aria-hidden="true"></span></button>
+                <?php echo $this->Form->input('Komuni.id', array('type' => 'hidden', 'id' => 'idKomuni', 'value' => $data['Komuni']['id'])); ?>
+                <?php echo $this->Form->end(); ?>
+              </td>
+       				<td>	<?php echo ($data['Komuni']['id_umat'] == 0) ? $data['Komuni']['nama'] : $data['Umat']['nama']; ?></td>
        				<td>	<?php echo $data['Komuni']['kode_stasi']; ?></td>
               <td>	<?php echo $data['Komuni']['id_liber']; ?></td>
               <td>	<?php echo $data['Komuni']['no_urut']; ?></td>

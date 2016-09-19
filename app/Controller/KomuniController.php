@@ -138,13 +138,25 @@ class KomuniController extends AppController{
 
 		if ($this->request->is('post')) {
 			try{
-				$nama = $this->request->data['Umat']['nama'];
+				//$nama = $this->request->data['Umat']['nama'];
 				/*$id_umat = $this->Umat->find('first', array('fields' => array('id'), 'conditions' => array('Umat.nama LIKE' => '%' . $nama . '%')))['Umat']['id'];
 				if($this->request->data['Komuni']['id_umat'] != $id_umat){
 					$this->request->data['Komuni']['id_umat'] = $id_umat;
 				}*/
-				if($this->request->data['Komuni']['id_umat'] == null){
-					throw new \Exception('Umat tidak ditemukan');
+				if($this->request->data['Komuni']['id_umat']){
+					$this->request->data['Komuni']['nama'] = null;
+					$this->request->data['Komuni']['nama_baptis'] = null;
+					$this->request->data['Komuni']['tempat_lahir'] = null;
+					$this->request->data['Komuni']['tanggal_lahir'] = null;
+					$this->request->data['Komuni']['tempat_baptis'] = null;
+					$this->request->data['Komuni']['tanggal_baptis'] = null;
+					$this->request->data['Komuni']['buku_baptis'] = null;
+					$this->request->data['Komuni']['no_buku'] = null;
+					$this->request->data['Komuni']['jenis_kelamin'] = null;
+					$this->request->data['Komuni']['ayah'] = null;
+					$this->request->data['Komuni']['ibu'] = null;
+					$this->request->data['Komuni']['alamat_orangtua'] = null;
+					$this->request->data['Komuni']['no_telp_orangtua'] = null;
 				}
 				$this->request->data['Komuni']['sts_komuni'] = 1;
 				//print_r($this->request->data);
@@ -162,7 +174,7 @@ class KomuniController extends AppController{
 
 	public function edit($id=null){
 
-	if ($id) {
+		if ($id) {
 				# code...
 				if (!empty($this->request->data)){
 					# code...
@@ -172,7 +184,7 @@ class KomuniController extends AppController{
 								$this->request->data['Umat']['tglkomuni'] = '';
 							}
 
-							$this->Umat->save($this->request->data);
+							$this->Komuni->save($this->request->data);
 							# code...
 							$this->Flash->success(__('Data komuni telah berhasil diubah.'));
 
@@ -182,11 +194,29 @@ class KomuniController extends AppController{
 					}
 					$this->redirect(array('action'=>'index'));
 				}else{
-					$this->request->data = $this->Umat->read(null,$id);
+					$this->request->data = $this->Komuni->read(null,$id);
 				}
 			}else{
 				$this->redirect(array('action'=>'index'));
 			}
+	}
+
+	public function delete(){
+		if ($this->request->is('post')) {
+			if (!empty($this->request->data)){
+				try {
+						$id = $this->request->data['Komuni']['id'];
+
+						$result = $this->Komuni->Delete($id);
+
+						$this->Flash->success(__('Data komuni telah berhasil dihapus.'));
+
+				} catch (PDOExeption $pdoe) {
+					$this->Flash->error(__('data tidak dapat dihapus. ' . $e->errorInfo[2]));
+				}
+				$this->redirect(array('action'=>'index'));
+			}
+		}
 	}
 
 }

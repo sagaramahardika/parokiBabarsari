@@ -8,10 +8,11 @@ $this->assign('title', 'Halaman Status Baptis');
 			<div class="panel-heading">
 				<h3 class="panel-title">Form Pendaftaran Akun Pengguna</h3>
 			</div>
+      
 			<div class="panel-body">
 
 					<?php echo $this->Form->create('Baptis', array('controller' => 'baptis','action' => 'edit','class'=>'form-horizontal', 'role'=>'form')); ?>
-			
+
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('Baptis.sts_baptis','Status Baptis', 'col-md-2 control-label');
@@ -51,7 +52,7 @@ $this->assign('title', 'Halaman Status Baptis');
 
 			  	?>
 				</div>
-				
+
 				<div class="form-group">
 					<label class="col-md-2"></label>
 					<div class="col-md-10">

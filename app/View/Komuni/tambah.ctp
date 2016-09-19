@@ -23,6 +23,20 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 				echo $this->Form->input('Komuni.id_umat', array('type' => 'hidden', 'id' => 'idUmat'));
 			?>
 
+      <div class="form-group">
+				<?php
+					echo $this->Form->label('Komuni.lingkungan', 'Lingkungan', 'col-md-2 control-label');
+					echo $this->Form->input('Komuni.lingkungan',
+						array(
+							'label'			     => false,
+							'placeholder'	   => "Lingkungan",
+              'id'             => 'lingkungan',
+							'class'			     => "form-control input-xlarge",
+							'div'			       => array('class'=>'col-md-4')));
+				?>
+
+			</div>
+
 			<div class="form-group">
 				<?php
 					echo $this->Form->label('Komuni.stasi_baptis','Kode Stasi', 'col-md-2 control-label');
@@ -70,7 +84,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 			<div class="form-group">
 				<?php
 					echo $this->Form->label('Umat.nama', 'Nama ', 'col-md-2 control-label');
-					echo $this->Form->input('nama',
+					echo $this->Form->input('Komuni.nama',
 						array(
 							'label'			   => false,
 							'placeholder'	 => "nama",
@@ -88,83 +102,40 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 				<?php
 					//value nama baptis sementara
 					echo $this->Form->label('Umat.nama_baptis', 'Nama Baptis', 'col-md-2 control-label');
-					echo $this->Form->input('nama_baptis',
+					echo $this->Form->input('Komuni.nama_baptis',
 						array(
 							'label'			     => false,
 							'placeholder'	   => "Nama Baptis",
               'id'             => 'namaBaptis',
-              'disabled'       => 'disabled',
+              //'disabled'       => 'disabled',
 							'class'			     => "form-control input-xlarge",
 							'div'			       => array('class'=>'col-md-4')));
 				?>
 
 			</div>
 
-			<div class="form-group">
-				<?php
-					echo $this->Form->label('Umat.jenis_kelamin', 'Jenis Kelamin', 'col-md-2 control-label');
-					echo $this->Form->input('Umat.jenis_kelamin', array(
-					    'label'        =>  false,
-					    'class'        =>  "form-control ",
-              'id'           => 'jnskel',
-              'disabled'		 => 'disabled',
-					    'div'          =>  array('class'=>'col-md-4')));
-					echo $this->Form->label('ketGender', 'L=Laki-laki, P=Perempuan', 'control-label');
-				?>
-			</div>
-
-			<div class="form-group">
-				<?php
-				//value sementara
-				echo $this->Form->label('Umat.nama_ayah', 'Nama Ayah', 'col-md-2 control-label');
-				echo $this->Form->input('nama_ayah',
-					array(
-						'label'			      => false,
-						'id' 			        => 'namaAyah',
-						'placeholder'	    => "Nama Ayah",
-						'disabled'		    => 'disabled',
-						'class'			      => "form-control input-xlarge",
-						'div'			        => array('class' => 'col-md-4')));
-				?>
-			</div>
-
-			<div class="form-group">
-				<?php
-				//value sementara
-				echo $this->Form->label('Umat.nama_ibu', 'Nama Ibu', 'col-md-2 control-label');
-				echo $this->Form->input('nama_ibu',
-					array(
-						'label'			    => false,
-						'id' 			      => 'namaIbu',
-						'placeholder'	  => "Nama Ibu",
-						'disabled'		  => 'disabled',
-						'class'			    => "form-control input-xlarge",
-						'div'			      => array('class' => 'col-md-4')));
-				?>
-			</div>
-
-			<div class="form-group">
+      <div class="form-group">
 				<?php
 				//value sementara
 				echo $this->Form->label('Umat.tempattgllahir', 'Tempat/Tanggal Lahir', 'col-md-2 control-label');
 
-				echo $this->Form->input('tempat_lahir',
+				echo $this->Form->input('Komuni.tempat_lahir',
 					array(
 						'label'			      => false,
 						'id' 			        => 'tempatLahir',
 						'placeholder'	    => "Tempat Lahir",
-						'disabled'		    => 'disabled',
+						//'disabled'		    => 'disabled',
 						'class'			      => "form-control input-xlarge",
 						'div'			        => array('class' => 'col-md-4')));
 
-				echo $this->Form->input('tanggal_lahir',
+				echo $this->Form->input('Komuni.tanggal_lahir',
 					array(
 						'label'			    => false,
 						'class'			    => "form-control ",
 						'div'			      => array('class'=>'col-md-6'),
 						//'value'			=> $this->Session->read('Auth.User.tanggal_lahir'),
             'id'            => 'tglLahir',
-						'disabled'		  => 'disabled',
+						//'disabled'		  => 'disabled',
 						'dateFormat'  	=> 'DMY',
 						'minYear' 	   	=> date('Y') - 115, 'maxYear' => date('Y') - 0
 					));
@@ -176,25 +147,123 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 				//value sementara
 				echo $this->Form->label('Umat.tempattglbaptis', 'Tempat/Tanggal Dibaptis', 'col-md-2 control-label');
 
-				echo $this->Form->input('tempat_baptis',
+				echo $this->Form->input('Komuni.tempat_baptis',
 					array(
 						'label'			  => false,
 						'id' 			    => 'tempatBaptis',
 						'placeholder'	=> "Tempat Baptis",
-						'disabled'		=> 'disabled',
+						//'disabled'		=> 'disabled',
 						'class'			  => "form-control input-xlarge",
 						'div'			    => array('class' => 'col-md-4')));
 
-				echo $this->Form->input('tanggal_baptis',
+				echo $this->Form->input('Komuni.tanggal_baptis',
 					array(
 						'label'			  => false,
 						'class'			  => "form-control ",
 						'div'		     	=> array('class'=>'col-md-6'),
             'id' 			    => 'tglBaptis',
-						'disabled'		=> 'disabled',
+						//'disabled'		=> 'disabled',
 						'dateFormat' 	=> 'DMY',
 						'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0
 					));
+				?>
+			</div>
+
+      <div class="form-group">
+
+				<?php
+				echo $this->Form->label('Komuni.bukuBaptis', 'Buku Baptis', 'col-md-2 control-label');
+
+				echo $this->Form->input('Komuni.buku_baptis',
+					array(
+						'label'			    => false,
+            'id' 			    => 'bukuBaptis',
+            //'disabled'		 => 'disabled',
+						'placeholder'	  => "Buku Baptis",
+            'required',
+						'class'			    => "form-control input-xlarge",
+						'div'			      => array('class'=>'col-md-4')));
+
+        echo $this->Form->input('Komuni.no_buku',
+					array(
+						'label'			    => false,
+            'id' 			    => 'noBukuBaptis',
+            //'disabled'		 => 'disabled',
+						'placeholder'	  => "Nomor Buku",
+            'required',
+						'class'			    => "form-control input-xlarge",
+						'div'			      => array('class'=>'col-md-4')));
+				?>
+			</div>
+
+			<div class="form-group">
+				<?php
+					echo $this->Form->label('Umat.jenis_kelamin', 'Jenis Kelamin', 'col-md-2 control-label');
+					echo $this->Form->input('Umat.jenis_kelamin', array(
+					    'label'        =>  false,
+					    'class'        =>  "form-control ",
+              'id'           => 'jnskel',
+              //'disabled'		 => 'disabled',
+					    'div'          =>  array('class'=>'col-md-4')));
+					echo $this->Form->label('ketGender', 'L=Laki-laki, P=Perempuan', 'control-label');
+				?>
+			</div>
+
+			<div class="form-group">
+				<?php
+				//value sementara
+				echo $this->Form->label('Umat.nama_ayah', 'Nama Ayah', 'col-md-2 control-label');
+				echo $this->Form->input('Komuni.ayah',
+					array(
+						'label'			      => false,
+						'id' 			        => 'namaAyah',
+						'placeholder'	    => "Nama Ayah",
+						//'disabled'		    => 'disabled',
+						'class'			      => "form-control input-xlarge",
+						'div'			        => array('class' => 'col-md-4')));
+				?>
+			</div>
+
+			<div class="form-group">
+				<?php
+				//value sementara
+				echo $this->Form->label('Umat.nama_ibu', 'Nama Ibu', 'col-md-2 control-label');
+				echo $this->Form->input('Komuni.ibu',
+					array(
+						'label'			    => false,
+						'id' 			      => 'namaIbu',
+						'placeholder'	  => "Nama Ibu",
+						//'disabled'		  => 'disabled',
+						'class'			    => "form-control input-xlarge",
+						'div'			      => array('class' => 'col-md-4')));
+				?>
+			</div>
+
+      <div class="form-group">
+				<?php
+				echo $this->Form->label('Komuni.alamatOrtu', 'Alamat Orang Tua', 'col-md-2 control-label');
+				echo $this->Form->input('Komuni.alamat_orangtua',
+					array(
+						'label'			      => false,
+						'id' 			        => 'alamatOrtu',
+						'placeholder'	    => "Alamat Orangtua",
+						//'disabled'		    => 'disabled',
+						'class'			      => "form-control input-xlarge",
+						'div'			        => array('class' => 'col-md-4')));
+				?>
+			</div>
+
+      <div class="form-group">
+				<?php
+				echo $this->Form->label('Komuni.noTelpOrtu', 'Telp/HP', 'col-md-2 control-label');
+				echo $this->Form->input('Komuni.no_telp_orangtua',
+					array(
+						'label'			      => false,
+						'id' 			        => 'noTelpOrangtua',
+						'placeholder'	    => "Telp/HP",
+						//'disabled'		    => 'disabled',
+						'class'			      => "form-control input-xlarge",
+						'div'			        => array('class' => 'col-md-4')));
 				?>
 			</div>
 
