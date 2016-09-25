@@ -173,32 +173,28 @@ class KomuniController extends AppController{
 	}
 
 	public function edit($id=null){
-
 		if ($id) {
-				# code...
-				if (!empty($this->request->data)){
-					# code...
-					try {
-							if($this->data["Umat"]["stskomuni"] == 0 ){
-								$this->request->data['Umat']['tmpkomuni'] = '';
-								$this->request->data['Umat']['tglkomuni'] = '';
-							}
+			if($this->request->is('post')){
+				try {
+						if($this->data["Umat"]["stskomuni"] == 0 ){
+							$this->request->data['Umat']['tmpkomuni'] = '';
+							$this->request->data['Umat']['tglkomuni'] = '';
+						}
 
-							$this->Komuni->save($this->request->data);
-							# code...
-							$this->Flash->success(__('Data komuni telah berhasil diubah.'));
+						$this->Komuni->save($this->request->data);
+						$this->Flash->success(__('Data komuni telah berhasil diubah.'));
 
 
-					} catch (PDOExeption $pdoe) {
-						$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
-					}
-					$this->redirect(array('action'=>'index'));
-				}else{
-					$this->request->data = $this->Komuni->read(null,$id);
+				} catch (PDOExeption $pdoe) {
+					$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 				}
-			}else{
 				$this->redirect(array('action'=>'index'));
+			}else{
+				$this->request->data = $this->Komuni->read(null,$id);
 			}
+		}else{
+			$this->redirect(array('action'=>'index'));
+		}
 	}
 
 	public function delete(){

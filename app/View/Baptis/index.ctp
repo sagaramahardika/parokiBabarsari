@@ -39,6 +39,7 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 						<thead class="text-center">
 						<tr>
 							<td></td>
+              <?php /*
 							<td>Nama Umat</td>
 							<td>Nama Baptis</td>
 							<td>Tanggal</td>
@@ -50,16 +51,56 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 							<td>Wali</td>
 							<td>Status Baptis</td>
 							<td>Catatan</td>
+              */?>
+              <td>No</td>
+              <td>Tempat Lahir</td>
+              <td>Tanggal Lahir</td>
+              <td>Baptis di Gereja</td>
+              <td>Tanggal Baptis</td>
+              <td>Nama</td>
+              <td>Nama Baptis</td>
+              <td>Ayah</td>
+              <td>Ibu</td>
+              <td>Wali Baptis</td>
+              <td>Romo Baptis</td>
  						</tr>
 						</thead>
 						<tbody>
 							<?php foreach($datas as $data){?>
 							<tr>
+                <?php
+                  $action = null;
+                  if($data['Baptis']['jenis_baptis'] == 'ANAK'){
+                    $action = 'editBaptisAnak';
+                  }else if($data['Baptis']['jenis_baptis'] == 'DEWASA'){
+                    $action = 'editBaptisDewasa';
+                  }else if($data['Baptis']['jenis_baptis'] == 'DARURAT'){
+                    $action = 'editBaptisDarurat';
+                  }else{
+                    $action = 'edit';
+                  }
+                ?>
 								<td>
-									<button class="btnedit" idparam="<?php echo $data['Baptis']['id_umat'] ?>">
-										<i class="fa fa-pencil"></i>
-									</button></td>
+                  <a href="<?php
+                    echo $this->Html->url(array('controller'=>'baptis','action'=>$action, $data['Baptis']['id']));
+                    ?>"
+                    <button class="btnedit" idparam="<?php echo $data['Baptis']['id'] ?>">
+  										<i class="fa fa-pencil"></i>
+  									</button></td>
+                  </a>
 								</td>
+                <td><?php echo $data['Baptis']['id']; ?></td>
+                <td><?php if($data['Baptis']['id_umat'] == 0){echo $data['Baptis']['tempat_lahir'];}else{echo $data['Umat']['tmplahir'];} ?></td>
+                <td><?php if($data['Baptis']['id_umat'] == 0){echo $data['Baptis']['tanggal_lahir'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
+                <td><?php if($data['Baptis']['tempat']){ echo $data['Baptis']['tempat'] . ', ' . $data['Baptis']['kota'];}else{ echo "-";} ?></td>
+                <td><?php if($data['Baptis']['tanggal']){ echo $data['Baptis']['tanggal'];}else{ echo "-";} ?></td>
+                <td><?php if($data['Baptis']['id_umat'] == 0){echo $data['Baptis']['nama_diri'];}else{echo $data['Umat']['nama'];} ?></td>
+                <td><?php if($data['Baptis']['nama_baptis']){ echo $data['Baptis']['nama_baptis'];}else{ echo "-";} ?></td>
+                <td><?php if($data['Baptis']['id_umat'] == 0){ echo $data['Baptis']['ayah'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
+                <td><?php if($data['Baptis']['id_umat'] == 0){ echo $data['Baptis']['ibu'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
+                <td><?php if($data['Baptis']['wali_baptis']){ echo $data['Baptis']['wali_baptis'];}else{ echo "-";} ?></td>
+                <td><?php if($data['Baptis']['romo']){ echo $data['Baptis']['romo'];}else{ echo "-";} ?></td>
+                <?php /*
 								<td><?php echo $data['Umat']['nama']; ?></td>
 								<td><?php echo $data['Baptis']['nama_baptis'] ?></td>
 								<td> <?php echo $data['Baptis']['tanggal'] ?></td>
@@ -71,7 +112,8 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 								<td><?php echo $data['Baptis']['wali_baptis'] ?></td>
 								<td><?php echo $data['Statusbaptis']['status'] ?></td>
 								<td><?php echo $data['Baptis']['catatan'] ?></td>
-							</tr>
+                */?>
+              </tr>
 							<?php } ?>
 						</tbody>
 					</table>

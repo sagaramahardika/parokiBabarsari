@@ -18,6 +18,9 @@ $lihatuser='';
 $user='';
 $tambahbaptis='';
 $tambahkomuni='';
+$tambahbaptisanak='';
+$tambahbaptisdarurat='';
+$tambahbaptisdewasa='';
 if ($ctl === 'jemaats') {
   $jemaat = 'class="active"';
 } else if ($ctl === 'laporans') {
@@ -52,6 +55,15 @@ else if ($ctl === 'tambahkomuni') {
 }
 else if ($ctl === 'tambahkematian') {
   $tambahkematian = 'class="active"';
+}
+else if ($ctl === 'tambahkbaptisanak') {
+  $tambahbaptisanak = 'class="active"';
+}
+else if ($ctl === 'tambahbaptisdewasa') {
+  $tambahbaptisdewasa = 'class="active"';
+}
+else if ($ctl === 'tambahbaptisdarurat') {
+  $tambahbaptisdarurat = 'class="active"';
 }
 else {
   $overview = 'class="active"';
@@ -91,7 +103,16 @@ else {
     <?php echo $this->Html->link('Tambah Jemaat', array('controller'=>'umats', 'action' => 'tambahjemaat')); ?>
   </li><?php } ?>
   <li <?php echo $tambahbaptis; ?>>
-    <?php echo $this->Html->link('Tambah Baptis', array('controller'=>'baptis', 'action' => 'tambah')); ?>
+    <?php echo $this->Html->link('Tambah Baptis Umum', array('controller'=>'baptis', 'action' => 'tambah')); ?>
+  </li>
+  <li <?php echo $tambahbaptis; ?>>
+    <?php echo $this->Html->link('Tambah Baptis Anak', array('controller'=>'baptis', 'action' => 'tambahBaptisAnak')); ?>
+  </li>
+  <li <?php echo $tambahbaptis; ?>>
+    <?php echo $this->Html->link('Tambah Baptis Dewasa', array('controller'=>'baptis', 'action' => 'tambahBaptisDewasa')); ?>
+  </li>
+  <li <?php echo $tambahbaptis; ?>>
+    <?php echo $this->Html->link('Tambah Baptis Darurat', array('controller'=>'baptis', 'action' => 'tambahBaptisDarurat')); ?>
   </li>
    <li <?php echo $tambahkomuni; ?>>
     <?php echo $this->Html->link('Tambah Komuni', array('controller'=>'komuni', 'action' => 'tambah')); ?>

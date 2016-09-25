@@ -1,6 +1,7 @@
 <?php
 $urole = 'baptis';
 if (strtolower($ctrl) === 'baptis') {
+  /*sementara
  ?>
 $(document).ready(function() {
 	if (!document.getElementById('checkBaptis').checked)
@@ -143,5 +144,5 @@ $("#kotaBaptis").autocomplete({
 });
 
 <?php
-}
+*/}
 ?>

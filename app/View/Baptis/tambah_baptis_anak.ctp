@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', 'Halaman Tambah Baptis');
+$this->assign('title', 'Halaman Tambah Baptis Anak');
 ?>
 <h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
 <div class="row mt">
@@ -8,6 +8,15 @@ $this->assign('title', 'Halaman Tambah Baptis');
 			<div class="panel-heading">
 				<h3 class="panel-title">Form Pendaftaran Baptis Anak</h3>
 			</div>
+
+      <?php
+        echo $this->Form->create('Baptis', array(
+          'controller' 	=> 'baptis',
+          'action' 		=> 'tambahBaptisAnak',
+          'class'			=> 'form-horizontal',
+          'role'			=> 'form'));
+        echo $this->Form->input('Baptis.id_umat', array('type' => 'hidden', 'id' => 'idUmat'));
+      ?>
 
       <div class="form-group">
         <?php
@@ -20,6 +29,50 @@ $this->assign('title', 'Halaman Tambah Baptis');
             //'value'			=> $this->Session->read('Auth.User.nama'),
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-4')));
+        ?>
+      </div>
+
+      <div class="form-group">
+        <?php
+        echo $this->Form->label('Baptis.stasi_baptis','Kode Stasi', 'col-md-2 control-label');
+        echo $this->Form->input('Baptis.kode_stasi',
+          array(
+            'label'			=> false,
+            'type'    		=> 'number',
+            'id' 			=> 'kodeStasi',
+            'value'			=> 07300,
+            'placeholder'	=> "Kode Stasi",
+            'class'			=> "form-control input-xlarge",
+            'div'			=> array('class' => 'col-md-4')));
+        ?>
+      </div>
+
+      <div class="form-group">
+        <?php
+        echo $this->Form->label('Baptis.kode_buku_label','Kode Buku', 'col-md-2 control-label');
+        echo $this->Form->input('kode_buku',
+          array(
+            'label'			=> false,
+            'id' 			=> 'kodeBuku',
+            'placeholder'	=> "Kode Buku",
+            'class'			=> "form-control input-xlarge",
+            'div'			=> array('class' => 'col-md-4')));
+
+        echo $this->Form->input('halaman_buku',
+          array(
+            'label'			=> false,
+            'id' 			=> 'halamanBuku',
+            'placeholder'	=> "Halaman Buku",
+            'class'			=> "form-control input-xlarge",
+            'div'			=> array('class' => 'col-md-2')));
+
+        echo $this->Form->input('nomor_buku',
+          array(
+            'label'			=> false,
+            'id' 			=> 'nomerBuku',
+            'placeholder'	=> "Nomor Buku",
+            'class'			=> "form-control input-xlarge",
+            'div'			=> array('class' => 'col-md-2')));
         ?>
       </div>
 
@@ -39,6 +92,19 @@ $this->assign('title', 'Halaman Tambah Baptis');
 
       <div class="form-group">
         <?php
+        echo $this->Form->label('Baptis.nama_baptis_label', 'Nama Baptis', 'col-md-2 control-label');
+        echo $this->Form->input('Baptis.nama_baptis',
+          array(
+            'label'			=> false,
+            'id' 			=> 'namaBaptis',
+            'placeholder'	=> "Nama Baptis",
+            'class'			=> "form-control input-xlarge",
+            'div'			=> array('class' => 'col-md-4')));
+        ?>
+      </div>
+
+      <div class="form-group">
+        <?php
         echo $this->Form->label('Baptis.tempat_lahir', 'Tempat Lahir', 'col-md-2 control-label');
         echo $this->Form->input('Baptis.tempat_lahir',
           array(
@@ -46,22 +112,39 @@ $this->assign('title', 'Halaman Tambah Baptis');
             'id' 			    => 'tempatLahir',
             'placeholder'	=> "Tempat Lahir",
             //'value'			=> $this->Session->read('Auth.User.nama'),
-            'disabled'		=> 'disabled',
+            //'disabled'		=> 'disabled',
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-4')));
 
         echo $this->Form->input('Baptis.tanggal_lahir',
           array(
             'label'			  => false,
-            'type'    		=> 'datepicker',
+            'type'    		=> 'date',
             'id'          => 'tglLahir',
             //'value'			=> $this->Session->read('Auth.User.nama'),
-            'disabled'		=> 'disabled',
+            //'disabled'		=> 'disabled',
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-6',
             'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0)));
 
         ?>
+      </div>
+
+      <div class="form-group">
+        <div class="input">
+          <?php echo $this->Form->label('Baptis.jenis_kelamin', 'Jenis Kelamin', 'col-md-2 control-label'); ?>
+          <?php echo $this->Form->input('Baptis.jenis_kelamin',
+						array(
+							'label'			  => false,
+							'id' 			    => 'jenis_kelamin',
+							'placeholder'	=> "L / P",
+							//'value'			=> $this->Session->read('Auth.User.nama'),
+							//'disabled'		=> 'disabled',
+              'type'        => 'char',
+							'class'			  => "form-control input-xlarge",
+							'div'			    => array('class' => 'col-md-4')));
+            ?>
+        </div>
       </div>
 
       <div class="form-group">
@@ -108,7 +191,7 @@ $this->assign('title', 'Halaman Tambah Baptis');
 
       <div class="form-group">
         <?php
-        echo $this->Form->label('BaptisAnak.tempat_perkawinan_ortu', 'Tempat', 'col-md-2 control-label');
+        echo $this->Form->label('BaptisAnak.tempat_perkawinan_ortu', 'Tempat dan Tanggal', 'col-md-2 control-label');
         echo $this->Form->input('BaptisAnak.tempat_perkawinan_ortu',
           array(
             'label'			  => false,
@@ -118,10 +201,10 @@ $this->assign('title', 'Halaman Tambah Baptis');
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-4')));
 
-        echo $this->Form->input('BaptisAnak.tanggal_pernikahan_ortu',
+        echo $this->Form->input('BaptisAnak.tanggal_perkawinan_ortu',
           array(
             'label'			  => false,
-            'type'    		=> 'datepicker',
+            'type'    		=> 'date',
             'id'          => 'tanggal_pernikahan_ortu',
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-6',
@@ -193,14 +276,14 @@ $this->assign('title', 'Halaman Tambah Baptis');
             'id' 			    => 'tempatBaptis',
             'placeholder'	=> "Tempat Baptis",
             //'value'			=> $this->Session->read('Auth.User.nama'),
-            'disabled'		=> 'disabled',
+            //'disabled'		=> 'disabled',
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-4')));
 
-        echo $this->Form->input('Baptis.tanggal_baptis',
+        echo $this->Form->input('Baptis.tanggal',
           array(
             'label'			  => false,
-            'type'    		=> 'datepicker',
+            'type'    		=> 'date',
             'id'          => 'tglBaptis',
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-6',
@@ -216,11 +299,40 @@ $this->assign('title', 'Halaman Tambah Baptis');
           array(
             'label'			=> false,
             'id' 			=> 'romoBaptis',
-            'placeholder'	=> "",
+            'placeholder'	=> "Romo Baptis",
             'class'			=> "form-control input-xlarge",
             'div'			=> array('class' => 'col-md-4')));
         ?>
       </div>
+
+      <div class="form-group">
+        <?php
+        echo $this->Form->label('Baptis.tempat_baptis_label', 'Dibabtis di Paroki (Gereja/Kapel)', 'col-md-2 control-label');
+        echo $this->Form->input('Baptis.tempat',
+          array(
+            'label'			=> false,
+            'id' 			=> 'tempatBaptis',
+            'placeholder'	=> "Tempat Baptis",
+            'class'			=> "form-control input-xlarge",
+            'div'			=> array('class' => 'col-md-4')));
+        ?>
+      </div>
+
+      <div class="form-group">
+        <?php
+        echo $this->Form->label('Baptis.kota_baptis_label', 'Kota', 'col-md-2 control-label');
+        echo $this->Form->input('Baptis.kota',
+          array(
+            'label'			=> false,
+            'id' 			=> 'kotaBaptis',
+            'placeholder'	=> "Kota",
+            'class'			=> "form-control input-xlarge",
+            'div'			=> array('class' => 'col-md-4')));
+        ?>
+      </div>
+
+      <input type="hidden" name=['Baptis']['jenis_baptis'] value="ANAK" readonly="readonly">
+      <input type="hidden" name=['Baptis']['sts_baptis'] value="1" readonly="readonly">
 
 				<div class="form-group">
 					<label class="col-md-2"></label>

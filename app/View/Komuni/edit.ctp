@@ -20,7 +20,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
         <?php //var_dump($this->request->data); ?>
 
 			<?php
-		echo $this->Form->create('Umat', array('url' => '/komuni/edit/'.$this->request->data['Umat']['id'],'action'=>'tambah','class'=>'form-horizontal', 'role'=>'form','id'=>'formeditkom'));
+		echo $this->Form->create('Komuni', array('url' => '/komuni/edit/'.$this->request->data['Komuni']['id'], 'type' => 'POST', 'class'=>'form-horizontal', 'role'=>'form','id'=>'formeditkom'));
 		echo $this->Form->input('Umat.id', array('type' => 'hidden', 'value'=> $this->request->data['Komuni']['id_umat']));
     echo $this->Form->input('Komuni.id', array('type' => 'hidden', 'value'=> $this->request->data['Komuni']['id']));
 			?>
