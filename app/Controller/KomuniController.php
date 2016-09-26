@@ -162,7 +162,7 @@ class KomuniController extends AppController{
 				//print_r($this->request->data);
 				$this->Komuni->create();
 				if($this->Komuni->save($this->request->data['Komuni'])){
-					$this->Flash->set(__('Data komuni telah tersimpan.'));
+					$this->Flash->success(__('Data komuni telah tersimpan.'));
 					return $this->redirect(array('action' => 'tambah'));
 				}
 
