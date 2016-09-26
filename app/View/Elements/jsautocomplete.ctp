@@ -88,34 +88,34 @@
 
     $( "#input_nama" ).autocomplete({
       source:  function( request, response )
-            {
-                $.ajax(
+      {
+          $.ajax(
+          {
+              url:"<?php echo $this->Html->url(array('controller'=>'pernikahans', 'action'=>'findAll')) ?>",
+              data: {
+                      term: request.term,
+                      gender: 'L'
+
+                    },
+              type: "GET",
+              dataType: "json",
+              success: function( data )
+              {
+                response( $.map( data, function( item )
                 {
-                    url:"<?php echo $this->Html->url(array('controller'=>'pernikahans', 'action'=>'findAll')) ?>",
-                    data: {
-                            term: request.term,
-                            gender: 'L'
-
-                          },
-                    type: "GET",
-                    dataType: "json",
-                    success: function( data )
-                    {
-                      response( $.map( data, function( item )
-                      {
-                          return{
-                                  value: item.value,
-
-                                 }
-                      }));
-                    }
-                });
-            },
+                    return{
+                      value: item.value,
+                      id: item.id
+                     }
+                }));
+              }
+          });
+      },
        minLength:1,
        autoFocus: true,
        type: 'json',
        select: function( event, ui ) {
-      						a  = ui.item.id;
+      						a = ui.item.id;
                   b = ui.item.gender;
                   $('#lingkungan_nama').attr('gender',b);
                   $('#lingkungan_nama').attr('id_umat',a);
@@ -141,6 +141,7 @@
                             gender:$('#lingkungan_nama').attr('gender'),
                             idUmat : $('#lingkungan_nama').attr('id_Umat'),
                             tipe : $('#lingkungan_nama').attr('type_find')
+                            
                           },
 
                     type: "GET",

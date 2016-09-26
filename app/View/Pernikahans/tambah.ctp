@@ -10,7 +10,7 @@ $this->assign('title', 'Halaman Tambah Pernikahan');
 echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', array('action'=>'index'), array('escape'=>false)) . ' / ';
 
 ?>
-<i class="fa fa-pencil	"></i> Tambah Data Pernikahan
+<i class="fa fa-pencil"></i> Tambah Data Pernikahan
 </h3>
 
 
@@ -35,15 +35,14 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 					<?php
 
 					// echo $this->Form->input('Pernikahan.a', array(
-          //liat jspernikahan fungsi #input_nama keyup;
-					echo $this->Form->input(null, array(
-								'options' => array('-', 'Belum Terdefinisi'),
+          			//liat jspernikahan fungsi #input_nama keyup;
+					echo $this->Form->input('Pernikahan.kode_stasi', array(
 								'label' => false,
 								'id'=>'kdstasi',
 								'placeholder'=>'Kode Stasi',
 								'div'=> array('class'=>'col-md-4'),
 								'class'=>"form-control input-xlarge",
-								'name'=>'kode_stasi'
+								"min" => "0"
 							)
 						 );
 					?>
@@ -53,13 +52,13 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>Kode LM </label></div>
 					<?php
-					echo $this->Form->input('Pernikahan.b', array(
+					echo $this->Form->input('Pernikahan.kode_LM', array(
 								'label' => false,
 								'id'=>'kdLM',
 								'placeholder'=>'Kode LM',
 								'div'=> array('class'=>'col-md-4'),
 								'class'=>"form-control input-xlarge",
-								'name'=>'kode_LM'
+								"min" => "0"
 							)
 						 );
 					?>
@@ -69,13 +68,13 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>No</label></div>
 					<?php
-					echo $this->Form->input('Pernikahan.c', array(
+					echo $this->Form->input('Pernikahan.no', array(
 								'label' => false,
 								'id'=>'noLM',
 								'placeholder'=>'No',
 								'div'=> array('class'=>'col-md-4'),
 								'class'=>"form-control input-xlarge",
-								'name'=>'no'
+								"min" => "0"
 							)
 						 );
 					?>
@@ -90,8 +89,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 								'id'=>'halaman',
 								'div'=> array('class'=>'col-md-4'),
 								'class'=>"form-control input-xlarge",
-								'name'=>'halaman',
-								'placeholder'=>'Halaman Buku'
+								'placeholder'=>'Halaman Buku',
+								"min" => "0"
 							)
 						 );
 					?>
@@ -100,19 +99,30 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<hr>
 				<div class="row">
 					<div class="col-md-2 control-label"><label>Nama Umat </label></div>
+
+					<div class="col-md-4">
+						<input name="input_umat" id="input_nama" placeholder="Nama Umat" class="form-control input-xlarge ui-autocomplete-input" type="text" autocomplete="off">
+					</div>
+<!-- 
+					<div class="col-md-4">
+						<input name="data[Pernikahan][umat_id]" id="form_id_umat" placeholder="ID Umat" class="form-control input-xlarge ui-autocomplete-input" type="text" autocomplete="off">
+					</div> -->
+
 					<?php
 
-					echo $this->Form->input(null,array(
-						'name'=>'input_umat',
-						'label'=>false,
-						'id'=>'input_nama',
-						'placeholder'=>'Nama Umat',
-						'class'=>"form-control  input-xlarge",
-						'div'=>array('class'=>'col-md-4')
+					// echo $this->Form->input('Pernikahan.waton',array(
+					// 	'name'=>'input_umat',
+					// 	'label'=> false,
+					// 	'id'=>'input_nama',
+					// 	'placeholder'=>'Nama Umat',
+					// 	'class'=>"form-control input-xlarge",
+					// 	'div'=>array('class'=>'col-md-4')
+					// 	));
+
+
+					echo $this->Form->input('Pernikahan.umat_id', array(
+						'id'=>'form_id_umat','type'=>'hidden'
 						));
-
-
-					echo $this->Form->input('Pernikahan.umat_id', array('id'=>'form_id_umat','type'=>'hidden'));
 					?>
 					<div class="col-md-2">
 						<i class="fa fa-times fa-2x" style="color:red" id="cek_umat" cek="false"></i>
@@ -124,7 +134,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 						<div class="col-md-6">
 							<div class="col-md-1"></div>
 						<div class="col-md-10">
-							<h4 >Silahkan pilih Daerah pasangan Umat :</h4>
+							<h4 >Silahkan pilih daerah pasangan Umat :</h4>
 						</div>
 						</div>
 					</div>
@@ -143,8 +153,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 						<label>Nama Pasangan</label>
 					</div>
 					<?php
-
-
+					
+					
 					echo $this->Form->input(null, array('name'=>'input_pasangan', 'label'=>false,'type'=>'text', 'id'=>'lingkungan_nama', 'placeholder'=>"Nama Lengkap", 'class'=>"form-control  input-xlarge", 'div'=>array('class'=>'col-md-4'),'gender'=>'','id_umat'=>'','type_find'=>''));
 					echo $this->Form->input('Pernikahan.pasangan_id', array('id'=>'form_id_pasangan','type'=>'hidden'));
 					?>
@@ -268,9 +278,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 
 
 				<?php
-
 					$userRole = $this->Session->read('Auth.User.user_level');
-
 
 					if ($userRole == 2){ ?>
 						<div class="form-group">
@@ -293,52 +301,10 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<?php
 					$this->Form->end();
 				?>
-				<?php
-				$userRole =$this->Session->read('Auth.User.user_level');
-			
-
-				if ($userRole == 2){ ?>
-					<div class="form-group">
-					<?php
-
-
-
-					echo $this->Form->label('Pernikahan.statuspernikahan', 'Status Pernikahan', 'col-md-2 control-label');
-					echo $this->Form->input('statuspernikahan', array(
-								'options' => $statusPer,
-								'label' => false,
-								'id'=>'stsper',
-								'div'=>array('class'=>'col-md-4'),
-								'class'=>"form-control input-xlarge"
-							)
-						 );
-					?>
-					<label style="color:red">*</label>
-				</div>
-
-				<?php }?>
-
-
-
-
-
-
-
-
-				<p>&nbsp;</p>
-
-
-
-<?php
-			  $this->Form->end();
-			  ?>
 				<div class="form-group">
 					<label class="col-md-2"></label>
 					<div class="col-md-10">
 					  <button id="buttonaddper" name="button1id" class="btn btn-success" >Simpan</button>
-					  <button id="buttonbtlper" name="buttonbtlper" class="btn btn-danger">Batal</button>
-					</div>
-				</div>
 					  <button id="buttonbtlper" name="buttonbtlper" class="btn btn-danger">Batal</button>
 					</div>
 				</div>

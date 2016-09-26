@@ -1,13 +1,13 @@
 <?php
-	$this->assign('title', 'Halaman Manajemen Pernikahan');
+	$this->assign('title', 'Halaman Manajemen Pengurapan');
 ?>
-<h3><i class="fa fa-angle-right"></i> <i class="fa fa-users"></i> Manajemen Data Pernikahan </h3>
+<h3><i class="fa fa-angle-right"></i> <i class="fa fa-users"></i> Manajemen Data Pengurapan </h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="row">
 			<div class="col-lg-6">
 
-			  <form action="<?php echo $this->Html->url(array('controller'=>'pernikahans', 'action'=>'index')); ?>" method="post" id="frmCari">
+			  <form action="<?php echo $this->Html->url(array('controller'=>'pengurapans', 'action'=>'index')); ?>" method="post" id="frmCari">
 				  <div class="input-group">
 					<input type="text" class="form-control" name="data[cari]" placeholder="Cari nama umat ...">
 					<span class="input-group-btn">
@@ -23,8 +23,8 @@
 							$userRole =$this->Session->read('Auth.User.user_level');
 					  		if ($userRole == 2) {
 					  			# code...
-			  			?>
-				  			<button class="btn btn-default btn-success" type="button" id="addpernikahan"><span class="fa fa-user-plus"></span> Tambah Data Pernikahan</button>
+			  				?>
+				  			<button class="btn btn-default btn-success" type="button" id="addpengurapan"><span class="fa fa-user-plus"></span> Tambah Data Pengurapan</button>
 				  		
 						<?php 
 							}
@@ -47,17 +47,12 @@
 						<thead class="text-center">
 							<tr>
 					 			<td></td>
-					 			<td>Kode Stasi</td>
-					 			<td>Kode LM</td>
-					 			<td>No</td>
-					 			<td>Halaman</td>
-					 			<td>Nama</td>
-					 			<td>Nama Pasangan</td>
-					 			<td>Tempat Pernikahan</td>
-					 			<td>Tanggal Pernikahan</td>
-					 			<td>Romo</td>
-					 			<td>Status</td>
-					 			<td>Libermat</td>
+					 			<td>Nama Penerima</td>
+					 			<td>Usia</td>
+					 			<td>Tempat</td>
+					 			<td>Tanggal Penerimaan</td>
+					 			<td>Pelayan Sakramen</td>
+					 			<td>Keterangan</td>
 	 						</tr>
 						</thead>
 						<?php 
@@ -67,81 +62,48 @@
 						<?php
 							$i=0;
 							foreach($datas as $data) {
-								$idPas = $data['Pernikahan']['pasangan_id'];
-						
-								 
-								$idStatus = $data['Umat']['id_statuspernikahan'];
-								/*$idPria = $data['Pernikahan']['paroki_pria'];
-					 			$idWanita = $data['Pernikahan']['paroki_wanita'];*/	
-					 		
 						?>
 
 							<tr>
 								<td>
 									<?php 
 										if($userRole <> 1){ 
-									?>										
+										?>										
 										</button> 
 										<a href="<?php 
 
-											echo $this->Html->url(array('controller'=>'pernikahans','action'=>'edit', $data['Pernikahan']['id']));
+											echo $this->Html->url(array('controller'=>'pengurapans','action'=>'edit', $data['Pengurapan']['id']));
 
 
 											?>"<span class="fa fa-pencil" aria-hidden="true"></span>
 										</a>
 
-									<?php 
+										<?php 
 										} 
-									?>
+										?>
 										<a href="<?php 
 
-										echo $this->Html->url(array('controller'=>'pernikahans','action'=>'view', $data['Pernikahan']['id']));
+										echo $this->Html->url(array('controller'=>'pengurapans','action'=>'view', $data['Pengurapan']['id']));
 
 										?>"<span class="fa fa-eye" aria-hidden="true"></span></a>
 								</td>
 								<td>	
-									<?php echo $data['Pernikahan']['kode_stasi']; ?>		
+									<?php echo $data['Pengurapan']['nama_penerima']; ?>		
 								</td>
 								<td>	
-									<?php echo $data['Pernikahan']['kode_LM']; ?>		
+									<?php echo $data['Pengurapan']['usia']; ?>		
 								</td>
 								<td>	
-									<?php echo $data['Pernikahan']['no']; ?>		
+									<?php echo $data['Pengurapan']['tempat']; ?>		
 								</td>
 								<td>	
-									<?php echo $data['Pernikahan']['halaman']; ?>		
+									<?php echo $data['Pengurapan']['tanggal_penerimaan']; ?>		
 								</td>
 								<td>	
-									<?php echo $data['Umat']['nama']; ?>		
-								</td>
-								<td> 	
-									<?php 
-										if($idPas == 0) echo $data['Pernikahan']['nm_pasangan'];  
-										else echo $namaUmat[$data['Pernikahan']['pasangan_id']]; 
-									?>
+									<?php echo $data['Pengurapan']['pelayan_sakramen']; ?>		
 								</td>
 								<td>	
-									<?php echo $data['Pernikahan']['tmppernikahan']; ?>
-								</td>
-								<td>	
-									<?php echo date('d-m-Y',strtotime($data['Pernikahan']['tglpernikahan'])) ?>
-								</td>
-								<td>	
-									<?php echo $data['Pernikahan']['romopernikahan']; ?>
-								</td>
-								<td>	
-									<?php
-										if ($idStatus == 0) {
-											echo $statusPer[1];
-										}
-										else{
-											echo $statusPer[$idStatus]; 
-										}
-									?>
-								</td>
-
-								<td>	
-									<?php echo $data['Pernikahan']['libermat']; ?>
+									<?php echo $data['Pengurapan']['keterangan']; ?>		
 								</td>
 							</tr>
 						<?php 	
