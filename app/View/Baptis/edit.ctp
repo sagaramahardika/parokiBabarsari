@@ -32,11 +32,10 @@ $this->assign('title', 'Halaman Status Baptis');
 
           <div class="form-group">
   					<?php
-  					echo $this->Form->label('Baptis.stasi_baptis','Kode Stasi', 'col-md-2 control-label');
+  					echo $this->Form->label('Baptis.liberbap','Liberbap', 'col-md-2 control-label');
   					echo $this->Form->input('Baptis.liberbap',
   						array(
   							'label'			=> false,
-  							'type'    		=> 'number',
   							'value'			=> $this->request->data['Baptis']['liberbap'],
   							'placeholder'	=> "Liberbap",
   							'class'			=> "form-control input-xlarge",
@@ -68,7 +67,7 @@ $this->assign('title', 'Halaman Status Baptis');
     							'id' 			=> 'nama_umat',
     							'placeholder'	=> "Nama Diri",
     							'value'			=> $this->request->data['Umat']['nama'],
-                  //'disabled'  => 'disabled',
+                  'disabled'  => 'disabled',
     							'class'			=> "form-control input-xlarge",
     							'div'			=> array('class' => 'col-md-4')));
     					?>

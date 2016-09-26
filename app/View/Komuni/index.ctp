@@ -44,22 +44,26 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 					<table class="table table-bordered table-striped table-condensed ">
 						<thead class="text-center">
 						<tr>
-				 			  <td></td>
+				 			  <!--<td></td>
 					 			<td>Nama</td>
                 <td>Kode Stasi</td>
                 <td>Liber</td>
                 <td>No Urut</td>
 					 			<td>Tempat Komuni</td>
 					 			<td>Tanggal Komuni</td>
-					 			<!--<td>Status Komuni</td>-->
+					 			<td>Status Komuni</td>-->
 
-                <!--<td></td>
+                <td></td>
                 <td>No</td>
                 <td>Nama Penerima</td>
-                <td>Tempat dan Tanggal Lahir</td>
-                <td>Tempat dan Tanggal Baptis</td>
-                <td>Nama Orang tua</td>
-                <td>Tempat dan Tanggal Komuni Pertama</td>-->
+                <td>Tempat Lahir</td>
+                <td>Tanggal Lahir</td>
+                <td>Tempat Baptis</td>
+                <td>Tanggal Baptis</td>
+                <td>Ayah</td>
+                <td>Ibu</td>
+                <td>Tempat Komuni Pertama</td>
+                <td>Tanggal Komuni Pertama</td>
 
  						</tr>
 						</thead>
@@ -71,37 +75,24 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 						?>
               <tr>
               <td>
-              <?php if($userRole <> 1){ ?>
-              <a href="<?php
-                echo $this->Html->url(array('controller'=>'komuni','action'=>'edit', $data['Komuni']['id']));
-              ?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
- 					    <?php } ?>
-                <?php echo $this->Form->create('Komuni', array('url' => '/komuni/delete','action'=>'delete','class'=>'form-horizontal', 'role'=>'form',)); ?>
-                <button type="submit"><span class="fa fa-trash" aria-hidden="true"></span></button>
-                <?php echo $this->Form->input('Komuni.id', array('type' => 'hidden', 'id' => 'idKomuni', 'value' => $data['Komuni']['id'])); ?>
-                <?php echo $this->Form->end(); ?>
+                <a href="<?php
+                  echo $this->Html->url(array('controller'=>'komuni','action'=>'edit', $data['Komuni']['id']));
+                ?>"
+                  <button class="btnedit" idparam="<?php echo $data['Baptis']['id'] ?>">
+                    <i class="fa fa-pencil"></i>
+                  </button></td>
+                </a>
               </td>
+              <td> <?php echo $data['Komuni']['id']; ?></td>
        				<td>	<?php echo ($data['Komuni']['id_umat'] == 0) ? $data['Komuni']['nama'] : $data['Umat']['nama']; ?></td>
-       				<td>	<?php echo $data['Komuni']['kode_stasi']; ?></td>
-              <td>	<?php echo $data['Komuni']['id_liber']; ?></td>
-              <td>	<?php echo $data['Komuni']['no_urut']; ?></td>
-              <td>	<?php echo $data['Komuni']['tempat']; ?></td>
-       				<td>	<?php if ($data['Komuni']['tanggal'] <> '0000-00-00') {
-       					# code...
-       					echo date('d-m-Y',strtotime($data['Komuni']['tanggal']));
-       				}  ?></td>
-       				<!--<td class="text-center">	<?php
-       				/*$status = $data['Umat']['stskomuni'];
-       				if ($status == 1) {
-       					echo '<i style="color:green" class="fa fa-check"></i>';
-       					# code...
-       				}elseif ($status == 0){
-       					echo '<i style="color:red" class="fa fa-times"></i>';
-       				}else{
-       					echo '<i style="color:blue" class="fa fa-question"></i>';
-       				}
- 				      */?></td>
-            -->
+              <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tempat_lahir'];}else{echo $data['Umat']['tmplahir'];} ?></td>
+              <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tanggal_lahir'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
+              <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tempat_baptis'];}else{echo $data['Baptis']['tempat'];} ?></td>
+              <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tanggal_baptis'];}else{echo $data['Baptis']['tanggal'];} ?></td>
+              <td>Ayah</td>
+              <td>Ibu</td>
+              <td><?php if($data['Komuni']['tempat']){ echo $data['Komuni']['tempat'];}else{ echo "-"; ?></td>
+              <td><?php if($data['Komuni']['tanggal']){ echo $data['Komuni']['tanggal'];}else{ echo "-";} ?></td>
 						</tr>
 
 						<?php }

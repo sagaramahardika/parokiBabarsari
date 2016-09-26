@@ -222,7 +222,7 @@ class BaptisController extends AppController{
 			return $this->redirect(array('action' => 'edit'));
 		}
 		else {
-			$baptis = $this->Baptis->read(null, $id);
+			$this->request->data = $this->Baptis->read(null, $id);
 			unset($this->request->data['Umat']['password']);
 		}
 	}
@@ -241,7 +241,7 @@ class BaptisController extends AppController{
 			return $this->redirect(array('action' => 'editBaptisAnak'));
 		}
 		else {
-			$baptis = $this->BaptisAnak->read(null, $id);
+			$this->request->data = $this->BaptisAnak->read(null, $id);
 			unset($this->request->data['Umat']['password']);
 		}
 	}
@@ -260,7 +260,7 @@ class BaptisController extends AppController{
 			return $this->redirect(array('action' => 'editBaptisDewasa'));
 		}
 		else {
-			$baptis = $this->BaptisDewasa->read(null, $id);
+			$this->request->data = $this->BaptisDewasa->read(null, $id);
 			unset($this->request->data['Umat']['password']);
 		}
 	}
@@ -279,7 +279,7 @@ class BaptisController extends AppController{
 			return $this->redirect(array('action' => 'editBaptisDarurat'));
 		}
 		else {
-			$baptis = $this->BaptisDarurat->read(null, $id);
+			$this->request->data = $this->BaptisDarurat->read(null, $id);
 			unset($this->request->data['Umat']['password']);
 		}
 	}
