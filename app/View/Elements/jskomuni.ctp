@@ -1,5 +1,6 @@
 <?php
 if (strtolower($ctrl) === 'komuni') {
+  /*
  ?>
 
  $("#nama_umat").mouseout(function(){
@@ -164,5 +165,5 @@ $('#finduserbtn').click(function(e){
 
 }
 
-
+*/
  ?>
