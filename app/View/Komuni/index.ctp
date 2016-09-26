@@ -73,29 +73,28 @@ $this->assign('title', 'Halaman Manajemen Komuni');
             //print_r($datas);
 						foreach($datas as $data) {
 						?>
-              <tr>
-              <td>
-                <a href="<?php
-                  echo $this->Html->url(array('controller'=>'komuni','action'=>'edit', $data['Komuni']['id']));
-                ?>"
-                  <button class="btnedit" idparam="<?php echo $data['Baptis']['id'] ?>">
-                    <i class="fa fa-pencil"></i>
-                  </button></td>
-                </a>
-              </td>
-              <td> <?php echo $data['Komuni']['id']; ?></td>
-       				<td>	<?php echo ($data['Komuni']['id_umat'] == 0) ? $data['Komuni']['nama'] : $data['Umat']['nama']; ?></td>
-              <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tempat_lahir'];}else{echo $data['Umat']['tmplahir'];} ?></td>
-              <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tanggal_lahir'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
-              <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tempat_baptis'];}else{echo $data['Baptis']['tempat'];} ?></td>
-              <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tanggal_baptis'];}else{echo $data['Baptis']['tanggal'];} ?></td>
-              <td>Ayah</td>
-              <td>Ibu</td>
-              <td><?php if($data['Komuni']['tempat']){ echo $data['Komuni']['tempat'];}else{ echo "-"; ?></td>
-              <td><?php if($data['Komuni']['tanggal']){ echo $data['Komuni']['tanggal'];}else{ echo "-";} ?></td>
-						</tr>
+            <tr>
+            <td>
+              <a href="<?php echo $this->Html->url(array('controller'=>'komuni','action'=>'edit', $data['Komuni']['id']));?>">
+                <button class="btnedit" idparam="<?php echo $data['Baptis']['id']; ?>">
+                  <i class="fa fa-pencil"></i>
+                </button>
+              </a>
+            </td>
+            <td> <?php echo $data['Komuni']['id']; ?></td>
+            <td>	<?php echo ($data['Komuni']['id_umat'] == 0) ? $data['Komuni']['nama'] : $data['Umat']['nama']; ?></td>
+            <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tempat_lahir'];}else{echo $data['Umat']['tmplahir'];} ?></td>
+            <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tanggal_lahir'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
+            <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tempat_baptis'];}else{echo $data['Baptis']['tempat'];} ?></td>
+            <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tanggal_baptis'];}else{echo $data['Baptis']['tanggal'];} ?></td>
+            <td>Ayah</td>
+            <td>Ibu</td>
+            <td><?php if($data['Komuni']['tempat']){ echo $data['Komuni']['tempat'];}else{ echo "-"; }?></td>
+            <td><?php if($data['Komuni']['tanggal']){ echo $data['Komuni']['tanggal'];}else{ echo "-";} ?></td>
+          </tr>
 
-						<?php }
+						<?php
+            }
 
 						?>
 						</tbody>

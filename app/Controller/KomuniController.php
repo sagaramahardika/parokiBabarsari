@@ -4,7 +4,7 @@ App::uses('AuthComponent', 'Controller/Component');
 
 class KomuniController extends AppController{
 	public $components = array('Paginator', 'Session', 'Cookie', 'Flash', 'ImageCropResize.Image');
-	public $uses = array('Umat','Leveluser','Kk', 'Komuni');
+	public $uses = array('Umat','Leveluser','Kk', 'Komuni', 'Baptis');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 	public $name = 'Komuni';
