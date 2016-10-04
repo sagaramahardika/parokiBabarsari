@@ -68,21 +68,6 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 
 			<div class="form-group">
 				<?php
-					echo $this->Form->label('Komuni.nomor_urut','Nomor Urut', 'col-md-2 control-label');
-					echo $this->Form->input('Komuni.no_urut',
-						array(
-							'label'			   => false,
-							'type'    		 => 'number',
-							'id' 			     => 'nomorUrut',
-							'placeholder'	 => "Nomor Urut",
-              'required',
-							'class'			   => "form-control input-xlarge",
-							'div'			     => array('class' => 'col-md-4')));
-				?>
-			</div>
-
-			<div class="form-group">
-				<?php
 					echo $this->Form->label('Umat.nama', 'Nama ', 'col-md-2 control-label');
 					echo $this->Form->input('Komuni.nama',
 						array(

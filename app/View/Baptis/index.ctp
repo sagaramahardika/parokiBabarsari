@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', 'Halaman Manajemen Komuni');
+$this->assign('title', 'Halaman Manajemen Baptis');
 ?>
 <h3><i class="fa fa-angle-right"></i> <i class="fa fa-users"></i> Manajemen Data Baptis</h3>
 <div class="row mt">
@@ -63,6 +63,7 @@ $this->assign('title', 'Halaman Manajemen Komuni');
               <td>Ibu</td>
               <td>Wali Baptis</td>
               <td>Romo Baptis</td>
+              <td>Jenis Baptis</td>
  						</tr>
 						</thead>
 						<tbody>
@@ -76,6 +77,8 @@ $this->assign('title', 'Halaman Manajemen Komuni');
                     $action = 'editBaptisDewasa';
                   }else if($data['Baptis']['jenis_baptis'] == 'DARURAT'){
                     $action = 'editBaptisDarurat';
+                  }else if($data['Baptis']['jenis_baptis'] == 'DITERIMA'){
+                    $action = 'editBaptisDiterima';
                   }else{
                     $action = 'edit';
                   }
@@ -100,6 +103,7 @@ $this->assign('title', 'Halaman Manajemen Komuni');
                 <td><?php if($data['Baptis']['id_umat'] == 0){ echo $data['Baptis']['ibu'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
                 <td><?php if($data['Baptis']['wali_baptis']){ echo $data['Baptis']['wali_baptis'];}else{ echo "-";} ?></td>
                 <td><?php if($data['Baptis']['romo']){ echo $data['Baptis']['romo'];}else{ echo "-";} ?></td>
+                <td><?php if($data['Baptis']['jenis_baptis']){ echo $data['Baptis']['jenis_baptis'];}else{ echo "-";} ?></td>
                 <?php /*
 								<td><?php echo $data['Umat']['nama']; ?></td>
 								<td><?php echo $data['Baptis']['nama_baptis'] ?></td>

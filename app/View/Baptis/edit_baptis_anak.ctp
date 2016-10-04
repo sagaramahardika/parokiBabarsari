@@ -1,12 +1,12 @@
 <?php
 $this->assign('title', 'Halaman Status Baptis');
 ?>
-<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
+<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Baptis', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Form Pendaftaran Akun Pengguna</h3>
+				<h3 class="panel-title">Form Edit Data Baptis</h3>
 			</div>
 
 			<div class="panel-body">

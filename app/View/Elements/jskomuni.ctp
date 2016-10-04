@@ -58,7 +58,7 @@ if (strtolower($ctrl) === 'komuni') {
           $('#cek_umat').css('color','red');
           $('#cek_umat').attr('cek',false);
           $('#form_id_umat').val("");
-          */
+
           $('#jnskel').prop('disabled', false);
           $('#tempatLahir').prop('disabled', false);
           $('#tglLahir').prop('disabled', false);
@@ -79,7 +79,7 @@ if (strtolower($ctrl) === 'komuni') {
           $('#form_id_umat').val("");
        }
    });
- });
+ });*/
 
  $("#nama_umat").autocomplete({
      source: function( request, response )

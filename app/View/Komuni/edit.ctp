@@ -81,22 +81,6 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
 
   			<div class="form-group">
   				<?php
-  					echo $this->Form->label('Komuni.nomor_urut','Nomor Urut', 'col-md-2 control-label');
-  					echo $this->Form->input('Komuni.no_urut',
-  						array(
-  							'label'			   => false,
-  							'type'    		 => 'number',
-  							'id' 			     => 'nomorUrut',
-  							'placeholder'	 => "Nomor Urut",
-                'value'          => $this->request->data['Komuni']['no_urut'],
-                'required',
-  							'class'			   => "form-control input-xlarge",
-  							'div'			     => array('class' => 'col-md-4')));
-  				?>
-  			</div>
-
-  			<div class="form-group">
-  				<?php
   					echo $this->Form->label('Umat.nama', 'Nama ', 'col-md-2 control-label');
   					echo $this->Form->input('Komuni.nama',
   						array(

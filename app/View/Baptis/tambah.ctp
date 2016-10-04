@@ -1,12 +1,12 @@
 <?php
 $this->assign('title', 'Halaman Tambah Baptis');
 ?>
-<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
+<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Baptis', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Form Pendaftaran Akun Pengguna</h3>
+				<h3 class="panel-title">Form Pendaftaran Baptis Diterima</h3>
 			</div>
 			<div class="panel-body">
 
@@ -34,34 +34,18 @@ $this->assign('title', 'Halaman Tambah Baptis');
 					?>
 				</div>
 
-				<div class="form-group">
-					<?php
-					echo $this->Form->label('Baptis.kode_buku_label','Kode Buku', 'col-md-2 control-label');
-					echo $this->Form->input('kode_buku',
-						array(
-							'label'			=> false,
-							'id' 			=> 'kodeBuku',
-							'placeholder'	=> "Kode Buku",
-							'class'			=> "form-control input-xlarge",
-							'div'			=> array('class' => 'col-md-4')));
-
-					echo $this->Form->input('halaman_buku',
-						array(
-							'label'			=> false,
-							'id' 			=> 'halamanBuku',
-							'placeholder'	=> "Halaman Buku",
-							'class'			=> "form-control input-xlarge",
-							'div'			=> array('class' => 'col-md-2')));
-
-					echo $this->Form->input('nomor_buku',
-						array(
-							'label'			=> false,
-							'id' 			=> 'nomerBuku',
-							'placeholder'	=> "Nomor Buku",
-							'class'			=> "form-control input-xlarge",
-							'div'			=> array('class' => 'col-md-2')));
-					?>
-				</div>
+        <div class="form-group">
+          <?php
+          echo $this->Form->label('Baptis.liberbap','Liberbap', 'col-md-2 control-label');
+          echo $this->Form->input('Baptis.liberbap',
+            array(
+              'label'			=> false,
+              'id' 			=> 'liberbap',
+              'placeholder'	=> "Liberbap",
+              'class'			=> "form-control input-xlarge",
+              'div'			=> array('class' => 'col-md-4')));
+          ?>
+        </div>
 
 				<div class="form-group">
 					<?php
@@ -103,7 +87,6 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'placeholder'	=> "Jenis Kelamin",
 							//'value'			=> $this->Session->read('Auth.User.nama'),
 							'type'			=> 'char',
-							'disabled'		=> 'disabled',
 							'class'			=> "form-control input-xlarge",
 							'div'			=> array('class' => 'col-md-4')));
 					?>
@@ -118,7 +101,6 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'id' 			    => 'tempatLahir',
 							'placeholder'	=> "Tempat Lahir",
 							//'value'			=> $this->Session->read('Auth.User.nama'),
-							'disabled'		=> 'disabled',
 							'class'			  => "form-control input-xlarge",
 							'div'			    => array('class' => 'col-md-4')));
 
@@ -128,7 +110,6 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'type'    		=> 'datepicker',
 							'id'          => 'tglLahir',
 							//'value'			=> $this->Session->read('Auth.User.nama'),
-							'disabled'		=> 'disabled',
 							'class'			  => "form-control input-xlarge",
 							'div'			    => array('class' => 'col-md-6',
 							'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0)));
@@ -145,7 +126,6 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'id' 			=> 'namaAyah',
 							'placeholder'	=> "Nama Ayah",
 							//'value'			=> $this->Session->read('Auth.User.nama'),
-							'disabled'		=> 'disabled',
 							'class'			=> "form-control input-xlarge",
 							'div'			=> array('class' => 'col-md-4')));
 					?>
@@ -160,7 +140,6 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'id' 			=> 'namaIbu',
 							'placeholder'	=> "Nama Ibu",
 							//'value'			=> $this->Session->read('Auth.User.nama'),
-							'disabled'		=> 'disabled',
 							'class'			=> "form-control input-xlarge",
 							'div'			=> array('class' => 'col-md-4')));
 					?>
@@ -174,12 +153,13 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'label'			=> false,
 							'id' 			=> 'catatan',
 							'placeholder'	=> "Catatan",
+              'type'        => 'textarea',
 							'class'			=> "form-control input-xlarge",
 							'div'			=> array('class' => 'col-md-4')));
 					?>
 				</div>
 
-				<div class="form-group">
+			 <?php /*	<div class="form-group">
           <div class="input">
             <?php echo $this->Form->label('Baptis.jenis_baptis_label', 'Jenis Baptis', 'col-md-2 control-label'); ?>
             <div class="col-md-4">
@@ -192,7 +172,7 @@ $this->assign('title', 'Halaman Tambah Baptis');
               </select>
             </div>
           </div>
-				</div>
+				</div> */ ?>
 
 				<div class="form-group">
 					<?php

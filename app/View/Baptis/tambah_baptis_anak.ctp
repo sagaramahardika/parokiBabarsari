@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', 'Halaman Tambah Baptis Anak');
 ?>
-<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
+<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Baptis', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="panel panel-default">
@@ -49,30 +49,14 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
 
       <div class="form-group">
         <?php
-        echo $this->Form->label('Baptis.kode_buku_label','Kode Buku', 'col-md-2 control-label');
-        echo $this->Form->input('kode_buku',
+        echo $this->Form->label('Baptis.liberbap','Liberbap', 'col-md-2 control-label');
+        echo $this->Form->input('Baptis.liberbap',
           array(
             'label'			=> false,
-            'id' 			=> 'kodeBuku',
-            'placeholder'	=> "Kode Buku",
+            'id' 			=> 'liberbap',
+            'placeholder'	=> "Liberbap",
             'class'			=> "form-control input-xlarge",
             'div'			=> array('class' => 'col-md-4')));
-
-        echo $this->Form->input('halaman_buku',
-          array(
-            'label'			=> false,
-            'id' 			=> 'halamanBuku',
-            'placeholder'	=> "Halaman Buku",
-            'class'			=> "form-control input-xlarge",
-            'div'			=> array('class' => 'col-md-2')));
-
-        echo $this->Form->input('nomor_buku',
-          array(
-            'label'			=> false,
-            'id' 			=> 'nomerBuku',
-            'placeholder'	=> "Nomor Buku",
-            'class'			=> "form-control input-xlarge",
-            'div'			=> array('class' => 'col-md-2')));
         ?>
       </div>
 

@@ -109,7 +109,7 @@ else {
     <?php echo $this->Html->link('Tambah Jemaat', array('controller'=>'umats', 'action' => 'tambahjemaat')); ?>
   </li><?php } ?>
   <li <?php echo $tambahbaptis; ?>>
-    <?php echo $this->Html->link('Tambah Baptis Umum', array('controller'=>'baptis', 'action' => 'tambah')); ?>
+    <?php echo $this->Html->link('Tambah Baptis Diterima', array('controller'=>'baptis', 'action' => 'tambah')); ?>
   </li>
   <li <?php echo $tambahbaptis; ?>>
     <?php echo $this->Html->link('Tambah Baptis Anak', array('controller'=>'baptis', 'action' => 'tambahBaptisAnak')); ?>

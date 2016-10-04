@@ -47,7 +47,7 @@ class BaptisController extends AppController{
 		}
 	}
 
-	public function tambah(){
+	/*public function tambah(){
 		if($this->request->is('post')){
 			try{
 				$nama = $this->request->data['Umat']['nama'];
@@ -58,9 +58,7 @@ class BaptisController extends AppController{
 				//$this->request->data['Baptis']['sts_baptis'] = 1;
 
 				$this->Baptis->create();
-				$liberbap = "BUKU " . $this->request->data['Baptis']['kode_buku'] . ', HLM ' . $this->request->data['Baptis']['halaman_buku'] . ', NO ' . $this->request->data['Baptis']['nomor_buku'];
 
-				$this->request->data['Baptis']['liberbap'] = $liberbap;
 				$this->request->data['Baptis']['jenis_baptis'] = 'LAINNYA';
 				$this->request->data['Baptis']['sts_baptis'] = 1;
 				if($this->Baptis->save($this->request->data)){
@@ -74,14 +72,37 @@ class BaptisController extends AppController{
 			$results = $this->Statusbaptis->find('all', array('conditions' => array('Statusbaptis.status <> "Belum baptis" AND Statusbaptis.status <> "-"')));
 			$this->set('jenisdatas', $results);
 		}
+	}*/
+
+	public function tambah(){
+		if($this->request->is('post')){
+			try{
+				$this->Baptis->create();
+
+				$this->request->data['Baptis']['jenis_baptis'] = 'DITERIMA';
+				$this->request->data['Baptis']['sts_baptis'] = 1;
+				if($this->Baptis->save($this->request->data)){
+					$id = $this->Baptis->id;
+					$this->request->data['Bapti']['id_baptis'] = $id;
+					if($this->BaptisDarurat->save($this->request->data)){
+						$this->Flash->success(__("Sukses tambah data baptis"));
+						return $this->redirect(array('action' => 'tambah'));
+					}
+					return $this->redirect(array('action' => 'tambah'));
+				}
+			}catch(\Exception $e){
+					$this->Flash->error(__('data tidak dapat tersimpan. ' . $e->getMessage()));
+			}
+		}else{
+
+		}
 	}
 
 	public function tambahBaptisDarurat(){
 		if($this->request->is('post')){
 			try{
 				$this->Baptis->create();
-				$liberbap = "BUKU " . $this->request->data['Baptis']['kode_buku'] . ', HLM ' . $this->request->data['Baptis']['halaman_buku'] . ', NO ' . $this->request->data['Baptis']['nomor_buku'];
-				$this->request->data['Baptis']['liberbap'] = $liberbap;
+
 				$this->request->data['Baptis']['jenis_baptis'] = 'DARURAT';
 				$this->request->data['Baptis']['sts_baptis'] = 1;
 				if($this->Baptis->save($this->request->data)){
@@ -105,8 +126,7 @@ class BaptisController extends AppController{
 		if($this->request->is('post')){
 			try{
 				$this->Baptis->create();
-				$liberbap = "BUKU " . $this->request->data['Baptis']['kode_buku'] . ', HLM ' . $this->request->data['Baptis']['halaman_buku'] . ', NO ' . $this->request->data['Baptis']['nomor_buku'];
-				$this->request->data['Baptis']['liberbap'] = $liberbap;
+
 				$this->request->data['Baptis']['jenis_baptis'] = 'ANAK';
 				$this->request->data['Baptis']['sts_baptis'] = 1;
 				if($this->Baptis->save($this->request->data)){
@@ -130,8 +150,7 @@ class BaptisController extends AppController{
 		if($this->request->is('post')){
 			try{
 				$this->Baptis->create();
-				$liberbap = "BUKU " . $this->request->data['Baptis']['kode_buku'] . ', HLM ' . $this->request->data['Baptis']['halaman_buku'] . ', NO ' . $this->request->data['Baptis']['nomor_buku'];
-				$this->request->data['Baptis']['liberbap'] = $liberbap;
+
 				$this->request->data['Baptis']['jenis_baptis'] = 'DEWASA';
 				$this->request->data['Baptis']['sts_baptis'] = 1;
 				if($this->Baptis->save($this->request->data)){
@@ -242,6 +261,25 @@ class BaptisController extends AppController{
 		}
 		else {
 			$this->request->data = $this->BaptisAnak->read(null, $id);
+			unset($this->request->data['Umat']['password']);
+		}
+	}
+
+	public function editBaptisDiterima($id=null){
+		if ($this->request->is('post') || $this->request->is('put')) {
+			try {
+				if($this->Baptis->save($this->request->data)){
+					$this->Flash->success(__('Data Baptis telah berhasil diubah.'));
+				}else{
+					$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
+				}
+			} catch (PDOExeption $pdoe) {
+				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
+			}
+			return $this->redirect(array('action' => 'editBaptisDiterima'));
+		}
+		else {
+			$this->request->data = $this->Baptis->read(null, $id);
 			unset($this->request->data['Umat']['password']);
 		}
 	}
