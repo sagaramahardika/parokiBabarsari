@@ -47,6 +47,7 @@
 						<thead class="text-center">
 							<tr>
 					 			<td></td>
+					 			<td>Kode Stasi</td>
 					 			<td>Nama Penerima</td>
 					 			<td>Usia</td>
 					 			<td>Tempat</td>
@@ -86,6 +87,9 @@
 										echo $this->Html->url(array('controller'=>'pengurapans','action'=>'view', $data['Pengurapan']['id']));
 
 										?>"<span class="fa fa-eye" aria-hidden="true"></span></a>
+								</td>
+								<td>	
+									<?php echo $data['Pengurapan']['kode_stasi']; ?>		
 								</td>
 								<td>	
 									<?php echo $data['Pengurapan']['nama_penerima']; ?>		

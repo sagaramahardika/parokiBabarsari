@@ -37,7 +37,6 @@ $('#input_nama').keyup(function(){
            
     },
     error : function() {
-           alert('aaaax');
     }
    });
   
@@ -77,7 +76,6 @@ $('#lingkungan_nama').keyup(function(){
            
     },
     error : function() {
-           alert('aaaax');
     }
    });
   

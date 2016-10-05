@@ -29,6 +29,10 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pengurapan', 
 			<div class="panel-body">
 				<table  class="">
 					<tr>
+						<th>Kode Stasi</th>
+						<td>: <?php echo $this->request->data['Pengurapan']['kode_stasi'] ?></td>
+					</tr>
+					<tr>
 						<th>Nama Penerima</th>
 						<td>: <?php echo $this->request->data['Pengurapan']['nama_penerima'] ?></td>
 					</tr>

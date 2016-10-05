@@ -99,10 +99,6 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 						<th>Status Pernikahan 	</th>
 						<td>: <?php echo $status[$this->request->data['Umat']['id_statuspernikahan']] ?></td>
 					</tr>
-					<tr>
-						<th>Libermat 	</th>
-						<td>: <?php echo $this->request->data['Pernikahan']['libermat'] ?></td>
-					</tr>
 				</table>
 
 				</div>

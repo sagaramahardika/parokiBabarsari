@@ -42,7 +42,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 								'placeholder'=>'Kode Stasi',
 								'div'=> array('class'=>'col-md-4'),
 								'class'=>"form-control input-xlarge",
-								"min" => "0"
+								"min" => "0",
+								'value' => 07300
 							)
 						 );
 					?>
@@ -267,16 +268,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 					?>
 					<label style="color:red">*</label>
 				</div>
-
-			 	<div class="form-group">
-					<?php
-					echo $this->Form->label('Pernikahan.libermat', 'Libermat', 'col-md-2 control-label');
-					echo $this->Form->input('Pernikahan.libermat', array('label'=>false,  'class'=>"form-control ", 'div'=>array('class'=>'col-md-4'),'id'=>'libermatper', 'placeholder'=>"Libermat"));
-					?>
-					<label style="color:red">*</label>
-				</div>
-
-
+				
 				<?php
 					$userRole = $this->Session->read('Auth.User.user_level');
 

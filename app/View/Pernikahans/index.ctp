@@ -57,7 +57,6 @@
 					 			<td>Tanggal Pernikahan</td>
 					 			<td>Romo</td>
 					 			<td>Status</td>
-					 			<td>Libermat</td>
 	 						</tr>
 						</thead>
 						<?php 
@@ -138,10 +137,6 @@
 											echo $statusPer[$idStatus]; 
 										}
 									?>
-								</td>
-
-								<td>	
-									<?php echo $data['Pernikahan']['libermat']; ?>
 								</td>
 							</tr>
 						<?php 	

@@ -24,7 +24,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pengurapan', 
 			echo $this->Form->input('Pengurapan.id', array('type' => 'hidden', 'value'=> $this->request->data['Pengurapan']['id']));
 			
 			?>
-
+<!-- 
 				<div class="row">
 					<?php
 					
@@ -34,6 +34,27 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pengurapan', 
 					echo $this->Form->input('Pengurapan.id', array('id'=>'form_id_umat','type'=>'hidden'));
 					?>
 				</div>
+				 -->
+
+				<div class="form-group">
+					<div class="col-md-2 control-label"><label>Kode Stasi </label></div>
+					<?php
+
+					// echo $this->Form->input('Pernikahan.a', array(
+          			//liat jspernikahan fungsi #input_nama keyup;
+					echo $this->Form->input('Pengurapan.kode_stasi', array(
+								'label' => false,
+								'id'=>'kdstasi',
+								'placeholder'=>'Kode Stasi',
+								'div'=> array('class'=>'col-md-4'),
+								'class'=>"form-control input-xlarge",
+								"min" => "0"
+							)
+						 );
+					?>
+					<label style="color:red">*</label>
+				</div>
+
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>Nama Penerima </label></div>
 					<?php
@@ -42,7 +63,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pengurapan', 
           			//liat jsPengurapan fungsi #input_nama keyup;
 					echo $this->Form->input('Pengurapan.nama_penerima', array(
 								'label' => false,
-								'id'=>'nama_penerima',
+								'id'=>'input_nama',
 								'placeholder'=>'Nama Penerima Pengurapan',
 								'div'=> array('class'=>'col-md-4'),
 								'class'=>"form-control input-xlarge"
@@ -51,6 +72,13 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pengurapan', 
 					?>
 					<label style="color:red">*</label>
 				</div>
+
+				<?php 
+					echo $this->Form->input('Pengurapan.id_umat', array(
+						'id'=>'form_id_umat','type'=>'hidden'
+						));
+				?>
+
 
 				<div class="form-group">
 					<div class="col-md-2 control-label"><label>Usia</label></div>

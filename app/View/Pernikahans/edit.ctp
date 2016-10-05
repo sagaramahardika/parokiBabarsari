@@ -227,14 +227,6 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 					?>
 					<label style="color:red">*</label>
 				</div>
-			 <div class="form-group">
-					<?php
-					echo $this->Form->label('Pernikahan.libermat', 'Libermat', 'col-md-2 control-label');
-					echo $this->Form->input('Pernikahan.libermat', array('label'=>false, 'id'=>'libermateditper', 'class'=>"form-control ", 'div'=>array('class'=>'col-md-4')));
-					?>
-					<label style="color:red">*</label>
-				</div> 
-
 				
 				<?php 
 					$userRole =$this->Session->read('Auth.User.user_level');
