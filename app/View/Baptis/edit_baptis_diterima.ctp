@@ -119,19 +119,10 @@ $this->assign('title', 'Halaman Status Baptis');
   							//'disabled'		=> 'disabled',
   							'class'			  => "form-control input-xlarge",
   							'div'			    => array('class' => 'col-md-4')));
-
-  					echo $this->Form->input('tanggal_lahir',
-  						array(
-  							'label'			  => false,
-  							'type'    		=> 'datepicker',
-  							'id'          => 'tglLahir',
-  							'value'			=> $this->request->data['Baptis']['tanggal_lahir'],
-  							//'disabled'		=> 'disabled',
-  							'class'			  => "form-control input-xlarge",
-  							'div'			    => array('class' => 'col-md-6',
-  							'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0)));
-
   					?>
+            <div class="col-md-4">
+              <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+            </div>
   				</div>
 
   				<div class="form-group">
@@ -183,17 +174,10 @@ $this->assign('title', 'Halaman Status Baptis');
   				<div class="form-group">
   					<?php
   					echo $this->Form->label('Baptis.tanggal_baptis_label', 'Tanggal Baptis', 'col-md-2 control-label');
-  					echo $this->Form->input('Baptis.tanggal',
-  						array(
-  							'label'		  	=> false,
-  							'type'			  => "date",
-  							'id' 			    => 'tanggalBaptis',
-                'minYear'     => date('Y')-115,
-                'maxYear'     => date('Y')-0,
-  							'placeholder'	=> "Tanggal Baptis",
-  							'class'			  => "form-control input-xlarge",
-  							'div'			    => array('class' => 'col-md-4')));
   					?>
+            <div class="col-md-4">
+              <input type="text" name="data[Baptis][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+            </div>
   				</div>
 
   				<div class="form-group">

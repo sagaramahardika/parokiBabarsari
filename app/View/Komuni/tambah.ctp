@@ -8,6 +8,7 @@ $this->assign('title', 'Halaman Tambah Komuni');
 echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('action'=>'index'), array('escape'=>false)) . ' / ';
 
 ?>
+
 <i class="fa fa-pencil"></i> Tambah Data Komuni
 </h3>
 <div class="row mt">
@@ -112,19 +113,10 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 						//'disabled'		    => 'disabled',
 						'class'			      => "form-control input-xlarge",
 						'div'			        => array('class' => 'col-md-4')));
-
-				echo $this->Form->input('Komuni.tanggal_lahir',
-					array(
-						'label'			    => false,
-						'class'			    => "form-control ",
-						'div'			      => array('class'=>'col-md-6'),
-						//'value'			=> $this->Session->read('Auth.User.tanggal_lahir'),
-            'id'            => 'tglLahir',
-						//'disabled'		  => 'disabled',
-						'dateFormat'  	=> 'DMY',
-						'minYear' 	   	=> date('Y') - 115, 'maxYear' => date('Y') - 0
-					));
 				?>
+        <div class="col-md-4">
+          <input type="text" name="data[Komuni][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+        </div>
 			</div>
 
 			<div class="form-group">
@@ -140,18 +132,10 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 						//'disabled'		=> 'disabled',
 						'class'			  => "form-control input-xlarge",
 						'div'			    => array('class' => 'col-md-4')));
-
-				echo $this->Form->input('Komuni.tanggal_baptis',
-					array(
-						'label'			  => false,
-						'class'			  => "form-control ",
-						'div'		     	=> array('class'=>'col-md-6'),
-            'id' 			    => 'tglBaptis',
-						//'disabled'		=> 'disabled',
-						'dateFormat' 	=> 'DMY',
-						'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0
-					));
 				?>
+        <div class="col-md-4">
+          <input type="text" name="data[Komuni][tanggal_baptis]" id="tanggal_baptis" class="form-control datepicker" role="date" readonly="">
+        </div>
 			</div>
 
       <div class="form-group">
@@ -252,22 +236,14 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 				?>
 			</div>
 
+
 			<div class="form-group">
 				<?php
 				echo $this->Form->label('Umat.tglkomuni', 'Tanggal Komuni Pertama', 'col-md-2 control-label');
-				echo $this->Form->input('Komuni.tanggal',
-					array(
-						'label'			  => false,
-						'type'		    => 'date',
-						'class'			  => "form-control ",
-						'div'			    => array('class'=>'col-md-6'),
-            'required',
-						'dateFormat' 	=> 'DMY',
-						'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0
-					));
-
-				/*echo $this->Form->input('Umat.stskomuni', array('type' => 'hidden', 'value'=> 1));*/
 				?>
+        <div class="col-md-4">
+          <input type="text" name="data[Komuni][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+        </div>
 			</div>
 
 			<div class="form-group">
@@ -303,4 +279,5 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 		</div>
 	</div>
 </div>
+
 <!-- /.row -->

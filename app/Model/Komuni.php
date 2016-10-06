@@ -8,6 +8,11 @@ class Komuni extends AppModel {
 			'className' => 'Umat',
 			'foreignKey' => 'id_umat'
 		),
+		'Baptis' => array(
+			'className' => 'Baptis',
+			'foreignKey' => false,
+			'conditions' => array ( 'Baptis.id_umat = Komuni.id_umat' )
+		),
 	);
 
 }

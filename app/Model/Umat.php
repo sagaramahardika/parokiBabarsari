@@ -18,6 +18,10 @@ class Umat extends AppModel {
 				'className' => 'Komuni',
 				'foreignKey' => 'id_umat'
 				),
+			'Baptis' => array(
+				'className' => 'Baptis',
+				'foreignKey' => 'id_umat'
+				),
 		);
 
     public function getKodeUmat() {
