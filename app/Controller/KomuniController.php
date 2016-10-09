@@ -118,16 +118,8 @@ class KomuniController extends AppController{
 				$this->autoLayout = false;
 				$this->autoRender = false;
 				$results = $this->Umat->find('first', array(
-					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis'),
+					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis', 'Baptis.liberbap'),
 					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%' ),
-					'joins' 				=> array(
-	 						array(
-	 							'table'				=> 'baptises',
-	 							'type'				=> 'left',
-	 							'alias'				=> 'Baptis',
-	 							'conditions'	=> 'Baptis.id_umat = Umat.id'
-	 						),
-	 				),
 				));
 				$i = 0;
 				echo json_encode($results);
@@ -150,8 +142,7 @@ class KomuniController extends AppController{
 					$this->request->data['Komuni']['tanggal_lahir'] = null;
 					$this->request->data['Komuni']['tempat_baptis'] = null;
 					$this->request->data['Komuni']['tanggal_baptis'] = null;
-					$this->request->data['Komuni']['buku_baptis'] = null;
-					$this->request->data['Komuni']['no_buku'] = null;
+					$this->request->data['Komuni']['liberbap'] = null;
 					$this->request->data['Komuni']['jenis_kelamin'] = null;
 					$this->request->data['Komuni']['ayah'] = null;
 					$this->request->data['Komuni']['ibu'] = null;

@@ -128,7 +128,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   						'div'			        => array('class' => 'col-md-4')));
   				?>
           <div class="col-md-4">
-            <input type="text" name="data[Komuni][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Komuni][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" value=<?php echo $this->request->data['Komuni']['tanggal_lahir']; ?>>
           </div>
   			</div>
 
@@ -149,7 +149,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
 
   				?>
           <div class="col-md-4">
-            <input type="text" name="data[Komuni][tanggal_baptis]" id="tanggal_baptis" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Komuni][tanggal_baptis]" id="tanggal_baptis" class="form-control datepicker" role="date" value=<?php echo $this->request->data['Komuni']['tanggal_baptis']; ?>>
           </div>
   			</div>
 
@@ -161,22 +161,12 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   				<?php
   				echo $this->Form->label('Komuni.bukuBaptis', 'Buku Baptis', 'col-md-2 control-label');
 
-  				echo $this->Form->input('Komuni.buku_baptis',
+  				echo $this->Form->input('Komuni.liberbap',
   					array(
   						'label'			    => false,
-              'id' 			    => 'bukuBaptis',
+              'id' 			    => 'liberbap',
               //'disabled'		 => 'disabled',
   						'placeholder'	  => "Buku Baptis",
-              'required',
-  						'class'			    => "form-control input-xlarge",
-  						'div'			      => array('class'=>'col-md-4')));
-
-          echo $this->Form->input('Komuni.no_buku',
-  					array(
-  						'label'			    => false,
-              'id' 			    => 'noBukuBaptis',
-              //'disabled'		 => 'disabled',
-  						'placeholder'	  => "Nomor Buku",
               'required',
   						'class'			    => "form-control input-xlarge",
   						'div'			      => array('class'=>'col-md-4')));
@@ -264,7 +254,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   				/*echo $this->Form->input('Umat.stskomuni', array('type' => 'hidden', 'value'=> 1));*/
   				?>
           <div class="col-md-4">
-            <input type="text" name="data[Komuni][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Komuni][tanggal]" id="tanggal" class="form-control datepicker" role="date" value=<?php echo $this->request->data['Komuni']['tanggal']; ?>>
           </div>
   			</div>
 
@@ -277,6 +267,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   						'label'			    => false,
   						'placeholder'	  => "Tempat Komuni",
               'required',
+              'id'            => 'tempatKomuni',
   						'class'			    => "form-control input-xlarge",
   						'div'			      => array('class'=>'col-md-4')));
   				?>
