@@ -1,158 +1,10 @@
-<?php
-$urole = 'baptis';
-if (strtolower($ctrl) === 'baptis') {
-  /*sementara
- ?>
-$(document).ready(function() {
-	if (!document.getElementById('checkBaptis').checked)
-  {
-      $("#bapNama").prop('disabled', true);
-      $("#bapTanggalMonth").prop('disabled', true);
-      $("#bapTanggalDay").prop('disabled', true);
-      $("#bapTanggalYear").prop('disabled', true);
- 	  $("#bapTempat").prop('disabled', true);
-      $("#bapRomo").prop('disabled', true);
-  }
-});
-$('#checkBaptis').click(function(e){
-    if (document.getElementById('checkBaptis').checked)
-  {
-      $("#bapNama").prop('disabled', false);
-      $("#bapTanggalMonth").prop('disabled', false);
-      $("#bapTanggalDay").prop('disabled', false);
-      $("#bapTanggalYear").prop('disabled', false);
-      $("#bapTempat").prop('disabled', false);
-      $("#bapRomo").prop('disabled', false);
-  } else {
-      $("#bapNama").prop('disabled', true);
-      $("#bapTanggalMonth").prop('disabled', true);
-      $("#bapTanggalDay").prop('disabled', true);
-      $("#bapTanggalYear").prop('disabled', true);
- 	  $("#bapTempat").prop('disabled', true);
-      $("#bapRomo").prop('disabled', true);
-  }
-});
-$('.btnedit').click(function(e){
-    e.preventDefault();
-    var idparam = $(this).attr('idparam');
-    location.href="<?php echo $this->Html->url(array('controller'=>'baptis', 'action'=>'edit')) ?>/" + idparam;
-});
-
-$("#nama_umat").mouseout(function(){
-  event.preventDefault();
-  var term = $("#nama_umat").val();
-  console.log(term)
-  $.ajax({
-      url       : "<?php echo $this->Html->url(array('controller' => 'baptis', 'action' => 'findUmat')) ?>",
-      data      : { nama : term},
-      type      : "GET",
-      dataType  : "json",
-      success   : function(data)
-      {
-          console.log(data)
-          $('#idUmat').val(data.Umat.id);
-          $('#jnskel').val(data.Umat.jenis_kelamin);
-          $('#tempatLahir').val(data.Umat.tmplahir);
-          $('#tglLahir').val(data.Umat.tgl_lahir);
-          $('#cek_umat').addClass('fa fa-check fa-2x').removeClass('fa-times');
-          $('#cek_umat').css('color','green');
-          $('#cek_umat').attr('cek',true);
-      },
-      error: function(e){
-         console.log(e);
-         $('#jnskel').val('-');
-         $('#tempatLahir').val('-');
-         $('#tglLahir').val('-');
-         $('#cek_umat').addClass('fa fa-times fa-2x').removeClass('fa-check');
-         $('#cek_umat').css('color','red');
-         $('#cek_umat').attr('cek',false);
-         $('#form_id_umat').val("");
-      }
-  });
-});
-
-$("#nama_umat").autocomplete({
-    source: function( request, response )
-    {
-        $.ajax({
-            url       : "<?php echo $this->Html->url(array('controller' => 'baptis', 'action' => 'searchNama')) ?>",
-            data      : { nama : request.term},
-            type      : "GET",
-            dataType  : "json",
-            success   : function(data)
-            {
-                response( $.map(data, function ( item )
-                {
-                    return{
-                        value: item.nama,
-                    }
-                }));
-            }
-        });
-    },
-    minLength: 1,
-    autoFocuse: true,
-    type: 'json'
-});
-
-$("#tempatBaptis").autocomplete({
-    source: function( request, response )
-    {
-        $.ajax({
-            url       : "<?php echo $this->Html->url(array('controller' => 'baptis', 'action' => 'searchParoki')) ?>",
-            data      : { nama : request.term},
-            type      : "GET",
-            dataType  : "json",
-            success   : function(data)
-            {
-                response( $.map(data, function ( item )
-                {
-                    return{
-                        value: item.nama,
-                    }
-                }));
-            }
-        });
-    },
-    minLength: 1,
-    autoFocuse: true,
-    type: 'json'
-});
-
-$("#kotaBaptis").autocomplete({
-    source: function( request, response )
-    {
-        $.ajax({
-            url       : "<?php echo $this->Html->url(array('controller' => 'baptis', 'action' => 'searchKotaParoki')) ?>",
-            data      : { nama : request.term, paroki: $("#tempatBaptis").val()},
-            type      : "GET",
-            dataType  : "json",
-            success   : function(data)
-            {
-                response( $.map(data, function ( item )
-                {
-                    return{
-                        value: item.nama,
-                    }
-                }));
-            }
-        });
-    },
-    minLength: 1,
-    autoFocuse: true,
-    type: 'json'
-});
-
-<?php
-*/}
-
 $(document).ready(function() {
 
   $("#nama_umat").autocomplete({
       source: function( request, response )
       {
           $.ajax({
-              url       : "<?php echo $this->Html->url(array('controller' => 'komuni', 'action' => 'searchNama')) ?>",
+              url       : "<?php echo $this->Html->url(array('controller' => 'Baptis', 'action' => 'searchNama')) ?>",
               data      : { nama : request.term},
               type      : "GET",
               dataType  : "json",
@@ -163,11 +15,7 @@ $(document).ready(function() {
                   $('#jnskel').prop('disabled', false);
                   $('#tempatLahir').prop('disabled', false);
                   $('#tanggal_lahir').prop('disabled', false);
-                  $('#liberbap').prop('disabled', false);
                   $('#tglLahir').prop('disabled', false);
-                  $('#tempatBaptis').prop('disabled', false);
-                  $('#tanggal_baptis').prop('disabled', false);
-                  $('#namaBaptis').prop('disabled', false);
                   $('#namaAyah').prop('disabled', false);
                   $('#namaIbu').prop('disabled', false);
                   $('#alamatOrtu').prop('disabled', false);
@@ -176,11 +24,7 @@ $(document).ready(function() {
     		          $('#jnskel').val("");
     		          $('#tempatLahir').val("");
     		          $('#tanggal_lahir').val("");
-                  $('#liberbap').val("");
                   $('#tglLahir').val("");
-                  $('#tempatBaptis').val("");
-                  $('#tanggal_baptis').val("");
-                  $('#namaBaptis').val("");
 
                   $('#cek_umat').addClass('fa fa-times fa-2x').removeClass('fa-check');
                   $('#cek_umat').css('color','red');
@@ -214,21 +58,13 @@ $(document).ready(function() {
   		          $('#jnskel').val(data.Umat.jenis_kelamin);
   		          $('#tempatLahir').val(data.Umat.tmplahir);
   		          $('#tanggal_lahir').val(data.Umat.tgl_lahir);
-                $('#liberbap').val(data.Baptis.liberbap);
                 $('#tglLahir').val(data.Umat.tgl_lahir);
-                $('#tempatBaptis').val(data.Baptis.tempat);
-                $('#tanggal_baptis').val(data.Baptis.tanggal);
-                $('#namaBaptis').val(data.Baptis.nama_baptis);
 
                 $('#idUmat').prop('disabled', true);
   		          $('#jnskel').prop('disabled', true);
   		          $('#tempatLahir').prop('disabled', true);
   		          $('#tanggal_lahir').prop('disabled', true);
-                $('#liberbap').prop('disabled', true);
                 $('#tglLahir').prop('disabled', true);
-                $('#tempatBaptis').prop('disabled', true);
-                $('#tanggal_baptis').prop('disabled', true);
-                $('#namaBaptis').prop('disabled', true);
                 $('#namaAyah').prop('disabled', true);
                 $('#namaIbu').prop('disabled', true);
                 $('#alamatOrtu').prop('disabled', true);
@@ -242,11 +78,7 @@ $(document).ready(function() {
               $('#jnskel').prop('disabled', false);
               $('#tempatLahir').prop('disabled', false);
               $('#tanggal_lahir').prop('disabled', false);
-              $('#liberbap').prop('disabled', false);
               $('#tglLahir').prop('disabled', false);
-              $('#tempatBaptis').prop('disabled', false);
-              $('#tanggal_baptis').prop('disabled', false);
-              $('#namaBaptis').prop('disabled', false);
               $('#namaAyah').prop('disabled', false);
               $('#namaIbu').prop('disabled', false);
               $('#alamatOrtu').prop('disabled', false);
@@ -255,11 +87,7 @@ $(document).ready(function() {
               $('#jnskel').val("");
               $('#tempatLahir').val("");
               $('#tanggal_lahir').val("");
-              $('#liberbap').val("");
               $('#tglLahir').val("");
-              $('#tempatBaptis').val("");
-              $('#tanggal_baptis').val("");
-              $('#namaBaptis').val("");
 
               $('#cek_umat').addClass('fa fa-times fa-2x').removeClass('fa-check');
               $('#cek_umat').css('color','red');
@@ -270,7 +98,7 @@ $(document).ready(function() {
   	  },
   });
 
-  $("#tempatKomuni").autocomplete({
+  $("#tempatBaptis").autocomplete({
       source: function( request, response )
       {
           $.ajax({
@@ -294,6 +122,136 @@ $(document).ready(function() {
       type: 'json'
   });
 
-});
+  if($( "#status_perkawinan_calon option:selected" ).text() == "Belum Menikah"){
+    $('.nosurat').val("");
+    $('.nosurat').css("display","none");
+    $('.nosurat').prop('disabled', true);
 
-?>
+    $('.tanggal_perkawinan').val("");
+    $('.tanggal_perkawinan').css("display","none");
+    $('.tanggal_perkawinan').prop('disabled', true);
+
+    $('.tempat_pernikahan').val("");
+    $('.tempat_pernikahan').css("display","none");
+    $('.tempat_pernikahan').prop('disabled', true);
+
+    $('.nama_pasangan').val("");
+    $('.nama_pasangan').css("display","none");
+    $('.nama_pasangan').prop('disabled', true);
+
+    $('.alasan_batal_nikah').val("");
+    $('.alasan_batal_nikah').css("display","none");
+    $('.alasan_batal_nikah').prop('disabled', true);
+
+    $('.menikah_secara').val("");
+    $('.menikah_secara').css("display","none");
+    $('.menikah_secara').prop('disabled', true);
+  }
+
+  $('#status_perkawinan_calon').on('change', function(){
+    if($( "#status_perkawinan_calon option:selected" ).text() == "Belum Menikah"){
+      $('.nosurat').val("");
+      $('.nosurat').css("display","none");
+      $('.nosurat').prop('disabled', true);
+
+      $('.tanggal_perkawinan').val("");
+      $('.tanggal_perkawinan').css("display","none");
+      $('.tanggal_perkawinan').prop('disabled', true);
+
+      $('.tempat_pernikahan').val("");
+      $('.tempat_pernikahan').css("display","none");
+      $('.tempat_pernikahan').prop('disabled', true);
+
+      $('.nama_pasangan').val("");
+      $('.nama_pasangan').css("display","none");
+      $('.nama_pasangan').prop('disabled', true);
+
+      $('.alasan_batal_nikah').val("");
+      $('.alasan_batal_nikah').css("display","none");
+      $('.alasan_batal_nikah').prop('disabled', true);
+
+      $('.menikah_secara').val("");
+      $('.menikah_secara').css("display","none");
+      $('.menikah_secara').prop('disabled', true);
+    } else if ($( "#status_perkawinan_calon option:selected" ).text() == "Sudah Menikah"){
+      $('.nosurat').val("");
+      $('.nosurat').css("display","none");
+      $('.nosurat').prop('disabled', true);
+
+      $('.tanggal_perkawinan').val("");
+      $('.tanggal_perkawinan').css("display","");
+      $('.tanggal_perkawinan').prop('disabled', false);
+
+      $('.label_tanggal_perkawinan').text("Tanggal Pernikahan");
+
+      $('.tempat_pernikahan').val("");
+      $('.tempat_pernikahan').css("display","");
+      $('.tempat_pernikahan').prop('disabled', false);
+
+      $('.nama_pasangan').val("");
+      $('.nama_pasangan').css("display","");
+      $('.nama_pasangan').prop('disabled', false);
+
+      $('.alasan_batal_nikah').val("");
+      $('.alasan_batal_nikah').css("display","none");
+      $('.alasan_batal_nikah').prop('disabled', true);
+
+      $('.menikah_secara').val("");
+      $('.menikah_secara').css("display","");
+      $('.menikah_secara').prop('disabled', false);
+    } else if ($( "#status_perkawinan_calon option:selected" ).text() == "Akan Menikah"){
+      $('.nosurat').val("");
+      $('.nosurat').css("display","none");
+      $('.nosurat').prop('disabled', true);
+
+      $('.tanggal_perkawinan').val("");
+      $('.tanggal_perkawinan').css("display","");
+      $('.tanggal_perkawinan').prop('disabled', false);
+
+      $('.label_tanggal_perkawinan').text("Tanggal Pernikahan");
+
+      $('.tempat_pernikahan').val("");
+      $('.tempat_pernikahan').css("display","");
+      $('.tempat_pernikahan').prop('disabled', false);
+
+      $('.nama_pasangan').val("");
+      $('.nama_pasangan').css("display","");
+      $('.nama_pasangan').prop('disabled', false);
+
+      $('.alasan_batal_nikah').val("");
+      $('.alasan_batal_nikah').css("display","none");
+      $('.alasan_batal_nikah').prop('disabled', true);
+
+      $('.menikah_secara').val("");
+      $('.menikah_secara').css("display","none");
+      $('.menikah_secara').prop('disabled', true);
+    } else if ($( "#status_perkawinan_calon option:selected" ).text() == "Perkawinan diputuskan / dibatalkan"){
+      $('.nosurat').val("");
+      $('.nosurat').css("display","");
+      $('.nosurat').prop('disabled', false);
+
+      $('.tanggal_perkawinan').val("");
+      $('.tanggal_perkawinan').css("display","");
+      $('.tanggal_perkawinan').prop('disabled', false);
+
+      $('.label_tanggal_perkawinan').text("Tanggal Pembatalan Pernikahan");
+
+      $('.tempat_pernikahan').val("");
+      $('.tempat_pernikahan').css("display","none");
+      $('.tempat_pernikahan').prop('disabled', true);
+
+      $('.nama_pasangan').val("");
+      $('.nama_pasangan').css("display","none");
+      $('.nama_pasangan').prop('disabled', true);
+
+      $('.alasan_batal_nikah').val("");
+      $('.alasan_batal_nikah').css("display","");
+      $('.alasan_batal_nikah').prop('disabled', false);
+
+      $('.menikah_secara').val("");
+      $('.menikah_secara').css("display","none");
+      $('.menikah_secara').prop('disabled', true);
+    }
+  })
+
+});

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $("#nama_umat").autocomplete({
+  $("#nama_umat_komuni").autocomplete({
       source: function( request, response )
       {
           $.ajax({

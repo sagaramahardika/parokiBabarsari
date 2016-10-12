@@ -83,7 +83,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
             <?php echo $this->Form->input('Baptis.jenis_kelamin',
   						array(
   							'label'			  => false,
-  							'id' 			    => 'jenis_kelamin',
+  							'id' 			    => 'jnskel',
   							'placeholder'	=> "L / P",
   							//'value'			=> $this->Session->read('Auth.User.nama'),
   							//'disabled'		=> 'disabled',
@@ -108,7 +108,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'div'			    => array('class' => 'col-md-4')));
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" >
           </div>
 				</div>
 
@@ -182,7 +182,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 
           ?>
           <div class="col-md-4">
-            <input type="text" name="data[BaptisDarurat][tanggal_perkawinan]" id="tanggal_perkawinan" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[BaptisDarurat][tanggal_perkawinan]" id="tanggal_perkawinan" class="form-control datepicker" role="date" >
           </div>
         </div>
 
@@ -191,7 +191,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 					echo $this->Form->label('Baptis.tanggal_baptis_label', 'Tanggal Baptis', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Baptis][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" class="form-control datepicker" role="date" >
           </div>
 				</div>
 

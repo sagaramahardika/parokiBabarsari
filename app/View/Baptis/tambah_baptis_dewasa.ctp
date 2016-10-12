@@ -105,7 +105,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'div'			    => array('class' => 'col-md-4')));
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" >
           </div>
 				</div>
 
@@ -115,7 +115,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
             <?php echo $this->Form->input('Baptis.jenis_kelamin',
   						array(
   							'label'			  => false,
-  							'id' 			    => 'jenis_kelamin',
+  							'id' 			    => 'jnskel',
   							'placeholder'	=> "L / P",
   							//'value'			=> $this->Session->read('Auth.User.nama'),
   							//'disabled'		=> 'disabled',
@@ -188,7 +188,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           <div class="input">
             <?php echo $this->Form->label('BaptisDarurat.status_perkawinan', 'Status Perkawinan Calon Baptis', 'col-md-2 control-label'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat.status_perkawinan" id="status_perkawinan_ortu" class="form-control input-xlarge">
+              <select name="BaptisDarurat.status_perkawinan" id="status_perkawinan_calon" class="form-control input-xlarge">
                 <option value="BELUM">Belum Menikah</option>
                 <option value="SUDAH">Sudah Menikah</option>
                 <option value="AKAN">Akan Menikah</option>
@@ -200,9 +200,9 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 
         <div class="form-group">
           <div class="input">
-            <?php echo $this->Form->label('BaptisDarurat.menikah_secara', 'Menikah Secara', 'col-md-2 control-label'); ?>
+            <?php echo $this->Form->label('BaptisDarurat.menikah_secara', 'Menikah Secara', 'col-md-2 control-label menikah_secara'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat.menikah_secara" id="menikah_secara" class="form-control input-xlarge">
+              <select name="BaptisDarurat.menikah_secara" id="menikah_secara" class="form-control input-xlarge menikah_secara">
                 <option value="GEREJA">Gereja</option>
                 <option value="KUA">Kua</option>
                 <option value="SIPIL">Catatan Sipil</option>
@@ -214,9 +214,9 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 
         <div class="form-group">
           <div class="input">
-            <?php echo $this->Form->label('BaptisDarurat.alasan_batal_nikah', 'Alasan Pembatalan Pernikahan', 'col-md-2 control-label'); ?>
+            <?php echo $this->Form->label('BaptisDarurat.alasan_batal_nikah', 'Alasan Pembatalan Pernikahan', 'col-md-2 control-label alasan_batal_nikah'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat.alasan_batal_nikah" id="alasan_batal_nikah" class="form-control input-xlarge">
+              <select name="BaptisDarurat.alasan_batal_nikah" id="alasan_batal_nikah" class="form-control input-xlarge alasan_batal_nikah">
                 <option value="KEMATIAN">Kematian</option>
                 <option value="CERAISIPIL">Perceraian Sipil</option>
                 <option value="PEMUTUSAN">Pemutusan</option>
@@ -229,51 +229,50 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 
         <div class="form-group">
 					<?php
-					echo $this->Form->label('BaptisDewasa.No_surat', 'No. Surat / Akta', 'col-md-2 control-label');
+					echo $this->Form->label('BaptisDewasa.No_surat', 'No. Surat / Akta', 'col-md-2 control-label nosurat');
 					echo $this->Form->input('BaptisDewasa.no_surat',
 						array(
 							'label'			=> false,
-							'id' 			=> 'nosurat',
 							'placeholder'	=> "Akta",
-							'class'			=> "form-control input-xlarge",
+							'class'			=> "form-control input-xlarge nosurat",
 							'div'			=> array('class' => 'col-md-4')));
 					?>
 				</div>
 
         <div class="form-group">
 					<?php
-					echo $this->Form->label('BaptisDewasa.nama_pasangan', 'Nama Pasangan', 'col-md-2 control-label');
+					echo $this->Form->label('BaptisDewasa.nama_pasangan', 'Nama Pasangan', 'col-md-2 control-label nama_pasangan');
 					echo $this->Form->input('BaptisDewasa.nama_pasangan',
 						array(
 							'label'			   => false,
 							'id' 			     => 'nama_pasangan',
 							'placeholder'	 => "Nama Pasangan",
 							//'value'			=> $this->Session->read('Auth.User.nama'),
-							'class'			   => "form-control input-xlarge",
+							'class'			   => "form-control input-xlarge nama_pasangan",
 							'div'			     => array('class' => 'col-md-4')));
 					?>
 				</div>
 
         <div class="form-group">
           <?php
-          echo $this->Form->label('BaptisDewasa.tempat_pernikahan', 'Tempat Pernikahan', 'col-md-2 control-label');
+          echo $this->Form->label('BaptisDewasa.tempat_pernikahan', 'Tempat Pernikahan', 'col-md-2 control-label tempat_pernikahan');
           echo $this->Form->input('BaptisDewasa.tempat_pernikahan',
             array(
               'label'			  => false,
               'id' 			    => 'tempat_pernikahan',
               'placeholder'	=> "Tempat Pernikahans",
               //'value'			=> $this->Session->read('Auth.User.nama'),
-              'class'			  => "form-control input-xlarge",
+              'class'			  => "form-control input-xlarge tempat_pernikahan",
               'div'			    => array('class' => 'col-md-4')));
           ?>
         </div>
 
         <div class="form-group">
 					<?php
-					echo $this->Form->label('BaptisDewasa.tanggal', 'Tgl', 'col-md-2 control-label');
+					echo $this->Form->label('BaptisDewasa.tanggal', 'Tanggal', 'col-md-2 control-label tanggal_perkawinan label_tanggal_perkawinan');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[BaptisDewasa][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[BaptisDewasa][tanggal]" id="tanggal_perkawinan" class="form-control datepicker tanggal_perkawinan" role="date" >
           </div>
 				</div>
 
@@ -282,7 +281,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           echo $this->Form->label('BaptisDewasa.belajar_agama_sejak', 'Mengikuti Pelajaran Agama Sejak', 'col-md-2 control-label');
           ?>
           <div class="col-md-4">
-            <input type="text" name="data[BaptisDewasa][belajar_agama_sejak]" id="belajar_agama_sejak" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[BaptisDewasa][belajar_agama_sejak]" id="belajar_agama_sejak" class="form-control datepicker" role="date" >
           </div>
         </div>
 
@@ -299,7 +298,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
             'minYear' 		=> date('Y') - 115, 'maxYear' => date('Y') - 0)));
           ?>
           <div class="col-md-4">
-            <input type="text" name="data[BaptisDewasa][ikut_misa_sejak]" id="ikut_misa_sejak" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[BaptisDewasa][ikut_misa_sejak]" id="ikut_misa_sejak" class="form-control datepicker" role="date" >
           </div>
         </div>
 
@@ -317,7 +316,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           ?>
 
           <div class="col-md-4">
-            <input type="text" name="data[BaptisDewasa][kegiatan_lingkungan_sejak]" id="kegiatan_lingkungan_sejak" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[BaptisDewasa][kegiatan_lingkungan_sejak]" id="kegiatan_lingkungan_sejak" class="form-control datepicker" role="date" >
           </div>
         </div>
 
@@ -353,7 +352,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 					?>
 
           <div class="col-md-4">
-            <input type="text" name="data[Baptis][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Baptis][tanggal]" id="tanggal" class="form-control datepicker" role="date" >
           </div>
 				</div>
 

@@ -66,7 +66,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
         echo $this->Form->input('Baptis.nama_diri',
           array(
             'label'			  => false,
-            'id' 			    => 'nama_diri',
+            'id' 			    => 'nama_umat',
             'placeholder'	=> "Nama Diri",
             //'value'			=> $this->Session->read('Auth.User.nama'),
             'class'			  => "form-control input-xlarge",
@@ -101,7 +101,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
             'div'			    => array('class' => 'col-md-4')));
         ?>
         <div class="col-md-4">
-          <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+          <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" >
         </div>
       </div>
 
@@ -111,7 +111,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
           <?php echo $this->Form->input('Baptis.jenis_kelamin',
 						array(
 							'label'			  => false,
-							'id' 			    => 'jenis_kelamin',
+							'id' 			    => 'jnskel',
 							'placeholder'	=> "L / P",
 							//'value'			=> $this->Session->read('Auth.User.nama'),
 							//'disabled'		=> 'disabled',
@@ -128,7 +128,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
         echo $this->Form->input('Baptis.ayah',
           array(
             'label'			  => false,
-            'id' 			    => 'nama_ayah',
+            'id' 			    => 'namaAyah',
             'placeholder'	=> "Nama Ayah",
             //'value'			=> $this->Session->read('Auth.User.nama'),
             'class'			  => "form-control input-xlarge",
@@ -142,7 +142,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
         echo $this->Form->input('Baptis.ibu',
           array(
             'label'			  => false,
-            'id' 			    => 'nama_ibu',
+            'id' 			    => 'namaIbu',
             'placeholder'	=> "Nama Ibu",
             //'value'			=> $this->Session->read('Auth.User.nama'),
             'class'			  => "form-control input-xlarge",
@@ -166,7 +166,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
 
       <div class="form-group">
         <?php
-        echo $this->Form->label('BaptisAnak.tempat_perkawinan_ortu', 'Tempat dan Tanggal', 'col-md-2 control-label');
+        echo $this->Form->label('BaptisAnak.tempat_perkawinan_ortu', 'Tempat dan Tanggal Perkawinan Orangtua', 'col-md-2 control-label');
         echo $this->Form->input('BaptisAnak.tempat_perkawinan_ortu',
           array(
             'label'			  => false,
@@ -178,7 +178,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
 
         ?>
         <div class="col-md-4">
-          <input type="text" name="data[BaptisAnak][tanggal_perkawinan_ortu]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+          <input type="text" name="data[BaptisAnak][tanggal_perkawinan_ortu]" id="tanggal_lahir" class="form-control datepicker" role="date" >
         </div>
       </div>
 
@@ -251,7 +251,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
 
         ?>
         <div class="col-md-4">
-          <input type="text" name="data[Baptis][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+          <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" class="form-control datepicker" role="date" >
         </div>
       </div>
 

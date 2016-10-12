@@ -327,7 +327,11 @@ class BaptisController extends AppController{
 			{
 					$this->autoLayout = false;
 					$this->autoRender = false;
-					$results = $this->Umat->find('all', array('fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir',), 'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%')));
+					$results = $this->Umat->find('all',
+						array(
+							'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir',), 'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%', 'Baptis.sts_baptis <>' => '1')
+						)
+					);
 					$response = array();
 					$i = 0;
 					foreach($results as $result){
@@ -363,7 +367,7 @@ class BaptisController extends AppController{
 				$this->autoRender = false;
 				$results = $this->Umat->find('first', array(
 					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis'),
-					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%' ),
+					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%'),
 					'joins' 				=> array(
 	 						array(
 	 							'table'				=> 'baptises',

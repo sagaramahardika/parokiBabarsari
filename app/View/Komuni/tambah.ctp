@@ -75,7 +75,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('acti
 							'label'			   => false,
 							'placeholder'	 => "nama",
               'required',
-              'id'           => 'nama_umat',
+              'id'           => 'nama_umat_komuni',
 							'class'			   => "form-control input-xlarge",
 							'div'			     => array('class'=>'col-md-4')));
 				?>
