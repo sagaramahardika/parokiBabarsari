@@ -142,7 +142,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 					<div class="col-md-6">
 						<div class="col-md-1"></div>
 						<div class="col-md-4">
-							<?php $options = array('ling' => 'lingkungan', 'wil' => 'wilayah','par' => 'paroki','lain' => 'lainnya');
+							<?php $options = array('ling' => '&nbsp;Lingkungan', 'wil' => '&nbsp;Wilayah','par' => '&nbsp;Paroki','lain' => '&nbsp;Lainnya');
 								$attributes = array('id'=>'pil', 'name'=>'radioPil' , 'legend' => false,  'separator' => '</br>',);
 								echo $this->Form->radio('pilihan', $options, $attributes); ?>
 						</div>
@@ -168,7 +168,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 					<div class="form-group">
 					<?php
 					echo $this->Form->label('Pernikahan.nm_pasangan', 'Nama Pasangan', 'col-md-2 control-label');
-					echo $this->Form->input('Pernikahan.nm_pasangan', array('id'=>'nm_pas_luar','label'=>false, 'placeholder'=>"nama pasangan",  'class'=>"form-control input-xlarge form_pasangan", 'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->input('Pernikahan.nm_pasangan', array('id'=>'nm_pas_luar','label'=>false, 'placeholder'=>"Nama Pasangan",  'class'=>"form-control input-xlarge form_pasangan", 'div'=>array('class'=>'col-md-4')));
 					?>
 				<label style="color:red">*</label>
 				</div>
@@ -207,17 +207,20 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('Pernikahan.tglpernikahan', 'Tanggal Pernikahan', 'col-md-2 control-label');
-					echo $this->Form->input('Pernikahan.tglpernikahan', array(
-						'label'=>false,
-						'class'=>"form-control ",
-						'div'=>array('class'=>'col-md-4'),
-						'dateFormat' => 'DMY',
-						'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0
+					// echo $this->Form->input('Pernikahan.tglpernikahan', array(
+					// 	'label'=>false,
+					// 	'class'=>"form-control ",
+					// 	'div'=>array('class'=>'col-md-4'),
+					// 	'dateFormat' => 'DMY',
+					// 	'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0
 
 
 
-						));
+					// 	));
 					?>
+					<div class="col-md-4">
+			            <input type="text" name="data[Pernikahan][tglpernikahan]" class="form-control datepicker input-xlarge" role="date" placeholder="Tanggal Pernikahan" readonly=""> 
+			        </div>
 					<label style="color:red">*</label>
 				</div>
 

@@ -144,16 +144,18 @@ class PernikahansController extends AppController{
 			// 	echo $myData['kode_stasi'] . ", " . $myData['kode_LM'] .  ", " . $myData['no'] . ", 
 			// " . $myData['halaman'];
 
+				// TESTING
+				// $idTam = $this->request->data['Pernikahan']['umat_id'];
+				// Debugger::dump($this->Umat->findById($idTam));
+
 
 				
 				if ($this->Pernikahan->save($this->request->data)){
-					
-
 					$idTam = $this->request->data['Pernikahan']['umat_id'];
 
 					$row = $this->Umat->findById($idTam);
 
-					// Debugger::dump($idTam);
+					//Debugger::dump($idTam);
 
 					$rowling = $this->Lingkungan->findById($row['Kk']['lingkungan_id']);
 
@@ -222,43 +224,42 @@ class PernikahansController extends AppController{
 	}
 
 	public function edit($id=null){
-
-
 		if ($id) {
-				# code...
+			# code...
 			$this->set('nama',$this->Umat->getNamaPasangan());
-		$idkk=$this->Umat->findById($id,array('Umat.id_kk'));
-		$this->set('namaPas',$this->Umat->getIdPasangan($idkk['Umat']['id_kk']));
-		$this->set('statusPer',$this->Statuspernikahan->getStatusEdit());
-				if (!empty($this->request->data)){
-					# code...
-					try {
-						if ($this->Pernikahan->save($this->request->data)) {
+			$idkk = $this->Umat->findById($id,array('Umat.id_kk'));
+			$this->set('namaPas',$this->Umat->getIdPasangan($idkk['Umat']['id_kk']));
+			$this->set('statusPer',$this->Statuspernikahan->getStatusEdit());
+			if (!empty($this->request->data)){
+				# code...
+				try {
+					if ($this->Pernikahan->save($this->request->data)) {
 
-
-							$idTam = $this->request->data['Pernikahan']['umat_id'];
+						$idTam = $this->request->data['Pernikahan']['umat_id'];
 						$this->Umat->id = $idTam;
-						$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
-							# code...
+						$this->Umat->saveField('id_statuspernikahan', $this->request->data['statuspernikahan']);
+						# code...
 						if ($this->request->data['Pernikahan']['pasangan_id']) {
-							# code...
+						# code...
 							$this->Umat->id = $this->request->data['Pernikahan']['pasangan_id'];
-						$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
+							$this->Umat->saveField('id_statuspernikahan', $this->request->data['statuspernikahan']);
 
 						}
-							$this->Flash->success(__('Data Pernikahan telah berhasil diubah.'));
-						}
-
-					} catch (PDOExeption $pdoe) {
-						$this->Flash->error(__('Data tidak dapat diupdate. ' . $e->errorInfo[2]));
+						$this->Flash->success(__('Data Pernikahan telah berhasil diubah.'));
 					}
-					$this->redirect(array('action'=>'index'));
-				}else{
-					$this->request->data = $this->Pernikahan->read(null,$id);
+
+				} catch (PDOExeption $pdoe) {
+					$this->Flash->error(__('Data tidak dapat diupdate. ' . $e->errorInfo[2]));
 				}
-			}else{
+
 				$this->redirect(array('action'=>'index'));
+			}else{
+				$this->request->data = $this->Pernikahan->read(null,$id);
 			}
+
+		} else {
+			$this->redirect(array('action'=>'index'));
+		}
 	}
 
 
@@ -268,7 +269,6 @@ class PernikahansController extends AppController{
 			$this->autoRender = false;
 			$idlingketualing = $this->Session->Read('Auth.User.idling');
 			$results = $this->Umat->find('all', array('fields' => array('id', 'nama','jenis_kelamin'), 'conditions' => array('Kk.lingkungan_id'=>$idlingketualing,'Umat.nama LIKE "%'.$_GET['term'].'%"','OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)))));
-
 			$response = array();
 			$i = 0;
 			foreach($results as $result){
@@ -284,89 +284,57 @@ class PernikahansController extends AppController{
 
 	public function find(){
 		if ($this->request->is('ajax')) {
-
 	        $this->autoLayout = false;
 	        $this->autoRender = false;
 
-	        $tampung  = $this->Umat->find('all',array('recursive'=>3,'conditions'=>array('Umat.id'=>$_GET['idUmat'])));
+	        $tampung = $this->Umat->find('all',array('recursive'=>3,'conditions'=>array('Umat.id'=>$_GET['idUmat'])));
 
 			$idLingkungan = $tampung[0]['Kk']['lingkungan_id'];
 			$idWilayah = $tampung[0]['Kk']['Lingkungan']['wilayah_id'];
-			$idParoki = $tampung[0]['Kk']['Lingkungan']['Wilayah']['paroki_id'];
+			$idParoki  = $tampung[0]['Kk']['Lingkungan']['Wilayah']['paroki_id'];
 
-			$results =array();
-			 $response = array();
+			$results  = array();
+			$response = array();
 			if ($_GET['tipe'] == 'ling') {
 				$results = $this->Umat->find('all');
 				$results = $this->Umat->find('all',array('fields' => array('id', 'nama'),'conditions'=>array('OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)),'Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']),'Kk.lingkungan_id'=>$idLingkungan)));
 				# code...
-				 $i = 0;
-	        foreach($results as $result){
-	        	 $response[$i]['id'] = $result['Umat']['id'];
 
-	            $response[$i]['label'] = $result['Umat']['nama'];
-	            $response[$i]['value'] = $result['Umat']['nama'];
-	            $i++;
-	            }
-			}elseif($_GET['tipe'] == 'wil'){
-		        $tampung  = $this->Umat->find('all',array('recursive'=>3,'conditions'=>array('Umat.id'=>$_GET['idUmat'])));
-
-
-				$idLingkungan = $tampung[0]['Kk']['lingkungan_id'];
-				$idWilayah = $tampung[0]['Kk']['Lingkungan']['wilayah_id'];
-				$idParoki = $tampung[0]['Kk']['Lingkungan']['Wilayah']['paroki_id'];
-
-
-				$results =array();
-				 $response = array();
-				if ($_GET['tipe'] == 'ling') {
-					$results = $this->Umat->find('all');
-					$results = $this->Umat->find('all',array('fields' => array('id', 'nama'),'conditions'=>array('OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)),'Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']),'Kk.lingkungan_id'=>$idLingkungan)));
-					# code...
-
-					 $i = 0;
+				$i = 0;
 		        foreach($results as $result){
-		        	 $response[$i]['id'] = $result['Umat']['id'];
+		        	$response[$i]['id'] = $result['Umat']['id'];
 		            $response[$i]['label'] = $result['Umat']['nama'];
 		            $response[$i]['value'] = $result['Umat']['nama'];
 		            $i++;
-		            }
-				}elseif($_GET['tipe'] == 'wil'){
-
-
+	            }
+			} elseif ($_GET['tipe'] == 'wil'){
 				$results = $this->Umat->query('select umat.id,umat.nama from   (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk  AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 12 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id)  umat where umat.wilayah_id = '.$idWilayah.' ORDER BY `umat`.`id` ASC');
-				 $i = 0;
-	        foreach($results as $result){
-	        	 $response[$i]['id'] = $result['umat']['id'];
-
-	            $response[$i]['label'] = $result['umat']['nama'];
-	            $response[$i]['value'] = $result['umat']['nama'];
-	            $i++;
-			}
-
-
-			}elseif ($_GET['tipe'] == 'par') {
-				# code...
-				$results = $this->Umat->query('select umat.id,umat.nama from (select y.id,y.nama,w.paroki_id from  (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 12 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id) y, wilayahs w where w.id = y.wilayah_id ) umat where umat.paroki_id ='.$idParoki.' ORDER BY `umat`.`id` ASC');
 				$i = 0;
-	        foreach($results as $result){
-	        	 $response[$i]['id'] = $result['umat']['id'];
+		        foreach($results as $result){
+		        	$response[$i]['id'] = $result['umat']['id'];
 
-	            $response[$i]['label'] = $result['umat']['nama'];
-	            $response[$i]['value'] = $result['umat']['nama'];
-	            $i++;
+		            $response[$i]['label'] = $result['umat']['nama'];
+		            $response[$i]['value'] = $result['umat']['nama'];
+		            $i++;
+				}
+			} elseif ($_GET['tipe'] == 'par') {
+				# code...
+				$results = $this->Umat->query('select umat.id,umat.nama from (select y.id,y.nama,w.paroki_id from (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 12 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id) y, wilayahs w where w.id = y.wilayah_id ) umat where umat.paroki_id ='.$idParoki.' ORDER BY `umat`.`id` ASC');
+				$i = 0;
+		        foreach($results as $result){
+		        	$response[$i]['id'] = $result['umat']['id'];
+
+		            $response[$i]['label'] = $result['umat']['nama'];
+		            $response[$i]['value'] = $result['umat']['nama'];
+		            $i++;
 	            }
 				//$results = $this->Umat->find('all',array('fields' => array('id', 'nama'),'conditions'=>array('Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']),'Kk.lingkungan_id'=>$idWilayah)));
 			}
 
-
 	        //$results = $this->Umat->find('all', array('fields' => array('id', 'nama'), 'conditions' => array('Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']))));
-
-
 	        echo json_encode($response);
-        }
+		}
 	}
-}
 
 	public function view($id=null){
 		if ($id) {

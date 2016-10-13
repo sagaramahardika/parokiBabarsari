@@ -110,17 +110,20 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pengurapan', 
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('Pengurapan.tanggal_penerimaan', 'Tanggal Penerimaan', 'col-md-2 control-label');
-					echo $this->Form->input('Pengurapan.tanggal_penerimaan', array(
-						'label'=>false,
-						'class'=>"form-control ",
-						'div'=>array('class'=>'col-md-4'),
-						'dateFormat' => 'DMY',
-						'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0
+					// echo $this->Form->input('Pengurapan.tanggal_penerimaan', array(
+					// 	'label'=>false,
+					// 	'class'=>"form-control ",
+					// 	'div'=>array('class'=>'col-md-4'),
+					// 	'dateFormat' => 'DMY',
+					// 	'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0
 
 
 
-						));
+					// 	));
 					?>
+					<div class="col-md-4">
+			            <input type="text" name="data[Pengurapan][tanggal_penerimaan]" class="form-control datepicker input-xlarge" role="date" placeholder="Tanggal Penerimaan" readonly=""> 
+			        </div>
 					<label style="color:red">*</label>
 				</div>
 

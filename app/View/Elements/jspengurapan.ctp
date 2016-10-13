@@ -1,6 +1,12 @@
 <?php 
 if (strtolower($ctrl) === 'pengurapans') {
  ?>
+ 	$(document).ready(function(){
+	  $('.datepicker').datepicker({
+	      autoclose: true,
+	      format: 'yyyy-mm-dd',
+	  });
+	});
 
 	$('#addpengurapan').click(function(e){
 	    e.preventDefault();

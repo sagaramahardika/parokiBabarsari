@@ -2,6 +2,13 @@
 if (strtolower($ctrl) === 'pernikahans') {
  ?>
 
+$(document).ready(function(){
+  $('.datepicker').datepicker({
+      autoclose: true,
+      format: 'yyyy-mm-dd',
+  });
+});
+
 
 $('#input_nama').keyup(function(){ 
    
@@ -18,23 +25,18 @@ $('#input_nama').keyup(function(){
            type : 'GET',
       dataType: "json",
     success : function(response) {
-     
       $.each(response, function(index, element) {
-      if(element.status == 'success'){
-      
-        $('#cek_umat').addClass('fa fa-check fa-2x').removeClass('fa-times');
-        $('#cek_umat').css('color','green');
-        $('#cek_umat').attr('cek',true);
-    }else{
-       $('#cek_umat').addClass('fa fa-times fa-2x').removeClass('fa-check');
-        $('#cek_umat').css('color','red');
-        $('#cek_umat').attr('cek',false);
-        $('#form_id_umat').val("");
-  }
-         
-        });
-      
-           
+        if(element.status == 'success'){
+          $('#cek_umat').addClass('fa fa-check fa-2x').removeClass('fa-times');
+          $('#cek_umat').css('color','green');
+          $('#cek_umat').attr('cek',true);
+        } else {
+          $('#cek_umat').addClass('fa fa-times fa-2x').removeClass('fa-check');
+          $('#cek_umat').css('color','red');
+          $('#cek_umat').attr('cek',false);
+          $('#form_id_umat').val("");
+        }    
+      });     
     },
     error : function() {
     }
