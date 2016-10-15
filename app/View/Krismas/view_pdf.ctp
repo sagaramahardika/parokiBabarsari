@@ -32,7 +32,7 @@
     <tr>
       <td style="text-align: right; width: 47.5%; font-size: 18px;"><b>diberikan kepada :</b></td>
       <td style="width: 5%"></td>
-      <td style="text-align: left; width: 40%; font-size: 18px;"><b>Yohanes Putro Katon Pangestu</b></td>
+      <td style="text-align: center; width: 40%; font-size: 18px;"><b><?php echo $krisma['Krisma']['nama_baptis'] . " " . $krisma['Krisma']['nama_diri']; ?></b></td>
     </tr>
   </table>
   <br>
@@ -44,13 +44,65 @@
         kepadamu. Dan ketahuilah, Aku menyertai kamu senantiasa sampai kepada akhir zama." (Mateus 28:19-20)
       </td>
       <td style="width: 2.5%;"></td>
-      <td style="font-size: 14px;">
-        <b>Telah menerima Sakramen Penguatan di :</b><br>
-        <span style="margin-right: 15%;">Gereja</span><span style="margin-right: 2%;">:</span><span>Santa Maria Assumpta</span><br>
-        <span style="margin-right: 15%;">Paroki</span><span style="margin-right: 2%;">:</span><span>Babarsari</span><br>
-        <span style="margin-right: 16%;">Oleh</span><span style="margin-right: 2%;">:</span><span></span><br>
-        <span style="margin-right: 13.8%;">Hari/Tgl</span><span style="margin-right: 2%;">:</span><span><?php echo $strDay . ", " . $intDay . " " . $month . " " . $year; ?></span><br>
-        <span style="margin-right: 6.3%;">Pelindung Penguatan</span><span>:</span><span><?php echo $krisma['Krisma']['nama_pelindung_krisma']; ?></span><br>
+      <td style="font-size: 13px;">
+        <b>Telah Menerima Sakramen Penguatan di :</b>
+        <table style="width: 100%;">
+          <tr>
+            <td style="width: 27.5%;">
+              Gereja
+            </td>
+            <td style="width: 3.5%;">
+              :
+            </td>
+            <td>
+              Santa Maria Assumpta
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Paroki
+            </td>
+            <td>
+              :
+            </td>
+            <td>
+              Babarsari
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Oleh
+            </td>
+            <td>
+              :
+            </td>
+            <td>
+              Rm. FX. Sukendar Wigyosumarto, Pr.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Hari/Tgl
+            </td>
+            <td>
+              :
+            </td>
+            <td>
+              <?php echo $strDay . ", " . $intDay . " " . $month . " " . $year; ?>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Pelindung Penguatan
+            </td>
+            <td>
+              :
+            </td>
+            <td>
+              <?php echo $krisma['Krisma']['nama_pelindung_krisma']; ?>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   </table>
@@ -64,6 +116,7 @@
       <td style="font-size: 14px;">Administrator Diosesan Keuskupan Agung Semarang,</td>
     </tr>
   </table>
+  <br>
   <br>
   <br>
   <br>
