@@ -26,7 +26,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('kodeStasi', 'Kode Stasi ', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.kodestasi', array(
+					echo $this->Form->input('kode_stasi', array(
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
                         'options'=>array(1, 2, 3 ,4, 5),
@@ -38,29 +38,26 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('noUrut', 'No Urut', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.nourut', array(
+					echo $this->Form->input('no_urut', array(
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
                         'div'=>array('class'=>'col-md-4')));
 					?>
 
-				</div>
-
-                <div class="form-group">
 					<?php
-					echo $this->Form->label('namaDiri', 'Nama Diri', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.namadiri', array(
-                        'label'=>false,
-                        'class'=>"form-control ",
-                        'value'=> $this->Session->read('Auth.User.nama'),
-                        'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->label('namaDiri', 'Nama Lengkap', 'col-md-2 control-label');
+					echo $this->Form->input('nama_diri', array(
+                        'label' => false,
+                        'class' => "form-control ",
+                        'id'    => 'nama_lengkap_krisma',
+                        'div'   => array('class'=>'col-md-4')));
 					?>
 				</div>
 
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('gender', 'Gender', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.gender', array(
+					echo $this->Form->input('gender', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'options'=>array('L', 'P'),
@@ -72,7 +69,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.namaayah', array(
+					echo $this->Form->input('nama_ayah', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
@@ -82,7 +79,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.namaibu', array(
+					echo $this->Form->input('nama_ibu', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
@@ -92,7 +89,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('parokiBaptis', 'Dibaptis di Paroki', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.parokibaptis', array(
+					echo $this->Form->input('paroki', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
@@ -102,12 +99,12 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('kodeLB', 'Kode LB', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.kodeLB', array(
+					echo $this->Form->input('kode_lb', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
                     echo $this->Form->label('no', 'No', 'col-md-1 control-label');
-					echo $this->Form->input('Krisma.No', array(
+					echo $this->Form->input('no', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
@@ -117,7 +114,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('tanggalBaptis', 'Tanggal Baptis', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.tanggalbaptis', array(
+					echo $this->Form->input('tanggal_baptis', array(
                         'label'=>false,
                         'type'=>'date',
                         'class'=>"form-control ",
@@ -132,7 +129,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('namaPelindung', 'Nama Pelindung', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.namapelindung', array(
+					echo $this->Form->input('nama_pelindung', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
@@ -142,7 +139,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('uskupDelegatus', 'Uskup/Delegatus', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.uskupdelegatus', array(
+					echo $this->Form->input('uskup_delegatus', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
@@ -152,7 +149,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('waliKrisma', 'Wali Krisma', 'col-md-2 control-label');
-					echo $this->Form->input('Krisma.walikrisma', array(
+					echo $this->Form->input('wali_krisma', array(
                         'label'=>false,
                         'class'=>"form-control ",
                         'div'=>array('class'=>'col-md-4')));
@@ -162,7 +159,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                 <div class="form-group">
 					<?php
 					echo $this->Form->label('Umat.tglkrisma', 'Tanggal Krisma', 'col-md-2 control-label');
-					echo $this->Form->input('tglkrisma', array(
+					echo $this->Form->input('tanggal_krisma', array(
 						'label'=>false,
 						'class'=>"form-control ",
             'type'=>'date',
@@ -178,7 +175,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 
 					<?php
 					echo $this->Form->label('Umat.tmpkrisma', 'Tempat Krisma', 'col-md-2 control-label');
-					echo $this->Form->input('tmpkrisma', array(
+					echo $this->Form->input('tempat_krisma', array(
                         'label'=>false,
                         'placeholder'=>"Tempat Krisma",
                         'class'=>"form-control input-xlarge",

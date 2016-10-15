@@ -1,4 +1,4 @@
-<?php 
+<?php
 $this->assign('title','Halaman Pendataan Krisma')
 
  ?>
@@ -13,34 +13,34 @@ $this->assign('title','Halaman Pendataan Krisma')
 				<input type="text" class="form-control" name="data[cari]" placeholder="Cari nama umat ...">
 				<span class="input-group-btn">
 				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
-				 
-				  
+
+
 				</span>
 			  </div>
 			  <br>
 			  	</form>
 			  <div class="input-group">
 			  	<span class="input-group-btn">
-			  		<?php 
-			  		
+			  		<?php
+
 					$userRole =$this->Session->read('Auth.User.user_level');
-					
+
 			  		if ( $userRole <> 1) {
 			  			# code...
 			  			?>
 			  			<!-- <button class="btn btn-default btn-success" type="button" id="addkrisma"><span class="fa fa-user-plus"></span> Tambah Akun</button> -->
-			  		
-			  			<?php 
+
+			  			<?php
 			  		}
-			  		 ?>	
-			  		 
-				
-				
+			  		 ?>
+
+
+
 
 			  	</span>
 
 			  </div>
- 		
+
 			</div>
 			</div>
 
@@ -56,15 +56,23 @@ $this->assign('title','Halaman Pendataan Krisma')
 						<thead class="text-center">
 						<tr>
 				 			<td></td>
-				 			<td>Nama Umat</td>
-				 			<td>Nama Krisma</td>
-				 			<td>Tempat Krisma</td>
-				 			<td>Tanggal Krisma</td>
-				 			<td>Romo</td>
-				 			<td>status</td>
+				 			<td>Kode Stasi</td>
+				 			<td>No Urut</td>
+				 			<td>Nama Diri</td>
+				 			<td>Gender</td>
+              <td>Nama Ayah</td>
+              <td>Nama Ibu</td>
+              <td>Paroki</td>
+              <td>Kode LB</td>
+              <td>Tanggal Baptis</td>
+				 			<td>Nama Pelindung</td>
+				 			<td>Uskup Delegatus</td>
+              <td>Wali Krisma</td>
+              <td>Tanggal Krisma</td>
+              <td>Tempat Krisma</td>
  						</tr>
 						</thead>
-						<?php 
+						<?php
 
 
 
@@ -75,59 +83,48 @@ $this->assign('title','Halaman Pendataan Krisma')
 
 
 							# code...
-					
+
 						foreach($datas as $data) {
-							
+
 							?>
 
 						<tr>
 							<td>
 								<?php if($userRole <> 1){ ?>
-							<a href="<?php 
-							
-								echo $this->Html->url(array('controller'=>'krismas','action'=>'edit', $data['Umat']['id']));
-								
-								
+							<a href="<?php
+								echo $this->Html->url(array('controller'=>'krismas','action'=>'newEdit', $data['Krisma']['id']));
 								?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
  					<?php } ?>
  				</td>
- 				<td>	<?php echo $data['Umat']['nama']; ?></td>
- 				<td>	<?php echo $data['Umat']['namakrisma']; ?></td>
- 				<td>	<?php echo $data['Umat']['tmpkrisma']; ?></td>
- 				<td>	<?php if ($data['Umat']['tglkrisma'] <> '0000-00-00') {
- 					# code...
- 					echo date('d-m-Y',strtotime($data['Umat']['tglkrisma']));
- 				}  ?></td>
- 				<td>	<?php echo $data['Umat']['romokrisma']; ?></td>
- 				<td class="text-center">	<?php
+ 				<td>	<?php echo $data['Krisma']['kode_stasi']; ?></td>
+ 				<td>	<?php echo $data['Krisma']['no_urut']; ?></td>
+ 				<td>	<?php echo $data['Krisma']['nama_diri']; ?></td>
+ 				<td>	<?php echo $data['Krisma']['gender']; ?> </td>
+        <td>	<?php echo $data['Krisma']['nama_ayah']; ?> </td>
+        <td>	<?php echo $data['Krisma']['nama_ibu']; ?> </td>
+        <td>	<?php echo $data['Krisma']['paroki']; ?> </td>
+        <td>	<?php echo $data['Krisma']['kode_lb']; ?> </td>
+        <td>	<?php echo $data['Krisma']['tanggal_baptis']; ?> </td>
+        <td>	<?php echo $data['Krisma']['nama_pelindung']; ?> </td>
+        <td>	<?php echo $data['Krisma']['uskup_delegatus']; ?> </td>
+        <td>	<?php echo $data['Krisma']['wali_krisma']; ?> </td>
+        <td>	<?php echo $data['Krisma']['tanggal_krisma']; ?> </td>
+        <td>	<?php echo $data['Krisma']['tempat_krisma']; ?> </td>
 
- 					$status = $data['Umat']['stskrisma'];
- 					
- 					if ($status == 1) {
- 						# code...
- 						echo '<i style="color:red" class="fa fa-times"></i>';
- 					}elseif($status == 2){
- 						echo '<i style="color:green" class="fa fa-check"></i>';
- 					}else{
- 						echo '<i style="color:blue" class="fa fa-question"></i>';
- 					}
-
- 				 ?></td>
- 				
 						</tr>
-					
 
 
 
-					
-				
+
+
+
 						<?php }
-						
+
 						?>
 						</tbody>
 					</table>
 
-					
+
 					<div class="paging">
 					<?php
 						if ($this->Session->check('search')) {
