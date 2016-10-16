@@ -89,13 +89,13 @@ else {
     <?php echo $this->Html->link('Pengurapan', array('controller'=>'pengurapans', 'action' => 'index')); ?>
   </li>
   <li <?php echo $kematians; ?>>
-    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'index')); ?>
+    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'newRead')); ?>
   </li>
   <li <?php echo $komuni; ?>>
   <?php echo $this->Html->link('Komuni', array('controller'=>'komuni', 'action' => 'index')); ?>
   </li>
   <li <?php echo $krismas; ?>>
-  <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'tambah')); ?>
+  <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'newRead')); ?>
   </li>
 
   <?php

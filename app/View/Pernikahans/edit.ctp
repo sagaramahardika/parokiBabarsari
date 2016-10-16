@@ -205,18 +205,21 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('Pernikahan.tglpernikahan', 'Tanggal pernikahan', 'col-md-2 control-label');
-					echo $this->Form->input('Pernikahan.tglpernikahan', array(
-						'label'=>false,  
-						'class'=>"form-control ", 
-						'id'=>'tgleditper',
-						'div'=>array('class'=>'col-md-4'),
-						'dateFormat' => 'DMY',
-						'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0
+					// echo $this->Form->input('Pernikahan.tglpernikahan', array(
+					// 	'label'=>false,  
+					// 	'class'=>"form-control ", 
+					// 	'id'=>'tgleditper',
+					// 	'div'=>array('class'=>'col-md-4'),
+					// 	'dateFormat' => 'DMY',
+					// 	'minYear' => date('Y') - 115, 'maxYear' => date('Y') - 0
 
 
 
-						));
+					// 	));
 					?>
+					<div class="col-md-4">
+			            <input type="text" name="data[Pernikahan][tglpernikahan]" class="form-control datepicker input-xlarge" role="date" placeholder="Tanggal Pernikahan" readonly="" value="<?php echo $this->request->data['Pernikahan']['tglpernikahan'] ?>"> 
+			        </div>
 					<label style="color:red">*</label>
 				</div>
 				

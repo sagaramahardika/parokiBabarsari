@@ -51,7 +51,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					echo $this->Form->label('namaLengkap', 'Nama Lengkap', 'col-md-2 control-label');
 					echo $this->Form->input('nama_lengkap', array(
                         'label' => false,
-                        'id'    => 'nama_lengkap',
+                        'id'    => 'nama_lengkap_kematian',
                         'class' => "form-control ",
                         'div'   => array('class'=>'col-md-4')));
 					?>
@@ -96,7 +96,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 						'label'=>false,
 						'class'=>"form-control ",
 						'div'=>array('class'=>'col-md-4'),
-                        'type'=>'date',
+            'type'=>'date',
 						'dateFormat' => 'DMY',
 						'minYear' => date('Y') - 115,
                         'maxYear' => date('Y') - 0
