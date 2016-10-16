@@ -1,3 +1,54 @@
+<?php
+  $tgl_lahir;
+  if($baptis['Baptis']['id_umat'] == 0){
+    $tgl_lahir = $baptis['Baptis']['tanggal_lahir'];
+  }else{
+    $tgl_lahir = $baptis['Umat']['tgl_lahir'];
+  };
+
+  $nama;
+  if($baptis['Baptis']['id_umat'] == 0){
+    $nama = $baptis['Baptis']['nama_diri'];
+  }else{
+    $nama = $baptis['Umat']['nama'];
+  };
+
+  $wali_baptis = $baptis['Baptis']['wali_baptis'];
+  if($wali_baptis == '' || $wali_baptis == null){
+    $wali_baptis = '-';
+  }
+
+  $romo = $baptis['Baptis']['romo'];
+
+  $tempat_lahir;
+  if($baptis['Baptis']['id_umat'] == 0){
+    $tempat_lahir = $baptis['Baptis']['tempat_lahir'];
+  }else{
+    $tempat_lahir = $baptis['Umat']['tmplahir'];
+  };
+
+  $tgl_baptis = $baptis['Baptis']['tanggal'];
+
+  $arrDay = array("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu");
+  $arrMonth = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+
+  $hariLahir = date("w", strtotime($tgl_lahir));
+  $bulanLahir = date("n", strtotime($tgl_lahir));
+  $hariLahir = $arrDay[$hariLahir];
+  $intDayLahir = date("j", strtotime($tgl_lahir));
+  $bulanLahir = $arrMonth[$bulanLahir];
+  $tahunLahir = date("Y", strtotime($tgl_lahir));
+
+  $hariBaptis = date("w", strtotime($tgl_baptis));
+  $bulanBaptis = date("n", strtotime($tgl_baptis));
+  $hariBaptis = $arrDay[$hariBaptis];
+  $intDayBaptis = date("j", strtotime($tgl_baptis));
+  $bulanBaptis = $arrMonth[$bulanBaptis];
+  $tahunBaptis = date("Y", strtotime($tgl_baptis));
+
+  $tempat_baptis = 'Gereja ' . $baptis['Baptis']['tempat'] . ' ' . $baptis['Baptis']['kota'];
+?>
+
 <page backleft="10mm" backright="20mm" backtop="10mm">
   <table style="width: 100%; ">
     <tr>
@@ -28,15 +79,15 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 15%; font-size: 18px;">No.</td>
-      <td style="font-size: 18px;">: 444 Buku : 1</td>
+      <td style="font-size: 18px;">: <?php echo $baptis['Baptis']['liberbap'];?></td>
     </tr>
     <tr>
       <td style="font-size: 18px;">Tahun</td>
-      <td style="font-size: 18px;">: 2016 tanggal <i>31 Januari</i> di <i>Sleman</i> telah lahir</td>
+      <td style="font-size: 18px;">: <?php echo $tahunLahir;?> tanggal <i><?php echo $intDayLahir; ?> <?php echo $bulanLahir; ?></i> di <i><?php echo ucwords(strtolower($tempat_lahir)); ?></i> telah lahir</td>
     </tr>
     <tr>
       <td style="font-size: 18px;">Tahun</td>
-      <td style="font-size: 18px;">: 2016 tanggal <i>08 Mei</i> di Gereja St. Maria Assumpta Babarsari</td>
+      <td style="font-size: 18px;">: <?php echo $tahunBaptis;?> tanggal <i><?php echo $intDayBaptis; ?> <?php echo $bulanBaptis; ?></i> di <?php echo ucwords(strtolower($tempat_baptis)); ?></td>
     </tr>
     <tr>
       <td></td>
@@ -48,7 +99,7 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 15%;"></td>
-      <td style="width: 80%; font-size: 18px; text-align: center;"><b><u>MARCELA BELLANIYA KERINKIRANA</u></b></td>
+      <td style="width: 80%; font-size: 18px; text-align: center;"><b><u><?php echo strtoupper($nama); ?></u></b></td>
     </tr>
   </table>
   <br>
@@ -64,11 +115,11 @@
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Wali Permandian</td>
-      <td style="font-size: 18px;">: <i>Theresia Rahmani Nusantari</i></td>
+      <td style="font-size: 18px;">: <i><?php echo ucwords(strtolower($wali_baptis));?></i></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Yang Membaptis</td>
-      <td style="font-size: 18px;">: <i>Dominicus Donny Widiyarso, Pr.</i></td>
+      <td style="font-size: 18px;">: <i><?php echo ucwords(strtolower($romo));?></i></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Sakramen Penguatan tanggal</td>
@@ -98,7 +149,7 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 55%;"></td>
-      <td style="font-size: 18px; text-align: center;">Babarsari, 08 Mei 2016</td>
+      <td style="font-size: 18px; text-align: center;">Babarsari, <?php echo $intDayBaptis . ' ' . $bulanBaptis . ' ' . $tahunBaptis; ?></td>
     </tr>
   </table>
   <table style="width: 100%;">

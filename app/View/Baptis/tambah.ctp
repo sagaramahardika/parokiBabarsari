@@ -171,7 +171,7 @@ $this->assign('title', 'Halaman Tambah Baptis');
 					echo $this->Form->label('Baptis.tanggal_baptis_label', 'Tanggal Baptis', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" class="form-control datepicker" role="date">
+            <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" class="form-control datepicker" role="date" required="">
           </div>
 				</div>
 
@@ -182,8 +182,9 @@ $this->assign('title', 'Halaman Tambah Baptis');
 						array(
 							'label'			=> false,
 							'id' 			=> 'romoBaptis',
-							'placeholder'	=> "",
+							'placeholder'	=> "Romo Baptis",
 							'class'			=> "form-control input-xlarge",
+              'required'     => 'required',
 							'div'			=> array('class' => 'col-md-4')));
 					?>
 				</div>
@@ -197,6 +198,7 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'id' 			=> 'waliBaptis',
 							'placeholder'	=> "Wali Baptis",
 							'class'			=> "form-control input-xlarge",
+              'required'     => 'required',
 							'div'			=> array('class' => 'col-md-4')));
 					?>
 				</div>
@@ -210,6 +212,7 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'id' 			=> 'tempatBaptis',
 							'placeholder'	=> "Tempat Baptis",
 							'class'			=> "form-control input-xlarge",
+              'required'     => 'required',
 							'div'			=> array('class' => 'col-md-4')));
 					?>
 				</div>
@@ -223,6 +226,7 @@ $this->assign('title', 'Halaman Tambah Baptis');
 							'id' 			=> 'kotaBaptis',
 							'placeholder'	=> "Kota",
 							'class'			=> "form-control input-xlarge",
+              'required'     => 'required',
 							'div'			=> array('class' => 'col-md-4')));
 					?>
 				</div>

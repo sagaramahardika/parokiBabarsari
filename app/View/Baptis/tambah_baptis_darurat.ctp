@@ -6,7 +6,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
     <div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Form Pendaftaran Baptis Anak</h3>
+				<h3 class="panel-title">Form Pendaftaran Baptis Darurat</h3>
 			</div>
 			<div class="panel-body">
 
@@ -163,6 +163,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'id' 			     => 'nama_pasangan',
 							'placeholder'	 => "Nama Pasangan",
 							//'value'			=> $this->Session->read('Auth.User.nama'),
+              'required'  => 'required',
 							'class'			   => "form-control input-xlarge",
 							'div'			     => array('class' => 'col-md-4')));
 					?>
@@ -177,12 +178,13 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
               'id' 			    => 'tempat_pernikahan',
               'placeholder'	=> "Tempat Perkawinan",
               //'value'			=> $this->Session->read('Auth.User.nama'),
+              'required'  => 'required',
               'class'			  => "form-control input-xlarge",
               'div'			    => array('class' => 'col-md-4')));
 
           ?>
           <div class="col-md-4">
-            <input type="text" name="data[BaptisDarurat][tanggal_perkawinan]" id="tanggal_perkawinan" class="form-control datepicker" role="date" >
+            <input type="text" name="data[BaptisDarurat][tanggal_perkawinan]" id="tanggal_perkawinan" class="form-control datepicker" role="date" required="">
           </div>
         </div>
 
@@ -191,7 +193,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 					echo $this->Form->label('Baptis.tanggal_baptis_label', 'Tanggal Baptis', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" class="form-control datepicker" role="date" >
+            <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" class="form-control datepicker" role="date" required="">
           </div>
 				</div>
 
@@ -203,6 +205,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'label'			=> false,
 							'id' 			=> 'waliBaptis',
 							'placeholder'	=> "Wali Baptis",
+              'required'  => 'required',
 							'class'			=> "form-control input-xlarge",
 							'div'			=> array('class' => 'col-md-4')));
 					?>
@@ -216,6 +219,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'label'			=> false,
 							'id' 			=> 'romoBaptis',
 							'placeholder'	=> "Romo Baptis",
+              'required'  => 'required',
 							'class'			=> "form-control input-xlarge",
 							'div'			=> array('class' => 'col-md-4')));
 					?>
@@ -229,6 +233,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'label'			=> false,
 							'id' 			=> 'tempatBaptis',
 							'placeholder'	=> "Tempat Baptis",
+              'required'  => 'required',
 							'class'			=> "form-control input-xlarge",
 							'div'			=> array('class' => 'col-md-4')));
 					?>
@@ -242,6 +247,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'label'			=> false,
 							'id' 			=> 'kotaBaptis',
 							'placeholder'	=> "Kota",
+              'required'  => 'required',
 							'class'			=> "form-control input-xlarge",
 							'div'			=> array('class' => 'col-md-4')));
 					?>

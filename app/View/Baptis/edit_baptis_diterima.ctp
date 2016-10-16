@@ -8,12 +8,10 @@ $this->assign('title', 'Halaman Status Baptis');
 			<div class="panel-heading">
 				<h3 class="panel-title">Form Edit Data Baptis</h3>
 			</div>
-
 			<div class="panel-body">
 
 					<?php echo $this->Form->create('Baptis', array('controller' => 'baptis','action' => 'editBaptisDiterima','class'=>'form-horizontal', 'role'=>'form'));
-          echo $this->Form->input('Umat.id', array('type' => 'hidden', 'value'=> $this->request->data['Baptis']['id_umat']));
-          echo $this->Form->input('Baptis.id', array('type' => 'hidden', 'value'=> $this->request->data['Baptis']['id']));
+            echo $this->Form->input('Baptis.id', array('type' => 'hidden', 'value'=> $this->request->data['Baptis']['id']));
           ?>
           <div class="form-group">
   					<?php
@@ -121,7 +119,7 @@ $this->assign('title', 'Halaman Status Baptis');
   							'div'			    => array('class' => 'col-md-4')));
   					?>
             <div class="col-md-4">
-              <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+              <input type="text" name="data[Baptis][tanggal_lahir]" value="<?php echo $this->request->data['Baptis']['tanggal_lahir'];?>" id="tanggal_lahir" class="form-control datepicker" role="date" >
             </div>
   				</div>
 
@@ -176,7 +174,7 @@ $this->assign('title', 'Halaman Status Baptis');
   					echo $this->Form->label('Baptis.tanggal_baptis_label', 'Tanggal Baptis', 'col-md-2 control-label');
   					?>
             <div class="col-md-4">
-              <input type="text" name="data[Baptis][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+              <input type="text" name="data[Baptis][tanggal]" value="<?php echo $this->request->data['Baptis']['tanggal'];?>" id="tanggal" class="form-control datepicker" role="date" >
             </div>
   				</div>
 

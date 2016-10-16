@@ -62,7 +62,6 @@ $(document).ready(function() {
                 $('#namaAyah').val(data.nama_ayah);
                 $('#namaIbu').val(data.nama_ibu);
 
-                $('#idUmat').prop('disabled', true);
   		          $('#jnskel').prop('disabled', true);
   		          $('#tempatLahir').prop('disabled', true);
   		          $('#tanggal_lahir').prop('disabled', true);

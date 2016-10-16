@@ -238,17 +238,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
 
       <div class="form-group">
         <?php
-        echo $this->Form->label('Baptis.tempat_baptis', 'Tempat Baptis', 'col-md-2 control-label');
-        echo $this->Form->input('Baptis.tempat_baptis',
-          array(
-            'label'			  => false,
-            'id' 			    => 'tempatBaptis',
-            'placeholder'	=> "Tempat Baptis",
-            //'value'			=> $this->Session->read('Auth.User.nama'),
-            //'disabled'		=> 'disabled',
-            'class'			  => "form-control input-xlarge",
-            'div'			    => array('class' => 'col-md-4')));
-
+        echo $this->Form->label('Baptis.tempat_baptis', 'Tanggal Baptis', 'col-md-2 control-label');
         ?>
         <div class="col-md-4">
           <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" class="form-control datepicker" role="date" >
