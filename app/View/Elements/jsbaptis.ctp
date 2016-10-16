@@ -60,7 +60,6 @@ $(document).ready(function() {
   		          $('#tanggal_lahir').val(data.Umat.tgl_lahir);
                 $('#tglLahir').val(data.Umat.tgl_lahir);
 
-                $('#idUmat').prop('disabled', true);
   		          $('#jnskel').prop('disabled', true);
   		          $('#tempatLahir').prop('disabled', true);
   		          $('#tanggal_lahir').prop('disabled', true);

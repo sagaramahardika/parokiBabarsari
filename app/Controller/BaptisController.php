@@ -81,13 +81,14 @@ class BaptisController extends AppController{
 
 				$this->request->data['Baptis']['jenis_baptis'] = 'DITERIMA';
 				$this->request->data['Baptis']['sts_baptis'] = 1;
+				if($this->request->data['Baptis']['id_umat'] != 0){
+					$umat = $this->Umat->read(null, $this->request->data['Baptis']['id_umat']);
+					$umat['Umat']['id_statusbaptis'] = 7;
+					$this->Umat->save($umat);
+				}
 				if($this->Baptis->save($this->request->data)){
 					$id = $this->Baptis->id;
-					$this->request->data['Bapti']['id_baptis'] = $id;
-					if($this->BaptisDarurat->save($this->request->data)){
-						$this->Flash->success(__("Sukses tambah data baptis"));
-						return $this->redirect(array('action' => 'tambah'));
-					}
+					$this->Flash->success(__("Sukses tambah data baptis"));
 					return $this->redirect(array('action' => 'tambah'));
 				}
 			}catch(\Exception $e){
@@ -109,6 +110,11 @@ class BaptisController extends AppController{
 					$id = $this->Baptis->id;
 					$this->request->data['BaptisDarurat']['id_baptis'] = $id;
 					if($this->BaptisDarurat->save($this->request->data)){
+						if($this->request->data['Baptis']['id_umat'] != 0){
+							$umat = $this->Umat->read(null, $this->request->data['Baptis']['id_umat']);
+							$umat['Umat']['id_statusbaptis'] = 8;
+							$this->Umat->save($umat);
+						}
 						$this->Flash->success(__("Sukses tambah data baptis"));
 						return $this->redirect(array('action' => 'tambahBaptisDarurat'));
 					}
@@ -133,6 +139,11 @@ class BaptisController extends AppController{
 					$id = $this->Baptis->id;
 					$this->request->data['BaptisAnak']['id_baptis'] = $id;
 					if($this->BaptisAnak->save($this->request->data)){
+						if($this->request->data['Baptis']['id_umat'] != 0){
+							$umat = $this->Umat->read(null, $this->request->data['Baptis']['id_umat']);
+							$umat['Umat']['id_statusbaptis'] = 1;
+							$this->Umat->save($umat);
+						}
 						$this->Flash->success(__("Sukses tambah data baptis"));
 						return $this->redirect(array('action' => 'tambahBaptisAnak'));
 					}
@@ -157,6 +168,24 @@ class BaptisController extends AppController{
 					$id = $this->Baptis->id;
 					$this->request->data['BaptisDewasa']['id_baptis'] = $id;
 					if($this->BaptisDewasa->save($this->request->data)){
+						if($this->request->data['Baptis']['id_umat'] != 0){
+							$umat = $this->Umat->read(null, $this->request->data['Baptis']['id_umat']);
+							if($this->request->data['BaptisDewasa']['agama'] == 'ISLAM'){
+								$umat['Umat']['id_statusbaptis'] = 3;
+							}else if($this->request->data['BaptisDewasa']['agama'] == 'HINDU'){
+								$umat['Umat']['id_statusbaptis'] = 4;
+							}else if($this->request->data['BaptisDewasa']['agama'] == 'BUDHA'){
+								$umat['Umat']['id_statusbaptis'] = 5;
+							}else if($this->request->data['BaptisDewasa']['agama'] == 'KONGHUCU'){
+								$umat['Umat']['id_statusbaptis'] = 6;
+							}else if($this->request->data['BaptisDewasa']['agama'] == 'KRISTEN'){
+								$umat['Umat']['id_statusbaptis'] = 7;
+							}else{
+								$umat['Umat']['id_statusbaptis'] = 8;
+							}
+
+							$this->Umat->save($umat);
+						}
 						$this->Flash->success(__("Data Baptis berhasil disimpan"));
 						return $this->redirect(array('action' => 'tambahBaptisDewasa'));
 					}
@@ -242,17 +271,16 @@ class BaptisController extends AppController{
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
-			unset($this->request->data['Umat']['password']);
 		}
 	}
 
 	public function editBaptisAnak($id=null){
 		if ($this->request->is('post') || $this->request->is('put')) {
 			try {
-				if($this->BaptisAnak->save($this->request->data)){
-					$this->Flash->success(__('Data Baptis telah berhasil diubah.'));
-				}else{
-					$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
+				if($this->Baptis->save($this->request->data)){
+					if($this->BaptisAnak->save($this->request->data)){
+						$this->Flash->success(__("Sukses ubah data baptis"));
+					}
 				}
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
@@ -260,8 +288,7 @@ class BaptisController extends AppController{
 			return $this->redirect(array('action' => 'editBaptisAnak'));
 		}
 		else {
-			$this->request->data = $this->BaptisAnak->read(null, $id);
-			unset($this->request->data['Umat']['password']);
+			$this->request->data = $this->Baptis->read(null, $id);
 		}
 	}
 
@@ -269,9 +296,7 @@ class BaptisController extends AppController{
 		if ($this->request->is('post') || $this->request->is('put')) {
 			try {
 				if($this->Baptis->save($this->request->data)){
-					$this->Flash->success(__('Data Baptis telah berhasil diubah.'));
-				}else{
-					$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
+					$this->Flash->success(__("Sukses ubah data baptis"));
 				}
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
@@ -280,17 +305,16 @@ class BaptisController extends AppController{
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
-			unset($this->request->data['Umat']['password']);
 		}
 	}
 
 	public function editBaptisDewasa($id=null){
 		if ($this->request->is('post') || $this->request->is('put')) {
 			try {
-				if($this->BaptisDewasa->save($this->request->data)){
-					$this->Flash->success(__('Data Baptis telah berhasil diubah.'));
-				}else{
-					$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
+				if($this->Baptis->save($this->request->data)){
+					if($this->BaptisDewasa->save($this->request->data)){
+						$this->Flash->success(__("Sukses ubah data baptis"));
+					}
 				}
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
@@ -298,18 +322,17 @@ class BaptisController extends AppController{
 			return $this->redirect(array('action' => 'editBaptisDewasa'));
 		}
 		else {
-			$this->request->data = $this->BaptisDewasa->read(null, $id);
-			unset($this->request->data['Umat']['password']);
+			$this->request->data = $this->Baptis->read(null, $id);
 		}
 	}
 
 	public function editBaptisDarurat($id=null){
 		if ($this->request->is('post') || $this->request->is('put')) {
 			try {
-				if($this->BaptisDarurat->save($this->request->data)){
-					$this->Flash->success(__('Data Baptis telah berhasil diubah.'));
-				}else{
-					$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
+				if($this->Baptis->save($this->request->data)){
+					if($this->BaptisDarurat->save($this->request->data)){
+						$this->Flash->success(__("Sukses ubah data baptis"));
+					}
 				}
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
@@ -317,8 +340,7 @@ class BaptisController extends AppController{
 			return $this->redirect(array('action' => 'editBaptisDarurat'));
 		}
 		else {
-			$this->request->data = $this->BaptisDarurat->read(null, $id);
-			unset($this->request->data['Umat']['password']);
+			$this->request->data = $this->Baptis->read(null, $id);
 		}
 	}
 
@@ -328,10 +350,12 @@ class BaptisController extends AppController{
 		$this->autoRender = false;
 		$this->layout = false;
 		$id = $this->params['pass'][0];
+		$baptis = $this->Baptis->findById($id);
+		$this->set(compact('baptis'));
 		$view_output = $this->render('view_pdf');
     $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
     $html2pdf->pdf->SetAuthor('a');
-    $html2pdf->pdf->SetTitle('a');
+    $html2pdf->pdf->SetTitle('Baptis');
     $html2pdf->pdf->SetSubject('a');
     $html2pdf->pdf->SetKeywords('a');
     $html2pdf->pdf->SetProtection(array('print'), '');//allow only view/print

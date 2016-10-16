@@ -12,5 +12,20 @@ class Baptis extends AppModel {
 			'foreignKey' => 'id_umat'
 		)
 	);
+
+	public $hasOne = array(
+		'BaptisAnak' => array(
+			'className' => 'BaptisAnak',
+			'foreignKey' => 'id_baptis'
+			),
+		'BaptisDewasa' => array(
+			'className' => 'BaptisDewasa',
+			'foreignKey' => 'id_baptis'
+			),
+		'BaptisDarurat' => array(
+			'className' => 'BaptisDarurat',
+			'foreignKey' => 'id_baptis'
+			),
+	);
 }
 ?>

@@ -8,10 +8,12 @@ $this->assign('title', 'Halaman Status Baptis');
 			<div class="panel-heading">
 				<h3 class="panel-title">Form Edit Data Baptis</h3>
 			</div>
-
 			<div class="panel-body">
 
-					<?php echo $this->Form->create('Baptis', array('controller' => 'baptis','action' => 'edit','class'=>'form-horizontal', 'role'=>'form')); ?>
+					<?php echo $this->Form->create('Baptis', array('controller' => 'baptis','action' => 'editBaptisAnak','class'=>'form-horizontal', 'role'=>'form'));
+            echo $this->Form->input('BaptisAnak.id', array('type' => 'hidden', 'value'=> $this->request->data['BaptisAnak']['id']));
+            echo $this->Form->input('Baptis.id', array('type' => 'hidden', 'value'=> $this->request->data['Baptis']['id']));
+          ?>
 
           <div class="form-group">
             <?php
@@ -66,7 +68,6 @@ $this->assign('title', 'Halaman Status Baptis');
   							'id' 			=> 'nama_umat',
   							'placeholder'	=> "Nama Diri",
   							'value'			=> $this->request->data['Baptis']['nama_diri'],
-                'disabled'  => 'disabled',
   							'class'			=> "form-control input-xlarge",
   							'div'			=> array('class' => 'col-md-4')));
   					?>
@@ -81,7 +82,7 @@ $this->assign('title', 'Halaman Status Baptis');
     							'id' 			=> 'nama_umat',
     							'placeholder'	=> "Nama Diri",
     							'value'			=> $this->request->data['Umat']['nama'],
-                  //'disabled'  => 'disabled',
+                  'disabled'  => 'disabled',
     							'class'			=> "form-control input-xlarge",
     							'div'			=> array('class' => 'col-md-4')));
     					?>
@@ -117,7 +118,7 @@ $this->assign('title', 'Halaman Status Baptis');
                 'div'			    => array('class' => 'col-md-4')));
             ?>
             <div class="col-md-4">
-              <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" readonly="">
+              <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" value="<?php echo $this->request->data['Baptis']['tanggal_lahir'];?>" class="form-control datepicker" role="date" >
             </div>
           </div>
 
@@ -195,7 +196,7 @@ $this->assign('title', 'Halaman Status Baptis');
 
             ?>
             <div class="col-md-4">
-              <input type="text" name="data[BaptisAnak][tanggal_perkawinan_ortu]" id="tanggal_perkawinan_ortu" class="form-control datepicker" role="date" readonly="">
+              <input type="text" name="data[BaptisAnak][tanggal_perkawinan_ortu]" value="<?php echo $this->request->data['BaptisAnak']['tanggal_perkawinan_ortu'];?>" id="tanggal_perkawinan_ortu" class="form-control datepicker" role="date" >
             </div>
           </div>
 
@@ -257,20 +258,10 @@ $this->assign('title', 'Halaman Status Baptis');
 
           <div class="form-group">
             <?php
-            echo $this->Form->label('Baptis.tempat_baptis', 'Tempat Baptis', 'col-md-2 control-label');
-            echo $this->Form->input('Baptis.tempat_baptis',
-              array(
-                'label'			  => false,
-                'id' 			    => 'tempatBaptis',
-                'placeholder'	=> "Tempat Baptis",
-                //'value'			=> $this->Session->read('Auth.User.nama'),
-                //'disabled'		=> 'disabled',
-                'value'			  => $this->request->data['Baptis']['tempat_baptis'],
-                'class'			  => "form-control input-xlarge",
-                'div'			    => array('class' => 'col-md-4')));
+            echo $this->Form->label('Baptis.tempat_baptis', 'Tanggal Baptis', 'col-md-2 control-label');
             ?>
             <div class="col-md-4">
-              <input type="text" name="data[Baptis][tanggal]" id="tanggal" class="form-control datepicker" role="date" readonly="">
+              <input type="text" name="data[Baptis][tanggal]" id="tanggal" value="<?php echo $this->request->data['Baptis']['tanggal'];?>" class="form-control datepicker" role="date" >
             </div>
           </div>
 
