@@ -59,6 +59,8 @@ $(document).ready(function() {
   		          $('#tempatLahir').val(data.Umat.tmplahir);
   		          $('#tanggal_lahir').val(data.Umat.tgl_lahir);
                 $('#tglLahir').val(data.Umat.tgl_lahir);
+                $('#namaAyah').val(data.nama_ayah);
+                $('#namaIbu').val(data.nama_ibu);
 
                 $('#idUmat').prop('disabled', true);
   		          $('#jnskel').prop('disabled', true);

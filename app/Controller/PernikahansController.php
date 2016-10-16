@@ -151,51 +151,104 @@ class PernikahansController extends AppController{
 
 				
 				if ($this->Pernikahan->save($this->request->data)){
+					// Get Data Umat 
 					$idTam = $this->request->data['Pernikahan']['umat_id'];
-
-					$row = $this->Umat->findById($idTam);
-
-					//Debugger::dump($idTam);
-
+					$row = $this->Umat->findById($idTam);					
 					$rowling = $this->Lingkungan->findById($row['Kk']['lingkungan_id']);
-
 					$codeling = $rowling['Lingkungan']['code_lingkungan'];
-					$idling = $rowling['Lingkungan']['id'];
-					$total = $this->Lingkungan->find('all',array( 'fields'=>'jumlah_kk','conditions'=>array('Lingkungan.id'=>$idling)));
-					$total= $total[0]['Lingkungan']['jumlah_kk']+1;
 
-					$codekk=$codeling;
-					if ($total < 10) {
-						$codekk=$codekk.'00';
-						# code...
-					}elseif($total >9 && $total <100){
-						$codekk=$codekk.'0';
+					// Generate nomor KK
+					$kkLingkunganTerakhir = $this->Kk->find('first', array(
+				        'conditions' => array('Kk.code_kk LIKE "' .$codeling . '%"'),
+				        'order' => array('Kk.code_kk' => 'desc')
+				    ));
+
+				    $newkk = $kkLingkunganTerakhir['Kk']['code_kk'] + 1;
+					
+					$idling = $rowling['Lingkungan']['id'];
+
+					// $total = $this->Lingkungan->find('all',array(
+					// 	'fields'=>'jumlah_kk',
+					// 	'conditions'=>array('Lingkungan.id'=>$idling)
+					// 	)
+					// );
+
+					$hubkk1 = null;
+					$hubkk2 = null;
+					if ($this->request->data['Pernikahan']['pasangan_id'] == null) {
+						$hubkk1 = 1;
+					} else {
+						$umat1 = $this->Umat->findById($this->request->data['Pernikahan']['umat_id']);
+
+						if ($umat1['Umat']['jenis_kelamin'] == "L") {
+							if ($umat1['Umat']['id_statuskekatolikan'] != 0) {
+								$hubkk1 = 1;
+								$hubkk2 = 2;
+							}
+							else {
+								$hubkk1 = 2;
+								$hubkk2 = 1;
+							}
+						} else {
+							$umat1 = $this->Umat->findById($this->request->data['Pernikahan']['pasangan_id']);
+
+							if ($umat1['Umat']['id_statuskekatolikan'] != 0) {
+								$hubkk1 = 2;
+								$hubkk2 = 1;
+							}
+							else {
+								$hubkk1 = 1;
+								$hubkk2 = 2;
+							}
+						}
+						
 					}
+					
+
+					// $total= $total[0]['Lingkungan']['jumlah_kk']+1;
+
+					// $codekk=$codeling;
+					// if ($total < 10) {
+					// 	$codekk=$codekk.'00';
+					// 	# code...
+					// }elseif($total >9 && $total <100){
+					// 	$codekk=$codekk.'0';
+					// }
 					$newidkk = null;
 					if ($row['Umat']['id_hubkk'] != 1) {
 						# code...
-						$codekk = $codekk.$total;
+						// $codekk = $codekk.$total;
 						$rowkk = array();
-						$rowkk['Kk']['code_kk'] = $codekk;
+						$rowkk['Kk']['code_kk'] = $newkk;
 						$rowkk['Kk']['lingkungan_id'] = $idling;
-						$rowkk['Kk']['nama_kk'] = $row['Umat']['nama'];
-						$rowkk['Lingkungan']['jumlah_kk'] = $total;
+						if ($hubkk1 == 1) {
+							$rowkk['Kk']['nama_kk'] = $row['Umat']['nama'];
+						} else {
+							$idPaszxc = $this->request->data['Pernikahan']['pasangan_id'];
+							$rowPasangan = $this->Umat->findById($idPaszxc);
+
+							$rowkk['Kk']['nama_kk'] = $rowPasangan['Umat']['nama'];
+						}
+						
+						// $rowkk['Lingkungan']['jumlah_kk'] = $total;
 						$this->Kk->save($rowkk);
 
-						$this->Lingkungan->id = $idling;
-						$this->Lingkungan->saveField('jumlah_kk',$total);
-						$newidkk = $this->Kk->find('count')-1;
+						// $this->Lingkungan->id = $idling;
+						// $this->Lingkungan->saveField('jumlah_kk',$total);
+						$getLastIdKK = $this->Kk->find('first', array(
+					        'order' => array('Kk.id' => 'desc')
+					    	)
+					    );
+					    $newidkk = $getLastIdKK['Kk']['id'];
 					}
 					else{
 						$newidkk = $row['Umat']['id_kk'];
 					}
 
 					$this->Umat->id = $idTam;
-					$this->Umat->saveField('id_kk',$newidkk);
-					$this->Umat->saveField('id_hubkk',1);
-					$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
-
-
+					$this->Umat->saveField('id_kk', $newidkk);
+					$this->Umat->saveField('id_hubkk', $hubkk1);
+					$this->Umat->saveField('id_statuspernikahan', $this->request->data['statuspernikahan']);
 
 					if ($this->request->data['Pernikahan']['pasangan_id'] == null) {
 						# code...
@@ -209,7 +262,7 @@ class PernikahansController extends AppController{
 
 						$this->Umat->id = $idPas;
 						$this->Umat->saveField('id_kk',$newidkk);
-						$this->Umat->saveField('id_hubkk',2);
+						$this->Umat->saveField('id_hubkk',$hubkk2);
 						$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
 
 					}
@@ -267,8 +320,17 @@ class PernikahansController extends AppController{
 		if ($this->request->is('ajax')) {
 			$this->autoLayout = false;
 			$this->autoRender = false;
-			$idlingketualing = $this->Session->Read('Auth.User.idling');
-			$results = $this->Umat->find('all', array('fields' => array('id', 'nama','jenis_kelamin'), 'conditions' => array('Kk.lingkungan_id'=>$idlingketualing,'Umat.nama LIKE "%'.$_GET['term'].'%"','OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)))));
+			// $idlingketualing = $this->Session->Read('Auth.User.idling');
+			// $results = $this->Umat->find('all', array('fields' => array('id', 'nama','jenis_kelamin'), 'conditions' => array('Kk.lingkungan_id'=>$idlingketualing,'Umat.nama LIKE "%'.$_GET['term'].'%"','OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)))));
+			$results = $this->Umat->find('all', 
+				array(
+					'fields' => array('DISTINCT id', 'nama','jenis_kelamin'), 
+					'conditions' => array(
+						'Umat.nama LIKE "%'.$_GET['term'].'%"',
+						'Umat.id_statuspernikahan' => array(0, 1, 6, 7, 8)
+						),
+					'limit' => 10
+				));
 			$response = array();
 			$i = 0;
 			foreach($results as $result){
@@ -297,7 +359,16 @@ class PernikahansController extends AppController{
 			$response = array();
 			if ($_GET['tipe'] == 'ling') {
 				$results = $this->Umat->find('all');
-				$results = $this->Umat->find('all',array('fields' => array('id', 'nama'),'conditions'=>array('OR'=>array('Umat.id_statuspernikahan'=>array(1,6,8,0)),'Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']),'Kk.lingkungan_id'=>$idLingkungan)));
+				$results = $this->Umat->find('all',array(
+					'fields' => array('id', 'nama'),
+					'conditions'=>array(
+						'OR' => array('Umat.id_statuspernikahan'=>array(1,6,7,8,0)),
+						'Umat.nama LIKE "%'.$_GET['term'].'%"',
+						'NOT'=> array('Umat.jenis_kelamin' => $_GET['gender']),
+						'Kk.lingkungan_id'=>$idLingkungan),
+					'limit' => 10
+					)
+				);
 				# code...
 
 				$i = 0;
@@ -308,24 +379,23 @@ class PernikahansController extends AppController{
 		            $i++;
 	            }
 			} elseif ($_GET['tipe'] == 'wil'){
-				$results = $this->Umat->query('select umat.id,umat.nama from   (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk  AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 12 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id)  umat where umat.wilayah_id = '.$idWilayah.' ORDER BY `umat`.`id` ASC');
+				$results = $this->Umat->query('select umat.id, umat.nama from (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk  AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 6 OR u.id_statuspernikahan = 7 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id)  umat where umat.wilayah_id = '.$idWilayah.' ORDER BY `umat`.`id` ASC LIMIT 10');
 				$i = 0;
 		        foreach($results as $result){
-		        	$response[$i]['id'] = $result['umat']['id'];
-
-		            $response[$i]['label'] = $result['umat']['nama'];
-		            $response[$i]['value'] = $result['umat']['nama'];
+		        	$response[$i]['id'] = $result['Umat']['id'];
+		            $response[$i]['label'] = $result['Umat']['nama'];
+		            $response[$i]['value'] = $result['Umat']['nama'];
 		            $i++;
 				}
 			} elseif ($_GET['tipe'] == 'par') {
 				# code...
-				$results = $this->Umat->query('select umat.id,umat.nama from (select y.id,y.nama,w.paroki_id from (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 12 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id) y, wilayahs w where w.id = y.wilayah_id ) umat where umat.paroki_id ='.$idParoki.' ORDER BY `umat`.`id` ASC');
+				$results = $this->Umat->query('select umat.id,umat.nama from (select y.id,y.nama,w.paroki_id from (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 6 OR u.id_statuspernikahan = 7 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id) y, wilayahs w where w.id = y.wilayah_id ) umat where umat.paroki_id ='.$idParoki.' ORDER BY `umat`.`id` ASC LIMIT 10');
+
 				$i = 0;
 		        foreach($results as $result){
-		        	$response[$i]['id'] = $result['umat']['id'];
-
-		            $response[$i]['label'] = $result['umat']['nama'];
-		            $response[$i]['value'] = $result['umat']['nama'];
+		        	$response[$i]['id'] = $result['Umat']['id'];
+		            $response[$i]['label'] = $result['Umat']['nama'];
+		            $response[$i]['value'] = $result['Umat']['nama'];
 		            $i++;
 	            }
 				//$results = $this->Umat->find('all',array('fields' => array('id', 'nama'),'conditions'=>array('Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']),'Kk.lingkungan_id'=>$idWilayah)));

@@ -394,7 +394,25 @@ class BaptisController extends AppController{
 	 						),
 	 				),
 				));
-				$i = 0;
+
+				$anggotaKeluarga = $this->Umat->query('SELECT id, kode_umat, id_hubkk, nama, alamat FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.nama = "'.$_GET['nama'].'") AND uu.nama <> "'.$_GET['nama'].'"');
+
+				$results['nama_ayah'] = null;
+				$results['id_ayah'] = null;
+				$results['nama_ibu'] = null;
+				$results['id_ibu'] = null;
+
+				foreach ($anggotaKeluarga as $anggota) {
+					if ($anggota['uu']['id_hubkk'] == 1) {
+						$results['nama_ayah'] = $anggota['uu']['nama'];
+						$results['id_ayah'] = $anggota['uu']['id'];
+					}
+					else if ($anggota['uu']['id_hubkk'] == 2) {
+						$results['nama_ibu'] = $anggota['uu']['nama'];
+						$results['id_ibu'] = $anggota['uu']['id'];
+					} 
+				}
+
 				echo json_encode($results);
 		}
 	}

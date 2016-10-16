@@ -168,7 +168,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 					<div class="form-group">
 					<?php
 					echo $this->Form->label('Pernikahan.nm_pasangan', 'Nama Pasangan', 'col-md-2 control-label');
-					echo $this->Form->input('Pernikahan.nm_pasangan', array('id'=>'nm_pas_luar','label'=>false, 'placeholder'=>"Nama Pasangan",  'class'=>"form-control input-xlarge form_pasangan", 'div'=>array('class'=>'col-md-4')));
+					echo $this->Form->input('Pernikahan.nm_pasangan', array('id'=>'nm_pas_luar','label'=>false, 'placeholder'=>"Nama aPsangan",  'class'=>"form-control input-xlarge form_pasangan", 'div'=>array('class'=>'col-md-4')));
 					?>
 				<label style="color:red">*</label>
 				</div>
