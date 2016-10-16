@@ -329,7 +329,7 @@ class BaptisController extends AppController{
 					$this->autoRender = false;
 					$results = $this->Umat->find('all',
 						array(
-							'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir',), 'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%', 'Baptis.sts_baptis <>' => '1')
+							'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir',), 'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%', 'id_statusbaptis' => 9)
 						)
 					);
 					$response = array();
