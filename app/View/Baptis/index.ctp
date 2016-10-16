@@ -89,7 +89,10 @@ $this->assign('title', 'Halaman Manajemen Baptis');
                     ?>"
                     <button class="btnedit" idparam="<?php echo $data['Baptis']['id'] ?>">
   										<i class="fa fa-pencil"></i>
-  									</button></td>
+  									</button>
+                    <?php
+    					        echo $this->Html->link('<span class="fa fa-file-pdf-o" aria-hidden="true"></span>', array('controller'=>'baptis','action'=>'viewPDF', $data['Baptis']['id']), array('target'=>'_blank', 'escape'=> FALSE));
+                    ?>
                   </a>
 								</td>
                 <td><?php echo $data['Baptis']['id']; ?></td>

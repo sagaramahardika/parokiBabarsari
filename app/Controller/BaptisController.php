@@ -322,6 +322,23 @@ class BaptisController extends AppController{
 		}
 	}
 
+	public function viewPDF(){
+		App::import('Vendor', 'autoload');
+		App::import('Vendor', 'HTML2PDF', array('file' => 'html2pdf'.DS.'html2pdf.class.php'));
+		$this->autoRender = false;
+		$this->layout = false;
+		$id = $this->params['pass'][0];
+		$view_output = $this->render('view_pdf');
+    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
+    $html2pdf->pdf->SetAuthor('a');
+    $html2pdf->pdf->SetTitle('a');
+    $html2pdf->pdf->SetSubject('a');
+    $html2pdf->pdf->SetKeywords('a');
+    $html2pdf->pdf->SetProtection(array('print'), '');//allow only view/print
+    $html2pdf->WriteHTML($view_output);
+    $html2pdf->Output('pdf/test.pdf', 'I');
+	}
+
 	public function searchNama(){
 			if ($this->request->is('ajax'))
 			{
