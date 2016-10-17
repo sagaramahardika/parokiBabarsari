@@ -13,7 +13,6 @@ class PernikahansController extends AppController{
 		$this->Auth->allow( 'login');
 	}
 
-
 	public function index(){
 		$userRole = $this->Auth->user('user_level');
 		$idTam =  $this->Auth->user('id_umat');
@@ -327,7 +326,8 @@ class PernikahansController extends AppController{
 					'fields' => array('DISTINCT id', 'nama','jenis_kelamin'), 
 					'conditions' => array(
 						'Umat.nama LIKE "%'.$_GET['term'].'%"',
-						'Umat.id_statuspernikahan' => array(0, 1, 6, 7, 8)
+						'Umat.id_statuspernikahan' => array(0, 1, 6, 7, 8),
+						'Umat.jenis_kelamin' => "L"
 						),
 					'limit' => 10
 				));
@@ -445,6 +445,59 @@ class PernikahansController extends AppController{
 		}
   	}
 
+  	public function viewPDF(){
+		App::import('Vendor', 'autoload');
+		App::import('Vendor', 'HTML2PDF', array('file' => 'html2pdf'.DS.'html2pdf.class.php'));
+		$this->autoRender = false;
+		$this->layout = false;
+		$id = $this->params['pass'][0];
+		$pernikahan = $this->Pernikahan->findById($id);
+
+		$umat1 = $this->Umat->findById($pernikahan['Pernikahan']['umat_id']);
+
+		$ortuUmat1 = $this->Umat->query('SELECT id, id_hubkk, nama FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.id = "'.$pernikahan['Pernikahan']['umat_id'].'") AND uu.id <> "'.$pernikahan['Pernikahan']['umat_id'].'"');
+
+		$umat1['nama_ayah'] = null;
+		$umat1['nama_ibu'] = null;
+
+		foreach ($ortuUmat1 as $anggota) {
+			if ($anggota['uu']['id_hubkk'] == 1) {
+				$umat1['nama_ayah'] = $anggota['uu']['nama'];
+			}
+			else if ($anggota['uu']['id_hubkk'] == 2) {
+				$umat1['nama_ibu'] = $anggota['uu']['nama'];
+			} 
+		}
+		
+		$umat2 = NULL;
+		$umat2['nama_ayah'] = null;
+		$umat2['nama_ibu'] = null;
+
+		if ($pernikahan['Pernikahan']['pasangan_id'] != NULL) {
+			$umat2 = $this->Umat->findById($pernikahan['Pernikahan']['pasangan_id']);
+			$ortuUmat2 = $this->Umat->query('SELECT id, id_hubkk, nama FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.id = "'.$pernikahan['Pernikahan']['pasangan_id'].'") AND uu.id <> "'.$pernikahan['Pernikahan']['pasangan_id'].'"');
+
+			foreach ($ortuUmat2 as $anggota) {
+				if ($anggota['uu']['id_hubkk'] == 1) {
+					$umat2['nama_ayah'] = $anggota['uu']['nama'];
+				}
+				else if ($anggota['uu']['id_hubkk'] == 2) {
+					$umat2['nama_ibu'] = $anggota['uu']['nama'];
+				} 
+			}
+		}
+
+		$this->set(compact('pernikahan', 'umat1', 'umat2'));
+		$view_output = $this->render('view_pdf');
+	    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
+	    $html2pdf->pdf->SetAuthor('a');
+	    $html2pdf->pdf->SetTitle('Pernikahan');
+	    $html2pdf->pdf->SetSubject('a');
+	    $html2pdf->pdf->SetKeywords('a');
+	    $html2pdf->pdf->SetProtection(array('print'), '');//allow only view/print
+	    $html2pdf->WriteHTML($view_output);
+	    $html2pdf->Output('pdf/test.pdf', 'I');
+	}
 }
 
  ?>
