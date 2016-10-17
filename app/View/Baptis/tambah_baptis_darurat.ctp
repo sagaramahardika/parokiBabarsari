@@ -47,6 +47,8 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           ?>
         </div>
 
+        &nbsp
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Diri</b></h4></div>
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('Baptis.nama_diri_label', 'Nama Lengkap', 'col-md-2 control-label');
@@ -62,19 +64,6 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           <div class="col-md-2">
             <i class="fa fa-times fa-2x" style="color:red" id="cek_umat" cek="false"></i>
           </div>
-				</div>
-
-				<div class="form-group">
-					<?php
-					echo $this->Form->label('Baptis.nama_baptis_label', 'Nama Baptis', 'col-md-2 control-label');
-					echo $this->Form->input('Baptis.nama_baptis',
-						array(
-							'label'			=> false,
-							'id' 			=> 'namaBaptis',
-							'placeholder'	=> "Nama Baptis",
-							'class'			=> "form-control input-xlarge",
-							'div'			=> array('class' => 'col-md-4')));
-					?>
 				</div>
 
         <div class="form-group">
@@ -112,6 +101,8 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           </div>
 				</div>
 
+        &nbsp
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Orangtua</b></h4></div>
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('Umat.nama_ayah', 'Nama Ayah', 'col-md-2 control-label');
@@ -154,6 +145,8 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           </div>
         </div>
 
+        &nbsp
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Pernikahan</b></h4></div>
         <div class="form-group">
 					<?php
 					echo $this->Form->label('Baptis.nama_pasangan', 'Nama Pasangan', 'col-md-2 control-label');
@@ -187,6 +180,21 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
             <input type="text" name="data[BaptisDarurat][tanggal_perkawinan]" id="tanggal_perkawinan" class="form-control datepicker" role="date" required="">
           </div>
         </div>
+
+        &nbsp
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Baptis</b></h4></div>
+        <div class="form-group">
+					<?php
+					echo $this->Form->label('Baptis.nama_baptis_label', 'Nama Baptis', 'col-md-2 control-label');
+					echo $this->Form->input('Baptis.nama_baptis',
+						array(
+							'label'			=> false,
+							'id' 			=> 'namaBaptis',
+							'placeholder'	=> "Nama Baptis",
+							'class'			=> "form-control input-xlarge",
+							'div'			=> array('class' => 'col-md-4')));
+					?>
+				</div>
 
 				<div class="form-group">
 					<?php
