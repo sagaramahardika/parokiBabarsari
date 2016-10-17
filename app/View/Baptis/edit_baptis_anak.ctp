@@ -59,6 +59,8 @@ $this->assign('title', 'Halaman Status Baptis');
           </div>
 
           <?php if($this->request->data['Baptis']['id_umat'] == 0) {?>
+            &nbsp
+            <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Diri</b></h4></div>
   				<div class="form-group">
   					<?php
   					echo $this->Form->label('Baptis.nama_diri_label', 'Nama Diri', 'col-md-2 control-label');
@@ -88,20 +90,6 @@ $this->assign('title', 'Halaman Status Baptis');
     					?>
     				</div>
           <?php }?>
-
-          <div class="form-group">
-            <?php
-            echo $this->Form->label('Baptis.nama_baptis_label', 'Nama Baptis', 'col-md-2 control-label');
-            echo $this->Form->input('Baptis.nama_baptis',
-              array(
-                'label'			=> false,
-                'id' 			=> 'namaBaptis',
-                'placeholder'	=> "Nama Baptis",
-                'value'			=> $this->request->data['Baptis']['nama_baptis'],
-                'class'			=> "form-control input-xlarge",
-                'div'			=> array('class' => 'col-md-4')));
-            ?>
-          </div>
 
           <?php if($this->request->data['Baptis']['id_umat'] == 0) {?>
           <div class="form-group">
@@ -139,6 +127,8 @@ $this->assign('title', 'Halaman Status Baptis');
             </div>
           </div>
 
+          &nbsp
+          <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Orangtua</b></h4></div>
           <div class="form-group">
             <?php
             echo $this->Form->label('Baptis.ayah', 'Nama Ayah', 'col-md-2 control-label');
@@ -228,6 +218,22 @@ $this->assign('title', 'Halaman Status Baptis');
             ?>
           </div>
 
+          &nbsp
+          <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Baptis</b></h4></div>
+          <div class="form-group">
+            <?php
+            echo $this->Form->label('Baptis.nama_baptis_label', 'Nama Baptis', 'col-md-2 control-label');
+            echo $this->Form->input('Baptis.nama_baptis',
+              array(
+                'label'			=> false,
+                'id' 			=> 'namaBaptis',
+                'placeholder'	=> "Nama Baptis",
+                'value'			=> $this->request->data['Baptis']['nama_baptis'],
+                'class'			=> "form-control input-xlarge",
+                'div'			=> array('class' => 'col-md-4')));
+            ?>
+          </div>
+          
           <div class="form-group">
             <?php
             echo $this->Form->label('Baptis.wali_baptis_label', 'Nama Walibaptis', 'col-md-2 control-label');

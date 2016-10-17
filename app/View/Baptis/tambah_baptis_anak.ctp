@@ -60,6 +60,8 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
         ?>
       </div>
 
+      &nbsp
+      <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Diri</b></h4></div>
       <div class="form-group">
         <?php
         echo $this->Form->label('Baptis.nama', 'Nama Diri', 'col-md-2 control-label');
@@ -71,19 +73,6 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
             //'value'			=> $this->Session->read('Auth.User.nama'),
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-4')));
-        ?>
-      </div>
-
-      <div class="form-group">
-        <?php
-        echo $this->Form->label('Baptis.nama_baptis_label', 'Nama Baptis', 'col-md-2 control-label');
-        echo $this->Form->input('Baptis.nama_baptis',
-          array(
-            'label'			=> false,
-            'id' 			=> 'namaBaptis',
-            'placeholder'	=> "Nama Baptis",
-            'class'			=> "form-control input-xlarge",
-            'div'			=> array('class' => 'col-md-4')));
         ?>
       </div>
 
@@ -122,6 +111,8 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
         </div>
       </div>
 
+      &nbsp
+      <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Orangtua</b></h4></div>
       <div class="form-group">
         <?php
         echo $this->Form->label('Baptis.ayah', 'Nama Ayah', 'col-md-2 control-label');
@@ -207,6 +198,21 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
             //'value'			=> $this->Session->read('Auth.User.nama'),
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-4')));
+        ?>
+      </div>
+
+      &nbsp
+      <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Baptis</b></h4></div>
+      <div class="form-group">
+        <?php
+        echo $this->Form->label('Baptis.nama_baptis_label', 'Nama Baptis', 'col-md-2 control-label');
+        echo $this->Form->input('Baptis.nama_baptis',
+          array(
+            'label'			=> false,
+            'id' 			=> 'namaBaptis',
+            'placeholder'	=> "Nama Baptis",
+            'class'			=> "form-control input-xlarge",
+            'div'			=> array('class' => 'col-md-4')));
         ?>
       </div>
 
