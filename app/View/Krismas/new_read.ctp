@@ -89,6 +89,9 @@ $this->assign('title','Halaman Pendataan Krisma')
                 <?php
 					        echo $this->Html->link('<span class="fa fa-file-pdf-o" aria-hidden="true"></span>', array('controller'=>'krismas','action'=>'viewPDF', $data['Krisma']['id']), array('target'=>'_blank', 'escape'=> FALSE));
                 ?>
+                <?php
+					        echo $this->Html->link('<span class="fa fa-eye" aria-hidden="true"></span>', array('controller'=>'krismas','action'=>'viewDetail', $data['Krisma']['id']), array('escape'=> FALSE));
+                ?>
                 <?php } ?>
  				      </td>
               <td>	<?php echo $data['Krisma']['tanggal_krisma']; ?> </td>

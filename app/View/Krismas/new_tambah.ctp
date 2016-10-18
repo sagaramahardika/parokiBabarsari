@@ -44,6 +44,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
         echo $this->Form->input('kode_stasi', array(
                       'label'=>false,
                       'class'=>"form-control input-xlarge",
+                      'value'=> 3776,
                       'div'=>array('class'=>'col-md-4')));
         ?>
 
@@ -54,6 +55,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('lingkungan', 'Lingkungan ', 'col-md-2 control-label');
 					echo $this->Form->input('lingkungan', array(
                         'label'=>false,
+                        'placeholder'=>'Nama Lingkungan',
                         'class'=>"form-control input-xlarge",
                         'div'=>array('class'=>'col-md-4')));
 					?>
@@ -66,6 +68,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('nama_diri', array(
                         'label' => false,
                         'id'    => 'namaDiriKrisma',
+                        'placeholder'=>'Nama Diri',
                         'class' => "form-control input-xlarge",
                         'div'   => array('class'=>'col-md-4')));
 					?>
@@ -77,6 +80,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('nama_baptis', array(
                         'label' => false,
                         'class' => "form-control ",
+                        'placeholder'=>'Nama Baptis',
                         'id'    => 'namaBaptis',
                         'div'   => array('class'=>'col-md-4')));
 					?>
@@ -88,6 +92,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
           echo $this->Form->input('tempat_lahir', array(
                         'label'=>false,
                         'class'=>"form-control ",
+                        'placeholder'=>'Tempat Lahir',
                         'id'   => 'tempatLahir',
                         'div'=>array('class'=>'col-md-4')));
           ?>
@@ -98,7 +103,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalLahir', 'Tanggal Lahir', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Krisma][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Krisma][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" placeholder="Tanggal Lahir" readonly="">
           </div>
 				</div>
 
@@ -108,6 +113,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('tempat_baptis', array(
                         'label'=>false,
                         'class'=>"form-control ",
+                        'placeholder'=>'Tempat Baptis',
                         'id'   => 'tempatBaptis',
                         'div'=>array('class'=>'col-md-4')));
 					?>
@@ -118,7 +124,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalBaptis', 'Tanggal Baptis', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Krisma][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Krisma][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" placeholder=" Tanggal Baptis" readonly="">
           </div>
 				</div>
 
@@ -128,6 +134,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('buku_baptis', array(
                         'label'=>false,
                         'class'=>"form-control ",
+                        'placeholder'=>'Buku Baptis',
+                        'id'=>'bukuBaptis',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -138,6 +146,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('tempat_komuni', array(
                         'label'=>false,
                         'class'=>"form-control ",
+                        'placeholder'=>'Tempat Komuni',
                         'id'   => 'tempatKomuni',
                         'div'=>array('class'=>'col-md-4')));
 					?>
@@ -148,7 +157,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalKomuni', 'Tangggal Komuni', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Krisma][tanggal_komuni]" id="tanggalKomuni" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Krisma][tanggal_komuni]" id="tanggalKomuni" class="form-control datepicker" role="date" placeholder=" Tanggal Komuni" readonly="">
           </div>
 				</div>
 
@@ -158,6 +167,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('alamat_diri', array(
                         'label'=>false,
                         'class'=>"form-control ",
+                        'placeholder'=>'Alamat Krismawan/ti',
                         'id'   => 'alamatDiri',
                         'div'=>array('class'=>'col-md-4')));
 					?>
@@ -169,6 +179,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('no_hp_diri', array(
                         'label'=>false,
                         'class'=>"form-control ",
+                        'placeholder'=>'Nomor Telp/Hp',
                         'id'   => 'noHpDiri',
                         'div'=>array('class'=>'col-md-4')));
 					?>
@@ -179,7 +190,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalKrisma', 'Tanggal Krisma', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Krisma][tanggal_krisma]" id="tanggalKrisma" class="form-control datepicker" role="date" readonly="">
+            <input type="text" name="data[Krisma][tanggal_krisma]" id="tanggalKrisma" class="form-control datepicker" role="date" placeholder=" Tanggal Krisma" readonly="">
           </div>
 				</div>
 
@@ -190,6 +201,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('nama_pelindung_krisma', array(
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nama Pelindung Krisma',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -200,6 +212,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('nama_emban_krisma', array(
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nama Lengkap Emban Penguatan',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -210,6 +223,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('nama_ayah', array(
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nama Ayah',
+                        'id'=>'namaAyah',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -221,6 +236,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('nama_ibu', array(
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nama Ibu',
+                        'id'=>'namaIbu',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -232,6 +249,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('alamat_orangtua', array(
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Alamat Orangtua',
+                        'id'=>'alamatOrtu',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -243,6 +262,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('no_hp_orangtua', array(
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nomor Telp/Hp Orangtua',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>

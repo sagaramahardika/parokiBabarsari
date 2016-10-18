@@ -13,6 +13,7 @@
 
 	<?php
 		echo $this->Html->css(array('cake.generic.css', 'bootstrap.min.css', 'font-awesome.min.css', 'datepicker3.css', 'custom.css','jquery-ui.min.css','jquery-ui.css'));
+		echo $this->Html->script(array('jquery.min.js', 'bootstrap.min.js','jquery-ui.min.js','bootbox.min.js', 'bootstrap-datepicker.js'));
 	?>
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -51,7 +52,6 @@
 	  <p class="pull-right">&copy;2015 FTI UK Duta Wacana</p>
 	</footer>
 
-	<?php echo $this->Html->script(array('jquery.min.js', 'bootstrap.min.js','jquery-ui.min.js','bootbox.min.js', 'bootstrap-datepicker.js')); ?>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('[data-toggle=offcanvas]').click(function() {
@@ -66,6 +66,7 @@
 		<?php echo $this->element('jsumat', array('ctrl'=>$controller, 'act'=>$action,'urole'=>$urole)); ?>
 		<?php echo $this->element('jsbaptis', array('ctrl'=>$controller, 'act'=>$action,'urole'=>$urole)); ?>
 		<?php echo $this->element('jskrisma', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole)); ?>
+		<?php echo $this->element('jskematian', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole)); ?>
 		<?php echo $this->element('jskomuni', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole)); ?>
 		<?php echo $this->element('jspernikahan', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole));?>
 		<?php echo $this->element('jskk', array('ctrl'=>$controller, 'act'=>$action, 'urole'=>$urole));?>
