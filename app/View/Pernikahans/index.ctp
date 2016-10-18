@@ -90,6 +90,7 @@
 										</a>
 
 									<?php 
+			    					        echo $this->Html->link('<span class="fa fa-file-pdf-o" aria-hidden="true"></span>', array('controller'=>'pernikahans','action'=>'viewPDF', $data['Pernikahan']['id']), array('target'=>'_blank', 'escape'=> FALSE));
 										} 
 									?>
 										<a href="<?php 

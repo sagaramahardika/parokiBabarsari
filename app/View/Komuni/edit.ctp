@@ -79,6 +79,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   				?>
   			</div>
 
+        &nbsp
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Baptis</b></h4></div>
   			<div class="form-group">
   				<?php
   					echo $this->Form->label('Umat.nama', 'Nama ', 'col-md-2 control-label');
@@ -188,6 +190,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   				?>
   			</div>
 
+        &nbsp
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Orangtua</b></h4></div>
   			<div class="form-group">
   				<?php
   				//value sementara
@@ -248,6 +252,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   				?>
   			</div>
 
+        &nbsp
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Komuni</b></h4></div>
   			<div class="form-group">
   				<?php
   				echo $this->Form->label('Umat.tglkomuni', 'Tanggal Komuni Pertama', 'col-md-2 control-label');

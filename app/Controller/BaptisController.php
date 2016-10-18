@@ -434,7 +434,7 @@ class BaptisController extends AppController{
 					else if ($anggota['uu']['id_hubkk'] == 2) {
 						$results['nama_ibu'] = $anggota['uu']['nama'];
 						$results['id_ibu'] = $anggota['uu']['id'];
-					} 
+					}
 				}
 
 				echo json_encode($results);
