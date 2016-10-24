@@ -1,3 +1,9 @@
+$('#addkomuni').click(function(e){
+    e.preventDefault();
+
+    location.href="<?php echo $this->Html->url(array('controller'=>'komuni', 'action'=>'tambah')).'/' ?>";
+});
+
 $(document).ready(function() {
 
   $("#nama_umat_komuni").autocomplete({

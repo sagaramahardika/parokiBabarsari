@@ -1,3 +1,24 @@
+$('#addbaptisditerima').click(function(e){
+  console.log('a')
+    e.preventDefault();
+
+    location.href="<?php echo $this->Html->url(array('controller'=>'baptis', 'action'=>'tambah')).'/' ?>";
+});
+$('#addbaptisanak').click(function(e){
+    e.preventDefault();
+
+    location.href="<?php echo $this->Html->url(array('controller'=>'baptis', 'action'=>'tambahBaptisAnak')).'/' ?>";
+});
+$('#addbaptisdewasa').click(function(e){
+    e.preventDefault();
+
+    location.href="<?php echo $this->Html->url(array('controller'=>'baptis', 'action'=>'tambahBaptisDewasa')).'/' ?>";
+});
+$('#addbaptisdarurat').click(function(e){
+    e.preventDefault();
+
+    location.href="<?php echo $this->Html->url(array('controller'=>'baptis', 'action'=>'tambahBaptisDarurat')).'/' ?>";
+});
 $(document).ready(function() {
 
   $("#nama_umat").autocomplete({

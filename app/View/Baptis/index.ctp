@@ -21,6 +21,10 @@ $this->assign('title', 'Halaman Manajemen Baptis');
 					$userRole =$this->Session->read('Auth.User.user_level');
 					echo 's' ;
 			  		 ?>
+             <button class="btn btn-default btn-success" type="button" id="addbaptisanak"><span class="fa fa-user-plus"></span> Tambah Baptis Anak</button>
+             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisdewasa"><span class="fa fa-user-plus"></span> Tambah Baptis Dewasa</button>
+             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisditerima"><span class="fa fa-user-plus"></span> Tambah Baptis Diterima</button>
+             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisdarurat"><span class="fa fa-user-plus"></span> Tambah Baptis Darurat</button>
 			  	</span>
 			  </div>
 			  </form>
@@ -102,8 +106,8 @@ $this->assign('title', 'Halaman Manajemen Baptis');
                 <td><?php if($data['Baptis']['tanggal']){ echo $data['Baptis']['tanggal'];}else{ echo "-";} ?></td>
                 <td><?php if($data['Baptis']['id_umat'] == 0){echo $data['Baptis']['nama_diri'];}else{echo $data['Umat']['nama'];} ?></td>
                 <td><?php if($data['Baptis']['nama_baptis']){ echo $data['Baptis']['nama_baptis'];}else{ echo "-";} ?></td>
-                <td><?php if($data['Baptis']['id_umat'] == 0){ echo $data['Baptis']['ayah'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
-                <td><?php if($data['Baptis']['id_umat'] == 0){ echo $data['Baptis']['ibu'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
+                <td><?php if($data['Baptis']['id_umat'] == 0){ echo $data['Baptis']['ayah'];}else{echo $data['Umat']['ayah'];} ?></td>
+                <td><?php if($data['Baptis']['id_umat'] == 0){ echo $data['Baptis']['ibu'];}else{echo $data['Umat']['ibu'];} ?></td>
                 <td><?php if($data['Baptis']['wali_baptis']){ echo $data['Baptis']['wali_baptis'];}else{ echo "-";} ?></td>
                 <td><?php if($data['Baptis']['romo']){ echo $data['Baptis']['romo'];}else{ echo "-";} ?></td>
                 <td><?php if($data['Baptis']['jenis_baptis']){ echo $data['Baptis']['jenis_baptis'];}else{ echo "-";} ?></td>

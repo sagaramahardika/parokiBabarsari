@@ -23,34 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `baptises_darurat`
+-- Table structure for table `baptises_dewasa_child`
 --
 
-CREATE TABLE `baptises_darurat` (
+CREATE TABLE `baptises_dewasa_child` (
   `id` int(11) NOT NULL,
-  `id_baptis` int(11) NOT NULL,
-  `status_perkawinan` enum('SUDAH','BELUM') NOT NULL,
-  `nama_pasangan` varchar(255) DEFAULT NULL,
-  `tempat_perkawinan` varchar(255) NOT NULL,
-  `tanggal_perkawinan` varchar(255) NOT NULL,
-  `ketua_lingkungan` varchar(255) NOT NULL
+  `id_baptis_dewasa` int(11) NOT NULL,
+  `tahap` int(5) NOT NULL,
+  `tempat` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL,
+  `oleh` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `baptises_darurat`
---
-
-INSERT INTO `baptises_darurat` (`id`, `id_baptis`, `status_perkawinan`, `nama_pasangan`, `tempat_perkawinan`, `tanggal_perkawinan`, `ketua_lingkungan`) VALUES
-(1, 519, 'SUDAH', 'asfasf', 'asfsf', 'asfsf', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `baptises_darurat`
+-- Indexes for table `baptises_dewasa_child`
 --
-ALTER TABLE `baptises_darurat`
+ALTER TABLE `baptises_dewasa_child`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58,10 +50,10 @@ ALTER TABLE `baptises_darurat`
 --
 
 --
--- AUTO_INCREMENT for table `baptises_darurat`
+-- AUTO_INCREMENT for table `baptises_dewasa_child`
 --
-ALTER TABLE `baptises_darurat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `baptises_dewasa_child`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
