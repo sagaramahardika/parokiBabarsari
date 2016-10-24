@@ -34,7 +34,11 @@ class BaptisController extends AppController{
 		$this->set('title_for_layout','Home');
 		$this->Baptis->recursive = 1;
 		$this->set('umats',$this->Umat->find('list',array('fields'=>array('nama'))));
-
+		$this->set('totalBaptisAnak', $this->Baptis->find('all', array('fields' => array('count(Baptis.id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis like "ANAK"'))));
+		$this->set('totalBaptisDiterima', $this->Baptis->find('all', array('fields' => array('count(Baptis.id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis like "DITERIMA"'))));
+		$this->set('totalBaptisDewasa', $this->Baptis->find('all', array('fields' => array('count(Baptis.id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis like "DEWASA"'))));
+		$this->set('totalBaptisDarurat', $this->Baptis->find('all', array('fields' => array('count(Baptis.id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis like "DARURAT"'))));
+		$this->set('totalBaptis', $this->Baptis->find('all', array('fields' => array('count(Baptis.id)   AS ctotal'), 'conditions' => array(''))));
 		$this->Paginator->settings = array(
 			'limit'=>10,
 			'conditions'=>array($conditions),
@@ -437,6 +441,66 @@ class BaptisController extends AppController{
 					}
 				}
 
+				echo json_encode($results);
+		}
+	}
+
+	public function jumlahTotal(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Baptis->find('all', array('fields' => array('sum(id)   AS ctotal'), 'conditions' => ''));
+				echo json_encode($results);
+		}
+	}
+
+	public function jumlahBaptisAnak(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Baptis->find('all', array('fields' => array('sum(id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis = ANAK')));
+				echo json_encode($results);
+		}
+	}
+
+	public function jumlahBaptisDewasa(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Baptis->find('all', array('fields' => array('sum(id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis = DEWASA')));
+				echo json_encode($results);
+		}
+	}
+
+	public function jumlahBaptisDarurat(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Baptis->find('all', array('fields' => array('sum(id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis = DARURAT')));
+				echo json_encode($results);
+		}
+	}
+
+	public function jumlahBaptisDiterima(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Baptis->find('all', array('fields' => array('sum(id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis = DITERIMA')));
+				echo json_encode($results);
+		}
+	}
+
+	public function jumlahBaptisLainnya(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Baptis->find('all', array('fields' => array('sum(id)   AS ctotal'), 'conditions' => array('Baptis.jenis_baptis = ANAK')));
 				echo json_encode($results);
 		}
 	}

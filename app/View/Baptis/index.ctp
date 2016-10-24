@@ -13,6 +13,26 @@ $this->assign('title', 'Halaman Manajemen Baptis');
 				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
 				</span>
 			  </div>
+        <div id='jumlah'>
+          <span>Jumlah Total: </span>
+          <?php echo $totalBaptis[0][0]['ctotal']; ?>
+        </div>
+        <div id='jumlah'>
+          <span>Jumlah Baptis Anak: </span>
+          <?php echo $totalBaptisAnak[0][0]['ctotal']; ?>
+        </div>
+        <div id='jumlah'>
+          <span>Jumlah Baptis Dewasa: </span>
+          <?php echo $totalBaptisDewasa[0][0]['ctotal']; ?>
+        </div>
+        <div id='jumlah'>
+          <span>Jumlah Baptis Diterima: </span>
+          <?php echo $totalBaptisDiterima[0][0]['ctotal']; ?>
+        </div>
+        <div id='jumlah'>
+          <span>Jumlah Baptis Darurat: </span>
+          <?php echo $totalBaptisDarurat[0][0]['ctotal']; ?>
+        </div>
 			  <br>
 			  <div class="input-group">
 			  	<span class="input-group-btn">

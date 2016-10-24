@@ -19,6 +19,11 @@ $('#addbaptisdarurat').click(function(e){
 
     location.href="<?php echo $this->Html->url(array('controller'=>'baptis', 'action'=>'tambahBaptisDarurat')).'/' ?>";
 });
+
+function baptistotal(){
+
+}
+
 $(document).ready(function() {
 
   $("#nama_umat").autocomplete({
