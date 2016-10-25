@@ -35,7 +35,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 
 			<?php
 			echo $this->Form->create('Krisma', array('url' => '/krismas/newTambah','class'=>'form-horizontal', 'role'=>'form',));
-		    echo $this->Form->input('Umat.id', array('type' => 'hidden', 'value'=> $this->Session->read('Auth.User.id')));
+		  echo $this->Form->input('id_umat', array('type' => 'hidden', 'id' => 'idUmat'));
 			?>
 
       <div class="form-group">

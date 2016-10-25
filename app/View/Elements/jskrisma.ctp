@@ -9,18 +9,22 @@
              success   : function(data)
              {
                if(data.length == 0){
+                 $('#idUmat').prop('disabled', false);
                  $('#namaBaptis').prop('disabled', false);
                  $('#tempatLahir').prop('disabled', false);
                  $('#tanggalLahir').prop('disabled', false);
                  $('#tempatBaptis').prop('disabled', false);
                  $('#tanggalBaptis').prop('disabled', false);
                  $('#bukuBaptis').prop('disabled', false);
-                 $('#tempatKomuni').prop('disabled', true);
-                 $('#tanggalKomuni').prop('disabled', true);
-                 $('#namaAyah').prop('disabled', false);
-                 $('#namaIbu').prop('disabled', false);
+                 $('#tempatKomuni').prop('disabled', false);
+                 $('#tanggalKomuni').prop('disabled', false);
+                 $('#alamatDiri').prop('disabled', false);
+                 $('#noHpDiri').prop('disabled', false);
+                 $('#namaAyah').prop('readonly', false);
+                 $('#namaIbu').prop('readonly', false);
                  $('#alamatOrtu').prop('disabled', false);
 
+                 $('#idUmat').val("");
                  $('#namaBaptis').val("");
                  $('#tempatLahir').val("");
                  $('#tanggalLahir').val("");
@@ -29,6 +33,8 @@
                  $('#bukuBaptis').val("");
                  $('#tempatKomuni').val("");
                  $('#tanggalKomuni').val("");
+                 $('#alamatDiri').val("");
+                 $('#noHpDiri').val("");
                  $('#namaAyah').val("");
                  $('#namaIbu').val("");
                  $('#alamatOrtu').val("");
@@ -55,8 +61,7 @@
            dataType  : "json",
            success   : function(data)
            {
-               console.log(data)
-
+               $('#idUmat').val(data.Umat.id);
                $('#namaBaptis').val(data.Baptis.nama_baptis);
                $('#tempatLahir').val(data.Umat.tmplahir);
                $('#tanggalLahir').val(data.Umat.tgl_lahir);
@@ -65,6 +70,8 @@
                $('#bukuBaptis').val(data.Baptis.liberbap);
                $('#tempatKomuni').val(data.Umat.tmpkomuni);
                $('#tanggalKomuni').val(data.Umat.tglkomuni);
+               $('#alamatDiri').val(data.Umat.alamat);
+               $('#noHpDiri').val(data.Umat.tlp);
                $('#namaAyah').val(data.nama_ayah);
                $('#namaIbu').val(data.nama_ibu);
                $('#alamatOrtu').val(data.alamat_orangtua);
@@ -77,24 +84,30 @@
                $('#bukuBaptis').prop('disabled', true);
                $('#tempatKomuni').prop('disabled', true);
                $('#tanggalKomuni').prop('disabled', true);
-               $('#namaAyah').prop('disabled', true);
-               $('#namaIbu').prop('disabled', true);
+               $('#alamatDiri').prop('disabled', true);
+               $('#noHpDiri').prop('disabled', true);
+               $('#namaAyah').prop('readonly', true);
+               $('#namaIbu').prop('readonly', true);
                $('#alamatOrtu').prop('disabled', true);
            },
            error: function(e){
 
+             $('#idUmat').prop('disabled', false);
              $('#namaBaptis').prop('disabled', false);
              $('#tempatLahir').prop('disabled', false);
              $('#tanggalLahir').prop('disabled', false);
              $('#tempatBaptis').prop('disabled', false);
              $('#tanggalBaptis').prop('disabled', false);
              $('#bukuBaptis').prop('disabled', false);
-             $('#tempatKomuni').prop('disabled', true);
-             $('#tanggalKomuni').prop('disabled', true);
-             $('#namaAyah').prop('disabled', false);
-             $('#namaIbu').prop('disabled', false);
+             $('#tempatKomuni').prop('disabled', false);
+             $('#tanggalKomuni').prop('disabled', false);
+             $('#alamatDiri').prop('disabled', false);
+             $('#noHpDiri').prop('disabled', false);
+             $('#namaAyah').prop('readonly', false);
+             $('#namaIbu').prop('readonly', false);
              $('#alamatOrtu').prop('disabled', false);
 
+             $('#idUmat').val("");
              $('#namaBaptis').val("");
              $('#tempatLahir').val("");
              $('#tanggalLahir').val("");
@@ -102,7 +115,9 @@
              $('#tanggalBaptis').val("");
              $('#bukuBaptis').val("");
              $('#tempatKomuni').val("");
-             $('#tanggalKomuni').val("")
+             $('#tanggalKomuni').val("");
+             $('#alamatDiri').val("");
+             $('#noHpDiri').val("");
              $('#namaAyah').val("");
              $('#namaIbu').val("");
              $('#alamatOrtu').val("");

@@ -181,6 +181,18 @@ public function beforeFilter() {
 		if ($this->request->is('post')) {
 				# code...
 				try {
+					if($this->request->data['Krisma']['id_umat']){
+						$this->request->data['Krisma']['nama_diri'] = null;
+						$this->request->data['Krisma']['nama_baptis'] = null;
+						$this->request->data['Krisma']['tempat_lahir'] = null;
+						$this->request->data['Krisma']['tanggal_lahir'] = null;
+						$this->request->data['Krisma']['tempat_baptis'] = null;
+						$this->request->data['Krisma']['tanggal_baptis'] = null;
+						$this->request->data['Krisma']['liberbap'] = null;
+						$this->request->data['Krisma']['alamat_orangtua'] = null;
+						$this->request->data['Krisma']['no_telp_orangtua'] = null;
+					}
+
 					if ($this->Krisma->save($this->request->data)){
 						$this->Krisma->save($this->request->data);
 
@@ -302,7 +314,7 @@ public function beforeFilter() {
 				$this->autoLayout = false;
 				$this->autoRender = false;
 				$results = $this->Umat->find('first', array(
-					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'tmpkomuni', 'tglkomuni', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis', 'Baptis.liberbap'),
+					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'tmpkomuni', 'tglkomuni', 'alamat', 'tlp', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis', 'Baptis.liberbap'),
 					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%' ),
 				));
 

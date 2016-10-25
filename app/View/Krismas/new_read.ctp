@@ -74,8 +74,7 @@ $this->assign('title','Halaman Pendataan Krisma')
 
 
 							# code...
-
-						foreach($datas as $data) {
+						  foreach($datas as $data) {
 
 							?>
 
@@ -95,7 +94,7 @@ $this->assign('title','Halaman Pendataan Krisma')
                 <?php } ?>
  				      </td>
               <td>	<?php echo $data['Krisma']['tanggal_krisma']; ?> </td>
-       				<td>	<?php echo $data['Krisma']['nama_diri']; ?></td>
+       				<td>	<?php echo ($data['Krisma']['id_umat'] == 0) ? $data['Krisma']['nama_diri'] : $data['Umat']['nama'];?></td>
               <td>	<?php echo $data['Krisma']['nama_ayah']; ?> </td>
               <td>	<?php echo $data['Krisma']['nama_ibu']; ?> </td>
               <td>	<?php echo $data['Krisma']['nama_pelindung_krisma']; ?> </td>
@@ -109,7 +108,6 @@ $this->assign('title','Halaman Pendataan Krisma')
 
 
 						<?php }
-
 						?>
 						</tbody>
 					</table>
