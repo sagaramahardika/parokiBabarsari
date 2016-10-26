@@ -7,24 +7,29 @@
   $intDay = date("j", strtotime($krisma['Krisma']['tanggal_krisma']));
   $month = $arrMonth[$numMonth];
   $year = date("Y", strtotime($krisma['Krisma']['tanggal_krisma']));
+
+  $nama = explode(",", $krisma['Umat']['nama']);
+  $nama_diri = $nama[0];
+  $nama_baptis = $nama[1];
+
 ?>
 
 <page backbottom="14mm">
   <table style="width: 100%; border-bottom: double 5px #000;">
     <tr>
-      <td rowspan="4" style="width: 20%; text-align: center;">
-        qeqwewqeqqw
+      <td rowspan="4" style="width: 20%;">
+        <img src="<?php echo APP; ?>\webroot\logo-hitam.jpg" height="100" width="100">
       </td>
-      <td style="width: 80%; text-align: center; font-size: 16px;">GEREJA KATOLIK SANTA MARIA ASSUMPTA</td>
+      <td style="width: 80%; text-align: center; font-size: 18px;">GEREJA KATOLIK SANTA MARIA ASSUMPTA</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-size: 20px;"><b>PAROKI BABARSARI</b></td>
+      <td style="text-align: center; font-size: 22px;"><b>PAROKI BABARSARI</b></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-size: 14px;">Jl. Inspeksi Selokan Mataram Babarsari Sleman 55281 DIY Telp. (0274) 487203</td>
+      <td style="text-align: center; font-size: 16px;">Jl. Inspeksi Selokan Mataram Babarsari Sleman 55281 DIY Telp. (0274) 487203</td>
     </tr>
     <tr>
-      <td style="text-align: center; font-size: 20px;"><b>YOGYAKARTA</b></td>
+      <td style="text-align: center; font-size: 22px;"><b>YOGYAKARTA</b></td>
     </tr>
   </table>
   <h2>Kenangan Penguatan</h2>
@@ -32,7 +37,7 @@
     <tr>
       <td style="text-align: right; width: 47.5%; font-size: 18px;"><b>diberikan kepada :</b></td>
       <td style="width: 5%"></td>
-      <td style="text-align: center; width: 40%; font-size: 18px;"><b><?php echo $krisma['Krisma']['nama_baptis'] . " " . $krisma['Krisma']['nama_diri']; ?></b></td>
+        <td style="text-align: center; width: 40%; font-size: 18px;"><b><?php echo $nama_baptis . " " . $nama_diri; ?></b></td>
     </tr>
   </table>
   <br>
@@ -121,8 +126,8 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 55%;"> </td>
-      <td style="font-size: 14px;"><?php echo $post['romo']; ?></td>
+      <td style="font-size: 14px;"><?php echo $krisma['Krisma']['nama_emban_krisma']; ?></td>
     </tr>
   </table>
-
+  <?php //print_r($krisma); ?>
 </page>

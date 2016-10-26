@@ -82,6 +82,12 @@ else {
   <li <?php echo $baptis; ?>>
   <?php echo $this->Html->link('Baptis', array('id'=>'baptis','controller'=>'baptis', 'action' => 'index')); ?>
   </li>
+  <li <?php echo $komuni; ?>>
+  <?php echo $this->Html->link('Komuni', array('controller'=>'komuni', 'action' => 'index')); ?>
+  </li>
+  <li <?php echo $krismas; ?>>
+  <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'newRead')); ?>
+  </li>
   <li <?php echo $pernikahans; ?>>
   <?php echo $this->Html->link('Pernikahan', array('controller'=>'pernikahans', 'action' => 'index')); ?>
   </li>
@@ -90,12 +96,6 @@ else {
   </li>
   <li <?php echo $kematians; ?>>
     <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'newRead')); ?>
-  </li>
-  <li <?php echo $komuni; ?>>
-  <?php echo $this->Html->link('Komuni', array('controller'=>'komuni', 'action' => 'index')); ?>
-  </li>
-  <li <?php echo $krismas; ?>>
-  <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'newRead')); ?>
   </li>
 
   <?php
@@ -108,9 +108,6 @@ else {
   <li <?php echo $tambahjemaat; ?>>
     <?php echo $this->Html->link('Tambah Jemaat', array('controller'=>'umats', 'action' => 'tambahjemaat')); ?>
   </li><?php } ?>
-  <li <?php echo $tambahkematian; ?>>
-   <?php echo $this->Html->link('Tambah Kematian', array('controller'=>'kematians', 'action' => 'tambah')); ?>
-  </li>
   <li <?php echo $lihataktivasi; ?>>
     <?php echo $this->Html->link('Kode aktivasi', array('controller'=>'umats', 'action' => 'lihataktivasi')); ?>
   </li>

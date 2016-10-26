@@ -8,7 +8,6 @@
   $(document).ready(function(){
     $(".fa-file-pdf-o").click(function(){
       $id = $(this).attr('id');
-      alert($id);
       $('#formPDF').attr('action', 'viewPDF/' + $id);
     });
   })
@@ -152,19 +151,12 @@ $this->assign('title','Halaman Pendataan Krisma')
           </div>
           <form id="formPDF" class="form-horizontal" action="viewPDF/" method="post" target="_blank">
             <div class="modal-body">
-
-                  <div class="form-group">
-      					    <label for="deskripsi" class="col-sm-3 control-label">Ayat</label>
-      					    <div class="col-sm-9">
-      					       	<textarea id="ayat" name="ayat" class="form-control"></textarea>
-      					    </div>
-      				    </div>
-    	      			<div class="form-group">
-      					    <label for="kode" class="col-sm-3 control-label">Romo</label>
-      					    <div class="col-sm-9">
-      					       	<input id="romo" name="romo" type="text" class="form-control">
-      					    </div>
-      				    </div>
+              <div class="form-group">
+  					    <label for="deskripsi" class="col-sm-3 control-label">Ayat</label>
+  					    <div class="col-sm-9">
+  					       	<textarea id="ayat" name="ayat" class="form-control"></textarea>
+  					    </div>
+  				    </div>
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-sm btn-primary" id="btnTambahKasBank">Tambah</button>
