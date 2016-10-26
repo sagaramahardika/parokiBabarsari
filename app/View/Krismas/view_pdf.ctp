@@ -39,9 +39,7 @@
   <table style="width: 100%;">
     <tr>
       <td style="font-size: 14px; width: 50%; text-align: justify;">
-        " Karena itu pergilah, jadikanlah semua bangsa murid-Ku dan baptislah mereka dalam nama Bapa
-        dan Anak dan Roh Kudus, dan ajarlah mereka melakukan segala sesuatu yang telah Kuperintahkan
-        kepadamu. Dan ketahuilah, Aku menyertai kamu senantiasa sampai kepada akhir zama." (Mateus 28:19-20)
+        <?php echo $post['ayat']; ?>
       </td>
       <td style="width: 2.5%;"></td>
       <td style="font-size: 13px;">
@@ -77,7 +75,7 @@
               :
             </td>
             <td>
-              Rm. FX. Sukendar Wigyosumarto, Pr.
+              <?php echo $krisma['Krisma']['nama_emban_krisma']; ?>
             </td>
           </tr>
           <tr>
@@ -123,7 +121,7 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 55%;"> </td>
-      <td style="font-size: 14px;">Rm. Fransiscus Xaverius Sukendar Wigyosumarto</td>
+      <td style="font-size: 14px;"><?php echo $post['romo']; ?></td>
     </tr>
   </table>
 

@@ -240,7 +240,9 @@ public function beforeFilter() {
 		$this->layout = false;
 		$id = $this->params['pass'][0];
 		$krisma = $this->Krisma->findById($id);
+		$post = $this->request->data;
 		$this->set(compact('krisma'));
+		$this->set(compact('post'));
 		$view_output = $this->render('view_pdf');
     $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
     $html2pdf->pdf->SetAuthor('a');
