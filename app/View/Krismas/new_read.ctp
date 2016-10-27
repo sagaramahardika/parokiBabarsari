@@ -1,3 +1,17 @@
+<style>
+  .fa-file-pdf-o {
+    cursor: pointer;
+    cursor: hand;
+  }
+</style>
+<script>
+  $(document).ready(function(){
+    $(".fa-file-pdf-o").click(function(){
+      $id = $(this).attr('id');
+      $('#formPDF').attr('action', 'viewPDF/' + $id);
+    });
+  })
+</script>
 <?php
 $this->assign('title','Halaman Pendataan Krisma')
 
@@ -85,9 +99,7 @@ $this->assign('title','Halaman Pendataan Krisma')
 					        echo $this->Html->url(array('controller'=>'krismas','action'=>'newEdit', $data['Krisma']['id']));?>"
                   <span class="fa fa-edit" aria-hidden="true"></span>
                 </a>
-                <?php
-					        echo $this->Html->link('<span class="fa fa-file-pdf-o" aria-hidden="true"></span>', array('controller'=>'krismas','action'=>'viewPDF', $data['Krisma']['id']), array('target'=>'_blank', 'escape'=> FALSE));
-                ?>
+                <span class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="modal" data-target="#modalPDF" style="color:#337ab7;" id="<?php echo $data['Krisma']['id']; ?>"</span>
                 <?php
 					        echo $this->Html->link('<span class="fa fa-eye" aria-hidden="true"></span>', array('controller'=>'krismas','action'=>'viewDetail', $data['Krisma']['id']), array('escape'=> FALSE));
                 ?>
@@ -127,5 +139,30 @@ $this->assign('title','Halaman Pendataan Krisma')
 				</section>
 			</div>
 		</div>
+      <!-- Modal -->
+    <div id="modalPDF" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Data PDF</h4>
+          </div>
+          <form id="formPDF" class="form-horizontal" action="viewPDF/" method="post" target="_blank">
+            <div class="modal-body">
+              <div class="form-group">
+  					    <label for="deskripsi" class="col-sm-3 control-label">Ayat</label>
+  					    <div class="col-sm-9">
+  					       	<textarea id="ayat" name="ayat" class="form-control"></textarea>
+  					    </div>
+  				    </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-sm btn-primary" id="btnTambahKasBank">Tambah</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
 		</div>
 </div>
