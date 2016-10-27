@@ -3,7 +3,31 @@ $this->assign('title', 'Halaman Manajemen Baptis');
 ?>
 <h3><i class="fa fa-angle-right"></i> <i class="fa fa-users"></i> Manajemen Data Baptis</h3>
 <div class="row mt">
+  <br>
     <div class="col-lg-12">
+      <div class="row tile_count">
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Jumlah Total:</span>
+          <div class="count green"><?php echo $totalBaptis[0][0]['ctotal']; ?></div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Jumlah Baptis Anak:</span>
+          <div class="count green"><?php echo $totalBaptisAnak[0][0]['ctotal']; ?></div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Jumlah Baptis Dewasa:</span>
+          <div class="count green"><?php echo $totalBaptisDewasa[0][0]['ctotal']; ?></div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Jumlah Baptis Diterima:</span>
+          <div class="count green"><?php echo $totalBaptisDiterima[0][0]['ctotal']; ?></div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Jumlah Baptis Darurat:</span>
+          <div class="count green"><?php echo $totalBaptisDarurat[0][0]['ctotal']; ?></div>
+        </div>
+      </div>
+      <br>
 		<div class="row">
 			<div class="col-lg-6">
 			  <form action="<?php echo $this->Html->url(array('controller'=>'baptis', 'action'=>'index')); ?>" method="post" id="frmCari">
@@ -13,26 +37,7 @@ $this->assign('title', 'Halaman Manajemen Baptis');
 				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
 				</span>
 			  </div>
-        <div id='jumlah'>
-          <span>Jumlah Total: </span>
-          <?php echo $totalBaptis[0][0]['ctotal']; ?>
-        </div>
-        <div id='jumlah'>
-          <span>Jumlah Baptis Anak: </span>
-          <?php echo $totalBaptisAnak[0][0]['ctotal']; ?>
-        </div>
-        <div id='jumlah'>
-          <span>Jumlah Baptis Dewasa: </span>
-          <?php echo $totalBaptisDewasa[0][0]['ctotal']; ?>
-        </div>
-        <div id='jumlah'>
-          <span>Jumlah Baptis Diterima: </span>
-          <?php echo $totalBaptisDiterima[0][0]['ctotal']; ?>
-        </div>
-        <div id='jumlah'>
-          <span>Jumlah Baptis Darurat: </span>
-          <?php echo $totalBaptisDarurat[0][0]['ctotal']; ?>
-        </div>
+
 			  <br>
 			  <div class="input-group">
 			  	<span class="input-group-btn">

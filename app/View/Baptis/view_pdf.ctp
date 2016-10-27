@@ -27,6 +27,20 @@
     $tempat_lahir = $baptis['Umat']['tmplahir'];
   };
 
+  $ayah;
+  if($baptis['Baptis']['id_umat'] == 0){
+    $ayah = $baptis['Baptis']['ayah'];
+  }else{
+    $ayah = $baptis['Umat']['ayah'];
+  };
+
+  $ibu;
+  if($baptis['Baptis']['id_umat'] == 0){
+    $ibu = $baptis['Baptis']['ibu'];
+  }else{
+    $ibu = $baptis['Umat']['ibu'];
+  };
+
   $tgl_baptis = $baptis['Baptis']['tanggal'];
 
   $arrDay = array("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu");
@@ -107,11 +121,11 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 45%; font-size: 18px;">Nama Ayah</td>
-      <td style="font-size: 18px;">: <i>Yustinus Ade Stirman</i></td>
+      <td style="font-size: 18px;">: <i><?php echo $ayah; ?></i></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Nama Ibu</td>
-      <td style="font-size: 18px;">: <i>Agustina Herlina Yustantil</i></td>
+      <td style="font-size: 18px;">: <i><?php echo $ibu; ?></i></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Wali Permandian</td>

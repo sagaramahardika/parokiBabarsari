@@ -3,7 +3,7 @@
 App::uses('AuthComponent', 'Controller/Component');
 class BaptisController extends AppController{
 	public $components = array('Flash','Paginator');
-	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki', 'BaptisDarurat', 'BaptisAnak', 'BaptisDewasa');
+	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki', 'BaptisDarurat', 'BaptisAnak', 'BaptisDewasa', 'Krisma');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 	public $name = 'Baptis';
@@ -355,7 +355,9 @@ class BaptisController extends AppController{
 		$this->layout = false;
 		$id = $this->params['pass'][0];
 		$baptis = $this->Baptis->findById($id);
+		$krisma = $this->Krisma->findByIdUmat($baptis['Umat']['id']);
 		$this->set(compact('baptis'));
+		$this->set(compact('krisma'));
 		$view_output = $this->render('view_pdf');
     $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
     $html2pdf->pdf->SetAuthor('a');
