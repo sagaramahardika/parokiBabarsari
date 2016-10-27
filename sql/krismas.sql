@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 25 Okt 2016 pada 13.53
+-- Generation Time: 27 Okt 2016 pada 09.53
 -- Versi Server: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -49,14 +49,15 @@ CREATE TABLE IF NOT EXISTS `krismas` (
   `nama_ibu` varchar(50) DEFAULT NULL,
   `alamat_orangtua` varchar(50) DEFAULT NULL,
   `no_hp_orangtua` varchar(13) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `krismas`
 --
 
 INSERT INTO `krismas` (`id`, `id_umat`, `kode_stasi`, `lingkungan`, `nama_diri`, `nama_baptis`, `tempat_lahir`, `tanggal_lahir`, `tempat_baptis`, `tanggal_baptis`, `buku_baptis`, `tempat_komuni`, `tanggal_komuni`, `alamat_diri`, `no_hp_diri`, `tanggal_krisma`, `nama_pelindung_krisma`, `nama_emban_krisma`, `nama_ayah`, `nama_ibu`, `alamat_orangtua`, `no_hp_orangtua`) VALUES
-(42, 4, 3776, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', 'Antonio', 'Antonio', 'AGUS SETIONO WIBOWO, THEODORUS', 'NUNIK SRI LESTARI, THERESIA', NULL, '1111111111');
+(42, 4, 3776, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', 'Antonio', 'Antonio', 'AGUS SETIONO WIBOWO, THEODORUS', 'NUNIK SRI LESTARI, THERESIA', NULL, '1111111111'),
+(43, 18, 3776, 'test', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', 'Agus', 'Agus', '', 'SUTRIMAH', NULL, '11111111111');
 
 --
 -- Indexes for dumped tables
@@ -76,7 +77,7 @@ ALTER TABLE `krismas`
 -- AUTO_INCREMENT for table `krismas`
 --
 ALTER TABLE `krismas`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
