@@ -247,6 +247,9 @@ class PernikahansController extends AppController{
 					$this->Umat->id = $idTam;
 					$this->Umat->saveField('id_kk', $newidkk);
 					$this->Umat->saveField('id_hubkk', $hubkk1);
+					$this->Umat->saveField('tempatnikah', $this->request->data['Pernikahan']['tmppernikahan']);
+					$this->Umat->saveField('tglnikah', $this->request->data['Pernikahan']['tglpernikahan']);
+					$this->Umat->saveField('id_hubkk', $hubkk1);
 					$this->Umat->saveField('id_statuspernikahan', $this->request->data['statuspernikahan']);
 
 					if ($this->request->data['Pernikahan']['pasangan_id'] == null) {
@@ -263,6 +266,8 @@ class PernikahansController extends AppController{
 						$this->Umat->saveField('id_kk',$newidkk);
 						$this->Umat->saveField('id_hubkk',$hubkk2);
 						$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
+						$this->Umat->saveField('tempatnikah', $this->request->data['Pernikahan']['tmppernikahan']);
+						$this->Umat->saveField('tglnikah', $this->request->data['Pernikahan']['tglpernikahan']);
 
 					}
 					$this->Flash->success(('Data pernikahan telah tersimpan.'));
@@ -457,6 +462,16 @@ class PernikahansController extends AppController{
 
 		$ortuUmat1 = $this->Umat->query('SELECT id, id_hubkk, nama FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.id = "'.$pernikahan['Pernikahan']['umat_id'].'") AND uu.id <> "'.$pernikahan['Pernikahan']['umat_id'].'"');
 
+		$umat1['nama_diri'] = "";
+		$umat2['nama_diri'] = "";
+
+		if (strpos($umat1['Umat']['nama'], ',') !== false) {
+		    $pecah = explode(",", $umat1['Umat']['nama']);
+		    $umat1['nama_diri'] = $pecah[1] . " " . $pecah[0];
+		} else {
+			$umat1['nama_diri'] = $umat1['Umat']['nama'];
+		}
+
 		$umat1['nama_ayah'] = null;
 		$umat1['nama_ibu'] = null;
 
@@ -484,6 +499,13 @@ class PernikahansController extends AppController{
 				else if ($anggota['uu']['id_hubkk'] == 2) {
 					$umat2['nama_ibu'] = $anggota['uu']['nama'];
 				} 
+			}
+
+			if (strpos($umat2['Umat']['nama'], ',') !== false) {
+			    $pecah = explode(",", $umat2['Umat']['nama']);
+			    $umat2['nama_diri'] = $pecah[1] . " " . $pecah[0];
+			} else {
+				$umat2['nama_diri'] = $umat2['Umat']['nama'];
 			}
 		}
 

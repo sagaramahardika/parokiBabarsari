@@ -6,8 +6,10 @@
         <br>
         <b>De SEMARANG</b>
       </td>
-      <td rowspan="6" style="width: 15%; text-align: center">Logo</td>
-      <td style="width: 80%; font-size: 15px;"><b>EXTRACTUM E LIBRO MATRIMONIORUM</b></td>
+      <td rowspan="6" style="width: 25%; text-align: center">
+        <img src="<?php echo APP; ?>\webroot\logo-hitam.jpg" height="100" width="100">
+      </td>
+      <td style="width: 65%; font-size: 15px;"><b>EXTRACTUM E LIBRO MATRIMONIORUM</b></td>
     </tr>
     <tr>
       <td style="font-size: 15px;"><i>Ad ecclesiam SANTA MARIA ASSUMPTA</i></td>
@@ -42,14 +44,14 @@
     </tr>
   </table>
   <div style="width: 100%; text-align: center;">
-    <p style="text-align: center; font-size: 24px; font-weight: bold; text-decoration: underline; padding-bottom: 0px; margin-bottom: 0px;">TESTIMONIUM MATRIMONII</p>
-    <p style="padding-top: 0px; margin-top: 0px;">( SURAT KAWIN )</p>
+    <p style="text-align: center; font-size: 24px; font-weight: bold; text-decoration: underline; padding-bottom: 0px; margin-bottom: 0px; padding-left: 45px;">TESTIMONIUM MATRIMONII</p>
+    <p style="padding-top: 0px; margin-top: 0px;padding-left: 45px;">( SURAT KAWIN )</p>
   </div>
   <br>
 
   <div style="width: 100%; text-align: center;">
-    <p style="text-align: center; text-decoration: underline; padding-bottom: 0px; margin-bottom: 0px;">EGO SUBSCRIPTOR ATTESTOR</p>
-    <p style="padding-top: 0px; margin-top: 0px;"><i>Yang bertanda tangan dibawah ini menyatakan</i></p>
+    <p style="text-align: center; text-decoration: underline; padding-bottom: 0px; margin-bottom: 0px;padding-left: 45px;">EGO SUBSCRIPTOR ATTESTOR</p>
+    <p style="padding-top: 0px; margin-top: 0px;padding-left: 45px;"><i>Yang bertanda tangan dibawah ini menyatakan</i></p>
   </div>
   <br>
   <br>
@@ -57,7 +59,7 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">QUOD</td>
-      <td style="font-size: 18px;">: <i><?php echo $umat1['Umat']['nama'];?></i></td>
+      <td style="font-size: 18px;">: <i><?php echo $umat1['nama_diri']; ?></i></td>
     </tr>
     <tr>
       <td style="width: 25%; font-size: 13px;">bahwa</td>
@@ -65,7 +67,7 @@
     </tr>
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">C.P.S</td>
-      <td style="font-size: 13px;">: <?php echo $umat1['nama_ayah'] . "<i> dengan </i>". $umat1['nama_ibu'] ;?></td>
+      <td style="font-size: 13px;">: <?php echo $umat1['Umat']['nama_ayah'] . "<i> dengan </i>". $umat1['Umat']['nama_ibu'] ;?></td>
     </tr>
     <tr>
       <td style="width: 25%; font-size: 13px;"><i>anak laki-laki dari</i></td>
@@ -73,8 +75,8 @@
     <br>
   </table>
   <div style="width: 100%; text-align: center;">
-    <p style="text-align: center; text-decoration: underline; padding-bottom: 0px; margin-bottom: 0px;">RITE MATRIMONIO JUSTUM ESSE</p>
-    <p style="padding-top: 0px; margin-top: 0px;"><i>Sudah kawin menurut upacara Gereja Katolik</i></p>
+    <p style="text-align: center; text-decoration: underline; padding-bottom: 0px; margin-bottom: 0px;padding-left: 45px;">RITE MATRIMONIO JUSTUM ESSE</p>
+    <p style="padding-top: 0px; margin-top: 0px;padding-left: 45px;"><i>Sudah kawin menurut upacara Gereja Katolik</i></p>
   </div>
   <br>
   <br>
@@ -84,7 +86,7 @@
       <?php if ($umat2 == NULL) { ?>
         <td style="font-size: 18px;">: <i><?php echo $pernikahan['Pernikahan']['nm_pasangan'] ?></i></td>
       <?php } else { ?>
-        <td style="font-size: 18px;">: <i><?php echo $umat2['Umat']['nama'] ?></i></td>
+        <td style="font-size: 18px;">: <i><?php echo $umat2['nama_diri']; ?></i></td>
       <?php } ?>  
     </tr>
     <tr>
@@ -94,8 +96,8 @@
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">C.P.S</td>
       <?php if ($umat2 != NULL) { ?>
-        <td style="font-size: 13px;">: <?php echo $umat2['nama_ayah'] . "<i> dengan </i>". $umat2['nama_ibu'] ;?></td>
-      <?php }?>
+        <td style="font-size: 13px;">: <?php echo $umat2['Umat']['nama_ayah'] . "<i> dengan </i>". $umat2['Umat']['nama_ibu'] ;?></td>
+      <?php } ?>
     </tr>
     <tr>
       <td style="width: 25%; font-size: 13px;"><i>anak perempuan dari</i></td>
@@ -109,7 +111,16 @@
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">DIE</td>
 
-      <td style="font-size: 18px;">: <i><?php echo date("d F Y", strtotime($pernikahan['Pernikahan']['tglpernikahan']));?></i></td>
+      <?php 
+        $arrMonth = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+        $numMonth = date("n", strtotime($pernikahan['Pernikahan']['tglpernikahan']));
+        $intDay = date("j", strtotime($pernikahan['Pernikahan']['tglpernikahan']));
+        $month = $arrMonth[$numMonth-1];
+        $year = date("Y", strtotime($pernikahan['Pernikahan']['tglpernikahan']));
+
+      ?>
+
+      <td style="font-size: 18px;">: <i><?php echo $intDay. " ". $month. " " . $year?></i></td>
     </tr>
     <tr>
         <td style="width: 25%; font-size: 13px;"><i>tanggal</i></td>
@@ -160,7 +171,15 @@
     </tr>
     <tr style="border-collapse:separate;">
       <td style="width: 60%; padding-top: 15px;"></td>
-      <td style="width: 40%; padding-top: 15px;">Sleman, <?php echo date("d F Y"); ?></td>
+      <?php 
+        $arrMonth = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+        $numMonth = date("n");
+        $intDay = date("j");
+        $month = $arrMonth[$numMonth-1];
+        $year = date("Y");
+
+      ?>
+      <td style="width: 40%; padding-top: 15px;">Sleman, <?php echo $intDay. " ". $month. " " . $year?></td>
     </tr>
     <tr style="border-collapse:separate;">
       <td style="width: 60%; padding-top: 15px;"></td>

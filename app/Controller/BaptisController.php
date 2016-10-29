@@ -356,17 +356,38 @@ class BaptisController extends AppController{
 		$id = $this->params['pass'][0];
 		$baptis = $this->Baptis->findById($id);
 		$krisma = $this->Krisma->findByIdUmat($baptis['Umat']['id']);
+
+		// Fungsi get riwayat nikah (TglNikah sama Nama Pasangan)
+
+		$hubKKpasangan = 0;
+
+		if ($baptis['Umat']['id_hubkk'] == 1) {
+			$hubKKpasangan = 2;
+		} else if($baptis['Umat']['id_hubkk'] == 2) {
+			$hubKKpasangan = 1;
+		}
+
+		$riwayatPernikahan = $this->Pernikahan->find('first', array(
+			'fields' => array('nama', 'tempatnikah', 'tglnikah'),
+			'conditions' => array('Umat.id_kk' => $baptis['Umat']['id_kk'], 'Umat.id_hubkk', 'Umat.id_hubkk' => $hubKKpasangan)
+		));
+
+		$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
+		$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
+
+		// NOTE: Belom di test
+
 		$this->set(compact('baptis'));
 		$this->set(compact('krisma'));
 		$view_output = $this->render('view_pdf');
-    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
-    $html2pdf->pdf->SetAuthor('a');
-    $html2pdf->pdf->SetTitle('Baptis');
-    $html2pdf->pdf->SetSubject('a');
-    $html2pdf->pdf->SetKeywords('a');
-    $html2pdf->pdf->SetProtection(array('print'), '');//allow only view/print
-    $html2pdf->WriteHTML($view_output);
-    $html2pdf->Output('pdf/test.pdf', 'I');
+	    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
+	    $html2pdf->pdf->SetAuthor('a');
+	    $html2pdf->pdf->SetTitle('Baptis');
+	    $html2pdf->pdf->SetSubject('a');
+	    $html2pdf->pdf->SetKeywords('a');
+	    $html2pdf->pdf->SetProtection(array('print'), '');//allow only view/print
+	    $html2pdf->WriteHTML($view_output);
+	    $html2pdf->Output('pdf/test.pdf', 'I');
 	}
 
 	public function searchNama(){
@@ -413,7 +434,7 @@ class BaptisController extends AppController{
 				$this->autoLayout = false;
 				$this->autoRender = false;
 				$results = $this->Umat->find('first', array(
-					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis'),
+					'fields' => array('id_kk', 'id_hubkk', 'nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis'),
 					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%'),
 					'joins' 				=> array(
 	 						array(
@@ -425,7 +446,10 @@ class BaptisController extends AppController{
 	 				),
 				));
 
+
+
 				$anggotaKeluarga = $this->Umat->query('SELECT id, kode_umat, id_hubkk, nama, alamat FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.nama = "'.$_GET['nama'].'") AND uu.nama <> "'.$_GET['nama'].'"');
+
 
 				$results['nama_ayah'] = null;
 				$results['id_ayah'] = null;

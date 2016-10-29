@@ -672,10 +672,22 @@ public function lihataktivasi(){
 			$zz = $this->Lingkungan->findByCodeLingkungan($aa);
 			$cc = $zz['Lingkungan']['jumlah_umat'] + 1;
 
+			// Jika KK Baru
+			$codelings = $zz['Lingkungan']['code_lingkungan'];
+
+			// Generate nomor KK
+			$kkLingkunganTerakhir = $this->Kk->find('first', array(
+		        'conditions' => array('Kk.code_kk LIKE "' .$codelings . '%"'),
+		        'order' => array('Kk.code_kk' => 'desc')
+		    ));
+
+		    $newkk = $kkLingkunganTerakhir['Kk']['code_kk'] + 1;
+		
 			$this->Lingkungan->id=$zz['Lingkungan']['id'];
 			$this->Lingkungan->saveField('jumlah_umat',$cc);
-			if($this->request->data['Umat']['tambahkk'] == "Y"){
 
+			if($this->request->data['Umat']['tambahkk'] == "Y"){
+				
 				$gg = $zz['Lingkungan']['jumlah_kk'] + 1;
 				if($gg / 100 >= 1)
 					$fins = $aa . $gg;
@@ -700,7 +712,8 @@ public function lihataktivasi(){
 				$fin = $fins .'000'.$cc;
 
 			if($this->request->data['Umat']['tambahkk'] == "Y"){
-				$this->request->data['Kk']['code_kk'] = $fins;
+				// Isi dengan $newkk
+				$this->request->data['Kk']['code_kk'] = $newkk;
 				$this->request->data['Kk']['lingkungan_id'] = $zz['Lingkungan']['id'];
 				$this->request->data['Kk']['nama_kk'] = $this->request->data['Umat']['nama'];
 
@@ -729,7 +742,14 @@ public function lihataktivasi(){
 					if ($this->Kk->save($this->request->data)){
 						$this->Flash->success(__('Jemaat berhasil ditambahkan'));
 						$is = $this->Kk->findByCodeKk($this->request->data['Kk']['code_kk']);
-						$this->request->data['Umat']['id_kk'] = $is['Kk']['id'];
+
+						$getLastIdKK = $this->Kk->find('first', array(
+					        'order' => array('Kk.id' => 'desc')
+					    	)
+					    );
+					    $newidkk = $getLastIdKK['Kk']['id'];
+					    $this->request->data['Umat']['id_kk'] = $newidkk;
+						// $this->request->data['Umat']['id_kk'] = $is['Kk']['id'];
 					}
 				} catch (PDOException $e) {
 
@@ -747,8 +767,6 @@ public function lihataktivasi(){
 				$this->Flash->error(__('User tidak dapat tersimpan. ' . $e->errorInfo[2]));
 			}
 
-
-
 			try {
 				$this->Umat->create();
 				if ($this->Umat->save($this->request->data)){
@@ -759,8 +777,6 @@ public function lihataktivasi(){
 
 				$this->Flash->error(__('User tidak dapat tersimpan. ' . $e->errorInfo[2]));
 			}
-
-
 
 			// try {
 			// 	$this->User->create();

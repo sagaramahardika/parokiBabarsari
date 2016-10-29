@@ -93,6 +93,20 @@ $this->assign('title', 'Halaman Tambah Jemaat Babarsari');
 
 				<div class="form-group">
 					<?php
+					echo $this->Form->label('Umat.nama_ayah', 'Nama Ayah', 'col-md-2 control-label');
+					echo $this->Form->input('nama_ayah', array('label'=>false, 'placeholder'=>"Nama Lengkap Ayah Umat", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+				<div class="form-group">
+					<?php
+					echo $this->Form->label('Umat.nama_ibu', 'Nama Ibu', 'col-md-2 control-label');
+					echo $this->Form->input('nama_ibu', array('label'=>false, 'placeholder'=>"Nama Lengkap Ibu Umat", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+				<div class="form-group">
+					<?php
 					echo $this->Form->label('Umat.tempat_lahir', 'Tempat Lahir', 'col-md-2 control-label');
 					echo $this->Form->input('tmplahir', array('label'=>false, 'placeholder'=>"Tempat Lahir", 'class'=>"form-control input-xlarge", 'div'=>array('class'=>'col-md-4')));
 					?>
