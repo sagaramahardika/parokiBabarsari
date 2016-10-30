@@ -3,7 +3,7 @@
 App::uses('AuthComponent', 'Controller/Component');
 class BaptisController extends AppController{
 	public $components = array('Flash','Paginator');
-	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki', 'BaptisDarurat', 'BaptisAnak', 'BaptisDewasa', 'Krisma');
+	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki', 'BaptisDarurat', 'BaptisAnak', 'BaptisDewasa', 'Krisma', 'Pernikahan');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 	public $name = 'Baptis';
@@ -368,7 +368,7 @@ class BaptisController extends AppController{
 		}
 
 		$riwayatPernikahan = $this->Pernikahan->find('first', array(
-			'fields' => array('nama', 'tempatnikah', 'tglnikah'),
+			'fields' => array('nm_pasangan', 'tmppernikahan', 'tglpernikahan', 'kota'),
 			'conditions' => array('Umat.id_kk' => $baptis['Umat']['id_kk'], 'Umat.id_hubkk', 'Umat.id_hubkk' => $hubKKpasangan)
 		));
 
