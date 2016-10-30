@@ -157,11 +157,11 @@
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Sakramen Penguatan tanggal</td>
-      <td style="font-size: 18px;">:<i><?php if(count($krisma) != 0){ echo $intDayLahir.' '.$bulanLahir.' '.$tahunLahir; }else{ echo '-'; } ?></i></td>
+      <td style="font-size: 18px;">:<i><?php if(count($krisma) != 0){ echo $intDayLahir.' '.$bulanLahir.' '.$tahunLahir; }else{ echo ' -'; } ?></i></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Di Gereja</td>
-      <td style="font-size: 18px;">: .................................di...........................................</td>
+      <td style="font-size: 18px;">: <?php if(count($krisma) != 0){ echo $krisma['Krisma']['tempat_krisma'] .' di '.$krisma['Krisma']['kota_krisma']; }else{ echo '-'; } ?> </td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Telah Menikah dengan</td>
@@ -183,7 +183,13 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 55%;"></td>
+      <?php if($hariNikah != null || $tempatMenikah != null || $namaPasangan != null){ ?>
+      <td style="font-size: 18px; text-align: center;">Babarsari, <?php echo $hariNikah . ', ' . $intDayNikah . ' ' . $bulanNikah . ' ' . $tahunNikah; ?></td>
+      <?php }else if(count($krisma) != 0){ ?>
+      <td style="font-size: 18px; text-align: center;">Babarsari, <?php echo $intDayLahir.' '.$bulanLahir.' '.$tahunLahir; ?></td>
+      <?php }else {?>
       <td style="font-size: 18px; text-align: center;">Babarsari, <?php echo $intDayBaptis . ' ' . $bulanBaptis . ' ' . $tahunBaptis; ?></td>
+      <?php }?>
     </tr>
   </table>
   <table style="width: 100%;">
