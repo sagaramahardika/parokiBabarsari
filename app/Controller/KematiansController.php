@@ -102,26 +102,18 @@ class KematiansController extends AppController{
     {
         if ($this->request->is('post'))
         {
-            $data = $this->request->data;
-            $kematian = array(
-              'kode_stasi'        => $data['Kematian']['kode_stasi'],
-              'lingkungan'        => $data['Kematian']['lingkungan'],
-              'nama_diri'         => $data['Kematian']['nama_diri'],
-              'nama_baptis'       => $data['Kematian']['nama_baptis'],
-              'tempat_lahir'      => $data['Kematian']['tempat_lahir'],
-              'tanggal_lahir'     => $data['Kematian']['tanggal_lahir'],
-              'tempat_meninggal'  => $data['Kematian']['tempat_meninggal'],
-              'tanggal_meninggal' => $data['Kematian']['tanggal_meninggal'],
-              'tempat_pemakaman'  => $data['Kematian']['tempat_pemakaman'],
-              'tanggal_pemakaman' => $data['Kematian']['tanggal_pemakaman'],
-              'nama_ayah'         => $data['Kematian']['nama_ayah'],
-              'nama_ibu'          => $data['Kematian']['nama_ibu'],
-              'tempat_baptis'     => $data['Kematian']['tempat_baptis'],
-              'tanggal_baptis'    => $data['Kematian']['tanggal_baptis'],
-              'buku_baptis'       => $data['Kematian']['buku_baptis']
-            );
-            $this->Kematian->create();
-            $this->Kematian->save($kematian);
+            if($this->request->data['Kematian']['id_umat']){
+              $this->request->data['Kematian']['nama_diri'] = null;
+              $this->request->data['Kematian']['nama_baptis'] = null;
+              $this->request->data['Kematian']['tempat_lahir'] = null;
+              $this->request->data['Kematian']['tanggal_lahir'] = null;
+              $this->request->data['Kematian']['tempat_baptis'] = null;
+              $this->request->data['Kematian']['tanggal_baptis'] = null;
+              $this->request->data['Kematian']['buku_baptis'] = null;
+            }
+
+            if ($this->Kematian->save($this->request->data))
+  						$this->Kematian->save($this->request->data);
 
             for ($i = 0; $i< count($data['KematianSakramen']); $i++) {
               $item = array(

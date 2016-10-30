@@ -63,6 +63,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 
 			<?php
 			echo $this->Form->create('Kematian', array('url' => '/kematians/newTambah','class'=>'form-horizontal', 'role'=>'form',));
+      echo $this->Form->input('id_umat', array('type' => 'hidden', 'id' => 'idUmat'));
 			?>
 
       <div class="form-group">

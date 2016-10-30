@@ -90,7 +90,7 @@ $this->assign('title','Halaman Manajemen Kematian')
  					      <?php } ?>
  				      </td>
               <td>	<?php echo $data['Kematian']['tanggal_meninggal']; ?> </td>
-       				<td>	<?php echo $data['Kematian']['nama_diri']; ?></td>
+       				<td>	<?php echo ($data['Kematian']['id_umat'] == 0) ? $data['Kematian']['nama_diri'] : $data['Umat']['nama'];?></td>
               <td>	<?php echo $data['Kematian']['tempat_pemakaman']; ?> </td>
               <td>	<?php echo $data['Kematian']['tanggal_pemakaman']; ?> </td>
               <td>	<?php echo $data['Kematian']['nama_ayah']; ?> </td>

@@ -9,6 +9,7 @@ $("#namaDiriKematian").autocomplete({
             success   : function(data)
             {
               if(data.length == 0){
+                $('#idUmat').prop('disabled', false);
                 $('#namaBaptis').prop('disabled', false);
                 $('#tempatLahir').prop('disabled', false);
                 $('#tanggalLahir').prop('disabled', false);
@@ -17,10 +18,11 @@ $("#namaDiriKematian").autocomplete({
                 $('#bukuBaptis').prop('disabled', false);
                 $('#tempatKomuni').prop('disabled', true);
                 $('#tanggalKomuni').prop('disabled', true);
-                $('#namaAyah').prop('disabled', false);
-                $('#namaIbu').prop('disabled', false);
+                $('#namaAyah').prop('readonly', false);
+                $('#namaIbu').prop('readonly', false);
                 $('#alamatOrtu').prop('disabled', false);
 
+                $('#idUmat').val("");
                 $('#namaBaptis').val("");
                 $('#tempatLahir').val("");
                 $('#tanggalLahir').val("");
@@ -55,8 +57,7 @@ $("#namaDiriKematian").autocomplete({
           dataType  : "json",
           success   : function(data)
           {
-              console.log(data)
-
+              $('#idUmat').val(data.Umat.id);
               $('#namaBaptis').val(data.Baptis.nama_baptis);
               $('#tempatLahir').val(data.Umat.tmplahir);
               $('#tanggalLahir').val(data.Umat.tgl_lahir);
@@ -69,19 +70,19 @@ $("#namaDiriKematian").autocomplete({
               $('#namaBaptis').prop('disabled', true);
               $('#tempatLahir').prop('disabled', true);
               $('#tanggalLahir').prop('disabled', true);
-              $('#namaAyah').prop('disabled', true);
-              $('#namaIbu').prop('disabled', true);
+              $('#namaAyah').prop('readonly', true);
+              $('#namaIbu').prop('readonly', true);
               $('#tempatBaptis').prop('disabled', true);
               $('#tanggalBaptis').prop('disabled', true);
               $('#bukuBaptis').prop('disabled', true);
           },
           error: function(e){
-
+            $('#idUmat').prop('disabled', false);
             $('#namaBaptis').prop('disabled', false);
             $('#tempatLahir').prop('disabled', false);
             $('#tanggalLahir').prop('disabled', false);
-            $('#namaAyah').prop('disabled', false);
-            $('#namaIbu').prop('disabled', false);
+            $('#namaAyah').prop('readonly', false);
+            $('#namaIbu').prop('readonly', false);
             $('#tempatBaptis').prop('disabled', false);
             $('#tanggalBaptis').prop('disabled', false);
             $('#bukuBaptis').prop('disabled', false);
