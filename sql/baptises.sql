@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2016 at 06:34 PM
+-- Generation Time: Oct 30, 2016 at 06:45 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -552,30 +552,7 @@ INSERT INTO `baptises` (`id`, `id_umat`, `tanggal`, `kode_stasi`, `liberbap`, `s
 (496, 496, '0000-00-00', 0, '-', 1, 'SDH', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
 (497, 497, '2001-07-01', 0, 'BUKU IV / 4023', 1, 'KEDIRI', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
 (498, 498, '2002-12-09', 0, '', 1, 'BABARSARI', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(499, 499, '2009-07-03', 0, '', 1, 'KEDIRI', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(504, 0, '0000-00-00', 0, '', 0, 'Gereja', 'JOgja', 'Nama Baptisku', 'rrqwrROMO', 'WALIBAPTIS', 'Catatatan', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(505, 0, '0000-00-00', 2147483647, '', 0, 'Gereja', 'JOgja', 'Nama Baptisku', 'rrqwrROMO', 'WALIBAPTIS', 'Catatatan', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(506, 0, '0000-00-00', 3776, '', 0, 'afafafa', 'afafaf', 'namabaptis', 'awdawdawdawdawd', 'awdawdawdawdawdawdawd', 'catatan', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(507, 0, '0000-00-00', 3776, 'BUKU kode, HLM 1, NO 2', 0, 'afafafa', 'afafaf', 'namabaptis', 'awdawdawdawdawd', 'awdawdawdawdawdawdawd', 'catatan', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(508, 0, '2036-01-01', 3776, 'BUKU kode, HLM 1, NO 2', 0, 'afafafa', 'afafaf', 'namabaptis', 'awdawdawdawdawd', 'awdawdawdawdawdawdawd', 'catatan', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(509, 0, '2016-06-27', 3776, 'BUKU , HLM , NO ', 0, '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(510, 0, '2016-06-27', 3776, 'BUKU 5745754, HLM 5, NO 3', 0, 'Tempat', 'Jogja', 'Namaku', 'ROmo A', 'Wali', 'Lalala', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(511, 0, '2016-06-27', 3776, 'BUKU 436346, HLM 346, NO 346346', 0, 'aerherh', 'earhaerhrae', 'rarewha', 'aerhaerh', 'aerhaerh', 'aerha', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(512, 0, '2016-06-27', 3776, 'BUKU 436346, HLM 346, NO 346346', 0, 'aerherh', 'earhaerhrae', 'rarewha', 'aerhaerh', 'aerhaerh', 'aerha', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(513, 0, '2016-06-27', 3776, 'BUKU 436346, HLM 346, NO 346346', 0, 'aerherh', 'earhaerhrae', 'rarewha', 'aerhaerh', 'aerhaerh', 'aerha', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(514, 0, '2016-06-27', 3776, 'BUKU 436346, HLM 346, NO 346346', 0, 'aerherh', 'earhaerhrae', 'rarewha', 'aerhaerh', 'aerhaerh', 'aerha', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(515, 0, '2016-06-27', 3776, 'BUKU 436346, HLM 346, NO 346346', 0, 'aerherh', 'earhaerhrae', 'rarewha', 'aerhaerh', 'aerhaerh', 'aerha', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(516, 3, '2016-06-28', 3776, 'BUKU 11, HLM 1, NO 1', 1, 'Tempat', 'Jogja', 'Nama Baptis', 'Romo', 'Wali', 'Catatan', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK'),
-(517, 3, '2016-09-21', 3776, 'BUKU 8798, HLM 87, NO 98798', 0, 'St. Yusuf', 'jh,b,hvb,', 'huhkuhk', 'ibuibil', 'iubliublib', NULL, 'ASTRID WIBOWO, GABRIELA', NULL, NULL, NULL, NULL, NULL, NULL),
-(518, 2, '2016-09-21', 3776, 'BUKU aaaa, HLM aaa, NO aaa', 0, 'sasasasa', 'asasas', 'aaa', 'asasas', 'asasas', NULL, 'ASTRID WIBOWO, GABRIELA', NULL, NULL, NULL, NULL, NULL, NULL),
-(519, 2, '2016-09-21', 3776, '', 0, 'asfasf', 'asfsf', 'afsafsf', 'asfasf', 'asfasf', NULL, 'sfsfaf', NULL, NULL, NULL, NULL, NULL, NULL),
-(520, 0, '2016-10-27', 3776, 'shesehseh', 1, 'sgseg', 'segesg', 'seseg', 'segseg', 'segseg', NULL, 'sehsehseh', NULL, 'segseg', 'segseg', 'sehseh', '2016-10-31', 'ANAK'),
-(521, 0, '2016-10-13', 3776, 'zderhzdrh', 1, 'zdrhdrhdzrh', 'zdrhzdrhzdhr', 'zdsrhzdrh', 'zdrhdhzr', 'zdrhzdrh', NULL, 'zdrhzdrh', 'P', 'zrehzdrh', 'zdrhzdrh', 'zdrhdrh', '2016-10-11', 'DEWASA'),
-(522, 0, '2016-10-26', 3776, 'shesehseh', 1, 'St. Antonius', 'wy', 'w4y', 'w4y', 'w4y', NULL, 'seh', 'L', 'w4y', 'w4y', 'seh', '2016-10-31', 'ANAK'),
-(523, 0, '2016-10-26', 3776, 'agh', 1, 'fxtk', 'xftk', 'dtj', 'xftk', 'xzskrte', NULL, 'aeh', 'P', 'djt', 'dtj', 'aeh', '2016-10-18', 'ANAK'),
-(524, 0, '2016-10-26', 3776, '46734', 1, 'erjzerj', 'rjzdrj', 'rtixrti', 'xrtixrti', 'erhaerh', 'xrtixrti', 'aw4yaw4', 'L', 'xrti', 'xrti', 'xrtixrit', '2016-10-27', ''),
-(525, 0, '2016-10-19', 3776, 'zrdehedr', 1, 'zrjejzz', 'ejzerzerj', '649496', '469469', '46949', '694694', 'earhaerh', 'L', 'sdhwrhsreh', '6i9466666', 'zerueru', '2016-10-11', 'DITERIMA'),
-(526, 0, '2016-10-31', 3776, 'edrtjzdrj', 1, 'St. Yusuf', 'zejr', 'zerjzr', 'zerj', 'zerj', NULL, 'zerjzer', 'L', 'zderjE', 'zerjerj', 'rxtjxrt', '2016-10-19', 'DARURAT');
+(499, 499, '2009-07-03', 0, '', 1, 'KEDIRI', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, 'ANAK');
 
 --
 -- Indexes for dumped tables

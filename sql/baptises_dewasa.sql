@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2016 at 06:35 PM
+-- Generation Time: Oct 30, 2016 at 06:45 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -49,13 +49,6 @@ CREATE TABLE `baptises_dewasa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `baptises_dewasa`
---
-
-INSERT INTO `baptises_dewasa` (`id`, `id_baptis`, `lingkungan`, `alamat`, `no_telp`, `status_perkawinan`, `menikah_secara`, `alasan_batal_nikah`, `no_surat`, `nama_pasangan`, `tempat_pernikahan`, `tanggal`, `belajar_agama_sejak`, `ikut_misa_sejak`, `kegiatan_lingkungan_sejak`, `guru_agama`, `agama`, `pemberkatan`, `tanggal_daftar`) VALUES
-(1, 521, 'dhzedrh', 'zdhrhd', '43246', 'SUDAH', 'SIPIL', 'KEMATIAN', '2326536', 'caeaeb', 'aebabeb', '2016-10-12', '2016-10-20', '2016-10-06', '2016-10-05', 'zdrhzdrhzdr', 'HINDU', '', '0000-00-00');
-
---
 -- Indexes for dumped tables
 --
 
@@ -73,7 +66,7 @@ ALTER TABLE `baptises_dewasa`
 -- AUTO_INCREMENT for table `baptises_dewasa`
 --
 ALTER TABLE `baptises_dewasa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
