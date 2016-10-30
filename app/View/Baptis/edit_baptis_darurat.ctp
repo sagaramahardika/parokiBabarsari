@@ -148,7 +148,7 @@ $this->assign('title', 'Halaman Status Baptis');
             <div class="input">
               <?php echo $this->Form->label('BaptisDarurat.status_perkawinan', 'Status Perkawinan Orangtua', 'col-md-2 control-label'); ?>
               <div class="col-md-4">
-                <select name="BaptisDarurat.status_perkawinan" id="status_perkawinan_ortu" class="form-control input-xlarge">
+                <select name="BaptisDarurat[status_perkawinan]" id="status_perkawinan_ortu" class="form-control input-xlarge">
                   <option value="SUDAH" <?php if($this->request->data['BaptisDarurat']['status_perkawinan'] == 'SUDAH') echo 'selected=selected'?>>Sudah Menikah</option>
                   <option value="BELUM" <?php if($this->request->data['BaptisDarurat']['status_perkawinan'] == 'BELUM') echo 'selected=selected'?>>Belum Menikah</option>
                 </select>

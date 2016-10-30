@@ -160,13 +160,13 @@ $this->assign('title', 'Halaman Status Baptis');
 
           <div class="form-group">
             <div class="input">
-              <?php echo $this->Form->label('BaptisAnak.status_perkawinan_ortu', 'Status Perkawinan Orangtua', 'col-md-2 control-label'); ?>
+              <?php echo $this->Form->label('BaptisAnakeg.status_perkawinan_ortu', 'Status Perkawinan Orangtua', 'col-md-2 control-label'); ?>
               <div class="col-md-4">
-                <select name="BaptisAnak.status_perkawinan_ortu" id="status_perkawinan_ortu" class="form-control input-xlarge">
-                  <option value="GEREJA">Gereja</option>
-                  <option value="KUA">KUA</option>
-                  <option value="SIPIL">Catatan Sipil</option>
-                  <option value="LAINNYA">Cara Lain</option>
+                <select name="BaptisAnak[status_perkawinan_ortu]" id="status_perkawinan_ortu" class="form-control input-xlarge">
+                  <option value="GEREJA" <?php if($this->request->data['BaptisAnak']['status_perkawinan_ortu'] == 'GEREJA') echo 'selected=selected'?>>Gereja</option>
+                  <option value="KUA" <?php if($this->request->data['BaptisAnak']['status_perkawinan_ortu'] == 'KUA') echo 'selected=selected'?>>KUA</option>
+                  <option value="SIPIL" <?php if($this->request->data['BaptisAnak']['status_perkawinan_ortu'] == 'SIPIL') echo 'selected=selected'?>>Catatan Sipil</option>
+                  <option value="LAINNYA" <?php if($this->request->data['BaptisAnak']['status_perkawinan_ortu'] == 'LAINNYA') echo 'selected=selected'?>>Cara Lain</option>
                 </select>
               </div>
             </div>

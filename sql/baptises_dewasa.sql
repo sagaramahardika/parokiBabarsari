@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2016 at 10:57 PM
+-- Generation Time: Oct 30, 2016 at 06:45 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -43,6 +43,7 @@ CREATE TABLE `baptises_dewasa` (
   `ikut_misa_sejak` date NOT NULL,
   `kegiatan_lingkungan_sejak` date NOT NULL,
   `guru_agama` varchar(255) NOT NULL,
+  `agama` varchar(255) DEFAULT NULL,
   `pemberkatan` varchar(255) NOT NULL,
   `tanggal_daftar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

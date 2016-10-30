@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2016 at 10:57 PM
+-- Generation Time: Oct 30, 2016 at 06:45 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -37,13 +37,6 @@ CREATE TABLE `baptises_darurat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `baptises_darurat`
---
-
-INSERT INTO `baptises_darurat` (`id`, `id_baptis`, `status_perkawinan`, `nama_pasangan`, `tempat_perkawinan`, `tanggal_perkawinan`, `ketua_lingkungan`) VALUES
-(1, 519, 'SUDAH', 'asfasf', 'asfsf', 'asfsf', '');
-
---
 -- Indexes for dumped tables
 --
 
@@ -61,7 +54,7 @@ ALTER TABLE `baptises_darurat`
 -- AUTO_INCREMENT for table `baptises_darurat`
 --
 ALTER TABLE `baptises_darurat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -195,7 +195,7 @@ $this->assign('title', 'Halaman Status Baptis');
             <div class="input">
               <?php echo $this->Form->label('BaptisDewasa.status_perkawinan', 'Status Perkawinan Calon Baptis', 'col-md-2 control-label'); ?>
               <div class="col-md-4">
-                <select name="BaptisDewasa.status_perkawinan" id="status_perkawinan_calon" class="form-control input-xlarge">
+                <select name="BaptisDewasa[status_perkawinan]" id="status_perkawinan_calon" class="form-control input-xlarge">
                   <option value="BELUM" <?php if($this->request->data['BaptisDewasa']['status_perkawinan'] == 'BELUM') echo 'selected=selected'?>>Belum Menikah</option>
                   <option value="SUDAH" <?php if($this->request->data['BaptisDewasa']['status_perkawinan'] == 'SUDAH') echo 'selected=selected'?>>Sudah Menikah</option>
                   <option value="AKAN" <?php if($this->request->data['BaptisDewasa']['status_perkawinan'] == 'AKAN') echo 'selected=selected'?>>Akan Menikah</option>
@@ -209,7 +209,7 @@ $this->assign('title', 'Halaman Status Baptis');
             <div class="input">
               <?php echo $this->Form->label('BaptisDewasa.menikah_secara', 'Menikah Secara', 'col-md-2 control-label menikah_secara'); ?>
               <div class="col-md-4">
-                <select name="BaptisDewasa.menikah_secara" id="menikah_secara" class="form-control input-xlarge menikah_secara">
+                <select name="BaptisDewasa[menikah_secara]" id="menikah_secara" class="form-control input-xlarge menikah_secara">
                   <option value="GEREJA" <?php if($this->request->data['BaptisDewasa']['menikah_secara'] == 'GEREJA') echo 'selected=selected'?>>Gereja</option>
                   <option value="KUA" <?php if($this->request->data['BaptisDewasa']['menikah_secara'] == 'KUA') echo 'selected=selected'?>>Kua</option>
                   <option value="SIPIL" <?php if($this->request->data['BaptisDewasa']['menikah_secara'] == 'SIPIL') echo 'selected=selected'?>>Catatan Sipil</option>
@@ -223,7 +223,7 @@ $this->assign('title', 'Halaman Status Baptis');
             <div class="input">
               <?php echo $this->Form->label('BaptisDewasa.alasan_batal_nikah', 'Alasan Pembatalan Pernikahan', 'col-md-2 control-label alasan_batal_nikah'); ?>
               <div class="col-md-4">
-                <select name="BaptisDewasa.alasan_batal_nikah" id="alasan_batal_nikah" class="form-control input-xlarge alasan_batal_nikah">
+                <select name="BaptisDewasa[alasan_batal_nikah]" id="alasan_batal_nikah" class="form-control input-xlarge alasan_batal_nikah">
                   <option value="KEMATIAN" <?php if($this->request->data['BaptisDewasa']['alasan_batal_nikah'] == 'KEMATIAN') echo 'selected=selected'?>>Kematian</option>
                   <option value="CERAISIPIL" <?php if($this->request->data['BaptisDewasa']['alasan_batal_nikah'] == 'CERAISIPIL') echo 'selected=selected'?>>Perceraian Sipil</option>
                   <option value="PEMUTUSAN" <?php if($this->request->data['BaptisDewasa']['alasan_batal_nikah'] == 'PEMUTUSAN') echo 'selected=selected'?>>Pemutusan</option>
@@ -292,7 +292,7 @@ $this->assign('title', 'Halaman Status Baptis');
             <div class="input">
               <?php echo $this->Form->label('BaptisDewasa.agama', 'Agama Sebelumnya', 'col-md-2 control-label'); ?>
               <div class="col-md-4">
-                <select name="BaptisDewasa.agama" id="agama" class="form-control input-xlarge">
+                <select name="BaptisDewasa[agama]" id="agama" class="form-control input-xlarge">
                   <option value="ISLAM" <?php if($this->request->data['BaptisDewasa']['agama'] == 'ISLAM') echo 'selected=selected'?>>Islam</option>
                   <option value="HINDU" <?php if($this->request->data['BaptisDewasa']['agama'] == 'HINDU') echo 'selected=selected'?>>Hindu</option>
                   <option value="BUDHA" <?php if($this->request->data['BaptisDewasa']['agama'] == 'BUDHA') echo 'selected=selected'?>>Budha</option>
