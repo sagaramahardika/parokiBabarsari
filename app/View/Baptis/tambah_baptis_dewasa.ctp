@@ -181,7 +181,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           <div class="input">
             <?php echo $this->Form->label('BaptisDarurat.status_perkawinan', 'Status Perkawinan Calon Baptis', 'col-md-2 control-label'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat.status_perkawinan" id="status_perkawinan_calon" class="form-control input-xlarge">
+              <select name="BaptisDarurat[status_perkawinan]" id="status_perkawinan_calon" class="form-control input-xlarge">
                 <option value="BELUM">Belum Menikah</option>
                 <option value="SUDAH">Sudah Menikah</option>
                 <option value="AKAN">Akan Menikah</option>
@@ -195,7 +195,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           <div class="input">
             <?php echo $this->Form->label('BaptisDarurat.menikah_secara', 'Menikah Secara', 'col-md-2 control-label menikah_secara'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat.menikah_secara" id="menikah_secara" class="form-control input-xlarge menikah_secara">
+              <select name="BaptisDarurat[menikah_secara]" id="menikah_secara" class="form-control input-xlarge menikah_secara">
                 <option value="GEREJA">Gereja</option>
                 <option value="KUA">Kua</option>
                 <option value="SIPIL">Catatan Sipil</option>
@@ -209,7 +209,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           <div class="input">
             <?php echo $this->Form->label('BaptisDarurat.alasan_batal_nikah', 'Alasan Pembatalan Pernikahan', 'col-md-2 control-label alasan_batal_nikah'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat.alasan_batal_nikah" id="alasan_batal_nikah" class="form-control input-xlarge alasan_batal_nikah">
+              <select name="BaptisDarurat[alasan_batal_nikah]" id="alasan_batal_nikah" class="form-control input-xlarge alasan_batal_nikah">
                 <option value="KEMATIAN">Kematian</option>
                 <option value="CERAISIPIL">Perceraian Sipil</option>
                 <option value="PEMUTUSAN">Pemutusan</option>
@@ -275,7 +275,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           <div class="input">
             <?php echo $this->Form->label('BaptisDewasa.agama', 'Agama Sebelumnya', 'col-md-2 control-label'); ?>
             <div class="col-md-4">
-              <select name="BaptisDewasa.agama" id="agama" class="form-control input-xlarge">
+              <select name="BaptisDewasa[agama]" id="agama" class="form-control input-xlarge">
                 <option value="ISLAM">Islam</option>
                 <option value="HINDU">Hindu</option>
                 <option value="BUDHA">Budha</option>

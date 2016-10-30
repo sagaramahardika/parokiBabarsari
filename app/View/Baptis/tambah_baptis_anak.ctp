@@ -145,7 +145,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
         <div class="input">
           <?php echo $this->Form->label('BaptisAnak.status_perkawinan_ortu', 'Status Perkawinan Orangtua', 'col-md-2 control-label'); ?>
           <div class="col-md-4">
-            <select name="BaptisAnak.status_perkawinan_ortu" id="status_perkawinan_ortu" class="form-control input-xlarge">
+            <select name="BaptisAnak[status_perkawinan_ortu]" id="status_perkawinan_ortu" class="form-control input-xlarge">
               <option value="GEREJA">Gereja</option>
               <option value="KUA">KUA</option>
               <option value="SIPIL">Catatan Sipil</option>

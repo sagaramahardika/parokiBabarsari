@@ -263,6 +263,7 @@ class BaptisController extends AppController{
 		}*/
 		if ($this->request->is('post') || $this->request->is('put')) {
 			try {
+
 				if($this->Baptis->save($this->request->data)){
 					$this->Flash->success(__('Data Baptis telah berhasil diubah.'));
 				}else{
@@ -280,6 +281,7 @@ class BaptisController extends AppController{
 
 	public function editBaptisAnak($id=null){
 		if ($this->request->is('post') || $this->request->is('put')) {
+			//var_dump($this->request->data);/*
 			try {
 				if($this->Baptis->save($this->request->data)){
 					if($this->BaptisAnak->save($this->request->data)){
@@ -289,7 +291,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisAnak', $id));
+			return $this->redirect(array('action' => 'editBaptisAnak', $id));//*/
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
