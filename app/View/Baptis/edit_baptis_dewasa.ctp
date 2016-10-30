@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', 'Halaman Status Baptis');
 ?>
-<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Baptis', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
+<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Baptis', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Ubah Data Baptis </h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="panel panel-default">
@@ -363,7 +363,7 @@ $this->assign('title', 'Halaman Status Baptis');
   							'div'			=> array('class' => 'col-md-4')));
   					?>
   				</div>
-          
+
           <div class="form-group">
   					<?php
   					echo $this->Form->label('Baptis.wali_baptis_label', 'Nama Calon Wali Baptis', 'col-md-2 control-label');

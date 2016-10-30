@@ -88,8 +88,8 @@ $this->assign('title', 'Halaman Manajemen Komuni');
             <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tanggal_lahir'];}else{echo $data['Umat']['tgl_lahir'];} ?></td>
             <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tempat_baptis'];}else{echo $data['Baptis']['tempat'];} ?></td>
             <td><?php if($data['Komuni']['id_umat'] == 0){echo $data['Komuni']['tanggal_baptis'];}else{echo $data['Baptis']['tanggal'];} ?></td>
-            <td><?php if($data['Komuni']['id_umat'] == 0){ echo $data['Komuni']['ayah'];}else{echo $data['Umat']['ayah'];} ?></td>
-            <td><?php if($data['Komuni']['id_umat'] == 0){ echo $data['Komuni']['ibu'];}else{echo $data['Umat']['ibu'];} ?></td>
+            <td><?php if($data['Komuni']['id_umat'] == 0){ echo $data['Komuni']['ayah'];}else{echo $data['Umat']['nama_ayah'];} ?></td>
+            <td><?php if($data['Komuni']['id_umat'] == 0){ echo $data['Komuni']['ibu'];}else{echo $data['Umat']['nama_ibu'];} ?></td>
             <td><?php if($data['Komuni']['tempat']){ echo $data['Komuni']['tempat'];}else{ echo "-"; }?></td>
             <td><?php if($data['Komuni']['tanggal']){ echo $data['Komuni']['tanggal'];}else{ echo "-";} ?></td>
           </tr>

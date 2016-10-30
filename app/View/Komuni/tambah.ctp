@@ -5,7 +5,7 @@ $this->assign('title', 'Halaman Tambah Komuni');
 <h3><i class="fa fa-angle-right"></i>
 <?php
 
-echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Akun', array('action'=>'index'), array('escape'=>false)) . ' / ';
+echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', array('action'=>'index'), array('escape'=>false)) . ' / ';
 
 ?>
 

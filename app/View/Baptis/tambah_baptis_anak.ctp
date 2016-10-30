@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', 'Halaman Tambah Baptis Anak');
 ?>
-<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Baptis', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Akun Pengguna </h3>
+<h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Baptis', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Data Baptis </h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="panel panel-default">

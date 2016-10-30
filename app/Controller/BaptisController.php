@@ -3,7 +3,7 @@
 App::uses('AuthComponent', 'Controller/Component');
 class BaptisController extends AppController{
 	public $components = array('Flash','Paginator');
-	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki', 'BaptisDarurat', 'BaptisAnak', 'BaptisDewasa', 'Krisma');
+	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki', 'BaptisDarurat', 'BaptisAnak', 'BaptisDewasa', 'Krisma', 'Pernikahan');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 	public $name = 'Baptis';
@@ -271,7 +271,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'edit'));
+			return $this->redirect(array('action' => 'edit', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -289,7 +289,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisAnak'));
+			return $this->redirect(array('action' => 'editBaptisAnak', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -305,7 +305,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisDiterima'));
+			return $this->redirect(array('action' => 'editBaptisDiterima', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -323,7 +323,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisDewasa'));
+			return $this->redirect(array('action' => 'editBaptisDewasa', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -341,7 +341,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisDarurat'));
+			return $this->redirect(array('action' => 'editBaptisDarurat', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -367,18 +367,21 @@ class BaptisController extends AppController{
 			$hubKKpasangan = 1;
 		}
 
-		$riwayatPernikahan = $this->Pernikahan->find('first', array(
-			'fields' => array('nama', 'tempatnikah', 'tglnikah'),
+		$riwayatPernikahan = $this->Umat->find('first', array(
+			'fields' => array('nama', 'tglnikah', 'kotamenikah', 'tempatnikah'),
 			'conditions' => array('Umat.id_kk' => $baptis['Umat']['id_kk'], 'Umat.id_hubkk', 'Umat.id_hubkk' => $hubKKpasangan)
 		));
 
 		$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
 		$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
+		$kotaMenikah = $riwayatPernikahan['Umat']['kotamenikah'];
+		$tempatMenikah = $riwayatPernikahan['Umat']['tempatnikah'];
 
 		// NOTE: Belom di test
 
-		$this->set(compact('baptis'));
+		$this->set(compact('baptis', 'namaPasangan', 'tanggalMenikah', 'kotaMenikah', 'tempatMenikah'));
 		$this->set(compact('krisma'));
+		$this->set('pernikahan', $riwayatPernikahan);
 		$view_output = $this->render('view_pdf');
 	    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
 	    $html2pdf->pdf->SetAuthor('a');

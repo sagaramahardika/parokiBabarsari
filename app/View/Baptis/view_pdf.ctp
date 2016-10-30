@@ -31,17 +31,18 @@
   if($baptis['Baptis']['id_umat'] == 0){
     $ayah = $baptis['Baptis']['ayah'];
   }else{
-    $ayah = $baptis['Umat']['ayah'];
+    $ayah = $baptis['Umat']['nama_ayah'];
   };
 
   $ibu;
   if($baptis['Baptis']['id_umat'] == 0){
     $ibu = $baptis['Baptis']['ibu'];
   }else{
-    $ibu = $baptis['Umat']['ibu'];
+    $ibu = $baptis['Umat']['nama_ibu'];
   };
 
   $tgl_baptis = $baptis['Baptis']['tanggal'];
+
 
   $arrDay = array("Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu");
   $arrMonth = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
@@ -59,6 +60,25 @@
   $intDayBaptis = date("j", strtotime($tgl_baptis));
   $bulanBaptis = $arrMonth[$bulanBaptis];
   $tahunBaptis = date("Y", strtotime($tgl_baptis));
+
+  $hariNikah = date("w", strtotime($tanggalMenikah));
+  $bulanNikah = date("n", strtotime($tanggalMenikah));
+  $hariNikah = $arrDay[$hariNikah];
+  $intDayNikah = date("j", strtotime($tanggalMenikah));
+  $bulanNikah = $arrMonth[$bulanNikah];
+  $tahunNikah = date("Y", strtotime($tanggalMenikah));
+
+  if(count($krisma) != 0){
+    $tgl_krisma = $krisma['Krisma']['tanggal_krisma'];
+    $hariKrisma = date("w", strtotime($tgl_krisma));
+    $bulanKrisma = date("n", strtotime($tgl_krisma));
+    $hariKrisma = $arrDay[$hariKrisma];
+    $intDayKrisma = date("j", strtotime($tgl_krisma));
+    $bulanKrisma = $arrMonth[$bulanKrisma];
+    $tahunKrisma = date("Y", strtotime($tgl_krisma));
+  }
+
+  //var_dump($pernikahan);
 
   $tempat_baptis = 'Gereja ' . $baptis['Baptis']['tempat'] . ' ' . $baptis['Baptis']['kota'];
 ?>
@@ -137,7 +157,7 @@
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Sakramen Penguatan tanggal</td>
-      <td style="font-size: 18px;">: ..............................................................................</td>
+      <td style="font-size: 18px;">:<i><?php if(count($krisma) != 0){ echo $intDayLahir.' '.$bulanLahir.' '.$tahunLahir; }else{ echo '-'; } ?></i></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Di Gereja</td>
@@ -145,15 +165,15 @@
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Telah Menikah dengan</td>
-      <td style="font-size: 18px;">: ..............................................................................</td>
+      <td style="font-size: 18px;">: <?php echo $namaPasangan; ?></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Pada Tanggal</td>
-      <td style="font-size: 18px;">: ..............................................................................</td>
+      <td style="font-size: 18px;">: <?php echo $hariNikah . ', ' . $intDayNikah . ' ' . $bulanNikah . ' ' . $tahunNikah; ?></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Di Gereja</td>
-      <td style="font-size: 18px;">: .................................di...........................................</td>
+      <td style="font-size: 18px;">: <?php echo $tempatMenikah; ?> di <?php echo $kotaMenikah; ?> </td>
     </tr>
   </table>
   <br>
