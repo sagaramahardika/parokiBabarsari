@@ -158,7 +158,7 @@ public function beforeFilter() {
 						$this->Krisma->save($this->request->data);
 
 						$this->Flash->success(__('data new krisma telah tersimpan.'));
-						return $this->redirect(array('action' => 'newRead'));
+						return $this->redirect(array('action' => 'index'));
 					}
 				} catch (PDOException $e) {
 					$this->Flash->error(__('data tidak dapat tersimpan. ' . $e->errorInfo[2]));
@@ -185,7 +185,7 @@ public function beforeFilter() {
 				if($this->Krisma->save($updateKrisma))
 				{
 					$this->Flash->success(__('data krisma telah berhasil diubah.'));
-					return $this->redirect(array('action' => 'newRead'));
+					return $this->redirect(array('action' => 'index'));
 				}
 
 

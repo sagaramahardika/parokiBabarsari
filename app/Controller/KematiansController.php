@@ -76,41 +76,71 @@ class KematiansController extends AppController{
             if ($this->Kematian->save($this->request->data))
   						$this->Kematian->save($this->request->data);
 
-            for ($i = 0; $i< count($data['KematianSakramen']); $i++) {
+              //print_r($this->request->data['KematianSakramen']);
+              //echo count($this->request->data['KematianSakramen']['nama_sakramen']);
+
+            for ($i = 0; $i< count($this->request->data['KematianSakramen']['nama_sakramen']); $i++) {
               $item = array(
                 'id_kematian'         => $this->Kematian->id,
-                'nama_sakramen'       => $data['KematianSakramen']['nama_sakramen'][$i],
-                'pelayan_sakramen'    => $data['KematianSakramen']['pelayan_sakramen'][$i]
+                'nama_sakramen'       => $this->request->data['KematianSakramen']['nama_sakramen'][$i],
+                'pelayan_sakramen'    => $this->request->data['KematianSakramen']['pelayan_sakramen'][$i]
               );
 
               $this->KematianSakramen->create();
               $this->KematianSakramen->save($item);
             }
             $this->Flash->success(__('data kematian telah berhasil disimpan.'));
-  					return $this->redirect(array('action' => 'newRead'));
+  					return $this->redirect(array('action' => 'index'));
         }
     }
 
     public function newEdit(){
-      $id = $this->params['pass'][0];
-  		$kematian = $this->Kematian->findById($id);
-  		$this->set(compact('kematian'));
+      if ($this->request->is('post'))
+      {
+          if($this->request->data['Kematian']['id_umat']){
+            $this->request->data['Kematian']['nama_diri'] = null;
+            $this->request->data['Kematian']['nama_baptis'] = null;
+            $this->request->data['Kematian']['tempat_lahir'] = null;
+            $this->request->data['Kematian']['tanggal_lahir'] = null;
+            $this->request->data['Kematian']['tempat_baptis'] = null;
+            $this->request->data['Kematian']['tanggal_baptis'] = null;
+            $this->request->data['Kematian']['buku_baptis'] = null;
+          }
 
-  		if($this->request->data){
-  			try {
-  				$updateKematian = $this->request->data;
+          if ($this->Kematian->save($this->request->data))
+            $this->Kematian->save($this->request->data);
 
-  				if($this->Kematian->save($updateKematian))
-  				{
-  					$this->Flash->success(__('data kematian telah berhasil diubah.'));
-  					return $this->redirect(array('action' => 'newRead'));
-  				}
+            //print_r($this->request->data['KematianSakramen']);
+            //echo count($this->request->data['KematianSakramen']['nama_sakramen']);
 
+          for ($i = 0; $i< count($this->request->data['KematianSakramen']['nama_sakramen']); $i++) {
+            if($this->request->data['KematianSakramen']['id'][$i]){
+              $item = array(
+                'id'                  => $this->request->data['KematianSakramen']['id'][$i],
+                'id_kematian'         => $this->request->data['Kematian']['id'],
+                'nama_sakramen'       => $this->request->data['KematianSakramen']['nama_sakramen'][$i],
+                'pelayan_sakramen'    => $this->request->data['KematianSakramen']['pelayan_sakramen'][$i]
+              );
+            } else{
+              $item = array(
+                'id_kematian'         => $this->request->data['Kematian']['id'],
+                'nama_sakramen'       => $this->request->data['KematianSakramen']['nama_sakramen'][$i],
+                'pelayan_sakramen'    => $this->request->data['KematianSakramen']['pelayan_sakramen'][$i]
+              );
+              $this->KematianSakramen->create();
+            }
 
-  						} catch (PDOExeption $pdoe) {
-  							$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
-  						}
-  		}
+            $this->KematianSakramen->save($item);
+          }
+          $this->Flash->success(__('data kematian telah berhasil disimpan.'));
+          return $this->redirect(array('action' => 'index'));
+      } else{
+        $id = $this->params['pass'][0];
+    		$kematian = $this->Kematian->findById($id);
+        $kematianSakramens = $this->KematianSakramen->findAllByIdKematian($id);
+    		$this->set(compact('kematian'));
+        $this->set(compact('kematianSakramens'));
+      }
     }
 
     public function findAll(){

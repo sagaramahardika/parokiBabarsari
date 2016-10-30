@@ -53,7 +53,7 @@ $this->assign('title', 'Halaman Tambah Kematian');
 <h3><i class="fa fa-angle-right"></i>
 <?php
 
-echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', array('action'=>'newRead'), array('escape'=>false)) . ' / ';
+echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', array('action'=>'index'), array('escape'=>false)) . ' / ';
 
 ?>
 <i class="fa fa-pencil"></i> Tambah Data Kematian
