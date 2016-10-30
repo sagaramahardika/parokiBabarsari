@@ -189,7 +189,6 @@ public function beforeFilter() {
 						$this->request->data['Krisma']['tempat_baptis'] = null;
 						$this->request->data['Krisma']['tanggal_baptis'] = null;
 						$this->request->data['Krisma']['liberbap'] = null;
-						$this->request->data['Krisma']['alamat_orangtua'] = null;
 						$this->request->data['Krisma']['no_telp_orangtua'] = null;
 					}
 
@@ -206,12 +205,19 @@ public function beforeFilter() {
 	}
 
 	public function newEdit(){
-		$id = $this->params['pass'][0];
-		$krisma = $this->Krisma->findById($id);
-		$this->set(compact('krisma'));
-
 		if($this->request->data){
 			try {
+				if($this->request->data['Krisma']['id_umat']){
+					$this->request->data['Krisma']['nama_diri'] = null;
+					$this->request->data['Krisma']['nama_baptis'] = null;
+					$this->request->data['Krisma']['tempat_lahir'] = null;
+					$this->request->data['Krisma']['tanggal_lahir'] = null;
+					$this->request->data['Krisma']['tempat_baptis'] = null;
+					$this->request->data['Krisma']['tanggal_baptis'] = null;
+					$this->request->data['Krisma']['liberbap'] = null;
+					$this->request->data['Krisma']['no_telp_orangtua'] = null;
+				}
+
 				$updateKrisma = $this->request->data;
 
 				if($this->Krisma->save($updateKrisma))
@@ -224,6 +230,10 @@ public function beforeFilter() {
 						} catch (PDOExeption $pdoe) {
 							$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 						}
+		} else{
+			$id = $this->params['pass'][0];
+			$krisma = $this->Krisma->findById($id);
+			$this->set(compact('krisma'));
 		}
 	}
 

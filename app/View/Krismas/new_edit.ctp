@@ -36,8 +36,18 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 			<?php
 			echo $this->Form->create('Krisma', array('url' => '/krismas/newEdit','class'=>'form-horizontal', 'role'=>'form',));
       echo $this->Form->input('id', array('type' => 'hidden', 'value'=> $krisma['Krisma']['id']));
+      echo $this->Form->input('id_umat', array('type' => 'hidden', 'id' => 'idUmat', 'value' => $krisma['Krisma']['id_umat']));
 			?>
-
+        <div class="form-group">
+          <?php
+          echo $this->Form->label('kodeStasi', 'Kode Stasi ', 'col-md-2 control-label');
+          echo $this->Form->input('kode_stasi', array(
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
+                        'value'=> $krisma['Krisma']['kode_stasi'],
+                        'div'=>array('class'=>'col-md-4')));
+          ?>
+        </div>
 
 				<div class="form-group">
 					<?php
@@ -56,8 +66,9 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('namaDiri', 'Nama Diri ', 'col-md-2 control-label');
 					echo $this->Form->input('nama_diri', array(
                         'label' => false,
-                        'value'=> $krisma['Krisma']['nama_diri'],
                         'id'    => 'namaDiriKrisma',
+                        'value' => ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['nama_diri'] : $krisma['Umat']['nama'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class' => "form-control input-xlarge",
                         'div'   => array('class'=>'col-md-4')));
 					?>
@@ -68,7 +79,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('namaBaptis', 'Nama Baptis', 'col-md-2 control-label');
 					echo $this->Form->input('nama_baptis', array(
                         'label' => false,
-                        'value'=> $krisma['Krisma']['nama_baptis'],
+                        'value'=> ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['nama_baptis'] : $krisma['Umat']['namabaptis'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class' => "form-control ",
                         'id'    => 'namaBaptis',
                         'div'   => array('class'=>'col-md-4')));
@@ -80,7 +92,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
           echo $this->Form->label('tempatLahir', 'Tempat Lahir', 'col-md-2 control-label');
           echo $this->Form->input('tempat_lahir', array(
                         'label'=>false,
-                        'value'=> $krisma['Krisma']['tempat_lahir'],
+                        'value'=> ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tempat_lahir'] : $krisma['Umat']['tmplahir'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class'=>"form-control ",
                         'id'   => 'tempatLahir',
                         'div'=>array('class'=>'col-md-4')));
@@ -92,7 +105,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalLahir', 'Tanggal Lahir', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" value="<?php echo $krisma['Krisma']['tanggal_lahir']; ?>" name="data[Krisma][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" readonly="">
+            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_lahir'] : $krisma['Umat']['tgl_lahir']; ?>" name="data[Krisma][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" readonly <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
           </div>
 				</div>
 
@@ -101,7 +114,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tempatBaptis', 'Tempat Baptis', 'col-md-2 control-label');
 					echo $this->Form->input('tempat_baptis', array(
                         'label'=>false,
-                        'value'=> $krisma['Krisma']['tempat_baptis'],
+                        'value'=> ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tempat_baptis'] : $krisma['Umat']['tmpbaptis'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class'=>"form-control ",
                         'id'   => 'tempatBaptis',
                         'div'=>array('class'=>'col-md-4')));
@@ -113,7 +127,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalBaptis', 'Tanggal Baptis', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" value="<?php echo $krisma['Krisma']['tanggal_baptis']; ?>" name="data[Krisma][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" readonly="">
+            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_baptis'] : $krisma['Umat']['tglbaptis'] ?>" name="data[Krisma][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" readonly <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
           </div>
 				</div>
 
@@ -122,8 +136,10 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('bukuBaptis', 'Buku Baptis', 'col-md-2 control-label');
 					echo $this->Form->input('buku_baptis', array(
                         'label'=>false,
-                        'value'=> $krisma['Krisma']['buku_baptis'],
+                        'value'=> ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['buku_baptis'] : $krisma['Umat']['liberbap'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class'=>"form-control ",
+                        'id'   => 'bukuBaptis',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -133,7 +149,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tempatKomuni', 'Tempat Komuni', 'col-md-2 control-label');
 					echo $this->Form->input('tempat_komuni', array(
                         'label'=>false,
-                        'value'=> $krisma['Krisma']['tempat_komuni'],
+                        'value'=> ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tempat_komuni'] : $krisma['Umat']['tmpkomuni'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class'=>"form-control ",
                         'id'   => 'tempatKomuni',
                         'div'=>array('class'=>'col-md-4')));
@@ -145,7 +162,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalKomuni', 'Tangggal Komuni', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" value="<?php echo $krisma['Krisma']['tanggal_komuni']; ?>" name="data[Krisma][tanggal_komuni]" id="tanggalKomuni" class="form-control datepicker" role="date" readonly="">
+            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_komuni'] : $krisma['Umat']['tglkomuni'] ?>" name="data[Krisma][tanggal_komuni]" id="tanggalKomuni" class="form-control datepicker" role="date" readonly <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
           </div>
 				</div>
 
@@ -154,7 +171,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('alamatDiri', 'Alamat Krismawan/ti', 'col-md-2 control-label');
 					echo $this->Form->input('alamat_diri', array(
                         'label'=>false,
-                        'value'=> $krisma['Krisma']['alamat_diri'],
+                        'value'=> ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['alamat_diri'] : $krisma['Umat']['alamat'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class'=>"form-control ",
                         'id'   => 'alamatDiri',
                         'div'=>array('class'=>'col-md-4')));
@@ -165,11 +183,12 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					<?php
 					echo $this->Form->label('noHpDiri', 'Telp/Hp', 'col-md-2 control-label');
 					echo $this->Form->input('no_hp_diri', array(
-                        'label'=>false,
-                        'value'=> $krisma['Krisma']['lingkungan'],
-                        'class'=>"form-control ",
-                        'id'   => 'noHpDiri',
-                        'div'=>array('class'=>'col-md-4')));
+                        'label'     =>false,
+                        'value'     => ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['no_hp_diri'] : $krisma['Umat']['tlp'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
+                        'class'     =>"form-control ",
+                        'id'        => 'noHpDiri',
+                        'div'       =>array('class'=>'col-md-4')));
 					?>
 				</div>
 
@@ -211,7 +230,9 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('nama_ayah', array(
                         'label'=>false,
                         'value'=> $krisma['Krisma']['nama_ayah'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class'=>"form-control input-xlarge",
+                        'id'        => 'namaAyah',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -223,7 +244,9 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('nama_ibu', array(
                         'label'=>false,
                         'value'=> $krisma['Krisma']['nama_ibu'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class'=>"form-control input-xlarge",
+                        'id'        => 'namaIbu',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
@@ -235,7 +258,9 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->input('alamat_orangtua', array(
                         'label'=>false,
                         'value'=> $krisma['Krisma']['alamat_orangtua'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class'=>"form-control input-xlarge",
+                        'id'        => 'alamatOrtu',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>

@@ -22,7 +22,7 @@
                  $('#noHpDiri').prop('disabled', false);
                  $('#namaAyah').prop('readonly', false);
                  $('#namaIbu').prop('readonly', false);
-                 $('#alamatOrtu').prop('disabled', false);
+                 $('#alamatOrtu').prop('readonly', false);
 
                  $('#idUmat').val("");
                  $('#namaBaptis').val("");
@@ -88,7 +88,7 @@
                $('#noHpDiri').prop('disabled', true);
                $('#namaAyah').prop('readonly', true);
                $('#namaIbu').prop('readonly', true);
-               $('#alamatOrtu').prop('disabled', true);
+               $('#alamatOrtu').prop('readonly', true);
            },
            error: function(e){
 
@@ -105,7 +105,7 @@
              $('#noHpDiri').prop('disabled', false);
              $('#namaAyah').prop('readonly', false);
              $('#namaIbu').prop('readonly', false);
-             $('#alamatOrtu').prop('disabled', false);
+             $('#alamatOrtu').prop('readonly', false);
 
              $('#idUmat').val("");
              $('#namaBaptis').val("");

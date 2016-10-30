@@ -73,7 +73,7 @@ $this->assign('title','Halaman Pendataan Krisma')
 					<table class="table table-bordered table-striped table-condensed ">
 						<thead class="text-center">
 						<tr>
-				 			<td></td>
+				 			<td style="width: 5%;"></td>
               <td>Tanggal Krisma</td>
 				 			<td>Nama Diri</td>
               <td>Nama Ayah</td>
@@ -100,9 +100,6 @@ $this->assign('title','Halaman Pendataan Krisma')
                   <span class="fa fa-edit" aria-hidden="true"></span>
                 </a>
                 <span class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="modal" data-target="#modalPDF" style="color:#337ab7;" id="<?php echo $data['Krisma']['id']; ?>"</span>
-                <?php
-					        echo $this->Html->link('<span class="fa fa-eye" aria-hidden="true"></span>', array('controller'=>'krismas','action'=>'viewDetail', $data['Krisma']['id']), array('escape'=> FALSE));
-                ?>
                 <?php } ?>
  				      </td>
               <td>	<?php echo $data['Krisma']['tanggal_krisma']; ?> </td>

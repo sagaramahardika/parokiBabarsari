@@ -8,9 +8,13 @@
   $month = $arrMonth[$numMonth];
   $year = date("Y", strtotime($krisma['Krisma']['tanggal_krisma']));
 
-  $nama = explode(",", $krisma['Umat']['nama']);
-  $nama_diri = $nama[0];
-  $nama_baptis = $nama[1];
+  $nama = $krisma['Umat']['nama'];
+  if (strpos($nama, ',') !== false){
+    $nama = explode(",", $nama);
+    $nama_diri = $nama[0];
+    $nama_baptis = $nama[1];
+  }
+
 
 ?>
 
@@ -35,9 +39,21 @@
   <h2>Kenangan Penguatan</h2>
   <table style="width: 100%;">
     <tr>
-      <td style="text-align: right; width: 47.5%; font-size: 18px;"><b>diberikan kepada :</b></td>
+      <td style="text-align: right; width: 47.5%; font-size: 16px;"><b>diberikan kepada :</b></td>
       <td style="width: 5%"></td>
-        <td style="text-align: center; width: 40%; font-size: 18px;"><b><?php echo $nama_baptis . " " . $nama_diri; ?></b></td>
+        <td style="text-align: center; width: 40%; font-size: 16px;"><b>
+          <?php
+          if($krisma['Umat']['nama']){
+            if($nama_baptis){
+              echo $nama_baptis . " " . $nama_diri;
+            } else{
+              echo $nama;
+            }
+          }
+          else{
+            echo $krisma['Krisma']['nama_diri'];
+          }
+          ?></b></td>
     </tr>
   </table>
   <br>

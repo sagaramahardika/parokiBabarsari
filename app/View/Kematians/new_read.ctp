@@ -58,7 +58,7 @@ $this->assign('title','Halaman Manajemen Kematian')
 					<table class="table table-bordered table-striped table-condensed ">
 						<thead class="text-center">
 						<tr>
-				 			<td></td>
+				 			<td style="width: 5%;"></td>
               <td>Tanggal Kematian</td>
 				 			<td>Nama Diri</td>
               <td>Tempat Pemakaman</td>
@@ -84,6 +84,9 @@ $this->assign('title','Halaman Manajemen Kematian')
 							  <a href="<?php
 								echo $this->Html->url(array('controller'=>'kematians','action'=>'newEdit', $data['Kematian']['id']));
 								?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
+                <?php
+					        echo $this->Html->link('<span class="fa fa-eye" aria-hidden="true"></span>', array('controller'=>'kematians','action'=>'viewDetail', $data['Kematian']['id']), array('escape'=> FALSE));
+                ?>
  					      <?php } ?>
  				      </td>
               <td>	<?php echo $data['Kematian']['tanggal_meninggal']; ?> </td>
