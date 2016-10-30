@@ -136,7 +136,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					echo $this->Form->label('tanggalLahir', 'Tanggal Lahir', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Kematian][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" placeholder=" Tanggal Lahir" readonly="">
+            <input type="text" name="data[Kematian][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" placeholder=" Tanggal Lahir">
           </div>
 				</div>
 
@@ -157,7 +157,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					echo $this->Form->label('tanggalMeninggal', 'Tanggal Meninggal', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Kematian][tanggal_meninggal]" id="tanggalMeninggal" class="form-control datepicker" role="date" placeholder=" Tanggal Meninggal" readonly="">
+            <input type="text" name="data[Kematian][tanggal_meninggal]" id="tanggalMeninggal" class="form-control datepicker" role="date" placeholder=" Tanggal Meninggal" >
           </div>
 				</div>
 
@@ -178,7 +178,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					echo $this->Form->label('tanggalPemakaman', 'Tanggal Pemakaman', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Kematian][tanggal_pemakaman]" id="tanggalPemakaman" class="form-control datepicker" role="date" placeholder=" Tanggal Pemakaman" readonly="">
+            <input type="text" name="data[Kematian][tanggal_pemakaman]" id="tanggalPemakaman" class="form-control datepicker" role="date" placeholder=" Tanggal Pemakaman" >
           </div>
 				</div>
 
@@ -224,7 +224,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					echo $this->Form->label('tanggalBaptis', 'Tangggal Baptis', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Kematian][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" placeholder=" Tanggal Baptis" readonly="">
+            <input type="text" name="data[Kematian][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" placeholder=" Tanggal Baptis" >
           </div>
 				</div>
 

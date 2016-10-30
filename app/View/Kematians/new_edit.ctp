@@ -125,7 +125,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
         echo $this->Form->label('tanggalLahir', 'Tanggal Lahir', 'col-md-2 control-label');
         ?>
         <div class="col-md-4">
-          <input type="text" value="<?php echo ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['tanggal_lahir'] : $kematian['Umat']['tgl_lahir'] ?>" name="data[Kematian][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" readonly <?php echo ($kematian['Kematian']['id_umat'] == 0) ?  : 'disabled'; ?>>
+          <input type="text" value="<?php echo ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['tanggal_lahir'] : $kematian['Umat']['tgl_lahir'] ?>" name="data[Kematian][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" <?php echo ($kematian['Kematian']['id_umat'] == 0) ?  : 'disabled'; ?>>
         </div>
       </div>
 
@@ -146,7 +146,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
         echo $this->Form->label('tanggalMeninggal', 'Tanggal Meninggal', 'col-md-2 control-label');
         ?>
         <div class="col-md-4">
-          <input type="text" value="<?php echo $kematian['Kematian']['tanggal_meninggal']; ?>" name="data[Kematian][tanggal_meninggal]" id="tanggalMeninggal" class="form-control datepicker" role="date" readonly="">
+          <input type="text" value="<?php echo $kematian['Kematian']['tanggal_meninggal']; ?>" name="data[Kematian][tanggal_meninggal]" id="tanggalMeninggal" class="form-control datepicker" role="date">
         </div>
       </div>
 
@@ -167,7 +167,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
         echo $this->Form->label('tanggalPemakaman', 'Tanggal Pemakaman', 'col-md-2 control-label');
         ?>
         <div class="col-md-4">
-          <input type="text" value="<?php echo $kematian['Kematian']['tanggal_pemakaman']; ?>" name="data[Kematian][tanggal_pemakaman]" id="tanggalPemakaman" class="form-control datepicker" role="date" readonly="">
+          <input type="text" value="<?php echo $kematian['Kematian']['tanggal_pemakaman']; ?>" name="data[Kematian][tanggal_pemakaman]" id="tanggalPemakaman" class="form-control datepicker" role="date">
         </div>
       </div>
 
@@ -216,7 +216,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
         echo $this->Form->label('tanggalBaptis', 'Tangggal Baptis', 'col-md-2 control-label');
         ?>
         <div class="col-md-4">
-          <input type="text" value="<?php echo ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['tanggal_baptis'] : $kematian['Umat']['tglbaptis']; ?>" name="tanggal_baptis" id="tanggalBaptis" class="form-control datepicker" role="date" readonly <?php echo ($kematian['Kematian']['id_umat'] == 0) ?  : 'disabled'; ?>>
+          <input type="text" value="<?php echo ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['tanggal_baptis'] : $kematian['Umat']['tglbaptis']; ?>" name="tanggal_baptis" id="tanggalBaptis" class="form-control datepicker" role="date" <?php echo ($kematian['Kematian']['id_umat'] == 0) ?  : 'disabled'; ?>>
         </div>
       </div>
 

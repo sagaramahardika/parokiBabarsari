@@ -105,7 +105,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalLahir', 'Tanggal Lahir', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_lahir'] : $krisma['Umat']['tgl_lahir']; ?>" name="data[Krisma][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" readonly <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
+            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_lahir'] : $krisma['Umat']['tgl_lahir']; ?>" name="data[Krisma][tanggal_lahir]" id="tanggalLahir" class="form-control datepicker" role="date" <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
           </div>
 				</div>
 
@@ -127,7 +127,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalBaptis', 'Tanggal Baptis', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_baptis'] : $krisma['Umat']['tglbaptis'] ?>" name="data[Krisma][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" readonly <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
+            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_baptis'] : $krisma['Umat']['tglbaptis'] ?>" name="data[Krisma][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
           </div>
 				</div>
 
@@ -162,7 +162,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					echo $this->Form->label('tanggalKomuni', 'Tangggal Komuni', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_komuni'] : $krisma['Umat']['tglkomuni'] ?>" name="data[Krisma][tanggal_komuni]" id="tanggalKomuni" class="form-control datepicker" role="date" readonly <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
+            <input type="text" value="<?php echo ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['tanggal_komuni'] : $krisma['Umat']['tglkomuni'] ?>" name="data[Krisma][tanggal_komuni]" id="tanggalKomuni" class="form-control datepicker" role="date" <?php echo ($krisma['Krisma']['id_umat'] == 0) ?  : 'disabled'; ?>>
           </div>
 				</div>
 
@@ -194,10 +194,36 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 
         <div class="form-group">
 					<?php
+					echo $this->Form->label('tempatKrisma', 'Tempat Krisma', 'col-md-2 control-label');
+					echo $this->Form->input('tempat_krisma', array(
+                        'label'=>false,
+                        'class'=>"form-control ",
+                        'value' => $krisma['Krisma']['tempat_krisma'],
+                        'placeholder'=>'Tempat Krisma',
+                        'id'   => 'tempatKrisma',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+					<?php
+					echo $this->Form->label('kotaKrisma', 'Kota Tempat Krisma', 'col-md-2 control-label');
+					echo $this->Form->input('kota_krisma', array(
+                        'label'=>false,
+                        'class'=>"form-control ",
+                        'value' => $krisma['Krisma']['kota_krisma'],
+                        'placeholder'=>'Kota Krisma',
+                        'id'   => 'kotaKrisma',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+					<?php
 					echo $this->Form->label('tanggalKrisma', 'Tanggal Krisma', 'col-md-2 control-label');
 					?>
           <div class="col-md-4">
-            <input type="text" value="<?php echo $krisma['Krisma']['tanggal_krisma']; ?>" name="data[Krisma][tanggal_krisma]" id="tanggalKrisma" class="form-control datepicker" role="date" readonly="">
+            <input type="text" value="<?php echo $krisma['Krisma']['tanggal_krisma']; ?>" name="data[Krisma][tanggal_krisma]" id="tanggalKrisma" class="form-control datepicker" role="date">
           </div>
 				</div>
 
