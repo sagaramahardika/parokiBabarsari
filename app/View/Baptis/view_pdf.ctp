@@ -89,7 +89,7 @@
       <td rowspan="6" style="width: 27.5%; font-size: 16px;">
         <b>Keuskupan Agung Semarang</b>
       </td>
-      <td rowspan="6" style="width: 25%; text-align: center">Gambar</td>
+      <td rowspan="6" style="width: 25%; text-align: center"><img src="<?php echo APP; ?>\webroot\logo-hitam.jpg" height="100" width="100"></td>
       <td style="width: 80%; font-size: 18px;"><b>Kutipan</b></td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Di Gereja</td>
-      <td style="font-size: 18px;">: <?php if(count($krisma) != 0){ echo $krisma['Krisma']['tempat_krisma'] .' di '.$krisma['Krisma']['kota_krisma']; }else{ echo '-'; } ?> </td>
+      <td style="font-size: 18px;">: <?php if(count($krisma) != 0 && $krisma['Krisma']['tempat_krisma'] != null){ echo $krisma['Krisma']['tempat_krisma'] .' di '.$krisma['Krisma']['kota_krisma']; }else{ echo '-'; } ?> </td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Telah Menikah dengan</td>
