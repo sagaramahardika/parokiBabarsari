@@ -71,6 +71,8 @@
     $tahunKrisma = date("Y", strtotime($tgl_krisma));
   }
 
+  var_dump($pernikahan);
+
   $tempat_baptis = 'Gereja ' . $baptis['Baptis']['tempat'] . ' ' . $baptis['Baptis']['kota'];
 ?>
 

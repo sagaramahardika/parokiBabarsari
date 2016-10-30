@@ -372,13 +372,14 @@ class BaptisController extends AppController{
 			'conditions' => array('Umat.id_kk' => $baptis['Umat']['id_kk'], 'Umat.id_hubkk', 'Umat.id_hubkk' => $hubKKpasangan)
 		));
 
-		$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
-		$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
+		//$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
+		//$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
 
 		// NOTE: Belom di test
 
 		$this->set(compact('baptis'));
 		$this->set(compact('krisma'));
+		$this->set('pernikahan', $riwayatPernikahan);
 		$view_output = $this->render('view_pdf');
 	    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
 	    $html2pdf->pdf->SetAuthor('a');
