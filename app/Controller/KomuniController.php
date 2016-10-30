@@ -141,9 +141,9 @@ class KomuniController extends AppController{
 						$results['nama_ibu'] = $anggota['uu']['nama'];
 						$results['id_ibu'] = $anggota['uu']['id'];
 						$results['alamat_orangtua'] = $anggota['uu']['alamat'];
-					} 
+					}
 				}
-				
+
 				echo json_encode($results);
 		}
 	}
@@ -201,7 +201,7 @@ class KomuniController extends AppController{
 				} catch (PDOExeption $pdoe) {
 					$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 				}
-				$this->redirect(array('action'=>'index'));
+				return $this->redirect(array('action' => 'edit', $id));
 			}else{
 				$this->request->data = $this->Komuni->read(null,$id);
 			}
