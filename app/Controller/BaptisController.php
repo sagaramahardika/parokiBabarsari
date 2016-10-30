@@ -271,7 +271,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'edit'));
+			return $this->redirect(array('action' => 'edit', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -289,7 +289,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisAnak'));
+			return $this->redirect(array('action' => 'editBaptisAnak', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -305,7 +305,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisDiterima'));
+			return $this->redirect(array('action' => 'editBaptisDiterima', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -323,7 +323,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisDewasa'));
+			return $this->redirect(array('action' => 'editBaptisDewasa', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
@@ -341,7 +341,7 @@ class BaptisController extends AppController{
 			} catch (PDOExeption $pdoe) {
 				$this->Flash->error(__('data tidak dapat diupdate. ' . $e->errorInfo[2]));
 			}
-			return $this->redirect(array('action' => 'editBaptisDarurat'));
+			return $this->redirect(array('action' => 'editBaptisDarurat', $id));
 		}
 		else {
 			$this->request->data = $this->Baptis->read(null, $id);
