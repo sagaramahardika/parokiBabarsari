@@ -248,6 +248,7 @@ class PernikahansController extends AppController{
 					$this->Umat->saveField('id_kk', $newidkk);
 					$this->Umat->saveField('id_hubkk', $hubkk1);
 					$this->Umat->saveField('tempatnikah', $this->request->data['Pernikahan']['tmppernikahan']);
+					$this->Umat->saveField('kotamenikah', $this->request->data['Pernikahan']['kota']);
 					$this->Umat->saveField('tglnikah', $this->request->data['Pernikahan']['tglpernikahan']);
 					$this->Umat->saveField('id_hubkk', $hubkk1);
 					$this->Umat->saveField('id_statuspernikahan', $this->request->data['statuspernikahan']);
@@ -266,6 +267,7 @@ class PernikahansController extends AppController{
 						$this->Umat->saveField('id_kk',$newidkk);
 						$this->Umat->saveField('id_hubkk',$hubkk2);
 						$this->Umat->saveField('id_statuspernikahan',$this->request->data['statuspernikahan']);
+						$this->Umat->saveField('kotamenikah', $this->request->data['Pernikahan']['kota']);
 						$this->Umat->saveField('tempatnikah', $this->request->data['Pernikahan']['tmppernikahan']);
 						$this->Umat->saveField('tglnikah', $this->request->data['Pernikahan']['tglpernikahan']);
 
@@ -295,11 +297,18 @@ class PernikahansController extends AppController{
 						$idTam = $this->request->data['Pernikahan']['umat_id'];
 						$this->Umat->id = $idTam;
 						$this->Umat->saveField('id_statuspernikahan', $this->request->data['statuspernikahan']);
+						$this->Umat->saveField('kotamenikah', $this->request->data['Pernikahan']['kota']);
+						$this->Umat->saveField('tempatnikah', $this->request->data['Pernikahan']['tmppernikahan']);
+						$this->Umat->saveField('tglnikah', $this->request->data['Pernikahan']['tglpernikahan']);
+
 						# code...
 						if ($this->request->data['Pernikahan']['pasangan_id']) {
 						# code...
 							$this->Umat->id = $this->request->data['Pernikahan']['pasangan_id'];
 							$this->Umat->saveField('id_statuspernikahan', $this->request->data['statuspernikahan']);
+							$this->Umat->saveField('kotamenikah', $this->request->data['Pernikahan']['kota']);
+							$this->Umat->saveField('tempatnikah', $this->request->data['Pernikahan']['tmppernikahan']);
+							$this->Umat->saveField('tglnikah', $this->request->data['Pernikahan']['tglpernikahan']);
 
 						}
 						$this->Flash->success(__('Data Pernikahan telah berhasil diubah.'));

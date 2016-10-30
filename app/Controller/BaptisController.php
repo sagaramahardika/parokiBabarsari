@@ -367,17 +367,19 @@ class BaptisController extends AppController{
 			$hubKKpasangan = 1;
 		}
 
-		$riwayatPernikahan = $this->Pernikahan->find('first', array(
-			'fields' => array('nm_pasangan', 'tmppernikahan', 'tglpernikahan', 'kota'),
+		$riwayatPernikahan = $this->Umat->find('first', array(
+			'fields' => array('nama', 'tglnikah', 'kotamenikah', 'tempatnikah'),
 			'conditions' => array('Umat.id_kk' => $baptis['Umat']['id_kk'], 'Umat.id_hubkk', 'Umat.id_hubkk' => $hubKKpasangan)
 		));
 
-		//$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
-		//$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
+		$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
+		$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
+		$kotaMenikah = $riwayatPernikahan['Umat']['kotamenikah'];
+		$tempatMenikah = $riwayatPernikahan['Umat']['tempatnikah'];
 
 		// NOTE: Belom di test
 
-		$this->set(compact('baptis'));
+		$this->set(compact('baptis', 'namaPasangan', 'tanggalMenikah', 'kotaMenikah', 'tempatMenikah'));
 		$this->set(compact('krisma'));
 		$this->set('pernikahan', $riwayatPernikahan);
 		$view_output = $this->render('view_pdf');
