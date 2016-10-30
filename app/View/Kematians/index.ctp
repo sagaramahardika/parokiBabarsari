@@ -1,89 +1,115 @@
 <?php
-$this->assign('title', 'Halaman Baptis Umat');
-?>
-<h3><i class="fa fa-angle-right"></i> <i class="fa fa-users"></i> Manajemen Data Baptis </h3>
+$this->assign('title','Halaman Manajemen Kematian')
+
+ ?>
+
+<h3><i class="fa fa-angle-right"></i> <i class="fa fa-users"></i> Manajemen Data Kematian</h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="row">
 			<div class="col-lg-6">
-			  <form action="<?php echo $this->Html->url(array('controller'=>'umats', 'action'=>'baptis')); ?>" method="post" id="frmCari">
+			  <form action="<?php echo $this->Html->url(array('controller'=>'kematians', 'action'=>'index')); ?>" method="post" id="frmCari">
 			  <div class="input-group">
-				<input type="text" class="form-control" name="data[cari]" placeholder="Cari akun ...">
-				<span class="input-group-btn">
-				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
-				 <!-- <button class="btn btn-default btn-warning" type="button" id="alluserbtn">Semua</button>
-				  <button class="btn btn-default btn-success" type="button" id="adduserbtn"><span class="fa fa-user-plus"></span> Tambah Akun</button>-->
-				</span>
+  				<input type="text" class="form-control" name="data[cari]" placeholder="Cari nama umat ...">
+  				<span class="input-group-btn">
+  				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
+  				</span>
 			  </div>
-			  </form>
+        <br>
+        <div class="input-group">
+			  	<span class="input-group-btn">
+			  		<a href="<?php echo $this->Html->url(array('controller' => 'kematians', 'action' => 'newTambah')); ?>" class="btn btn-default btn-success"><span class="fa fa-user-plus"></span> Tambah Data Kematian</a>
+			  	</span>
+			  </div>
+			  	</form>
+			  <div class="input-group">
+			  	<span class="input-group-btn">
+			  		<?php
+
+					$userRole =$this->Session->read('Auth.User.user_level');
+
+			  		if ( $userRole <> 1) {
+			  			# code...
+			  			?>
+			  			<!-- <button class="btn btn-default btn-success" type="button" id="addkrisma"><span class="fa fa-user-plus"></span> Tambah Akun</button> -->
+
+			  			<?php
+			  		}
+			  		 ?>
+
+
+
+
+			  	</span>
+
+			  </div>
+
 			</div>
-		</div>
-		<div class="row">
+			</div>
+
+			<div class="row">
 			<div class="col-lg-12">
 				<p></p>
 			</div>
 		</div>
-
-		<div class="row">
+ <div class="row">
 			<div class="col-lg-12">
 				<section id="unseen">
-					<table class="table table-bordered table-striped table-condensed">
-						<thead>
+					<table class="table table-bordered table-striped table-condensed ">
+						<thead class="text-center">
 						<tr>
-							<?php if($usrlvl!=1){ ?>
-							<th></th>
-							<?php }?>
-							<th>Kode Stasi</th>
-							<th>No Urut</th>
-							<th>Nama Lengkap</th>
-							<th>Nama Baptis</th>
-							<th>Gender</th>
-							<th>Tempat Lahir</th>
-							<th>Tanggal Lahir</th>
-              <th>Tempat Meninggal</th>
-              <th>Tanggal Meninggal</th>
-              <th>Tempat Dimakamkan</th>
-              <th>Tanggal Dimakamkan</th>
-              <th>Nama Saudara</th>
-              <th>Hubungan Persaudaraan</th>
-              <th>Sakramen Terakhir</th>
-              <th>Pemberi Sakramen</th>
-						</tr>
+				 			<td style="width: 5%;"></td>
+              <td>Tanggal Kematian</td>
+				 			<td>Nama Diri</td>
+              <td>Tempat Pemakaman</td>
+              <td>Tanggal Pemakaman</td>
+              <td>Nama Ayah</td>
+              <td>Nama Ibu</td>
+ 						</tr>
 						</thead>
 						<tbody>
 						<?php
 						$i=0;
-						foreach($datas as $user) {
-							$i++; ?>
+
+
+							# code...
+
+						foreach($datas as $data) {
+
+							?>
+
 						<tr>
-							<?php if($usrlvl!=1){ ?>
 							<td>
-								<a href="<?php
-								echo $this->Html->url(array('controller'=>'umats','action'=>'editBaptis', $user['Kematian']['id_kematian']));
+								<?php if($userRole <> 1){ ?>
+							  <a href="<?php
+								echo $this->Html->url(array('controller'=>'kematians','action'=>'newEdit', $data['Kematian']['id']));
 								?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
-							</td>
-							<?php } ?>
-							<td><?php echo $user['Kematian']['kode_stasi'] ?> </td>
-							<td><?php echo $user['Kematian']['no_urut'] ?> </td>
-							<td><?php echo $user['Kematian']['nama_lengkap'] ?> </td>
-							<td><?php echo $user['Kematian']['nama_baptis'] ?></td>
-							<td><?php echo $user['Kematian']['gender'] ?></td>
-							<td><?php echo $user['Kematian']['tempat_lahir'] ?></td>
-							<td><?php echo $user['Kematian']['tanggal_lahir'] ?></td>
-              <td><?php echo $user['Kematian']['tempat_meninggal'] ?></td>
-              <td><?php echo $user['Kematian']['tanggal_meninggal'] ?></td>
-              <td><?php echo $user['Kematian']['tempat_dimakamkan'] ?></td>
-              <td><?php echo $user['Kematian']['tanggal_dimakamkan'] ?></td>
-              <td><?php echo $user['Kematian']['nama_saudara'] ?></td>
-              <td><?php echo $user['Kematian']['hubungan_persaudaraan'] ?></td>
-              <td><?php echo $user['Kematian']['sakramen_terakhir'] ?></td>
-              <td><?php echo $user['Kematian']['pemberi_sakramen'] ?></td>
-		          </tr>
+                <?php
+					        echo $this->Html->link('<span class="fa fa-eye" aria-hidden="true"></span>', array('controller'=>'kematians','action'=>'viewDetail', $data['Kematian']['id']), array('escape'=> FALSE));
+                ?>
+ 					      <?php } ?>
+ 				      </td>
+              <td>	<?php echo $data['Kematian']['tanggal_meninggal']; ?> </td>
+       				<td>	<?php echo ($data['Kematian']['id_umat'] == 0) ? $data['Kematian']['nama_diri'] : $data['Umat']['nama'];?></td>
+              <td>	<?php echo $data['Kematian']['tempat_pemakaman']; ?> </td>
+              <td>	<?php echo $data['Kematian']['tanggal_pemakaman']; ?> </td>
+              <td>	<?php echo $data['Kematian']['nama_ayah']; ?> </td>
+              <td>	<?php echo $data['Kematian']['nama_ibu']; ?> </td>
+
+						</tr>
+
+
+
+
+
+
 						<?php }
-						unset($users);
+
 						?>
 						</tbody>
 					</table>
+
+
 					<div class="paging">
 					<?php
 						if ($this->Session->check('search')) {
@@ -98,5 +124,5 @@ $this->assign('title', 'Halaman Baptis Umat');
 				</section>
 			</div>
 		</div>
-	</div>
+		</div>
 </div>

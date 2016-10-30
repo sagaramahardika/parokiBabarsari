@@ -19,27 +19,32 @@ tr:last-child > td{
 </style>
 
 <script>
-$(document).ready(function(){
-  $('.datepicker').datepicker({
-      autoclose: true,
-      format: 'yyyy-mm-dd',
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+    });
+
+    $("#btnTambahSakramen").click(function(e){
+      e.preventDefault();
+    });
+
+    $("#tambahSakramen").click(function(){
+      $namaSakramen = $("#namaSakramen").val();
+      $pelayanSakramen = $("#pelayanSakramen").val();
+
+      $("tbody").append("<tr><input type='hidden' name='data[KematianSakramen][nama_sakramen][]' value=" + $namaSakramen +"><input type='hidden' name='data[KematianSakramen][pelayan_sakramen][]' value=" + $pelayanSakramen +"><td style='text-align: center;'>" + $namaSakramen + "</td><td style='text-align: center;'>" + $pelayanSakramen + "</td></tr>")
+
+      $("#namaSakramen").val("");
+      $("#pelayanSakramen").val("");
+    })
+
+    $('#buttonBtlKematian').click(function(e){
+      e.preventDefault();
+      location.href="/paroki_bbs/kematians";
+    });
+
   });
-
-  $("#btnTambahSakramen").click(function(e){
-    e.preventDefault();
-  });
-
-  $("#tambahSakramen").click(function(){
-    $namaSakramen = $("#namaSakramen").val();
-    $pelayanSakramen = $("#pelayanSakramen").val();
-
-    $("tbody").append("<tr><input type='hidden' name='data[KematianSakramen][nama_sakramen][]' value=" + $namaSakramen +"><input type='hidden' name='data[KematianSakramen][pelayan_sakramen][]' value=" + $pelayanSakramen +"><td style='text-align: center;'>" + $namaSakramen + "</td><td style='text-align: center;'>" + $pelayanSakramen + "</td></tr>")
-
-    $("#namaSakramen").val("");
-    $("#pelayanSakramen").val("");
-  })
-
-});
 </script>
 
 <?php
@@ -257,7 +262,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					<label class="col-md-2"></label>
 					<div class="col-md-10">
 					  <button id="button1id" name="button1id" class="btn btn-success" type="submit" >Simpan</button>
-					  <button id="buttonbtlper" name="buttonbtlper" class="btn btn-danger">Batal</button>
+					  <button id="buttonBtlKematian" class="btn btn-danger">Batal</button>
 					</div>
 				</div>
 			  <?php

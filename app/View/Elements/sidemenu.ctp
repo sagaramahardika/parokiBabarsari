@@ -86,7 +86,7 @@ else {
   <?php echo $this->Html->link('Komuni', array('controller'=>'komuni', 'action' => 'index')); ?>
   </li>
   <li <?php echo $krismas; ?>>
-  <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'newRead')); ?>
+  <?php echo $this->Html->link('Krisma', array('controller'=>'krismas', 'action' => 'index')); ?>
   </li>
   <li <?php echo $pernikahans; ?>>
   <?php echo $this->Html->link('Pernikahan', array('controller'=>'pernikahans', 'action' => 'index')); ?>
@@ -95,7 +95,7 @@ else {
     <?php echo $this->Html->link('Pengurapan', array('controller'=>'pengurapans', 'action' => 'index')); ?>
   </li>
   <li <?php echo $kematians; ?>>
-    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'newRead')); ?>
+    <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'index')); ?>
   </li>
 
   <?php

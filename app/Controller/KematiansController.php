@@ -9,80 +9,41 @@ class KematiansController extends AppController{
 
     public function index()
     {
-        $conditions = array();
+      $conditions = array();
 
-        if (!empty($this->data) && $this->data['cari'] !== '') {
-          $conditions = array(
-              'nama LIKE ' => '%' . strtolower($this->data['cari']) . '%'
-          );
-          $this->Session->write('conditions',$conditions);
-          $this->Session->write('search', $this->data['cari']);
+      if (!empty($this->data) && $this->data['cari'] !== '') {
+        $conditions = array(
+            'nama LIKE ' => '%' . strtolower($this->data['cari']) . '%'
+        );
+        $this->Session->write('conditions',$conditions);
+        $this->Session->write('search', $this->data['cari']);
+      } else {
+        if (empty($this->params['named']['o'])) {
+          $this->Session->delete('conditions');
+          $this->Session->delete('search');
         } else {
-          if (empty($this->params['named']['o'])) {
+          if ($this->params['named']['o'] === 'search') {
+            $conditions = $this->Session->read('conditions');
+          } else {
             $this->Session->delete('conditions');
             $this->Session->delete('search');
-          } else {
-            if ($this->params['named']['o'] === 'search') {
-              $conditions = $this->Session->read('conditions');
-            } else {
-              $this->Session->delete('conditions');
-              $this->Session->delete('search');
-            }
           }
         }
+      }
 
-        $this->set('title_for_layout','Home');
-        $this->Kematian->recursive = 1;
+      $this->set('title_for_layout','Home');
+      $this->Kematian->recursive = 1;
 
-        $this->Paginator->settings = array(
-          'limit'=>10,
-          'conditions'=>array($conditions),
-          'order'=>array(
-            'Kematian.id_kematian'=>'asc'));
-        try{
-          $this->set('usrlvl', $this->Auth->user('user_level'));
-          $this->set('datas',$this->Paginator->paginate('Kematian'));
-        }catch(NotFoundException $e)
-        {}
-    }
-
-    public function newRead()
-    {
-        $conditions = array();
-
-        if (!empty($this->data) && $this->data['cari'] !== '') {
-          $conditions = array(
-              'nama LIKE ' => '%' . strtolower($this->data['cari']) . '%'
-          );
-          $this->Session->write('conditions',$conditions);
-          $this->Session->write('search', $this->data['cari']);
-        } else {
-          if (empty($this->params['named']['o'])) {
-            $this->Session->delete('conditions');
-            $this->Session->delete('search');
-          } else {
-            if ($this->params['named']['o'] === 'search') {
-              $conditions = $this->Session->read('conditions');
-            } else {
-              $this->Session->delete('conditions');
-              $this->Session->delete('search');
-            }
-          }
-        }
-
-        $this->set('title_for_layout','Home');
-        $this->Kematian->recursive = 1;
-
-        $this->Paginator->settings = array(
-          'limit'=>10,
-          'conditions'=>array($conditions),
-          'order'=>array(
-            'Kematian.id_kematian'=>'asc'));
-        try{
-          $this->set('usrlvl', $this->Auth->user('user_level'));
-          $this->set('datas',$this->Paginator->paginate('Kematian'));
-        }catch(NotFoundException $e)
-        {}
+      $this->Paginator->settings = array(
+        'limit'=>10,
+        'conditions'=>array($conditions),
+        'order'=>array(
+          'Kematian.id_kematian'=>'asc'));
+      try{
+        $this->set('usrlvl', $this->Auth->user('user_level'));
+        $this->set('datas',$this->Paginator->paginate('Kematian'));
+      }catch(NotFoundException $e)
+      {}
     }
 
     public function tambah()

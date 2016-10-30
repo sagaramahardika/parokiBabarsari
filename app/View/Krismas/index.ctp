@@ -1,4 +1,18 @@
-ss<?php
+<style>
+  .fa-file-pdf-o {
+    cursor: pointer;
+    cursor: hand;
+  }
+</style>
+<script>
+  $(document).ready(function(){
+    $(".fa-file-pdf-o").click(function(){
+      $id = $(this).attr('id');
+      $('#formPDF').attr('action', 'krismas/viewPDF/' + $id);
+    });
+  })
+</script>
+<?php
 $this->assign('title','Halaman Pendataan Krisma')
 
  ?>
@@ -11,13 +25,17 @@ $this->assign('title','Halaman Pendataan Krisma')
 			  <form action="<?php echo $this->Html->url(array('controller'=>'krismas', 'action'=>'index')); ?>" method="post" id="frmCari">
 			  <div class="input-group">
 				<input type="text" class="form-control" name="data[cari]" placeholder="Cari nama umat ...">
-				<span class="input-group-btn">
-				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
-
-
-				</span>
+  				<span class="input-group-btn">
+  				  <button class="btn btn-default" type="button" id="finduserbtn">Cari</button>
+  				</span>
 			  </div>
-			  <br>
+        <br>
+        <div class="input-group">
+			  	<span class="input-group-btn">
+			  		<a href="<?php echo $this->Html->url(array('controller' => 'krismas', 'action' => 'newTambah')); ?>" class="btn btn-default btn-success"><span class="fa fa-user-plus"></span> Tambah Data Krisma</a>
+			  	</span>
+			  </div>
+
 			  	</form>
 			  <div class="input-group">
 			  	<span class="input-group-btn">
@@ -55,61 +73,41 @@ $this->assign('title','Halaman Pendataan Krisma')
 					<table class="table table-bordered table-striped table-condensed ">
 						<thead class="text-center">
 						<tr>
-				 			<td></td>
-				 			<td>Kode Stasi</td>
-				 			<td>No Urut</td>
+				 			<td style="width: 5%;"></td>
+              <td>Tanggal Krisma</td>
 				 			<td>Nama Diri</td>
-				 			<td>Gender</td>
               <td>Nama Ayah</td>
               <td>Nama Ibu</td>
-              <td>Paroki</td>
-              <td>Kode LB</td>
-              <td>Tanggal Baptis</td>
-				 			<td>Nama Pelindung</td>
-				 			<td>Uskup Delegatus</td>
-              <td>Wali Krisma</td>
-              <td>Tanggal Krisma</td>
-              <td>Tempat Krisma</td>
+              <td>Nama Pelindung Krisma</td>
+              <td>Nama Emban Krisma</td>
  						</tr>
 						</thead>
-						<?php
-
-
-
-						 ?>
 						<tbody>
 						<?php
 						$i=0;
 
 
 							# code...
-
-						foreach($datas as $data) {
+						  foreach($datas as $data) {
 
 							?>
 
 						<tr>
 							<td>
 								<?php if($userRole <> 1){ ?>
-							<a href="<?php
-								echo $this->Html->url(array('controller'=>'krismas','action'=>'newEdit', $data['Krisma']['id']));
-								?>"<span class="fa fa-edit" aria-hidden="true"></span></a>
- 					<?php } ?>
- 				</td>
- 				<td>	<?php echo $data['Krisma']['kode_stasi']; ?></td>
- 				<td>	<?php echo $data['Krisma']['no_urut']; ?></td>
- 				<td>	<?php echo $data['Krisma']['nama_diri']; ?></td>
- 				<td>	<?php echo $data['Krisma']['gender']; ?> </td>
-        <td>	<?php echo $data['Krisma']['nama_ayah']; ?> </td>
-        <td>	<?php echo $data['Krisma']['nama_ibu']; ?> </td>
-        <td>	<?php echo $data['Krisma']['paroki']; ?> </td>
-        <td>	<?php echo $data['Krisma']['kode_lb']; ?> </td>
-        <td>	<?php echo $data['Krisma']['tanggal_baptis']; ?> </td>
-        <td>	<?php echo $data['Krisma']['nama_pelindung']; ?> </td>
-        <td>	<?php echo $data['Krisma']['uskup_delegatus']; ?> </td>
-        <td>	<?php echo $data['Krisma']['wali_krisma']; ?> </td>
-        <td>	<?php echo $data['Krisma']['tanggal_krisma']; ?> </td>
-        <td>	<?php echo $data['Krisma']['tempat_krisma']; ?> </td>
+							  <a href="<?php
+					        echo $this->Html->url(array('controller'=>'krismas','action'=>'newEdit', $data['Krisma']['id']));?>"
+                  <span class="fa fa-edit" aria-hidden="true"></span>
+                </a>
+                <span class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="modal" data-target="#modalPDF" style="color:#337ab7;" id="<?php echo $data['Krisma']['id']; ?>"</span>
+                <?php } ?>
+ 				      </td>
+              <td>	<?php echo $data['Krisma']['tanggal_krisma']; ?> </td>
+       				<td>	<?php echo ($data['Krisma']['id_umat'] == 0) ? $data['Krisma']['nama_diri'] : $data['Umat']['nama'];?></td>
+              <td>	<?php echo $data['Krisma']['nama_ayah']; ?> </td>
+              <td>	<?php echo $data['Krisma']['nama_ibu']; ?> </td>
+              <td>	<?php echo $data['Krisma']['nama_pelindung_krisma']; ?> </td>
+              <td>	<?php echo $data['Krisma']['nama_emban_krisma']; ?> </td>
 
 						</tr>
 
@@ -119,7 +117,6 @@ $this->assign('title','Halaman Pendataan Krisma')
 
 
 						<?php }
-
 						?>
 						</tbody>
 					</table>
@@ -139,5 +136,30 @@ $this->assign('title','Halaman Pendataan Krisma')
 				</section>
 			</div>
 		</div>
+      <!-- Modal -->
+    <div id="modalPDF" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Data PDF</h4>
+          </div>
+          <form id="formPDF" class="form-horizontal" action="viewPDF/" method="post" target="_blank">
+            <div class="modal-body">
+              <div class="form-group">
+  					    <label for="deskripsi" class="col-sm-3 control-label">Ayat</label>
+  					    <div class="col-sm-9">
+  					       	<textarea id="ayat" name="ayat" class="form-control"></textarea>
+  					    </div>
+  				    </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-sm btn-primary" id="btnTambahKasBank">Tambah</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
 		</div>
 </div>

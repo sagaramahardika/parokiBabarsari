@@ -5,13 +5,18 @@ input[readonly]:hover{
 </style>
 
 <script>
-$(document).ready(function(){
-  $('.datepicker').datepicker({
-      autoclose: true,
-      format: 'yyyy-mm-dd',
-  });
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd',
+    });
 
-});
+    $('#buttonBtlKematian').click(function(e){
+      e.preventDefault();
+      location.href="/paroki_bbs/kematians";
+    });
+
+  });
 </script>
 
 <?php
@@ -198,7 +203,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					<label class="col-md-2"></label>
 					<div class="col-md-10">
 					  <button id="button1id" name="button1id" class="btn btn-success" type="submit" >Simpan</button>
-					  <button id="buttonbtlper" name="buttonbtlper" class="btn btn-danger">Batal</button>
+					  <button id="buttonBtlKematian" name="buttonbtlper" class="btn btn-danger">Batal</button>
 					</div>
 				</div>
 			  <?php
