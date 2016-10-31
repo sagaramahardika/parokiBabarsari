@@ -393,6 +393,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'label'			=> false,
 							'id' 			=> 'tempatBaptis',
 							'placeholder'	=> "Tempat Baptis",
+              'value'   => "St. Maria Assumpta",
 							'class'			=> "form-control input-xlarge",
               'required'     => 'required',
 							'div'			=> array('class' => 'col-md-4')));
@@ -408,6 +409,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'id' 			=> 'kotaBaptis',
 							'placeholder'	=> "Kota",
 							'class'			=> "form-control input-xlarge",
+              'value'     => "Babarsari - Yogyakarta",
               'required'     => 'required',
 							'div'			=> array('class' => 'col-md-4')));
 					?>

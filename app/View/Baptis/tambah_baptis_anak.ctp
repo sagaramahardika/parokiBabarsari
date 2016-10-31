@@ -272,6 +272,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
             'label'			=> false,
             'id' 			=> 'tempatBaptis',
             'placeholder'	=> "Tempat Baptis",
+            'value'   => "St. Maria Assumpta",
             'class'			=> "form-control input-xlarge",
             'div'			=> array('class' => 'col-md-4')));
         ?>
@@ -285,6 +286,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
             'label'			=> false,
             'id' 			=> 'kotaBaptis',
             'placeholder'	=> "Kota",
+            'value'     => "Babarsari - Yogyakarta",
             'class'			=> "form-control input-xlarge",
             'div'			=> array('class' => 'col-md-4')));
         ?>

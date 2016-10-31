@@ -250,6 +250,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
 						'label'			    => false,
 						'placeholder'	  => "Tempat Komuni",
             'required',
+            'value'         => "St. Maria Assumpta",
 						'class'			    => "form-control input-xlarge",
             'id'            => 'tempatKomuni',
 						'div'			      => array('class'=>'col-md-4')));
