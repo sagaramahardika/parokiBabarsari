@@ -90,7 +90,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
             'div'			    => array('class' => 'col-md-4')));
         ?>
         <div class="col-md-4">
-          <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" >
+          <input type="text" name="data[Baptis][tanggal_lahir]" placeholder=" Tanggal Lahir" id="tanggal_lahir" class="form-control datepicker" role="date" >
         </div>
       </div>
 
@@ -169,7 +169,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
 
         ?>
         <div class="col-md-4">
-          <input type="text" name="data[BaptisAnak][tanggal_perkawinan_ortu]" id="tanggal_lahir" class="form-control datepicker" role="date" >
+          <input type="text" name="data[BaptisAnak][tanggal_perkawinan_ortu]" placeholder=" Tanggal Perkawinan Ortu" id="tanggal_lahir" class="form-control datepicker" role="date" >
         </div>
       </div>
 
@@ -247,7 +247,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
         echo $this->Form->label('Baptis.tempat_baptis', 'Tanggal Baptis', 'col-md-2 control-label');
         ?>
         <div class="col-md-4">
-          <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" class="form-control datepicker" role="date" >
+          <input type="text" name="data[Baptis][tanggal]" id="tanggal_baptis" placeholder=" Tanggal Baptis" class="form-control datepicker" role="date" >
         </div>
       </div>
 

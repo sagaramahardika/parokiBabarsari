@@ -13,6 +13,12 @@
     $nama = $baptis['Umat']['nama'];
   };
 
+  if (strpos($nama, ',') !== false){
+    $nama = explode(",", $nama);
+    $nama_diri = $nama[0];
+    $nama_baptis = $nama[1];
+  }
+
   $wali_baptis = $baptis['Baptis']['wali_baptis'];
   if($wali_baptis == '' || $wali_baptis == null){
     $wali_baptis = '-';
@@ -49,34 +55,42 @@
 
   $hariLahir = date("w", strtotime($tgl_lahir));
   $bulanLahir = date("n", strtotime($tgl_lahir));
-  $hariLahir = $arrDay[$hariLahir];
+  $hariLahir = $arrDay[$hariLahir-1];
   $intDayLahir = date("j", strtotime($tgl_lahir));
-  $bulanLahir = $arrMonth[$bulanLahir];
+  $bulanLahir = $arrMonth[$bulanLahir-1];
   $tahunLahir = date("Y", strtotime($tgl_lahir));
 
   $hariBaptis = date("w", strtotime($tgl_baptis));
   $bulanBaptis = date("n", strtotime($tgl_baptis));
-  $hariBaptis = $arrDay[$hariBaptis];
+  $hariBaptis = $arrDay[$hariBaptis-1];
   $intDayBaptis = date("j", strtotime($tgl_baptis));
-  $bulanBaptis = $arrMonth[$bulanBaptis];
+  $bulanBaptis = $arrMonth[$bulanBaptis-1];
   $tahunBaptis = date("Y", strtotime($tgl_baptis));
 
   $hariNikah = date("w", strtotime($tanggalMenikah));
   $bulanNikah = date("n", strtotime($tanggalMenikah));
-  $hariNikah = $arrDay[$hariNikah];
+  $hariNikah = $arrDay[$hariNikah-1];
   $intDayNikah = date("j", strtotime($tanggalMenikah));
-  $bulanNikah = $arrMonth[$bulanNikah];
+  $bulanNikah = $arrMonth[$bulanNikah-1];
   $tahunNikah = date("Y", strtotime($tanggalMenikah));
 
   if(count($krisma) != 0){
     $tgl_krisma = $krisma['Krisma']['tanggal_krisma'];
     $hariKrisma = date("w", strtotime($tgl_krisma));
     $bulanKrisma = date("n", strtotime($tgl_krisma));
-    $hariKrisma = $arrDay[$hariKrisma];
+    $hariKrisma = $arrDay[$hariKrisma-1];
     $intDayKrisma = date("j", strtotime($tgl_krisma));
-    $bulanKrisma = $arrMonth[$bulanKrisma];
+    $bulanKrisma = $arrMonth[$bulanKrisma-1];
     $tahunKrisma = date("Y", strtotime($tgl_krisma));
   }
+
+  $tgl_skarang = date('d-m-Y');
+  $hariSkrg = date("w", strtotime($tgl_skarang));
+  $bulanSkrg = date("n", strtotime($tgl_skarang));
+  $hariSkrg = $arrDay[$hariSkrg-1];
+  $intDaySkrg = date("j", strtotime($tgl_skarang));
+  $bulanSkrg = $arrMonth[$bulanSkrg-1];
+  $tahunSkrg = date("Y", strtotime($tgl_skarang));
 
   //var_dump($pernikahan);
 
@@ -183,13 +197,7 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 55%;"></td>
-      <?php if($hariNikah != null || $tempatMenikah != null || $namaPasangan != null){ ?>
-      <td style="font-size: 18px; text-align: center;">Babarsari, <?php echo $hariNikah . ', ' . $intDayNikah . ' ' . $bulanNikah . ' ' . $tahunNikah; ?></td>
-      <?php }else if(count($krisma) != 0){ ?>
-      <td style="font-size: 18px; text-align: center;">Babarsari, <?php echo $intDayLahir.' '.$bulanLahir.' '.$tahunLahir; ?></td>
-      <?php }else {?>
-      <td style="font-size: 18px; text-align: center;">Babarsari, <?php echo $intDayBaptis . ' ' . $bulanBaptis . ' ' . $tahunBaptis; ?></td>
-      <?php }?>
+      <td style="font-size: 18px; text-align: center;">Babarsari, <?php echo $intDaySkrg . ' ' . $bulanSkrg . ' ' . $tahunSkrg; ?></td>
     </tr>
   </table>
   <table style="width: 100%;">

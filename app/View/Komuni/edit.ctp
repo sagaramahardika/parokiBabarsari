@@ -64,7 +64,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   				?>
   			</div>
 
-  			<div class="form-group">
+  			<?php /*<div class="form-group">
   			<?php
   				echo $this->Form->label('Komuni.id_liber','ID Liber', 'col-md-2 control-label');
   				echo $this->Form->input('Komuni.id_liber',
@@ -77,7 +77,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   						'class'			    => "form-control input-xlarge",
   						'div'			      => array('class' => 'col-md-4')));
   				?>
-  			</div>
+  			</div>*/ ?>
 
         &nbsp
         <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Baptis</b></h4></div>

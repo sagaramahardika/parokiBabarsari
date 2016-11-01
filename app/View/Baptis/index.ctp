@@ -46,10 +46,10 @@ $this->assign('title', 'Halaman Manajemen Baptis');
 					$userRole =$this->Session->read('Auth.User.user_level');
 					echo 's' ;
 			  		 ?>
-             <button class="btn btn-default btn-success" type="button" id="addbaptisanak"><span class="fa fa-user-plus"></span> Tambah Baptis Anak</button>
-             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisdewasa"><span class="fa fa-user-plus"></span> Tambah Baptis Dewasa</button>
-             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisditerima"><span class="fa fa-user-plus"></span> Tambah Baptis Diterima</button>
-             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisdarurat"><span class="fa fa-user-plus"></span> Tambah Baptis Darurat</button>
+             <button style="margin-right: 8px;" class="btn btn-default btn-success" type="button" id="addbaptisanak"><span class="fa fa-user-plus"></span> Tambah Baptis Anak</button>
+             &nbsp;<button style="margin-right: 8px;" class="btn btn-default btn-success" type="button" id="addbaptisdewasa"><span class="fa fa-user-plus"></span> Tambah Baptis Dewasa</button>
+             &nbsp;<button style="margin-right: 8px;" class="btn btn-default btn-success" type="button" id="addbaptisditerima"><span class="fa fa-user-plus"></span> Tambah Baptis Diterima</button>
+             &nbsp;<button style="margin-right: 8px;" class="btn btn-default btn-success" type="button" id="addbaptisdarurat"><span class="fa fa-user-plus"></span> Tambah Baptis Darurat</button>
 			  	</span>
 			  </div>
 			  </form>
