@@ -1,4 +1,5 @@
 <?php
+
   $tgl_lahir;
   if($baptis['Baptis']['id_umat'] == 0){
     $tgl_lahir = $baptis['Baptis']['tanggal_lahir'];
@@ -17,6 +18,9 @@
     $nama = explode(",", $nama);
     $nama_diri = $nama[0];
     $nama_baptis = $nama[1];
+  }else{
+    $nama_diri = $nama;
+    $nama_baptis = '';
   }
 
   $wali_baptis = $baptis['Baptis']['wali_baptis'];
@@ -67,12 +71,15 @@
   $bulanBaptis = $arrMonth[$bulanBaptis-1];
   $tahunBaptis = date("Y", strtotime($tgl_baptis));
 
+if($tanggalMenikah != '-'){
   $hariNikah = date("w", strtotime($tanggalMenikah));
   $bulanNikah = date("n", strtotime($tanggalMenikah));
   $hariNikah = $arrDay[$hariNikah-1];
   $intDayNikah = date("j", strtotime($tanggalMenikah));
   $bulanNikah = $arrMonth[$bulanNikah-1];
   $tahunNikah = date("Y", strtotime($tanggalMenikah));
+}
+
 
   if(count($krisma) != 0){
     $tgl_krisma = $krisma['Krisma']['tanggal_krisma'];
@@ -96,11 +103,17 @@
 
   $tempat_baptis = 'Gereja ' . $baptis['Baptis']['tempat'] . ' ' . $baptis['Baptis']['kota'];
 
-  if (strpos($namaPasangan, ',') !== false){
+  if (strpos($namaPasangan, ',') !== false && $namaPasangan != '-'){
     $namaPasangan = explode(",", $namaPasangan);
     $nama_diri_pasangan = $namaPasangan[0];
     $nama_baptis_pasangan = $namaPasangan[1];
   }
+
+  if($namaPasangan == '-'){
+    $nama_diri_pasangan = '-';
+    $nama_baptis_pasangan = '';
+  }
+
 ?>
 
 <page backleft="10mm" backright="20mm" backtop="10mm">
@@ -189,7 +202,11 @@
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Pada Tanggal</td>
-      <td style="font-size: 18px;">: <?php echo $hariNikah . ', ' . $intDayNikah . ' ' . $bulanNikah . ' ' . $tahunNikah; ?></td>
+      <?php if($tanggalMenikah != '-'){ ?>
+        <td style="font-size: 18px;">: <?php echo $hariNikah . ', ' . $intDayNikah . ' ' . $bulanNikah . ' ' . $tahunNikah; ?></td>
+      <?php }else { ?>
+        <td style="font-size: 18px;">: - </td>
+      <?php } ?>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Di Gereja</td>

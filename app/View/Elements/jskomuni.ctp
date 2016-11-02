@@ -81,7 +81,6 @@ $(document).ready(function() {
                 $('#namaIbu').val(data.nama_ibu);
                 $('#alamatOrtu').val(data.alamat_orangtua);
 
-                $('#idUmat').prop('disabled', true);
   		          $('#jnskel').prop('disabled', true);
   		          $('#tempatLahir').prop('disabled', true);
   		          $('#tanggal_lahir').prop('disabled', true);

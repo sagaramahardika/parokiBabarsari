@@ -374,10 +374,17 @@ class BaptisController extends AppController{
 			'conditions' => array('Umat.id_kk' => $baptis['Umat']['id_kk'], 'Umat.id_hubkk', 'Umat.id_hubkk' => $hubKKpasangan)
 		));
 
-		$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
-		$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
-		$kotaMenikah = $riwayatPernikahan['Umat']['kotamenikah'];
-		$tempatMenikah = $riwayatPernikahan['Umat']['tempatnikah'];
+		$namaPasangan = '-';
+		$tanggalMenikah = '-';
+		$kotaMenikah = '-';
+		$tempatMenikah = '-';
+		if($riwayatPernikahan != null){
+			$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
+			$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
+			$kotaMenikah = $riwayatPernikahan['Umat']['kotamenikah'];
+			$tempatMenikah = $riwayatPernikahan['Umat']['tempatnikah'];
+		}
+
 
 		// NOTE: Belom di test
 
