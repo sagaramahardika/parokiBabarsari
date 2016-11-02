@@ -85,8 +85,10 @@ $(document).ready(function() {
   		          $('#tempatLahir').val(data.Umat.tmplahir);
   		          $('#tanggal_lahir').val(data.Umat.tgl_lahir);
                 $('#tglLahir').val(data.Umat.tgl_lahir);
-                $('#namaAyah').val(data.nama_ayah);
-                $('#namaIbu').val(data.nama_ibu);
+                //$('#namaAyah').val(data.nama_ayah);
+                //$('#namaIbu').val(data.nama_ibu);
+                $('#namaAyah').val(data.Umat.nama_ayah);
+                $('#namaIbu').val(data.Umat.nama_ibu);
 
   		          $('#jnskel').prop('disabled', true);
   		          $('#tempatLahir').prop('disabled', true);
@@ -169,6 +171,50 @@ $(document).ready(function() {
     $('.alasan_batal_nikah').val("");
     $('.alasan_batal_nikah').css("display","none");
     $('.alasan_batal_nikah').prop('disabled', true);
+
+    $('.menikah_secara').val("");
+    $('.menikah_secara').css("display","none");
+    $('.menikah_secara').prop('disabled', true);
+  }else if($( "#status_perkawinan_calon option:selected" ).text() == "Sudah Menikah"){
+    $('.nosurat').val("");
+    $('.nosurat').css("display","none");
+    $('.nosurat').prop('disabled', true);
+
+    $('.label_tanggal_perkawinan').text("Tanggal Pernikahan");
+
+    $('.alasan_batal_nikah').val("");
+    $('.alasan_batal_nikah').css("display","none");
+    $('.alasan_batal_nikah').prop('disabled', true);
+  }else if($( "#status_perkawinan_calon option:selected" ).text() == "Akan Menikah"){
+    $('.nosurat').val("");
+    $('.nosurat').css("display","none");
+    $('.nosurat').prop('disabled', true);
+
+    $('.alasan_batal_nikah').val("");
+    $('.alasan_batal_nikah').css("display","none");
+    $('.alasan_batal_nikah').prop('disabled', true);
+
+    $('.menikah_secara').val("");
+    $('.menikah_secara').css("display","none");
+    $('.menikah_secara').prop('disabled', true);
+  }else if($( "#status_perkawinan_calon option:selected" ).text() == "Perkawinan diputuskan / dibatalkan"){
+    $('.nosurat').val("");
+    $('.nosurat').css("display","");
+    $('.nosurat').prop('disabled', false);
+
+    $('.tanggal_perkawinan').val("");
+    $('.tanggal_perkawinan').css("display","");
+    $('.tanggal_perkawinan').prop('disabled', false);
+
+    $('.label_tanggal_perkawinan').text("Tanggal Pembatalan Pernikahan");
+
+    $('.tempat_pernikahan').val("");
+    $('.tempat_pernikahan').css("display","none");
+    $('.tempat_pernikahan').prop('disabled', true);
+
+    $('.nama_pasangan').val("");
+    $('.nama_pasangan').css("display","none");
+    $('.nama_pasangan').prop('disabled', true);
 
     $('.menikah_secara').val("");
     $('.menikah_secara').css("display","none");

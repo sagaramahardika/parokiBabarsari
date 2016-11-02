@@ -64,7 +64,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   				?>
   			</div>
 
-  			<div class="form-group">
+  			<?php /*<div class="form-group">
   			<?php
   				echo $this->Form->label('Komuni.id_liber','ID Liber', 'col-md-2 control-label');
   				echo $this->Form->input('Komuni.id_liber',
@@ -77,7 +77,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   						'class'			    => "form-control input-xlarge",
   						'div'			      => array('class' => 'col-md-4')));
   				?>
-  			</div>
+  			</div>*/ ?>
 
         &nbsp
         <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Baptis</b></h4></div>
@@ -176,6 +176,15 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   			</div>
         <?php }; ?>
 
+        <?php
+          $jnskel;
+          if($this->request->data['Komuni']['id_umat'] == "0"){
+            $jnskel = $this->request->data['Komuni']['jenis_kelamin'];
+          }else{
+            $jnskel = $this->request->data['Umat']['jenis_kelamin'];
+
+          }
+        ?>
   			<div class="form-group">
   				<?php
   					echo $this->Form->label('Umat.jenis_kelamin', 'Jenis Kelamin', 'col-md-2 control-label');
@@ -183,7 +192,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   					    'label'        =>  false,
   					    'class'        =>  "form-control ",
                 'id'           => 'jnskel',
-                'value'         => ($this->request->data['Komuni']['id_umat'] == 0) ? $this->request->data['Komuni']['jenis_kelamin'] : $this->request->data['Umat']['jenis_kelamin'],
+                'value'         => $jnskel,
                 'disabled'		 => 'disabled',
   					    'div'          =>  array('class'=>'col-md-4')));
   					echo $this->Form->label('ketGender', 'L=Laki-laki, P=Perempuan', 'control-label');
@@ -202,7 +211,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   						'id' 			        => 'namaAyah',
   						'placeholder'	    => "Nama Ayah",
   						'disabled'      => ($this->request->data['Komuni']['id_umat'] != 0) ? 'disabled' : false,
-              'value'         => ($this->request->data['Komuni']['id_umat'] == 0) ? $this->request->data['Komuni']['ayah'] : $this->request->data['Umat']['ayah'],
+              'value'         => ($this->request->data['Komuni']['id_umat'] == 0) ? $this->request->data['Komuni']['ayah'] : $this->request->data['Umat']['nama_ayah'],
   						'class'			      => "form-control input-xlarge",
   						'div'			        => array('class' => 'col-md-4')));
   				?>
@@ -218,7 +227,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Komuni', arra
   						'id' 			      => 'namaIbu',
   						'placeholder'	  => "Nama Ibu",
   						'disabled'      => ($this->request->data['Komuni']['id_umat'] != 0) ? 'disabled' : false,
-              'value'         => ($this->request->data['Komuni']['id_umat'] == 0) ? $this->request->data['Komuni']['ibu'] : $this->request->data['Umat']['ibu'],
+              'value'         => ($this->request->data['Komuni']['id_umat'] == 0) ? $this->request->data['Komuni']['ibu'] : $this->request->data['Umat']['nama_ibu'],
   						'class'			    => "form-control input-xlarge",
   						'div'			      => array('class' => 'col-md-4')));
   				?>

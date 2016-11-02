@@ -5,26 +5,26 @@ $this->assign('title', 'Halaman Manajemen Baptis');
 <div class="row mt">
   <br>
     <div class="col-lg-12">
-      <div class="row tile_count">
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Jumlah Total:</span>
-          <div class="count green"><?php echo $totalBaptis[0][0]['ctotal']; ?></div>
+      <div class="row tile_count" style="color: #606060;">
+        <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Total:</span>
+          <div class="count green" style="font-size: 40px;font-weight: 600;"><?php echo $totalBaptis[0][0]['ctotal']; ?></div>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Jumlah Baptis Anak:</span>
-          <div class="count green"><?php echo $totalBaptisAnak[0][0]['ctotal']; ?></div>
+        <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Baptis Anak:</span>
+          <div class="count green" style="font-size: 40px;font-weight: 600;"><?php echo $totalBaptisAnak[0][0]['ctotal']; ?></div>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Jumlah Baptis Dewasa:</span>
-          <div class="count green"><?php echo $totalBaptisDewasa[0][0]['ctotal']; ?></div>
+        <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Baptis Dewasa:</span>
+          <div class="count green" style="font-size: 40px;font-weight: 600;"><?php echo $totalBaptisDewasa[0][0]['ctotal']; ?></div>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Jumlah Baptis Diterima:</span>
-          <div class="count green"><?php echo $totalBaptisDiterima[0][0]['ctotal']; ?></div>
+        <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Baptis Diterima:</span>
+          <div class="count green" style="font-size: 40px;font-weight: 600;"><?php echo $totalBaptisDiterima[0][0]['ctotal']; ?></div>
         </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-          <span class="count_top"><i class="fa fa-user"></i> Jumlah Baptis Darurat:</span>
-          <div class="count green"><?php echo $totalBaptisDarurat[0][0]['ctotal']; ?></div>
+        <div class="col-md-2 col-sm-4 col-xs-4 tile_stats_count">
+          <span class="count_top"><i class="fa fa-user"></i> Baptis Darurat:</span>
+          <div class="count green" style="font-size: 40px;font-weight: 600;"><?php echo $totalBaptisDarurat[0][0]['ctotal']; ?></div>
         </div>
       </div>
       <br>
@@ -46,10 +46,10 @@ $this->assign('title', 'Halaman Manajemen Baptis');
 					$userRole =$this->Session->read('Auth.User.user_level');
 					echo 's' ;
 			  		 ?>
-             <button class="btn btn-default btn-success" type="button" id="addbaptisanak"><span class="fa fa-user-plus"></span> Tambah Baptis Anak</button>
-             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisdewasa"><span class="fa fa-user-plus"></span> Tambah Baptis Dewasa</button>
-             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisditerima"><span class="fa fa-user-plus"></span> Tambah Baptis Diterima</button>
-             &nbsp<button class="btn btn-default btn-success" type="button" id="addbaptisdarurat"><span class="fa fa-user-plus"></span> Tambah Baptis Darurat</button>
+             <button style="margin-right: 8px;" class="btn btn-default btn-success" type="button" id="addbaptisanak"><span class="fa fa-user-plus"></span> Tambah Baptis Anak</button>
+             &nbsp;<button style="margin-right: 8px;" class="btn btn-default btn-success" type="button" id="addbaptisdewasa"><span class="fa fa-user-plus"></span> Tambah Baptis Dewasa</button>
+             &nbsp;<button style="margin-right: 8px;" class="btn btn-default btn-success" type="button" id="addbaptisditerima"><span class="fa fa-user-plus"></span> Tambah Baptis Diterima</button>
+             &nbsp;<button style="margin-right: 8px;" class="btn btn-default btn-success" type="button" id="addbaptisdarurat"><span class="fa fa-user-plus"></span> Tambah Baptis Darurat</button>
 			  	</span>
 			  </div>
 			  </form>

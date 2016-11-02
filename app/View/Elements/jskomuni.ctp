@@ -77,11 +77,12 @@ $(document).ready(function() {
                 $('#tempatBaptis').val(data.Baptis.tempat);
                 $('#tanggal_baptis').val(data.Baptis.tanggal);
                 $('#namaBaptis').val(data.Baptis.nama_baptis);
-                $('#namaAyah').val(data.nama_ayah);
-                $('#namaIbu').val(data.nama_ibu);
+                //$('#namaAyah').val(data.nama_ayah);
+                //$('#namaIbu').val(data.nama_ibu);
+                $('#namaAyah').val(data.Umat.nama_ayah);
+                $('#namaIbu').val(data.Umat.nama_ibu);
                 $('#alamatOrtu').val(data.alamat_orangtua);
 
-                $('#idUmat').prop('disabled', true);
   		          $('#jnskel').prop('disabled', true);
   		          $('#tempatLahir').prop('disabled', true);
   		          $('#tanggal_lahir').prop('disabled', true);

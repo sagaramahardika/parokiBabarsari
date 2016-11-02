@@ -1,12 +1,12 @@
 <?php
-$this->assign('title', 'Halaman Tambah Baptis Darurat');
+$this->assign('title', 'Halaman Tambah Baptis Dewasa');
 ?>
 <h3><i class="fa fa-angle-right"></i> <?php echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Baptis', array('action'=>'index'), array('escape'=>false)); ?> / <i class="fa fa-user-plus"></i> Tambah Data Baptis </h3>
 <div class="row mt">
     <div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Form Pendaftaran Baptis Anak</h3>
+				<h3 class="panel-title">Form Pendaftaran Baptis Dewasa</h3>
 			</div>
 			<div class="panel-body">
 
@@ -94,7 +94,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 							'div'			    => array('class' => 'col-md-4')));
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[Baptis][tanggal_lahir]" id="tanggal_lahir" class="form-control datepicker" role="date" >
+            <input type="text" name="data[Baptis][tanggal_lahir]" placeholder=" Tanggal Lahir" id="tanggal_lahir" class="form-control datepicker" role="date" >
           </div>
 				</div>
 
@@ -179,9 +179,9 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
         <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Pernikahan</b></h4></div>
         <div class="form-group">
           <div class="input">
-            <?php echo $this->Form->label('BaptisDarurat.status_perkawinan', 'Status Perkawinan Calon Baptis', 'col-md-2 control-label'); ?>
+            <?php echo $this->Form->label('BaptisDarurat.ssstatus_perkawinan', 'Status Perkawinan Calon Baptis', 'col-md-2 control-label'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat[status_perkawinan]" id="status_perkawinan_calon" class="form-control input-xlarge">
+              <select name="BaptisDewasa[status_perkawinan]" id="status_perkawinan_calon" class="form-control input-xlarge">
                 <option value="BELUM">Belum Menikah</option>
                 <option value="SUDAH">Sudah Menikah</option>
                 <option value="AKAN">Akan Menikah</option>
@@ -193,9 +193,9 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 
         <div class="form-group">
           <div class="input">
-            <?php echo $this->Form->label('BaptisDarurat.menikah_secara', 'Menikah Secara', 'col-md-2 control-label menikah_secara'); ?>
+            <?php echo $this->Form->label('BaptisDarurat.ssmenikah_secara', 'Menikah Secara', 'col-md-2 control-label menikah_secara'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat[menikah_secara]" id="menikah_secara" class="form-control input-xlarge menikah_secara">
+              <select name="BaptisDewasa[menikah_secara]" id="menikah_secara" class="form-control input-xlarge menikah_secara">
                 <option value="GEREJA">Gereja</option>
                 <option value="KUA">Kua</option>
                 <option value="SIPIL">Catatan Sipil</option>
@@ -209,7 +209,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           <div class="input">
             <?php echo $this->Form->label('BaptisDarurat.alasan_batal_nikah', 'Alasan Pembatalan Pernikahan', 'col-md-2 control-label alasan_batal_nikah'); ?>
             <div class="col-md-4">
-              <select name="BaptisDarurat[alasan_batal_nikah]" id="alasan_batal_nikah" class="form-control input-xlarge alasan_batal_nikah">
+              <select name="BaptisDewasa[alasan_batal_nikah]" id="alasan_batal_nikah" class="form-control input-xlarge alasan_batal_nikah">
                 <option value="KEMATIAN">Kematian</option>
                 <option value="CERAISIPIL">Perceraian Sipil</option>
                 <option value="PEMUTUSAN">Pemutusan</option>
@@ -265,7 +265,7 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 					echo $this->Form->label('BaptisDewasa.tanggal', 'Tanggal', 'col-md-2 control-label tanggal_perkawinan label_tanggal_perkawinan');
 					?>
           <div class="col-md-4">
-            <input type="text" name="data[BaptisDewasa][tanggal]" id="tanggal_perkawinan" class="form-control datepicker tanggal_perkawinan" role="date" >
+            <input type="text" name="data[BaptisDewasa][tanggal]" placeholder=" Tanggal Perkawinan" id="tanggal_perkawinan" class="form-control datepicker tanggal_perkawinan" role="date" >
           </div>
 				</div>
 
