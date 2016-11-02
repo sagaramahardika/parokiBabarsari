@@ -95,6 +95,12 @@
   //var_dump($pernikahan);
 
   $tempat_baptis = 'Gereja ' . $baptis['Baptis']['tempat'] . ' ' . $baptis['Baptis']['kota'];
+
+  if (strpos($namaPasangan, ',') !== false){
+    $namaPasangan = explode(",", $namaPasangan);
+    $nama_diri_pasangan = $namaPasangan[0];
+    $nama_baptis_pasangan = $namaPasangan[1];
+  }
 ?>
 
 <page backleft="10mm" backright="20mm" backtop="10mm">
@@ -147,7 +153,7 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 15%;"></td>
-      <td style="width: 80%; font-size: 18px; text-align: center;"><b><u><?php echo strtoupper($nama); ?></u></b></td>
+      <td style="width: 80%; font-size: 18px; text-align: center;"><b><u><?php echo strtoupper($nama_baptis . ' ' . $nama_diri); ?></u></b></td>
     </tr>
   </table>
   <br>
@@ -179,7 +185,7 @@
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Telah Menikah dengan</td>
-      <td style="font-size: 18px;">: <?php echo $namaPasangan; ?></td>
+      <td style="font-size: 18px;">: <?php echo strtoupper($nama_baptis_pasangan . ' ' . $nama_diri_pasangan); ?></td>
     </tr>
     <tr>
       <td style="width: 45%; font-size: 18px;">Pada Tanggal</td>
