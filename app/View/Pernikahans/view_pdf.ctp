@@ -95,8 +95,10 @@
     </tr>
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">C.P.S</td>
-      <?php if ($umat2 != NULL) { ?>
+      <?php if ($umat2['bukan_umat'] != TRUE) { ?>
         <td style="font-size: 13px;">: <?php echo $umat2['Umat']['nama_ayah'] . "<i> dengan </i>". $umat2['Umat']['nama_ibu'] ;?></td>
+      <?php } else { ?>
+        <td style="font-size: 13px;">: 'Nama Ayah' dengan 'Nama Ibu'</td>
       <?php } ?>
     </tr>
     <tr>

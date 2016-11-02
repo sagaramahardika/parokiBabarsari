@@ -496,6 +496,8 @@ class PernikahansController extends AppController{
 		$umat2 = NULL;
 		$umat2['nama_ayah'] = null;
 		$umat2['nama_ibu'] = null;
+		$umat2['bukan_umat'] = true;
+
 
 		if ($pernikahan['Pernikahan']['pasangan_id'] != NULL) {
 			$umat2 = $this->Umat->findById($pernikahan['Pernikahan']['pasangan_id']);
@@ -516,6 +518,8 @@ class PernikahansController extends AppController{
 			} else {
 				$umat2['nama_diri'] = $umat2['Umat']['nama'];
 			}
+		} else {
+			$umat2['nama_diri'] = $pernikahan['Pernikahan']['nm_pasangan'];
 		}
 
 		$this->set(compact('pernikahan', 'umat1', 'umat2'));
