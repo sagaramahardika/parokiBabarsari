@@ -61,7 +61,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					?>
 
 				</div>
-
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Diri</b></h4></div>
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('namaDiri', 'Nama Diri ', 'col-md-2 control-label');
@@ -185,6 +186,60 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					?>
 				</div>
 
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Orangtua</b></h4></div>
+
+        <div class="form-group">
+					<?php
+					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
+					echo $this->Form->input('nama_ayah', array(
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nama Ayah',
+                        'id'=>'namaAyah',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+
+					<?php
+					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
+					echo $this->Form->input('nama_ibu', array(
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nama Ibu',
+                        'id'=>'namaIbu',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+
+					<?php
+					echo $this->Form->label('alamatOrangtua', 'Alamat Orangtua', 'col-md-2 control-label');
+					echo $this->Form->input('alamat_orangtua', array(
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Alamat Orangtua',
+                        'id'=>'alamatOrtu',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+
+					<?php
+					echo $this->Form->label('noHpOrangtua', 'Telp/Hp', 'col-md-2 control-label');
+					echo $this->Form->input('no_hp_orangtua', array(
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nomor Telp/Hp Orangtua',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Krisma</b></h4></div>
         <div class="form-group">
 					<?php
 					echo $this->Form->label('tempatKrisma', 'Tempat Krisma', 'col-md-2 control-label');
@@ -237,56 +292,6 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                         'label'=>false,
                         'class'=>"form-control input-xlarge",
                         'placeholder'=>'Nama Lengkap Emban Penguatan',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-					<?php
-					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
-					echo $this->Form->input('nama_ayah', array(
-                        'label'=>false,
-                        'class'=>"form-control input-xlarge",
-                        'placeholder'=>'Nama Ayah',
-                        'id'=>'namaAyah',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-
-					<?php
-					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
-					echo $this->Form->input('nama_ibu', array(
-                        'label'=>false,
-                        'class'=>"form-control input-xlarge",
-                        'placeholder'=>'Nama Ibu',
-                        'id'=>'namaIbu',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-
-					<?php
-					echo $this->Form->label('alamatOrangtua', 'Alamat Orangtua', 'col-md-2 control-label');
-					echo $this->Form->input('alamat_orangtua', array(
-                        'label'=>false,
-                        'class'=>"form-control input-xlarge",
-                        'placeholder'=>'Alamat Orangtua',
-                        'id'=>'alamatOrtu',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-
-					<?php
-					echo $this->Form->label('noHpOrangtua', 'Telp/Hp', 'col-md-2 control-label');
-					echo $this->Form->input('no_hp_orangtua', array(
-                        'label'=>false,
-                        'class'=>"form-control input-xlarge",
-                        'placeholder'=>'Nomor Telp/Hp Orangtua',
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>

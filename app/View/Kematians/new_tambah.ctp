@@ -33,15 +33,22 @@ tr:last-child > td{
       $namaSakramen = $("#namaSakramen").val();
       $pelayanSakramen = $("#pelayanSakramen").val();
 
-      $("tbody").append("<tr><input type='hidden' name='data[KematianSakramen][nama_sakramen][]' value=" + $namaSakramen +"><input type='hidden' name='data[KematianSakramen][pelayan_sakramen][]' value=" + $pelayanSakramen +"><td style='text-align: center;'>" + $namaSakramen + "</td><td style='text-align: center;'>" + $pelayanSakramen + "</td></tr>")
+      $("tbody").append("<tr><input type='hidden' name='data[KematianSakramen][nama_sakramen][]' value=" + $namaSakramen +"><input type='hidden' name='data[KematianSakramen][pelayan_sakramen][]' value=" + $pelayanSakramen +"><td style='text-align: center;'>" + $namaSakramen + "</td><td style='text-align: center;'>" + $pelayanSakramen + "</td><td style='text-align: center;'><a href='#'><span class='fa fa-trash-o delete' aria-hidden='true'></span></a></td></tr>");
+
 
       $("#namaSakramen").val("");
       $("#pelayanSakramen").val("");
     })
 
+    $("tbody").on("click", "a", function(e){
+      e.preventDefault();
+      $row = $(this).parent().parent();
+      $row.remove();
+    })
+
     $('#buttonBtlKematian').click(function(e){
       e.preventDefault();
-      location.href="/paroki_bbs/kematians";
+      location.href="<?php echo $this->webroot; ?>/kematians";
     });
 
   });
@@ -94,6 +101,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 					?>
 
 				</div>
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Diri</b></h4></div>
 
 				<div class="form-group">
 					<?php
@@ -142,6 +151,70 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 
         <div class="form-group">
 					<?php
+					echo $this->Form->label('tempatBaptis', 'Tempat Baptis', 'col-md-2 control-label');
+					echo $this->Form->input('tempat_baptis', array(
+                        'label'=>false,
+                        'class'=>"form-control ",
+                        'placeholder'=>'Tempat Baptis',
+                        'id'   => 'tempatBaptis',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+					<?php
+					echo $this->Form->label('tanggalBaptis', 'Tangggal Baptis', 'col-md-2 control-label');
+					?>
+          <div class="col-md-4">
+            <input type="text" name="data[Kematian][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" placeholder=" Tanggal Baptis" >
+          </div>
+				</div>
+
+        <div class="form-group">
+          <?php
+          echo $this->Form->label('bukuBaptis', 'Buku Baptis', 'col-md-2 control-label');
+          echo $this->Form->input('buku_baptis', array(
+                        'label'=>false,
+                        'class'=>"form-control ",
+                        'placeholder'=>'Buku Baptis',
+                        'id'=>'bukuBaptis',
+                        'div'=>array('class'=>'col-md-4')));
+          ?>
+        </div>
+
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Orangtua</b></h4></div>
+
+        <div class="form-group">
+					<?php
+					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
+					echo $this->Form->input('nama_ayah', array(
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nama Ayah',
+                        'id'=>'namaAyah',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+
+					<?php
+					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
+					echo $this->Form->input('nama_ibu', array(
+                        'label'=>false,
+                        'class'=>"form-control input-xlarge",
+                        'placeholder'=>'Nama Ibu',
+                        'id'=>'namaIbu',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Kematian</b></h4></div>
+
+        <div class="form-group">
+					<?php
 					echo $this->Form->label('tempatMeninggal', 'Tempat Meninggal', 'col-md-2 control-label');
 					echo $this->Form->input('tempat_meninggal', array(
                         'label'=>false,
@@ -182,63 +255,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
           </div>
 				</div>
 
-        <div class="form-group">
-					<?php
-					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
-					echo $this->Form->input('nama_ayah', array(
-                        'label'=>false,
-                        'class'=>"form-control input-xlarge",
-                        'placeholder'=>'Nama Ayah',
-                        'id'=>'namaAyah',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-
-					<?php
-					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
-					echo $this->Form->input('nama_ibu', array(
-                        'label'=>false,
-                        'class'=>"form-control input-xlarge",
-                        'placeholder'=>'Nama Ibu',
-                        'id'=>'namaIbu',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-					<?php
-					echo $this->Form->label('tempatBaptis', 'Tempat Baptis', 'col-md-2 control-label');
-					echo $this->Form->input('tempat_baptis', array(
-                        'label'=>false,
-                        'class'=>"form-control ",
-                        'placeholder'=>'Tempat Baptis',
-                        'id'   => 'tempatBaptis',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-					<?php
-					echo $this->Form->label('tanggalBaptis', 'Tangggal Baptis', 'col-md-2 control-label');
-					?>
-          <div class="col-md-4">
-            <input type="text" name="data[Kematian][tanggal_baptis]" id="tanggalBaptis" class="form-control datepicker" role="date" placeholder=" Tanggal Baptis" >
-          </div>
-				</div>
-
-        <div class="form-group">
-          <?php
-          echo $this->Form->label('bukuBaptis', 'Buku Baptis', 'col-md-2 control-label');
-          echo $this->Form->input('buku_baptis', array(
-                        'label'=>false,
-                        'class'=>"form-control ",
-                        'placeholder'=>'Buku Baptis',
-                        'id'=>'bukuBaptis',
-                        'div'=>array('class'=>'col-md-4')));
-          ?>
-        </div>
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Sakramen</b></h4></div>
 
         <div class="form-group" style="margin-left: 5%;">
           <button id="btnTambahSakramen" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah Sakramen</button>
@@ -249,6 +267,7 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
             <thead>
               <th style="text-align: center;">Sakramen</th>
               <th style="text-align: center;">Pelayan Sakramen</th>
+              <th style="text-align: center;">Action</th>
             </thead>
             <tbody>
             </tbody>

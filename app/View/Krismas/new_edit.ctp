@@ -61,6 +61,9 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 
 				</div>
 
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Diri</b></h4></div>
+
 				<div class="form-group">
 					<?php
 					echo $this->Form->label('namaDiri', 'Nama Diri ', 'col-md-2 control-label');
@@ -68,7 +71,6 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                         'label' => false,
                         'id'    => 'namaDiriKrisma',
                         'value' => ($krisma['Krisma']['id_umat'] == 0) ? $krisma['Krisma']['nama_diri'] : $krisma['Umat']['nama'],
-                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
                         'class' => "form-control input-xlarge",
                         'div'   => array('class'=>'col-md-4')));
 					?>
@@ -192,6 +194,65 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
 					?>
 				</div>
 
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Orangtua</b></h4></div>
+
+        <div class="form-group">
+					<?php
+					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
+					echo $this->Form->input('nama_ayah', array(
+                        'label'=>false,
+                        'value'=> $krisma['Krisma']['nama_ayah'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
+                        'class'=>"form-control input-xlarge",
+                        'id'        => 'namaAyah',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+
+					<?php
+					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
+					echo $this->Form->input('nama_ibu', array(
+                        'label'=>false,
+                        'value'=> $krisma['Krisma']['nama_ibu'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
+                        'class'=>"form-control input-xlarge",
+                        'id'        => 'namaIbu',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+
+					<?php
+					echo $this->Form->label('alamatOrangtua', 'Alamat Orangtua', 'col-md-2 control-label');
+					echo $this->Form->input('alamat_orangtua', array(
+                        'label'=>false,
+                        'value'=> $krisma['Krisma']['alamat_orangtua'],
+                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
+                        'class'=>"form-control input-xlarge",
+                        'id'        => 'alamatOrtu',
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <div class="form-group">
+
+					<?php
+					echo $this->Form->label('noHpOrangtua', 'Telp/Hp', 'col-md-2 control-label');
+					echo $this->Form->input('no_hp_orangtua', array(
+                        'label'=>false,
+                        'value'=> $krisma['Krisma']['no_hp_orangtua'],
+                        'class'=>"form-control input-xlarge",
+                        'div'=>array('class'=>'col-md-4')));
+					?>
+				</div>
+
+        <hr>
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Krisma</b></h4></div>
+
         <div class="form-group">
 					<?php
 					echo $this->Form->label('tempatKrisma', 'Tempat Krisma', 'col-md-2 control-label');
@@ -249,60 +310,6 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Krisma', arra
                         'div'=>array('class'=>'col-md-4')));
 					?>
 				</div>
-
-        <div class="form-group">
-					<?php
-					echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
-					echo $this->Form->input('nama_ayah', array(
-                        'label'=>false,
-                        'value'=> $krisma['Krisma']['nama_ayah'],
-                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
-                        'class'=>"form-control input-xlarge",
-                        'id'        => 'namaAyah',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-
-					<?php
-					echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
-					echo $this->Form->input('nama_ibu', array(
-                        'label'=>false,
-                        'value'=> $krisma['Krisma']['nama_ibu'],
-                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
-                        'class'=>"form-control input-xlarge",
-                        'id'        => 'namaIbu',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-
-					<?php
-					echo $this->Form->label('alamatOrangtua', 'Alamat Orangtua', 'col-md-2 control-label');
-					echo $this->Form->input('alamat_orangtua', array(
-                        'label'=>false,
-                        'value'=> $krisma['Krisma']['alamat_orangtua'],
-                        'disabled'  => ($krisma['Krisma']['id_umat'] == 0) ? '' : 'disabled',
-                        'class'=>"form-control input-xlarge",
-                        'id'        => 'alamatOrtu',
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
-        <div class="form-group">
-
-					<?php
-					echo $this->Form->label('noHpOrangtua', 'Telp/Hp', 'col-md-2 control-label');
-					echo $this->Form->input('no_hp_orangtua', array(
-                        'label'=>false,
-                        'value'=> $krisma['Krisma']['no_hp_orangtua'],
-                        'class'=>"form-control input-xlarge",
-                        'div'=>array('class'=>'col-md-4')));
-					?>
-				</div>
-
 
 				<p>&nbsp;</p>
 

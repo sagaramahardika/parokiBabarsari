@@ -15,11 +15,36 @@ input[readonly]:hover{
       e.preventDefault();
     });
 
+    $("tbody").on("click", "a", function(e){
+      e.preventDefault();
+      $row = $(this).parent().parent();
+      $idExist = $row.find(".id");
+      if($idExist.length == 1){
+        $yesOrNo = confirm("Data ini sudah ada didalam database, apakah anda yakin?");
+        if($yesOrNo){
+          $.ajax({
+            url           : "<?php echo $this->webroot; ?>/kematians/deleteKematianSakramen",
+            data          : {
+              id          : $idExist.val()
+            },
+            success       : function(){
+              $($row).remove();
+            },
+            error         : function(){
+
+            }
+          });
+        }
+      } else{
+        $($row).remove();
+      }
+    })
+
     $("#tambahSakramen").click(function(){
       $namaSakramen = $("#namaSakramen").val();
       $pelayanSakramen = $("#pelayanSakramen").val();
 
-      $("tbody").append("<tr><input type='hidden' name='data[KematianSakramen][nama_sakramen][]' value=" + $namaSakramen +"><input type='hidden' name='data[KematianSakramen][pelayan_sakramen][]' value=" + $pelayanSakramen +"><td style='text-align: center;'>" + $namaSakramen + "</td><td style='text-align: center;'>" + $pelayanSakramen + "</td></tr>")
+      $("tbody").append("<tr><input type='hidden' name='data[KematianSakramen][nama_sakramen][]' value=" + $namaSakramen +"><input type='hidden' name='data[KematianSakramen][pelayan_sakramen][]' value=" + $pelayanSakramen +"><td style='text-align: center;'>" + $namaSakramen + "</td><td style='text-align: center;'>" + $pelayanSakramen + "</td><td style='text-align: center;'><a href='#'><span class='fa fa-trash-o delete' aria-hidden='true'></span></a></td></tr>");
 
       $("#namaSakramen").val("");
       $("#pelayanSakramen").val("");
@@ -27,7 +52,7 @@ input[readonly]:hover{
 
     $('#buttonBtlKematian').click(function(e){
       e.preventDefault();
-      location.href="/paroki_bbs/kematians";
+      location.href="<?php echo $this->webroot; ?>/kematians";
     });
 
   });
@@ -82,6 +107,9 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 
       </div>
 
+      <hr>
+      <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Diri</b></h4></div>
+
       <div class="form-group">
         <?php
         echo $this->Form->label('namaDiri', 'Nama Diri ', 'col-md-2 control-label');
@@ -131,6 +159,74 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
 
       <div class="form-group">
         <?php
+        echo $this->Form->label('tempatBaptis', 'Tempat Baptis', 'col-md-2 control-label');
+        echo $this->Form->input('tempat_baptis', array(
+                      'label'=>false,
+                      'value'=> ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['tempat_baptis'] : $kematian['Umat']['tmpbaptis'],
+                      'disabled'  => ($kematian['Kematian']['id_umat'] == 0) ? '' : 'disabled',
+                      'class'=>"form-control ",
+                      'id'   => 'tempatBaptis',
+                      'div'=>array('class'=>'col-md-4')));
+        ?>
+      </div>
+
+      <div class="form-group">
+        <?php
+        echo $this->Form->label('tanggalBaptis', 'Tangggal Baptis', 'col-md-2 control-label');
+        ?>
+        <div class="col-md-4">
+          <input type="text" value="<?php echo ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['tanggal_baptis'] : $kematian['Umat']['tglbaptis']; ?>" name="tanggal_baptis" id="tanggalBaptis" class="form-control datepicker" role="date" <?php echo ($kematian['Kematian']['id_umat'] == 0) ?  : 'disabled'; ?>>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <?php
+        echo $this->Form->label('bukuBaptis', 'Buku Baptis', 'col-md-2 control-label');
+        echo $this->Form->input('buku_baptis', array(
+                      'label'=>false,
+                      'value'=> ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['buku_baptis'] : $kematian['Umat']['liberbap'],
+                      'disabled'  => ($kematian['Kematian']['id_umat'] == 0) ? '' : 'disabled',
+                      'id'        => 'bukuBaptis',
+                      'class'=>"form-control ",
+                      'div'=>array('class'=>'col-md-4')));
+        ?>
+      </div>
+
+      <hr>
+      <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Orangtua</b></h4></div>
+
+      <div class="form-group">
+        <?php
+        echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
+        echo $this->Form->input('nama_ayah', array(
+                      'label'=>false,
+                      'value'=> $kematian['Kematian']['nama_ayah'],
+                      'disabled'  => ($kematian['Kematian']['id_umat'] == 0) ? '' : 'disabled',
+                      'id'        => 'namaAyah',
+                      'class'=>"form-control input-xlarge",
+                      'div'=>array('class'=>'col-md-4')));
+        ?>
+      </div>
+
+      <div class="form-group">
+
+        <?php
+        echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
+        echo $this->Form->input('nama_ibu', array(
+                      'label'=>false,
+                      'value'=> $kematian['Kematian']['nama_ibu'],
+                      'disabled'  => ($kematian['Kematian']['id_umat'] == 0) ? '' : 'disabled',
+                      'id'        => 'namaIbu',
+                      'class'=>"form-control input-xlarge",
+                      'div'=>array('class'=>'col-md-4')));
+        ?>
+      </div>
+
+      <hr>
+      <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Kematian</b></h4></div>
+
+      <div class="form-group">
+        <?php
         echo $this->Form->label('tempatMeninggal', 'Tempat Meninggal', 'col-md-2 control-label');
         echo $this->Form->input('tempat_meninggal', array(
                       'label'=>false,
@@ -171,67 +267,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
         </div>
       </div>
 
-      <div class="form-group">
-        <?php
-        echo $this->Form->label('namaAyah', 'Nama Ayah', 'col-md-2 control-label');
-        echo $this->Form->input('nama_ayah', array(
-                      'label'=>false,
-                      'value'=> $kematian['Kematian']['nama_ayah'],
-                      'disabled'  => ($kematian['Kematian']['id_umat'] == 0) ? '' : 'disabled',
-                      'id'        => 'namaAyah',
-                      'class'=>"form-control input-xlarge",
-                      'div'=>array('class'=>'col-md-4')));
-        ?>
-      </div>
-
-      <div class="form-group">
-
-        <?php
-        echo $this->Form->label('namaIbu', 'Nama Ibu', 'col-md-2 control-label');
-        echo $this->Form->input('nama_ibu', array(
-                      'label'=>false,
-                      'value'=> $kematian['Kematian']['nama_ibu'],
-                      'disabled'  => ($kematian['Kematian']['id_umat'] == 0) ? '' : 'disabled',
-                      'id'        => 'namaIbu',
-                      'class'=>"form-control input-xlarge",
-                      'div'=>array('class'=>'col-md-4')));
-        ?>
-      </div>
-
-      <div class="form-group">
-        <?php
-        echo $this->Form->label('tempatBaptis', 'Tempat Baptis', 'col-md-2 control-label');
-        echo $this->Form->input('tempat_baptis', array(
-                      'label'=>false,
-                      'value'=> ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['tempat_baptis'] : $kematian['Umat']['tmpbaptis'],
-                      'disabled'  => ($kematian['Kematian']['id_umat'] == 0) ? '' : 'disabled',
-                      'class'=>"form-control ",
-                      'id'   => 'tempatBaptis',
-                      'div'=>array('class'=>'col-md-4')));
-        ?>
-      </div>
-
-      <div class="form-group">
-        <?php
-        echo $this->Form->label('tanggalBaptis', 'Tangggal Baptis', 'col-md-2 control-label');
-        ?>
-        <div class="col-md-4">
-          <input type="text" value="<?php echo ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['tanggal_baptis'] : $kematian['Umat']['tglbaptis']; ?>" name="tanggal_baptis" id="tanggalBaptis" class="form-control datepicker" role="date" <?php echo ($kematian['Kematian']['id_umat'] == 0) ?  : 'disabled'; ?>>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <?php
-        echo $this->Form->label('bukuBaptis', 'Buku Baptis', 'col-md-2 control-label');
-        echo $this->Form->input('buku_baptis', array(
-                      'label'=>false,
-                      'value'=> ($kematian['Kematian']['id_umat'] == 0) ? $kematian['Kematian']['buku_baptis'] : $kematian['Umat']['liberbap'],
-                      'disabled'  => ($kematian['Kematian']['id_umat'] == 0) ? '' : 'disabled',
-                      'id'        => 'bukuBaptis',
-                      'class'=>"form-control ",
-                      'div'=>array('class'=>'col-md-4')));
-        ?>
-      </div>
+      <hr>
+      <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Sakramen</b></h4></div>
 
       <div class="form-group" style="margin-left: 5%;">
         <button id="btnTambahSakramen" class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah Sakramen</button>
@@ -242,15 +279,17 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
           <thead>
             <th style="text-align: center;">Sakramen</th>
             <th style="text-align: center;">Pelayan Sakramen</th>
+            <th style="text-align: center;">Pelayan Sakramen</th>
           </thead>
           <tbody>
             <?php foreach($kematianSakramens as $kematianSakramen):?>
               <tr>
-                <input type='hidden' name='data[KematianSakramen][id][]' value="<?php echo $kematianSakramen['KematianSakramen']['id']; ?>">
+                <input class="id" type='hidden' name='data[KematianSakramen][id][]' value="<?php echo $kematianSakramen['KematianSakramen']['id']; ?>">
                 <input type='hidden' name='data[KematianSakramen][nama_sakramen][]' value="<?php echo $kematianSakramen['KematianSakramen']['nama_sakramen']; ?>">
                 <input type='hidden' name='data[KematianSakramen][pelayan_sakramen][]' value="<?php echo $kematianSakramen['KematianSakramen']['pelayan_sakramen']; ?>">
                 <td style='text-align: center;'><?php echo $kematianSakramen['KematianSakramen']['nama_sakramen']; ?></td>
                 <td style='text-align: center;'><?php echo $kematianSakramen['KematianSakramen']['pelayan_sakramen']; ?></td>
+                <td style='text-align: center;'><a href='#'><span class='fa fa-trash-o delete' aria-hidden='true'></span></a>
               </tr>
             <?php endforeach; ?>
           </tbody>

@@ -143,6 +143,15 @@ class KematiansController extends AppController{
       }
     }
 
+    public function deleteKematianSakramen(){
+      if ($this->request->is('ajax'))
+      {
+          $this->autoLayout = false;
+          $this->autoRender = false;
+          $this->KematianSakramen->delete($_GET['id']);
+      }
+    }
+
     public function findAll(){
         if ($this->request->is('ajax'))
         {
