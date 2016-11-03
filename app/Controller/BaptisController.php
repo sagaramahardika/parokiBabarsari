@@ -350,6 +350,15 @@ class BaptisController extends AppController{
 		}
 	}
 
+	public function view($id=null){
+		if ($id) {
+			# code...
+			$this->set('data',$this->Baptis->read(null, $id));
+		}else{
+			$this->redirect(array('action'=>'index'));
+		}
+	}
+
 	public function viewPDF(){
 		App::import('Vendor', 'autoload');
 		App::import('Vendor', 'HTML2PDF', array('file' => 'html2pdf'.DS.'html2pdf.class.php'));
