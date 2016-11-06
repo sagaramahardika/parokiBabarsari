@@ -133,9 +133,11 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
 					?>
 				</div>
 
+        &nbsp
+        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Pernikahan</b></h4></div>
         <div class="form-group">
           <div class="input">
-            <?php echo $this->Form->label('BaptisDarurat.status_perkawinan', 'Status Perkawinan Orangtua', 'col-md-2 control-label'); ?>
+            <?php echo $this->Form->label('BaptisDarurat.status_perkawinan', 'Status Perkawinan', 'col-md-2 control-label'); ?>
             <div class="col-md-4">
               <select name="BaptisDarurat[status_perkawinan]" id="status_perkawinan_ortu" class="form-control input-xlarge">
                 <option value="SUDAH">Sudah Menikah</option>
@@ -145,8 +147,6 @@ $this->assign('title', 'Halaman Tambah Baptis Darurat');
           </div>
         </div>
 
-        &nbsp
-        <div class="form-group"><h4 class="col-md-2 control-label"><b>Data Pernikahan</b></h4></div>
         <div class="form-group">
 					<?php
 					echo $this->Form->label('Baptis.nama_pasangan', 'Nama Pasangan', 'col-md-2 control-label');

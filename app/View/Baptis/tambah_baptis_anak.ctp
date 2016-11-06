@@ -194,7 +194,7 @@ $this->assign('title', 'Halaman Tambah Baptis Anak');
           array(
             'label'			  => false,
             'id' 			    => 'alamat_ortu',
-            'placeholder'	=> "Alamat Orangtua",
+            'placeholder'	=> "Nomor Telp Orangtua",
             //'value'			=> $this->Session->read('Auth.User.nama'),
             'class'			  => "form-control input-xlarge",
             'div'			    => array('class' => 'col-md-4')));

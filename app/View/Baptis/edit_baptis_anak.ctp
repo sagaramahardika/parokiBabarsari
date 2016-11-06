@@ -211,7 +211,7 @@ $this->assign('title', 'Halaman Status Baptis');
               array(
                 'label'			  => false,
                 'id' 			    => 'alamat_ortu',
-                'placeholder'	=> "Alamat Orangtua",
+                'placeholder'	=> "Telp Orangtua",
                 'value'			  => $this->request->data['BaptisAnak']['telp_ortu'],
                 'class'			  => "form-control input-xlarge",
                 'div'			    => array('class' => 'col-md-4')));

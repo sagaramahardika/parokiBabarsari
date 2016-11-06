@@ -3,9 +3,9 @@
   $arrMonth = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
   $numDay = date("w", strtotime($krisma['Krisma']['tanggal_krisma']));
   $numMonth = date("n", strtotime($krisma['Krisma']['tanggal_krisma']));
-  $strDay = $arrDay[$numDay];
+  $strDay = $arrDay[$numDay - 1];
   $intDay = date("j", strtotime($krisma['Krisma']['tanggal_krisma']));
-  $month = $arrMonth[$numMonth];
+  $month = $arrMonth[$numMonth - 1];
   $year = date("Y", strtotime($krisma['Krisma']['tanggal_krisma']));
 
   $nama = $krisma['Umat']['nama'];
