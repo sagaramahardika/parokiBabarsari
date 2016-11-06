@@ -111,6 +111,19 @@ $this->assign('title', 'Halaman Manajemen Baptis');
                   }else{
                     $action = 'edit';
                   }
+
+                  $viewaction = 'view';
+                  /*if($data['Baptis']['jenis_baptis'] == 'ANAK'){
+                    $viewaction = 'viewBaptisAnak';
+                  }else if($data['Baptis']['jenis_baptis'] == 'DEWASA'){
+                    $viewaction = 'viewBaptisDewasa';
+                  }else if($data['Baptis']['jenis_baptis'] == 'DARURAT'){
+                    $viewaction = 'viewBaptisDarurat';
+                  }else if($data['Baptis']['jenis_baptis'] == 'DITERIMA'){
+                    $viewaction = 'viewBaptisDiterima';
+                  }else{
+                    $viewaction = 'view';
+                  }*/
                 ?>
 								<td>
                   <a href="<?php
@@ -122,6 +135,9 @@ $this->assign('title', 'Halaman Manajemen Baptis');
                     <?php
     					        echo $this->Html->link('<span class="fa fa-file-pdf-o" aria-hidden="true"></span>', array('controller'=>'baptis','action'=>'viewPDF', $data['Baptis']['id']), array('target'=>'_blank', 'escape'=> FALSE));
                     ?>
+                    <a href="<?php
+										echo $this->Html->url(array('controller'=>'baptis','action'=>$viewaction, $data['Baptis']['id']));
+										?>"<span class="fa fa-eye" aria-hidden="true"></span></a>
                   </a>
 								</td>
                 <td><?php echo $data['Baptis']['id']; ?></td>
