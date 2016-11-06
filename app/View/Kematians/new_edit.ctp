@@ -348,3 +348,37 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Kematian', ar
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div id="modalViewKematianSakramen" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Read Data Kematian Sakramen</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+              <label for="kode" class="col-sm-3 control-label">Nama Sakramen</label>
+              <div class="col-sm-9">
+                  <input id="namaSakramen" type="text" class="form-control" placeholder="Nama Sakramen">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nama" class="col-sm-3 control-label">Pelayan Sakramen</label>
+              <div class="col-sm-9">
+                  <input id="pelayanSakramen" type="text" class="form-control" placeholder="Nama Pelayan Sakramen">
+              </div>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-primary" id="tambahSakramen" data-dismiss="modal">Tambah</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

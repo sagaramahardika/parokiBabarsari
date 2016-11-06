@@ -10,6 +10,10 @@
       $id = $(this).attr('id');
       $('#formPDF').attr('action', 'krismas/viewPDF/' + $id);
     });
+
+    $("#btnViewPDF").click(function(){
+      $('#formPDF').modal('hide');
+    });
   })
 </script>
 <?php
@@ -73,7 +77,7 @@ $this->assign('title','Halaman Pendataan Krisma')
 					<table class="table table-bordered table-striped table-condensed ">
 						<thead class="text-center">
 						<tr>
-				 			<td style="width: 5%;"></td>
+				 			<td style="width: 6%;"></td>
               <td>Tanggal Krisma</td>
 				 			<td>Nama Diri</td>
               <td>Nama Ayah</td>
@@ -95,11 +99,11 @@ $this->assign('title','Halaman Pendataan Krisma')
 						<tr>
 							<td>
 								<?php if($userRole <> 1){ ?>
-							  <a href="<?php
-					        echo $this->Html->url(array('controller'=>'krismas','action'=>'newEdit', $data['Krisma']['id']));?>"
+							  <a class="btn btn-xs btn-warning" href="<?php
+					        echo $this->Html->url(array('controller'=>'krismas','action'=>'newEdit', $data['Krisma']['id']));?>">
                   <span class="fa fa-edit" aria-hidden="true"></span>
                 </a>
-                <span class="fa fa-file-pdf-o" aria-hidden="true" data-toggle="modal" data-target="#modalPDF" style="color:#337ab7;" id="<?php echo $data['Krisma']['id']; ?>"</span>
+                <span class="btn btn-xs btn-default fa fa-file-pdf-o" aria-hidden="true" data-toggle="modal" data-target="#modalPDF" style="color:#337ab7;" id="<?php echo $data['Krisma']['id']; ?>"></span>
                 <?php } ?>
  				      </td>
               <td>	<?php echo $data['Krisma']['tanggal_krisma']; ?> </td>
@@ -156,7 +160,7 @@ $this->assign('title','Halaman Pendataan Krisma')
   				    </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-sm btn-primary" id="btnTambahKasBank">Tambah</button>
+              <button type="submit" class="btn btn-sm btn-primary" id="btnViewPDF">Tambah</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </form>

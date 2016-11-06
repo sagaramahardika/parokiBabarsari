@@ -143,6 +143,26 @@ class KematiansController extends AppController{
       }
     }
 
+    public function viewSakramen(){
+      if($this->request->is('ajax')){
+        $this->autoLayout = false;
+        $this->autoRender = false;
+
+        echo json_encode($response);
+      }
+    }
+
+    public function findAllKematianSakramen(){
+      if($this->request->is('ajax')){
+        $id = $_GET['id'];
+        $this->autoLayout = false;
+        $this->autoRender = false;
+
+        $kematianSakramens = $this->KematianSakramen->findAllByIdKematian($id);
+        echo json_encode($kematianSakramens);
+      }
+    }
+
     public function deleteKematianSakramen(){
       if ($this->request->is('ajax'))
       {
