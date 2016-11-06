@@ -95,11 +95,11 @@
     </tr>
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">C.P.S</td>
-      <?php if ($umat2['bukan_umat'] != TRUE) { ?>
-        <td style="font-size: 13px;">: <?php echo $umat2['Umat']['nama_ayah'] . "<i> dengan </i>". $umat2['Umat']['nama_ibu'] ;?></td>
-      <?php } else { ?>
+      <?php if ($isUmat == false) { ?>
         <td style="font-size: 13px;">: 'Nama Ayah' dengan 'Nama Ibu'</td>
-      <?php } ?>
+      <?php } else { ?>
+        <td style="font-size: 13px;">: <?php echo $umat2['Umat']['nama_ayah'] . "<i> dengan </i>". $umat2['Umat']['nama_ibu'] ;?></td>
+      <?php } ?>  
     </tr>
     <tr>
       <td style="width: 25%; font-size: 13px;"><i>anak perempuan dari</i></td>

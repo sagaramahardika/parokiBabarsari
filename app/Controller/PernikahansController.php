@@ -496,10 +496,15 @@ class PernikahansController extends AppController{
 		$umat2 = NULL;
 		$umat2['nama_ayah'] = null;
 		$umat2['nama_ibu'] = null;
-		$umat2['bukan_umat'] = true;
+		$umat2['bukan_umat'] = null;
+
+		$isUmat = false;
 
 
 		if ($pernikahan['Pernikahan']['pasangan_id'] != NULL) {
+			$isUmat = true;
+			$umat2['bukan_umat'] = 2;
+
 			$umat2 = $this->Umat->findById($pernikahan['Pernikahan']['pasangan_id']);
 			$ortuUmat2 = $this->Umat->query('SELECT id, id_hubkk, nama FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.id = "'.$pernikahan['Pernikahan']['pasangan_id'].'") AND uu.id <> "'.$pernikahan['Pernikahan']['pasangan_id'].'"');
 
@@ -519,10 +524,12 @@ class PernikahansController extends AppController{
 				$umat2['nama_diri'] = $umat2['Umat']['nama'];
 			}
 		} else {
+			$isUmat = false;
+			$umat2['bukan_umat'] = 1;
 			$umat2['nama_diri'] = $pernikahan['Pernikahan']['nm_pasangan'];
 		}
 
-		$this->set(compact('pernikahan', 'umat1', 'umat2'));
+		$this->set(compact('pernikahan', 'umat1', 'umat2', 'isUmat'));
 		$view_output = $this->render('view_pdf');
 	    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
 	    $html2pdf->pdf->SetAuthor('a');
