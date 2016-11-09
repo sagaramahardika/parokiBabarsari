@@ -32,12 +32,12 @@ $this->assign('title', 'Halaman Status Baptis');
 
           <div class="form-group">
   					<?php
-  					echo $this->Form->label('Baptis.liberbap','Liberbap', 'col-md-2 control-label');
+  					echo $this->Form->label('Baptis.liberbap','LB', 'col-md-2 control-label');
   					echo $this->Form->input('Baptis.liberbap',
   						array(
   							'label'			=> false,
   							'value'			=> $this->request->data['Baptis']['liberbap'],
-  							'placeholder'	=> "Liberbap",
+  							'placeholder'	=> "Contoh: I / 435",
   							'class'			=> "form-control input-xlarge",
   							'div'			=> array('class' => 'col-md-4')));
   					?>
