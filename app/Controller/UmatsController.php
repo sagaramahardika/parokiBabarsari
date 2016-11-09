@@ -32,7 +32,7 @@ class UmatsController extends AppController{
 		if (!empty($this->data) && $this->data['cari'] !== '') {
 			$conditions = array(
 
-							'jenis_kelamin LIKE ' => '%' . strtolower($this->data['cari']) . '%'
+							'Umat.nama LIKE ' => '%' . strtoupper($this->data['cari']) . '%'
 
 
 					);
@@ -682,12 +682,12 @@ public function lihataktivasi(){
 		    ));
 
 		    $newkk = $kkLingkunganTerakhir['Kk']['code_kk'] + 1;
-		
+
 			$this->Lingkungan->id=$zz['Lingkungan']['id'];
 			$this->Lingkungan->saveField('jumlah_umat',$cc);
 
 			if($this->request->data['Umat']['tambahkk'] == "Y"){
-				
+
 				$gg = $zz['Lingkungan']['jumlah_kk'] + 1;
 				if($gg / 100 >= 1)
 					$fins = $aa . $gg;
