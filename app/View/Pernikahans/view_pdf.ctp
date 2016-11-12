@@ -59,7 +59,11 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">QUOD</td>
-      <td style="font-size: 18px;">: <i><?php echo $umat1['nama_diri']; ?></i></td>
+      <?php if ($ditukar == true && $isUmat == false) { ?>
+        <td style="font-size: 18px;">: <i><?php echo $pernikahan['Pernikahan']['nm_pasangan'] ?></i></td>
+      <?php } else { ?>
+        <td style="font-size: 18px;">: <i><?php echo $umat1['nama_diri']; ?></i></td>
+      <?php } ?>  
     </tr>
     <tr>
       <td style="width: 25%; font-size: 13px;">bahwa</td>
@@ -67,7 +71,14 @@
     </tr>
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">C.P.S</td>
-      <td style="font-size: 13px;">: <?php echo $umat1['Umat']['nama_ayah'] . "<i> dengan </i>". $umat1['Umat']['nama_ibu'] ;?></td>
+
+      <?php if ($ditukar == true && $isUmat == false) { ?>
+        <td style="font-size: 13px;">: <?php echo $pernikahan['Pernikahan']['nama_ayah'] . "<i> dengan </i>". $pernikahan['Pernikahan']['nama_ibu'] ;?></td>
+      <?php } else { ?>
+        <td style="font-size: 13px;">: <?php echo $umat1['Umat']['nama_ayah'] . "<i> dengan </i>". $umat1['Umat']['nama_ibu'] ;?></td>
+      <?php } ?>  
+
+      
     </tr>
     <tr>
       <td style="width: 25%; font-size: 13px;"><i>anak laki-laki dari</i></td>
@@ -83,7 +94,7 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">CUM</td>
-      <?php if ($umat2 == NULL) { ?>
+      <?php if ($ditukar == false && $isUmat == false) { ?>
         <td style="font-size: 18px;">: <i><?php echo $pernikahan['Pernikahan']['nm_pasangan'] ?></i></td>
       <?php } else { ?>
         <td style="font-size: 18px;">: <i><?php echo $umat2['nama_diri']; ?></i></td>
@@ -95,8 +106,8 @@
     </tr>
     <tr>
       <td style="width: 25%; font-size: 18px; text-decoration: underline;">C.P.S</td>
-      <?php if ($isUmat == false) { ?>
-        <td style="font-size: 13px;">: 'Nama Ayah' dengan 'Nama Ibu'</td>
+      <?php if ($ditukar == false && $isUmat == false) { ?>
+        <td style="font-size: 13px;">: <?php echo $pernikahan['Pernikahan']['nama_ayah'] . "<i> dengan </i>". $pernikahan['Pernikahan']['nama_ibu'] ;?></td>
       <?php } else { ?>
         <td style="font-size: 13px;">: <?php echo $umat2['Umat']['nama_ayah'] . "<i> dengan </i>". $umat2['Umat']['nama_ibu'] ;?></td>
       <?php } ?>  

@@ -78,11 +78,8 @@ echo $this->Html->link('<i class="fa fa-users"></i> Manajemen Data Pernikahan', 
 							<th>Tanggal Lahir Pasangan 	</th>
 							<td>: <?php echo date('d-m-Y',strtotime($this->request->data['Pernikahan']['tgllhr_pasangan'])); ?></td>
 						</tr>
-						
-						<?php 
-						}
 					 ?>
-						
+
 					<tr>
 						<th>Tempat Pernikahan 	</th>
 						<td>: <?php echo $this->request->data['Pernikahan']['tmppernikahan'] ?></td>

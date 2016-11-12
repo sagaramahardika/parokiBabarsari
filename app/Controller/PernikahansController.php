@@ -3,7 +3,7 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component');
 class PernikahansController extends AppController{
 	public $components = array('Paginator', 'Session', 'Cookie', 'Flash', 'ImageCropResize.Image');
-	public $uses = array('Pernikahan', 'Umat','Kk','Leveluser','Lingkungan','Wilayah','Paroki','Statuspernikahan');
+	public $uses = array('Pernikahan', 'Baptis', 'Umat','Kk','Leveluser','Lingkungan','Wilayah','Paroki','Statuspernikahan');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 
@@ -340,8 +340,7 @@ class PernikahansController extends AppController{
 					'fields' => array('DISTINCT id', 'nama','jenis_kelamin'), 
 					'conditions' => array(
 						'Umat.nama LIKE "%'.$_GET['term'].'%"',
-						'Umat.id_statuspernikahan' => array(0, 1, 6, 7, 8),
-						'Umat.jenis_kelamin' => "L"
+						'Umat.id_statuspernikahan' => array(0, 1, 6, 7, 8)
 						),
 					'limit' => 10
 				));
@@ -358,6 +357,54 @@ class PernikahansController extends AppController{
 		}
 	}
 
+	public function findNonUmat(){
+		if ($this->request->is('ajax')) {
+			$this->autoLayout = false;
+			$this->autoRender = false;
+			$results = $this->Baptis->find('all', 
+				array(
+					'fields' => array('nama_diri', 'ayah', 'ibu', 'tempat_lahir', 'tanggal_lahir'), 
+					'conditions' => array(
+						'id_umat' => 0,						
+						'NOT' => array('Baptis.jenis_kelamin' => $_GET['gender']),				
+						'nama_diri LIKE "%'.$_GET['term'].'%"'
+						),
+					'limit' => 10
+				)
+			);
+
+			$response = array();
+			$i = 0;
+			foreach($results as $result){
+				$response[$i]['value'] = $result['Baptis']['nama_diri'];
+				$response[$i]['ayah'] = $result['Baptis']['ayah'];
+				$response[$i]['ibu'] = $result['Baptis']['ibu'];
+				$response[$i]['tempat_lahir'] = $result['Baptis']['tempat_lahir'];
+				$response[$i]['tanggal_lahir'] = $result['Baptis']['tanggal_lahir'];
+				$i++;
+			}
+			echo json_encode($response);
+		}
+	}
+
+	public function dataNonUmat(){
+		if ($this->request->is('ajax'))
+		{
+				$this->autoLayout = false;
+				$this->autoRender = false;
+				$results = $this->Baptis->find('first', array(
+					'fields' => array('ayah', 'ibu', 'tempat_lahir', 'tanggal_lahir'),
+					'conditions' => array(
+						'Baptis.nama_diri LIKE' => '%' . $_GET['nama'] . '%',
+						'Baptis.id_umat ' => 0
+						),
+				));
+
+				echo json_encode($results);
+		}
+	}
+
+
 	public function find(){
 		if ($this->request->is('ajax')) {
 	        $this->autoLayout = false;
@@ -372,9 +419,9 @@ class PernikahansController extends AppController{
 			$results  = array();
 			$response = array();
 			if ($_GET['tipe'] == 'ling') {
-				$results = $this->Umat->find('all');
+				//$results = $this->Umat->find('all');
 				$results = $this->Umat->find('all',array(
-					'fields' => array('id', 'nama'),
+					'fields' => array('id', 'nama', 'nama_ayah', 'nama_ibu'),
 					'conditions'=>array(
 						'OR' => array('Umat.id_statuspernikahan'=>array(1,6,7,8,0)),
 						'Umat.nama LIKE "%'.$_GET['term'].'%"',
@@ -390,26 +437,32 @@ class PernikahansController extends AppController{
 		        	$response[$i]['id'] = $result['Umat']['id'];
 		            $response[$i]['label'] = $result['Umat']['nama'];
 		            $response[$i]['value'] = $result['Umat']['nama'];
+		            $response[$i]['ayah'] = $result['Umat']['nama_ayah'];
+		            $response[$i]['ibu'] = $result['Umat']['nama_ibu'];
 		            $i++;
 	            }
 			} elseif ($_GET['tipe'] == 'wil'){
-				$results = $this->Umat->query('select umat.id, umat.nama from (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk  AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 6 OR u.id_statuspernikahan = 7 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id)  umat where umat.wilayah_id = '.$idWilayah.' ORDER BY `umat`.`id` ASC LIMIT 10');
+				$results = $this->Umat->query('select umat.id, umat.nama, umat.nama_ayah, umat.nama_ibu from (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk  AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 6 OR u.id_statuspernikahan = 7 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id)  umat where umat.wilayah_id = '.$idWilayah.' ORDER BY `umat`.`id` ASC LIMIT 10');
 				$i = 0;
 		        foreach($results as $result){
 		        	$response[$i]['id'] = $result['Umat']['id'];
 		            $response[$i]['label'] = $result['Umat']['nama'];
 		            $response[$i]['value'] = $result['Umat']['nama'];
+		            $response[$i]['ayah'] = $result['Umat']['nama_ayah'];
+		            $response[$i]['ibu'] = $result['Umat']['nama_ibu'];
 		            $i++;
 				}
 			} elseif ($_GET['tipe'] == 'par') {
 				# code...
-				$results = $this->Umat->query('select umat.id,umat.nama from (select y.id,y.nama,w.paroki_id from (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 6 OR u.id_statuspernikahan = 7 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id) y, wilayahs w where w.id = y.wilayah_id ) umat where umat.paroki_id ='.$idParoki.' ORDER BY `umat`.`id` ASC LIMIT 10');
+				$results = $this->Umat->query('select umat.id,umat.nama, umat.nama_ayah, umat.nama_ibu from (select y.id,y.nama,w.paroki_id from (select x.id,x.nama, l.wilayah_id from (select u.id,u.nama,k.lingkungan_id from umats u, kks k where k.id = u.id_kk AND  u.jenis_kelamin <> "'.$_GET['gender'].'" AND u.nama LIKE "%'.$_GET['term'].'%" AND (u.id_statuspernikahan = 0 OR u.id_statuspernikahan = 1 OR u.id_statuspernikahan = 6 OR u.id_statuspernikahan = 7 OR u.id_statuspernikahan = 8)) x, lingkungans l where l.id = x.lingkungan_id) y, wilayahs w where w.id = y.wilayah_id ) umat where umat.paroki_id ='.$idParoki.' ORDER BY `umat`.`id` ASC LIMIT 10');
 
 				$i = 0;
 		        foreach($results as $result){
 		        	$response[$i]['id'] = $result['Umat']['id'];
 		            $response[$i]['label'] = $result['Umat']['nama'];
 		            $response[$i]['value'] = $result['Umat']['nama'];
+		            $response[$i]['ayah'] = $result['Umat']['nama_ayah'];
+		            $response[$i]['ibu'] = $result['Umat']['nama_ibu'];
 		            $i++;
 	            }
 				//$results = $this->Umat->find('all',array('fields' => array('id', 'nama'),'conditions'=>array('Umat.nama LIKE "%'.$_GET['term'].'%"','NOT'=>array('Umat.jenis_kelamin'=>$_GET['gender']),'Kk.lingkungan_id'=>$idWilayah)));
@@ -431,33 +484,33 @@ class PernikahansController extends AppController{
 		}
 	}
 
-	 public function coba() {
-		if ($this->request->is('ajax')) {
+	 // public function coba() {
+		// if ($this->request->is('ajax')) {
 
-			//$namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
-			$this->autoLayout = false;
-			$this->autoRender = false;
-			$response = array();
+		// 	//$namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
+		// 	$this->autoLayout = false;
+		// 	$this->autoRender = false;
+		// 	$response = array();
 
-			if($_GET['nama']){
-				$namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
+		// 	if($_GET['nama']){
+		// 		$namarow = $this->Umat->find('all',array('fields'=>array('nama'),'conditions'=>array('nama'=>$_GET['nama'])));
 
-				if (empty($namarow)) {
-					$response[0]['status']='error';
-					$response[0]['get']=$_GET['nama'];
+		// 		if (empty($namarow)) {
+		// 			$response[0]['status']='error';
+		// 			$response[0]['get']=$_GET['nama'];
 
-				} else{
-					$response[0]['status']='success';
-					$response[0]['get']=$_GET['nama'];
-				}
+		// 		} else{
+		// 			$response[0]['status']='success';
+		// 			$response[0]['get']=$_GET['nama'];
+		// 		}
 
-			} else {
-				$response[0]['status']='error';
-			}
+		// 	} else {
+		// 		$response[0]['status']='error';
+		// 	}
 
-			echo json_encode($response);
-		}
-  	}
+		// 	echo json_encode($response);
+		// }
+  // 	}
 
   	public function viewPDF(){
 		App::import('Vendor', 'autoload');
@@ -469,7 +522,7 @@ class PernikahansController extends AppController{
 
 		$umat1 = $this->Umat->findById($pernikahan['Pernikahan']['umat_id']);
 
-		$ortuUmat1 = $this->Umat->query('SELECT id, id_hubkk, nama FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.id = "'.$pernikahan['Pernikahan']['umat_id'].'") AND uu.id <> "'.$pernikahan['Pernikahan']['umat_id'].'"');
+		// $ortuUmat1 = $this->Umat->query('SELECT id, id_hubkk, nama FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.id = "'.$pernikahan['Pernikahan']['umat_id'].'") AND uu.id <> "'.$pernikahan['Pernikahan']['umat_id'].'"');
 
 		$umat1['nama_diri'] = "";
 		$umat2['nama_diri'] = "";
@@ -484,14 +537,14 @@ class PernikahansController extends AppController{
 		$umat1['nama_ayah'] = null;
 		$umat1['nama_ibu'] = null;
 
-		foreach ($ortuUmat1 as $anggota) {
-			if ($anggota['uu']['id_hubkk'] == 1) {
-				$umat1['nama_ayah'] = $anggota['uu']['nama'];
-			}
-			else if ($anggota['uu']['id_hubkk'] == 2) {
-				$umat1['nama_ibu'] = $anggota['uu']['nama'];
-			} 
-		}
+		// foreach ($ortuUmat1 as $anggota) {
+		// 	if ($anggota['uu']['id_hubkk'] == 1) {
+		// 		$umat1['nama_ayah'] = $anggota['uu']['nama'];
+		// 	}
+		// 	else if ($anggota['uu']['id_hubkk'] == 2) {
+		// 		$umat1['nama_ibu'] = $anggota['uu']['nama'];
+		// 	} 
+		// }
 		
 		$umat2 = NULL;
 		$umat2['nama_ayah'] = null;
@@ -500,6 +553,7 @@ class PernikahansController extends AppController{
 
 		$isUmat = false;
 
+		$ditukar = false;
 
 		if ($pernikahan['Pernikahan']['pasangan_id'] != NULL) {
 			$isUmat = true;
@@ -529,7 +583,14 @@ class PernikahansController extends AppController{
 			$umat2['nama_diri'] = $pernikahan['Pernikahan']['nm_pasangan'];
 		}
 
-		$this->set(compact('pernikahan', 'umat1', 'umat2', 'isUmat'));
+		if($umat1['Umat']['jenis_kelamin'] == "P") {
+			$ditukar = true;
+			$umatTamp = $umat1;
+			$umat1 = $umat2;
+			$umat2 = $umatTamp;
+		}
+
+		$this->set(compact('pernikahan', 'umat1', 'umat2', 'isUmat', 'ditukar'));
 		$view_output = $this->render('view_pdf');
 	    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
 	    $html2pdf->pdf->SetAuthor('a');

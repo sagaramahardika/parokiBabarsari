@@ -118,31 +118,34 @@ class KomuniController extends AppController{
 				$this->autoLayout = false;
 				$this->autoRender = false;
 				$results = $this->Umat->find('first', array(
-					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis', 'Baptis.liberbap'),
+					'fields' => array('nama', 'id', 'jenis_kelamin', 'nama_ayah', 'nama_ibu', 'tgl_lahir', 'tmplahir', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis', 'Baptis.liberbap'),
 					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%' ),
 				));
 
 
-				$anggotaKeluarga = $this->Umat->query('SELECT id, kode_umat, id_hubkk, nama, alamat FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.nama = "'.$_GET['nama'].'") AND uu.nama <> "'.$_GET['nama'].'"');
+				// $anggotaKeluarga = $this->Umat->query('SELECT id, kode_umat, id_hubkk, nama, alamat FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.nama = "'.$_GET['nama'].'") AND uu.nama <> "'.$_GET['nama'].'"');
 
-				$results['nama_ayah'] = null;
-				$results['id_ayah'] = null;
-				$results['nama_ibu'] = null;
-				$results['id_ibu'] = null;
-				$results['alamat_orangtua'] = null;
+				$results['nama_ayah'] = $results['Umat']['nama_ayah'];
+				$result['nama_ibu'] = $results['Umat']['nama_ibu'];
 
-				foreach ($anggotaKeluarga as $anggota) {
-					if ($anggota['uu']['id_hubkk'] == 1) {
-						$results['nama_ayah'] = $anggota['uu']['nama'];
-						$results['id_ayah'] = $anggota['uu']['id'];
-						$results['alamat_orangtua'] = $anggota['uu']['alamat'];
-					}
-					else if ($anggota['uu']['id_hubkk'] == 2) {
-						$results['nama_ibu'] = $anggota['uu']['nama'];
-						$results['id_ibu'] = $anggota['uu']['id'];
-						$results['alamat_orangtua'] = $anggota['uu']['alamat'];
-					}
-				}
+				// $results['nama_ayah'] = null;
+				// $results['id_ayah'] = null;
+				// $results['nama_ibu'] = null;
+				// $results['id_ibu'] = null;
+				// $results['alamat_orangtua'] = null;
+
+				// foreach ($anggotaKeluarga as $anggota) {
+				// 	if ($anggota['uu']['id_hubkk'] == 1) {
+				// 		$results['nama_ayah'] = $anggota['uu']['nama'];
+				// 		$results['id_ayah'] = $anggota['uu']['id'];
+				// 		$results['alamat_orangtua'] = $anggota['uu']['alamat'];
+				// 	}
+				// 	else if ($anggota['uu']['id_hubkk'] == 2) {
+				// 		$results['nama_ibu'] = $anggota['uu']['nama'];
+				// 		$results['id_ibu'] = $anggota['uu']['id'];
+				// 		$results['alamat_orangtua'] = $anggota['uu']['alamat'];
+				// 	}
+				// }
 
 				echo json_encode($results);
 		}
