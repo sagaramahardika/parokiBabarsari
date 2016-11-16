@@ -387,6 +387,8 @@ class BaptisController extends AppController{
 		$tanggalMenikah = '-';
 		$kotaMenikah = '-';
 		$tempatMenikah = '-';
+		$setting = $this->Setting->findByKeySetting('baptis');
+		$this->set(compact('setting'));
 		if($riwayatPernikahan != null){
 			$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
 			$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
