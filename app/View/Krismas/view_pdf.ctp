@@ -148,5 +148,5 @@
       <td style="font-size: 14px;"><?php echo $setting['Setting']['value_setting']; ?></td>
     </tr>
   </table>
-  <?php print_r($setting); ?>
+  <?php //print_r($setting); ?>
 </page>
