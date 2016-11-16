@@ -3,7 +3,7 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component');
 class PernikahansController extends AppController{
 	public $components = array('Paginator', 'Session', 'Cookie', 'Flash', 'ImageCropResize.Image');
-	public $uses = array('Pernikahan', 'Baptis', 'Umat','Kk','Leveluser','Lingkungan','Wilayah','Paroki','Statuspernikahan');
+	public $uses = array('Pernikahan', 'Baptis', 'Umat','Kk','Leveluser','Lingkungan','Wilayah','Paroki','Statuspernikahan', 'Setting');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 
@@ -590,7 +590,9 @@ class PernikahansController extends AppController{
 			$umat2 = $umatTamp;
 		}
 
-		$this->set(compact('pernikahan', 'umat1', 'umat2', 'isUmat', 'ditukar'));
+		$setting = $this->Setting->findByKeySetting('pernikahan');
+
+		$this->set(compact('pernikahan', 'setting', 'umat1', 'umat2', 'isUmat', 'ditukar'));
 		$view_output = $this->render('view_pdf');
 	    $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
 	    $html2pdf->pdf->SetAuthor('a');

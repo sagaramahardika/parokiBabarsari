@@ -208,7 +208,7 @@
     </tr>
     <tr>
       <td style="width: 40%;"></td>
-      <td style="width: 60%;">CHRISTOPHORUS SUTRASNO PURWANTO, Pr</td>
+      <td style="width: 60%;"><?php echo $setting['Setting']['value_setting']; ?></td>
     </tr>
   </table>
 </page>

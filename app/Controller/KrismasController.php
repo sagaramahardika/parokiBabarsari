@@ -290,31 +290,48 @@ public function beforeFilter() {
 				$this->autoLayout = false;
 				$this->autoRender = false;
 				$results = $this->Umat->find('first', array(
-					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'tmpkomuni', 'tglkomuni', 'alamat', 'tlp', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis', 'Baptis.liberbap'),
+					'fields' => array('nama', 'id', 'jenis_kelamin', 'tgl_lahir', 'tmplahir', 'tmpkomuni', 'tglkomuni', 'alamat', 'tlp', 'nama_ayah', 'nama_ibu', 'Baptis.tanggal', 'Baptis.tempat', 'Baptis.nama_baptis', 'Baptis.liberbap'),
 					'conditions' => array('Umat.nama LIKE' => '%' . $_GET['nama'] . '%' ),
 				));
 
 
-				$anggotaKeluarga = $this->Umat->query('SELECT id, kode_umat, id_hubkk, nama, alamat FROM umats uu WHERE uu.id_kk = (SELECT id_kk FROM umats u WHERE u.nama = "'.$_GET['nama'].'") AND uu.nama <> "'.$_GET['nama'].'"');
+				// $cariAlamatOrtu;
 
-				$results['nama_ayah'] = null;
-				$results['id_ayah'] = null;
-				$results['nama_ibu'] = null;
-				$results['id_ibu'] = null;
-				$results['alamat_orangtua'] = null;
+				// if($results['nama_ayah'] != NULL) {
+				// 	$cariAlamatOrtu = $this->Umat->find('first', array('fields' => array('alamat'), 'conditions'
+				// 		 => array(
+				// 		 	'Umat.nama LIKE' => '%' . $results['nama_ayah'] . '%'
+				// 		 	)
+				// 		 )
+				// 	);
+				// } else {
+				// 	$cariAlamatOrtu = $this->Umat->find('first', array('fields' => array('alamat'), 'conditions'
+				// 		 => array(
+				// 		 	'Umat.nama LIKE' => '%' . $results['nama_ibu'] . '%'
+				// 		 	)
+				// 		 )
+				// 	);
+				// }
+				
 
-				foreach ($anggotaKeluarga as $anggota) {
-					if ($anggota['uu']['id_hubkk'] == 1) {
-						$results['nama_ayah'] = $anggota['uu']['nama'];
-						$results['id_ayah'] = $anggota['uu']['id'];
-						$results['alamat_orangtua'] = $anggota['uu']['alamat'];
-					}
-					else if ($anggota['uu']['id_hubkk'] == 2) {
-						$results['nama_ibu'] = $anggota['uu']['nama'];
-						$results['id_ibu'] = $anggota['uu']['id'];
-						$results['alamat_orangtua'] = $anggota['uu']['alamat'];
-					}
-				}
+				// $results['nama_ayah'] = null;
+				// $results['id_ayah'] = null;
+				// $results['nama_ibu'] = null;
+				// $results['id_ibu'] = null;
+				// $results['alamat_orangtua'] = $cariAlamatOrtu['Umat']['alamat'];
+
+				// foreach ($anggotaKeluarga as $anggota) {
+				// 	if ($anggota['uu']['id_hubkk'] == 1) {
+				// 		$results['nama_ayah'] = $anggota['uu']['nama'];
+				// 		$results['id_ayah'] = $anggota['uu']['id'];
+				// 		$results['alamat_orangtua'] = $anggota['uu']['alamat'];
+				// 	}
+				// 	else if ($anggota['uu']['id_hubkk'] == 2) {
+				// 		$results['nama_ibu'] = $anggota['uu']['nama'];
+				// 		$results['id_ibu'] = $anggota['uu']['id'];
+				// 		$results['alamat_orangtua'] = $anggota['uu']['alamat'];
+				// 	}
+				// }
 
 				echo json_encode($results);
 		}

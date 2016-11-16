@@ -72,9 +72,9 @@
                $('#tanggalKomuni').val(data.Umat.tglkomuni);
                $('#alamatDiri').val(data.Umat.alamat);
                $('#noHpDiri').val(data.Umat.tlp);
-               $('#namaAyah').val(data.nama_ayah);
-               $('#namaIbu').val(data.nama_ibu);
-               $('#alamatOrtu').val(data.alamat_orangtua);
+               $('#namaAyah').val(data.Umat.nama_ayah);
+               $('#namaIbu').val(data.Umat.nama_ibu);
+               // $('#alamatOrtu').val(data.alamat_orangtua);
 
                $('#namaBaptis').prop('disabled', true);
                $('#tempatLahir').prop('disabled', true);
@@ -88,7 +88,7 @@
                $('#noHpDiri').prop('disabled', true);
                $('#namaAyah').prop('readonly', true);
                $('#namaIbu').prop('readonly', true);
-               $('#alamatOrtu').prop('readonly', true);
+               // $('#alamatOrtu').prop('readonly', true);
            },
            error: function(e){
 
