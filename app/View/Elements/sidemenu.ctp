@@ -11,6 +11,7 @@ $kematians='';
 $komuni='';
 $krismas='';
 $kelahiran='';
+$settings='';
 $tambahjemaat='';
 $tambahkematian='';
 $lihataktivasi='';
@@ -68,6 +69,9 @@ else if ($ctl === 'tambahbaptisdewasa') {
 else if ($ctl === 'tambahbaptisdarurat') {
   $tambahbaptisdarurat = 'class="active"';
 }
+else if ($ctl === 'settings'){
+  $settings = 'class="active"';
+}
 else {
   $overview = 'class="active"';
 }
@@ -96,6 +100,9 @@ else {
   </li>
   <li <?php echo $kematians; ?>>
     <?php echo $this->Html->link('Kematian', array('controller'=>'kematians', 'action' => 'index')); ?>
+  </li>
+  <li <?php echo $settings; ?>>
+    <?php echo $this->Html->link('Setting', array('controller'=>'settings', 'action' => 'index')); ?>
   </li>
 
   <?php

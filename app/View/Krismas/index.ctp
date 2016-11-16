@@ -115,11 +115,6 @@ $this->assign('title','Halaman Pendataan Krisma')
 
 						</tr>
 
-
-
-
-
-
 						<?php }
 						?>
 						</tbody>
