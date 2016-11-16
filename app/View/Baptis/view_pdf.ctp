@@ -238,7 +238,6 @@ if($tanggalMenikah != '-'){
     <tr>
       <td style="width: 50%;"></td>
       <td style="font-size: 18px; text-align: center;"><?php echo $setting['Setting']['value_setting']; ?></td>
-      <?php/*Dominicus Donny Widiyarso, Pr.*/?>
     </tr>
   </table>
 </page>

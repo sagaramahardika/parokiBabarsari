@@ -3,7 +3,7 @@
 App::uses('AuthComponent', 'Controller/Component');
 class BaptisController extends AppController{
 	public $components = array('Flash','Paginator');
-	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki', 'BaptisDarurat', 'BaptisAnak', 'BaptisDewasa', 'Krisma', 'Pernikahan');
+	public $uses = array('Baptis','Umat', 'Statusbaptis', 'Paroki', 'BaptisDarurat', 'BaptisAnak', 'BaptisDewasa', 'Krisma', 'Pernikahan', 'Setting');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 	public $name = 'Baptis';
@@ -387,8 +387,6 @@ class BaptisController extends AppController{
 		$tanggalMenikah = '-';
 		$kotaMenikah = '-';
 		$tempatMenikah = '-';
-		$setting = $this->Setting->findByKeySetting('baptis');
-		$this->set(compact('setting'));
 		if($riwayatPernikahan != null){
 			$namaPasangan =	$riwayatPernikahan['Umat']['nama'];
 			$tanggalMenikah = $riwayatPernikahan['Umat']['tglnikah'];
@@ -398,7 +396,8 @@ class BaptisController extends AppController{
 
 
 		// NOTE: Belom di test
-
+		$setting = $this->Setting->findByKeySetting('baptis');
+		$this->set(compact('setting'));
 		$this->set(compact('baptis', 'namaPasangan', 'tanggalMenikah', 'kotaMenikah', 'tempatMenikah'));
 		$this->set(compact('krisma'));
 		$this->set('pernikahan', $riwayatPernikahan);
