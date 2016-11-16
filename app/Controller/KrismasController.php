@@ -3,7 +3,7 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 App::uses('AuthComponent', 'Controller/Component');
 class KrismasController extends AppController{
 	public $components = array('Paginator', 'Session', 'Cookie', 'Flash', 'ImageCropResize.Image');
-	public $uses = array('Umat','Kk','Leveluser','Lingkungan','Wilayah','Paroki', 'Krisma');
+	public $uses = array('Umat', 'Krisma', 'Setting');
 	public $helpers = array('Flash');
 	public $layout = 'default';
 
@@ -212,9 +212,11 @@ public function beforeFilter() {
 		$this->layout = false;
 		$id = $this->params['pass'][0];
 		$krisma = $this->Krisma->findById($id);
+		$setting = $this->Setting->findByKeySetting('krisma');
 		$post = $this->request->data;
 		$this->set(compact('krisma'));
 		$this->set(compact('post'));
+		$this->set(compact('setting'));
 		$view_output = $this->render('view_pdf');
     $html2pdf = new HTML2PDF('P','A4','en', true, 'UTF-8',  array(7, 7, 10, 10));
     $html2pdf->pdf->SetAuthor('a');

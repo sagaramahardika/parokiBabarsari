@@ -8,6 +8,9 @@
   $month = $arrMonth[$numMonth - 1];
   $year = date("Y", strtotime($krisma['Krisma']['tanggal_krisma']));
 
+  $nama_diri = '';
+  $nama_baptis = '';
+
   $nama = $krisma['Umat']['nama'];
   if (strpos($nama, ',') !== false){
     $nama = explode(",", $nama);
@@ -142,8 +145,8 @@
   <table style="width: 100%;">
     <tr>
       <td style="width: 55%;"> </td>
-      <td style="font-size: 14px;"><?php echo $krisma['Krisma']['nama_emban_krisma']; ?></td>
+      <td style="font-size: 14px;"><?php echo $setting['Setting']['value_setting']; ?></td>
     </tr>
   </table>
-  <?php //print_r($krisma); ?>
+  <?php print_r($setting); ?>
 </page>
