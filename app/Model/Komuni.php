@@ -11,7 +11,7 @@ class Komuni extends AppModel {
 		'Baptis' => array(
 			'className' => 'Baptis',
 			'foreignKey' => false,
-			'conditions' => array ( 'Baptis.id_umat = Komuni.id_umat' )
+			'conditions' => array ( 'Baptis.id_umat = Komuni.id_umat AND Baptis.id_umat <> 0' )
 		),
 	);
 

@@ -71,7 +71,6 @@ $this->assign('title', 'Halaman Manajemen Komuni');
 						<tbody>
 						<?php
 						$i=0;
-            //print_r($datas);
 						foreach($datas as $data) {
 						?>
             <tr>
